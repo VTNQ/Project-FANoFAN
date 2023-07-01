@@ -9,10 +9,9 @@ class UserController extends Controller
 {
     public function index()
     {
-        $data_session = session()->get('id');
-        if (!$data_session) {
+        if (!session('username') && !session('id')) {
             return view('index.index');
-        } elseif ($data_session) {
+        } elseif (session('username') and session('id')) {
             $data_last = session()->get('value');
             $list_photo = DB::table('user')->select('*')->where('avatar', $data_last)->first();
             return view('user.Home')->with('list_photo', $list_photo);
@@ -21,18 +20,14 @@ class UserController extends Controller
 
     public function my_account()
     {
-        if (session('username') and session('id')) {
+        if (!session('username') && !session('id')) {
+            return redirect('/login');
+        } elseif (session('username') and session('id')) {
             $data_session = session()->get('id');
-            $data_last = session()->get('value');
             $list_photo = DB::table('user')->select('*')->where('id', $data_session)->first();
             $list_user = DB::select('select username,password,email,phone from user where id=?', [$data_session]);
             return view('user.my_account')->with('list_user', $list_user)->with('list_photo', $list_photo);
-        } else if (session('username_admin') and session('id_admin')) {
-            return redirect()->back();
-        } else {
-            return redirect()->back();
         }
-
     }
 
     public function EditUsername(request $request)
