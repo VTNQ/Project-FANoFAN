@@ -2,7 +2,7 @@
 @section('title_page')
     Detail Product
     @endsection
-        @section('body_content')<!DOCTYPE html>
+    @section('body_content')<!DOCTYPE html>
     <!--main content start-->
     <style>
         button.btn.btn-outline-primary {
@@ -22,7 +22,9 @@
                 <div class="panel panel-default">
 
                     <div class="panel-heading">
-                        <a href="/list_product"><button type="button" class="btn btn-outline-primary">Back</button></a>
+                        <a href="/list_product">
+                            <button type="button" class="btn btn-outline-primary">Back</button>
+                        </a>
                         Detail Product
                     </div>
 
@@ -77,14 +79,14 @@
             </div>
         </section>
         <!-- footer -->
-        <div class="footer">
+        <div class="footer" style="width: 100%; position: absolute; bottom: 0; text-align: center">
             <div class="wthree-copyright">
-                <p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+                <p>© 2023. All rights reserved | Design by <a href="/about">Favorable Team</a></p>
             </div>
         </div>
         <!-- / footer -->
     </section>
 
     <!--main content end-->
-</section>
+    </section>
 @endsection

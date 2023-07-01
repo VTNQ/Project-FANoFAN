@@ -1,9 +1,8 @@
-@extends('layouts.admin')
-@section('title_page')
+<?php $__env->startSection('title_page'); ?>
     Category
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('body_content')
+<?php $__env->startSection('body_content'); ?>
     <!--main content start-->
     <section id="main-content">
         <section class="wrapper">
@@ -18,24 +17,31 @@
                             </header>
                             <div class="panel-body">
 
-                                @if(Session::has('success'))
+                                <?php if(Session::has('success')): ?>
                                     <script>
-                                        toastr.success("{{session('success')}}")
+                                        toastr.success("<?php echo e(session('success')); ?>")
                                     </script>
 
-                                @endif
+                                <?php endif; ?>
                                 <div class="position-center">
 
                                     <form role="form" action="/save_category" method="post">
-                                        @csrf
+                                        <?php echo csrf_field(); ?>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Name category</label>
                                             <input type="text" class="form-control" id="exampleInputEmail1"
                                                    name="name_category" placeholder="Enter name category">
                                             <br>
-                                            @error('name_category')
+                                            <?php $__errorArgs = ['name_category'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                             <div class="alert alert-danger">Please Enter name Category</div>
-                                            @enderror
+                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                         </div>
 
 
@@ -73,25 +79,26 @@
                                 <th style="width: 30px;"></th>
                             </tr>
                             </thead>
-                            @foreach($all_list_login as $key=> $row )
+                            <?php $__currentLoopData = $all_list_login; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=> $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
-                                <tr id="category_ids{{$row->id}}">
-                                    <td><input type="checkbox" name="ids" class="checkbox_ids" value="{{$row->id}}">
+                                <tr id="category_ids<?php echo e($row->id); ?>">
+                                    <td><input type="checkbox" name="ids" class="checkbox_ids" value="<?php echo e($row->id); ?>">
                                     </td>
-                                    <td>{{++$key}}</td>
-                                    <td>{{$row->name}}</td>
+                                    <td><?php echo e(++$key); ?></td>
+                                    <td><?php echo e($row->name); ?></td>
                                     <td>
-                                        <a href="{{url('/edit/'.$row->id)}}" class="active" ui-toggle-class=""><i
-                                                class="fas fa-edit"> </a></i><a href="{{url('/delete/'.$row->id)}}"
+                                        <a href="<?php echo e(url('/edit/'.$row->id)); ?>" class="active" ui-toggle-class=""><i
+                                                class="fas fa-edit"> </a></i><a href="<?php echo e(url('/delete/'.$row->id)); ?>"
                                                                                 onclick="return confirm('Are you want to delete category?')">
                                             <i class="fa fa-times text-danger text"></i></a>
                                     </td>
                                 </tr>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </table>
                 </div>
 
-                {{$all_list_login->links()}}
+                <?php echo e($all_list_login->links()); ?>
+
 
                 <!-- page end-->
             </div>
@@ -138,11 +145,11 @@
                     all_ids.push($(this).val());
                 })
                 $.ajax({
-                    url: "{{route('category.delete')}}",
+                    url: "<?php echo e(route('category.delete')); ?>",
                     type: 'DELETE',
                     data: {
                         ids: all_ids,
-                        _token: '{{csrf_token()}}'
+                        _token: '<?php echo e(csrf_token()); ?>'
                     },
                     success: function (response) {
                         $.each(all_ids, function (key, val) {
@@ -181,4 +188,6 @@
             }
         });
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/category/profile_category.blade.php ENDPATH**/ ?>

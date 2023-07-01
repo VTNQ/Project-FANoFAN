@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <link rel="short icon" href="{{asset('images/icon-title.ico')}}">
-    <title>@yield('title_page')</title>
+    <title>Admin Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <script type="application/x-javascript"> addEventListener("load", function () {
@@ -12,56 +11,75 @@
             window.scrollTo(0, 1);
         } </script>
     <!-- bootstrap-css -->
-    <link rel="stylesheet" href="{{asset('admin/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- //bootstrap-css -->
     <!-- Custom CSS -->
-    <link href="{{asset('admin/css/style.css')}}" rel='stylesheet' type='text/css'/>
-    <link href="{{asset('admin/css/style-responsive.css')}}" rel="stylesheet"/>
+    <link href="<?php echo e(asset('admin/css/style.css')); ?>" rel='stylesheet' type='text/css'/>
+    <link href="<?php echo e(asset('css/style-responsive.css')); ?>" rel="stylesheet"/>
     <!-- font CSS -->
     <link
         href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic'
         rel='stylesheet' type='text/css'>
     <!-- font-awesome icons -->
-    <link rel="stylesheet" href="{{asset('admin/css/font.css')}}" type="text/css"/>
-    <link href="{{asset('admin/css/font-awesome.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo e(asset('admin/css/font.css')); ?>" type="text/css"/>
+    <link href="<?php echo e(asset('admin/css/font-awesome.css')); ?>" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo e(asset('admin/css/morris.css')); ?>" type="text/css"/>
+    <!-- calendar -->
+    <link rel="stylesheet" href="css/monthly.css">
+    <!-- //calendar -->
     <!-- //font-awesome icons -->
-    <script src="{{asset('admin/js/jquery2.0.3.min.js')}}"></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/[version.number]/[distribution]/ckeditor.js"></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/38.1.0/classic/ckeditor.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
-            integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
-          integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <script src="<?php echo e(asset('admin/js/jquery2.0.3.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('admin/js/raphael-min.js')); ?>"></script>
+    <script src="<?php echo e(asset('admin/js/morris.js')); ?>"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
 </head>
 <style>
-    span.fa-solid.fa-toggle-off {
-        font-size: 33px;
+    .market-update-block.clr-block-2 {
+        background-color: wheat;
     }
 
-    span.fa-solid.fa-toggle-on {
-        font-size: 33px;
+    .market-update-block.clr-block-2 {
+        width: 199%;
     }
 
-    span.fa-solid.fa-thumbs-down {
-        font-size: 24px;
+    table.table {
+        margin-left: -49%;
+        margin-top: 34px;
     }
 
-    span.fa-solid.fa-thumbs-up {
-        font-size: 24px;
+    td.home4 {
+        padding: 4vh;
+
     }
 
-    span.text-alert {
-        width: 116%;
-        color: red;
+    .table {
+        max-width: none;
+        width: auto;
+    }
+
+    .market-update-block.clr-block-2:hover {
+        background: bisque;
+    }
+
+    .footer {
+        margin-top: 20vh;
+    }
+
+    p.tittle {
+        /* margin-left: 9vh; */
+        font-size: 25px;
         text-align: center;
         font-weight: bold;
-        font-size: 18px;
-        margin-left: 15px;
+        margin-top: 1vh;
+    }
+
+    td, th {
+        padding: 4vh;
+        text-align: center;
+
     }
 </style>
 <body>
@@ -78,14 +96,14 @@
             </div>
         </div>
         <!--logo end-->
+
         <div class="top-nav clearfix">
             <!--search & user info start-->
             <ul class="nav pull-right top-menu">
-
                 <!-- user login dropdown start-->
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <img src="/public/upload/{{$list_photo->avatar}}" alt="">
+                        <img src="/public/upload/<?php echo e($list_photo->avatar); ?>" alt="">
                         <span class="username"> <?php
                                                 $name = Session::get('username_admin');
                                                 if ($name) {
@@ -150,17 +168,107 @@
         </div>
     </aside>
     <!--sidebar end-->
-    @yield('body_content')
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+            <h1>Welcome to page</h1>
+            <!-- //market-->
+            <div class="row">
+                <div class="col-md-4 col-xs-12">
+                    <p class="tittle">Quantity statistics</p>
+                    <div id="donut" class="morris-donut-inverse"></div>
+                </div>
+                <br>
+                <div class="col-md-4 col-xs-12">
+                    <br>
+                    <h3>the most user feedback</h3>
+                    <table style="text-align: center;">
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th> Total</th>
+                        </tr>
+                        <?php $__currentLoopData = $count; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=> $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <tr>
+                                <td><?php echo e(++$key); ?></td>
+                                <td><?php echo e($row->username); ?></td>
+                                <td><?php echo e($row->total); ?></td>
+                            </tr>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </table>
+
+                </div>
+
+                <div class="row">
+
+
+                    <table class="left" style="text-align: center;">
+                        <tr>
+                            <th class="home"><h3 class="home1">Name product</h3></th>
+                        </tr>
+                        <tr>
+
+                            <th>#</th>
+                            <th>Product</th>
+                            <th>Category</th>
+                            <th>Money</th>
+                        </tr>
+
+                        <?php $__currentLoopData = $new_product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <tr>
+
+                                <td class="home4"><?php echo e(++$key); ?></td>
+                                <td class="home4"><?php echo e($row->name_product); ?></td>
+                                <td class="home4"><?php echo e($row->name); ?></td>
+                                <td class="home4"><?php echo e($row->money); ?>$</td>
+
+                            </tr>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </table>
+
+
+                </div>
+
+                <!-- //market-->
+                <div class="row">
+                    <div class="panel-body">
+                        <div class="col-md-12 w3ls-graph">
+                            <!--agileinfo-grap-->
+
+                            <!--//agileinfo-grap-->
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- tasks -->
+
+
+                <!-- //tasks -->
+
+        </section>
+        <!-- footer -->
+        <div class="footer" style="width: 100%; position: absolute; bottom: 0; text-align: center">
+            <div class="wthree-copyright">
+                <p>© 2023. All rights reserved | Design by <a href="/about">Favorable Team</a></p>
+            </div>
+        </div>
+        <!-- / footer -->
+    </section>
+    <!--main content end-->
 </section>
 <script src="https://kit.fontawesome.com/1fa6a2ee32.js" crossorigin="anonymous"></script>
-<script src="{{asset('admin/js/bootstrap.js')}}"></script>
-<script src="{{asset('admin/js/jquery.dcjqaccordion.2.7.js')}}"></script>
-<script src="{{asset('admin/js/scripts.js')}}"></script>
-<script src="{{asset('admin/js/jquery.slimscroll.js')}}"></script>
-<script src="{{asset('admin/js/jquery.nicescroll.js')}}"></script>
+<script src="<?php echo e(asset('admin/js/bootstrap.js')); ?>"></script>
+<script src="<?php echo e(asset('admin/js/jquery.dcjqaccordion.2.7.js')); ?>"></script>
+<script src="<?php echo e(asset('admin/js/scripts.js')); ?>"></script>
+<script src="<?php echo e(asset('admin/js/jquery.slimscroll.js')); ?>"></script>
+<script src="<?php echo e(asset('admin/js/jquery.nicescroll.js')); ?>"></script>
 <!--[if lte IE 8]>
 <script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
-<script src="{{asset('admin/js/jquery.scrollTo.js')}}"></script>
+<script src="<?php echo e(asset('admin/js/jquery.scrollTo.js')); ?>"></script>
+<!-- Messenger Plugin chat Code -->
+
+<!-- Your SDK code -->
 
 <!-- morris JavaScript -->
 <script>
@@ -198,7 +306,6 @@
                 {period: '2015 Q2', iphone: 15780, ipad: 13799, itouch: 12051},
                 {period: '2015 Q3', iphone: 12920, ipad: 10975, itouch: 9910},
                 {period: '2015 Q4', iphone: 8770, ipad: 6600, itouch: 6695},
-
                 {period: '2016 Q1', iphone: 10820, ipad: 10924, itouch: 12300},
                 {period: '2016 Q2', iphone: 9680, ipad: 9010, itouch: 7891},
                 {period: '2016 Q3', iphone: 4830, ipad: 3805, itouch: 1598},
@@ -250,36 +357,36 @@
 
     });
 </script>
-<!-- //calendar -->
-<script type="application/x-javascript">
-    addEventListener("load", function () {
-        setTimeout(hideURLbar, 0);
-    }, false);
-
-    function hideURLbar() {
-        window.scrollTo(0, 1);
-    }
-</script>
-<script type="text/javascript">
-    fileImg.onchange = evt => {
-        const [file] = fileImg.files;
-        if (file) {
-            img.src = URL.createObjectURL(file);
-        }
-
-    }
-
-</script>
 <script>
-    ClassicEditor
-        .create(document.querySelector('#editor'))
-        .then(editor => {
-            console.log(editor);
-        })
-        .catch(error => {
-            console.error(error);
-        });
+    var colorDanger = "#FF1744";
+    Morris.Donut({
+        element: 'donut',
+        resize: true,
+        colors: [
+            '#E0F7FA',
+            '#B2EBF2',
+            '#80DEEA',
+            '#4DD0E1',
+            '#26C6DA',
+            '#00BCD4',
+            '#00ACC1',
+            '#0097A7',
+            '#00838F',
+            '#006064'
+        ],
+        //labelColor:"#cccccc", // text color
+        //backgroundColor: '#333333', // border color
+        data: [
+            {label: "Product", value:<?php echo $product ?>, color: colorDanger},
+            {label: "Category", value:<?php echo $category ?>},
+            {label: "Photo", value:<?php echo $photo ?>},
+            {label: "Feedback", value:<?php echo $feedback ?>},
+            {label: "User", value:<?php echo $user ?>}
+        ]
+    });
 
 </script>
+<!-- //calendar -->
 </body>
 </html>
+<?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/admin/admin.blade.php ENDPATH**/ ?>
