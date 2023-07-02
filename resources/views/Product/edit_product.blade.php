@@ -1,9 +1,9 @@
 @extends('layouts.admin')
-    @section('title_page')
+@section('title_page')
     Edit Product
-    @endsection
-        @section('body_content')
-            <!--main content start-->
+@endsection
+@section('body_content')
+    <!--main content start-->
     <section id="main-content">
         <section class="wrapper">
             <div class="form-w3layouts">
@@ -21,19 +21,25 @@
 
                                 <div class="position-center">
                                     @foreach($student as $row)
-                                        <form role="form" action="{{URL::to('/update_product/'.$row->id_product)}}" method="post"  >
+                                        <form role="form" action="{{URL::to('/update_product/'.$row->id_product)}}"
+                                              method="post">
                                             @csrf
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Name Product</label>
-                                                <input type="text" class="form-control" value="{{$row->name_product}}"  id="exampleInputEmail1" name="nameProduct" placeholder="Enter name Product">
+                                                <input type="text" class="form-control" value="{{$row->name_product}}"
+                                                       id="exampleInputEmail1" name="nameProduct"
+                                                       placeholder="Enter name Product">
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Price</label>
-                                                <input type="number" class="form-control" id="exampleInputEmail1" value="{{$row->money}}" name="Price" placeholder="Enter name Product">
+                                                <input type="number" class="form-control" id="exampleInputEmail1"
+                                                       value="{{$row->money}}" name="Price"
+                                                       placeholder="Enter name Product">
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Product Description</label>
-                                                <textarea name="description"  id="" class="form-control" style="resize: none;"  rows="8" >{{$row->content}}</textarea>
+                                                <textarea name="description" id="" class="form-control"
+                                                          style="resize: none;" rows="8">{{$row->content}}</textarea>
 
                                             </div>
                                             <div class="form-group">
@@ -42,9 +48,11 @@
                                                 <select name="category" class="form_control input-sm m-bot15" id="">
                                                     @foreach($list_category as $category)
                                                         @if($category->id==$row->id_category)
-                                                            <option selected value="{{$category->id}}">{{$category->name}}</option>
+                                                            <option selected
+                                                                    value="{{$category->id}}">{{$category->name}}</option>
                                                         @else
-                                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                                            <option
+                                                                value="{{$category->id}}">{{$category->name}}</option>
                                                         @endif
                                                     @endforeach
                                                 </select>
@@ -53,14 +61,8 @@
                                             </div>
 
 
-
                                             </label>
                                 </div>
-
-
-
-
-
 
 
                                 <button type="submit" class="btn btn-info">Add catelogies</button>
@@ -80,14 +82,14 @@
             </div>
         </section>
         <!-- footer -->
-        <div class="footer">
+        <div class="footer" style="width: 100%; position: absolute; bottom: 0; text-align: center">
             <div class="wthree-copyright">
-                <p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+                <p>© 2023. All rights reserved | Design by <a href="/about">Favorable Team</a></p>
             </div>
         </div>
         <!-- / footer -->
     </section>
 
     <!--main content end-->
-</section>
-        @endsection
+    </section>
+@endsection

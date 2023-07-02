@@ -9,21 +9,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
-    <link rel="short icon" href="{{asset('images/icon-title.ico')}}">
-    <title>@yield('index')</title>
+    <link rel="short icon" href="<?php echo e(asset('images/icon-title.ico')); ?>">
+    <title><?php echo $__env->yieldContent('index'); ?></title>
     <meta http-equiv="refresh" content="number">
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
 
     <!-- bootstrap css -->
-    <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css ')}}">
+    <link rel="stylesheet" href="<?php echo e(asset('/css/bootstrap.min.css ')); ?>">
     <!-- style css -->
-    <link rel="stylesheet" href="{{ asset('/css/style.css ')}}">
+    <link rel="stylesheet" href="<?php echo e(asset('/css/style.css ')); ?>">
     <!-- Responsive-->
-    <link rel="stylesheet" href="{{ asset('/css/responsive.css ')}}">
+    <link rel="stylesheet" href="<?php echo e(asset('/css/responsive.css ')); ?>">
     <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="{{ asset('/css/jquery.mCustomScrollbar.min.css ')}}">
+    <link rel="stylesheet" href="<?php echo e(asset('/css/jquery.mCustomScrollbar.min.css ')); ?>">
     <!-- Tweaks for older IEs-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -34,7 +34,7 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
-    @yield('mycss')
+    <?php echo $__env->yieldContent('mycss'); ?>
 
 </head>
 <style>
@@ -100,11 +100,11 @@
 
                 <div class="dropdown-menu dropdown-primary  mt-lg-3" style="background-color: #6c757d;"
                      aria-labelledby="navbarDropdownMenuLink">
-                    @foreach($category as $row)
+                    <?php $__currentLoopData = $category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <a class="dropdown-item ceiling-fans-link waves-effect waves-light"
-                           href="/categories_list/{{$row->id}}">{{$row->name}}</a>
+                           href="/categories_list/<?php echo e($row->id); ?>"><?php echo e($row->name); ?></a>
 
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
 
             </li>
@@ -146,7 +146,7 @@
 <!-- end header -->
 <div class="main-panel">
     <section>
-        @yield('body_content')
+        <?php echo $__env->yieldContent('body_content'); ?>
     </section>
 </div>
 
@@ -304,19 +304,19 @@
         <a href="/"> FANoFAN</a>
     </div>
     <!-- Copyright -->
-    <img src="{{asset('images/back-to-top-button.png')}}" alt="" onclick="scroll_to_top()" id="scroll_top"
+    <img src="<?php echo e(asset('images/back-to-top-button.png')); ?>" alt="" onclick="scroll_to_top()" id="scroll_top"
          style="position: fixed; bottom: 3vh; right: 1vw; width: 3rem">
 </footer>
 <!-- end footer -->
 <!-- Javascript files-->
-<script src="{{ asset('/js/jquery.min.js')}}"></script>
-<script src="{{ asset('/js/popper.min.js ')}}"></script>
-<script src="{{ asset('/js/bootstrap.bundle.min.js ')}}"></script>
-<script src="{{ asset('/js/jquery-3.0.0.min.js ')}}"></script>
+<script src="<?php echo e(asset('/js/jquery.min.js')); ?>"></script>
+<script src="<?php echo e(asset('/js/popper.min.js ')); ?>"></script>
+<script src="<?php echo e(asset('/js/bootstrap.bundle.min.js ')); ?>"></script>
+<script src="<?php echo e(asset('/js/jquery-3.0.0.min.js ')); ?>"></script>
 <!-- sidebar -->
-<script src="{{ asset('/js/jquery.mCustomScrollbar.concat.min.js ')}}"></script>
-<script src="{{ asset('/js/custom.js ')}}"></script>
-@yield('myscript')
+<script src="<?php echo e(asset('/js/jquery.mCustomScrollbar.concat.min.js ')); ?>"></script>
+<script src="<?php echo e(asset('/js/custom.js ')); ?>"></script>
+<?php echo $__env->yieldContent('myscript'); ?>
 <script src="https://kit.fontawesome.com/1fa6a2ee32.js" crossorigin="anonymous"></script>
 <script>
     window.addEventListener('scroll', () => {
@@ -370,3 +370,4 @@
 </body>
 
 </html>
+<?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/layouts/template.blade.php ENDPATH**/ ?>

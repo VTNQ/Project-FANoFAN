@@ -1,13 +1,13 @@
 @extends('layouts.admin')
-    @section('title_page')
+@section('title_page')
     Product
-    @endsection
-        @section('body_content')
+@endsection
+@section('body_content')
     <!--main content start-->
     <style>
         .col-md-3 {
-    margin-top: 1vh;
-}
+            margin-top: 1vh;
+        }
     </style>
     <section id="main-content">
         <section class="wrapper">
@@ -26,7 +26,7 @@
                             <div class="input-group">
                                 <input type="text" class="input-sm form-control" name="key" placeholder="Search">
                                 <span class="input-group-btn">
-            <button class="btn btn-sm btn-default" type="submit" >Go!</button>
+            <button class="btn btn-sm btn-default" type="submit">Go!</button>
           </span>
                             </div>
                         </form>
@@ -41,16 +41,16 @@
 
                         <form action="/filter_product" method="get">
                             <div class="row" style="margin-left: 1vh;">
-                                
-                                <label >Filter by product</label>
-                              
+
+                                <label>Filter by product</label>
+
                                 <select name="date" id="form-select">
-                                @foreach($list_product as $key=> $row )
-                                    <option value="{{$row->id}}">{{$row->name}}</option>
+                                    @foreach($list_product as $key=> $row )
+                                        <option value="{{$row->id}}">{{$row->name}}</option>
                                     @endforeach
                                 </select>
-                              
-                               <button type="submit" class="btn btn-primary">Filter</button>
+
+                                <button type="submit" class="btn btn-primary">Filter</button>
                             </div>
                         </form>
                         <table class="table table-striped b-t b-light">
@@ -68,7 +68,6 @@
                             </thead>
                             @foreach($list_product as $key=> $row )
 
-
                                 <tr>
                                     <td>{{++$key}}</td>
 
@@ -77,9 +76,15 @@
 
                                     <td>{{$row->name}}</td>
                                     <td>{{$row->money}}$</td>
-                                    <td><a href="{{url('/detail_product/'.$row->id_product)}}"><button class="btn btn-sm btn-secondary" >view</button></a></td>
+                                    <td><a href="{{url('/detail_product/'.$row->id_product)}}">
+                                            <button class="btn btn-sm btn-secondary">view</button>
+                                        </a></td>
                                     <td>
-                                        <a href="{{url('/edit_product/'.$row->id_product)}}" class="active" ui-toggle-class=""><i class="fas fa-edit"> </a></i><a href="{{url('/delete_product/'.$row->id_product)}}" onclick="return confirm('Are you want to delete product?')"> <i class="fa fa-times text-danger text"></i></a>
+                                        <a href="{{url('/edit_product/'.$row->id_product)}}" class="active"
+                                           ui-toggle-class=""><i class="fas fa-edit"> </a></i><a
+                                            href="{{url('/delete_product/'.$row->id_product)}}"
+                                            onclick="return confirm('Are you want to delete product?')"> <i
+                                                class="fa fa-times text-danger text"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -94,14 +99,14 @@
             </div>
         </section>
         <!-- footer -->
-        <div class="footer">
+        <div class="footer" style="width: 100%; position: absolute; bottom: 0; text-align: center">
             <div class="wthree-copyright">
-                <p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+                <p>© 2023. All rights reserved | Design by <a href="/about">Favorable Team</a></p>
             </div>
         </div>
         <!-- / footer -->
     </section>
 
     <!--main content end-->
-</section>
-        @endsection
+    </section>
+@endsection

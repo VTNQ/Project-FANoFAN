@@ -1,8 +1,7 @@
-@extends('layouts.admin')
-@section('title_page')
+<?php $__env->startSection('title_page'); ?>
     Product
-@endsection
-@section('body_content')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('body_content'); ?>
     <!--main content start-->
     <style>
         .col-md-3 {
@@ -32,12 +31,12 @@
                         </form>
                     </div>
                     <div class="table-responsive">
-                        @if(Session::has('success'))
+                        <?php if(Session::has('success')): ?>
                             <script>
-                                toastr.success("{{session('success')}}")
+                                toastr.success("<?php echo e(session('success')); ?>")
                             </script>
 
-                        @endif
+                        <?php endif; ?>
 
                         <form action="/filter_product" method="get">
                             <div class="row" style="margin-left: 1vh;">
@@ -45,9 +44,9 @@
                                 <label>Filter by product</label>
 
                                 <select name="date" id="form-select">
-                                    @foreach($list_product as $key=> $row )
-                                        <option value="{{$row->id}}">{{$row->name}}</option>
-                                    @endforeach
+                                    <?php $__currentLoopData = $list_product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=> $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($row->id); ?>"><?php echo e($row->name); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
 
                                 <button type="submit" class="btn btn-primary">Filter</button>
@@ -66,31 +65,32 @@
 
                             </tr>
                             </thead>
-                            @foreach($product as $key=> $row )
+                            <?php $__currentLoopData = $list_product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=> $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                                 <tr>
-                                    <td>{{++$key}}</td>
+                                    <td><?php echo e(++$key); ?></td>
 
 
-                                    <td>{{$row->name_product}}</td>
+                                    <td><?php echo e($row->name_product); ?></td>
 
-                                    <td>{{$row->name}}</td>
-                                    <td>{{$row->money}}$</td>
-                                    <td><a href="{{url('/detail_product/'.$row->id_product)}}">
+                                    <td><?php echo e($row->name); ?></td>
+                                    <td><?php echo e($row->money); ?>$</td>
+                                    <td><a href="<?php echo e(url('/detail_product/'.$row->id_product)); ?>">
                                             <button class="btn btn-sm btn-secondary">view</button>
                                         </a></td>
                                     <td>
-                                        <a href="{{url('/edit_product/'.$row->id_product)}}" class="active"
+                                        <a href="<?php echo e(url('/edit_product/'.$row->id_product)); ?>" class="active"
                                            ui-toggle-class=""><i class="fas fa-edit"> </a></i><a
-                                            href="{{url('/delete_product/'.$row->id_product)}}"
+                                            href="<?php echo e(url('/delete_product/'.$row->id_product)); ?>"
                                             onclick="return confirm('Are you want to delete product?')"> <i
                                                 class="fa fa-times text-danger text"></i></a>
                                     </td>
                                 </tr>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                         </table>
-                        {{$list_product->links()}}
+                        <?php echo e($list_product->links()); ?>
+
                     </div>
                     <footer class="panel-footer">
 
@@ -99,7 +99,7 @@
             </div>
         </section>
         <!-- footer -->
-        <div class="footer" style="width: 100%; position: absolute; bottom: 0; text-align: center">
+        <div class="footer" style="width: 100%; position: absolute; text-align: center">
             <div class="wthree-copyright">
                 <p>© 2023. All rights reserved | Design by <a href="/about">Favorable Team</a></p>
             </div>
@@ -109,4 +109,6 @@
 
     <!--main content end-->
     </section>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/product/list_product.blade.php ENDPATH**/ ?>

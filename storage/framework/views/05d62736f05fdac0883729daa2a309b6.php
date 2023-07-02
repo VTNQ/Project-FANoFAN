@@ -1,8 +1,7 @@
-@extends('layouts.admin')
-@section('title_page')
+<?php $__env->startSection('title_page'); ?>
     Add Product
-@endsection
-@section('body_content')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('body_content'); ?>
     <!--main content start-->
     <style>
         button.btn.btn-info {
@@ -22,33 +21,47 @@
                                 Add List Product
                             </header>
                             <div class="panel-body">
-                                @if(Session::has('success'))
+                                <?php if(Session::has('success')): ?>
                                     <script>
-                                        toastr.success("{{session('success')}}")
+                                        toastr.success("<?php echo e(session('success')); ?>")
                                     </script>
 
-                                @endif
-                                @if(count($errors)>0)
-                                    <div class="alert alert-danger">{{$errors->first()}}</div>
-                                @endif
+                                <?php endif; ?>
+                                <?php if(count($errors)>0): ?>
+                                    <div class="alert alert-danger"><?php echo e($errors->first()); ?></div>
+                                <?php endif; ?>
                                 <div class="position-center">
                                     <form role="form" action="/add_Product" method="post" enctype="multipart/form-data">
-                                        @csrf
+                                        <?php echo csrf_field(); ?>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Name Product</label>
                                             <input type="text" class="form-control" id="exampleInputEmail1"
                                                    name="nameProduct" placeholder="Enter name Product">
-                                            @error('nameProduct')
+                                            <?php $__errorArgs = ['nameProduct'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                             <div class="alert alert-danger">Please Enter name Product</div>
-                                            @enderror
+                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Price</label>
                                             <input type="number" class="form-control" id="exampleInputEmail1"
                                                    name="Price" placeholder="Enter name Product">
-                                            @error('Price')
+                                            <?php $__errorArgs = ['Price'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                             <div class="alert alert-danger">Please Enter Price Product</div>
-                                            @enderror
+                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                         </div>
 
                                         <div class="form-group">
@@ -64,9 +77,9 @@
                                             <label for="exampleInputEmail1">category</label>
 
                                             <select name="category" class="form_control input-sm m-bot15" id="">
-                                                @foreach($list_category as $row)
-                                                    <option value="{{$row->id}}">{{$row->name}}</option>
-                                                @endforeach
+                                                <?php $__currentLoopData = $list_category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <option value="<?php echo e($row->id); ?>"><?php echo e($row->name); ?></option>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </select>
 
 
@@ -123,7 +136,7 @@
                     <div class="position-center">
 
                         <form role="form" action="/bonus_photo" method="post" enctype="multipart/form-data">
-                            @csrf
+                            <?php echo csrf_field(); ?>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Name photo</label>
                                 <input type="file" class="form-control" id="fileImg" accept="image/*" name="fileImg"
@@ -146,9 +159,9 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Product</label>
                                 <select name="product" class="form_control input-sm m-bot15" id="">
-                                    @foreach($list_product as $row)
-                                        <option value="{{$row->id_product}}">{{$row->name_product}}</option>
-                                    @endforeach
+                                    <?php $__currentLoopData = $list_product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($row->id_product); ?>"><?php echo e($row->name_product); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
 
                             </div>
@@ -169,5 +182,7 @@
 
 
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/Product/add_product.blade.php ENDPATH**/ ?>
