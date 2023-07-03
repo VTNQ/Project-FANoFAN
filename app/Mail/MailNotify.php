@@ -30,7 +30,7 @@ class MailNotify extends Mailable
      */
     public function build()
     {
-        return $this->from('FANoFAN')
+        return $this->from('tranp668@gmail.com')
             ->view('mails.mail-notify')
             ->subject('Notification email');
     }

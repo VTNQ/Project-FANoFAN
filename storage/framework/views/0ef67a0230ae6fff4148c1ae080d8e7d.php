@@ -1,13 +1,10 @@
-@extends('layouts.template2')
-
-@section('title_page')
+<?php $__env->startSection('title_page'); ?>
 
     Ceiling Fan
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('mycss')
-
+<?php $__env->startSection('mycss'); ?>
     <style>
         .main-panel {
             background-color: #1c2331;
@@ -112,39 +109,39 @@
             resize: none
         }
     </style>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('body_content')
+<?php $__env->startSection('body_content'); ?>
 
     <!-- product -->
 
     <div class="row m-0">
         <div class="col-lg-4 left-side-product-box pb-3">
-            <img src="/public/upload/{{$photo->value}}" class=" p-3">
-            @foreach($data3 as $row)
+            <img id="main-image" src="/public/upload/<?php echo e($photo->value); ?>" class=" p-3">
+            <?php $__currentLoopData = $data3; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <span class="sub-img">
-						<img src="/public/upload/{{$row->value}}" class=" p-2">
+						<img onclick="change_image(this)" src="/public/upload/<?php echo e($row->value); ?>" class=" p-2">
 
 					</span>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
         <div class="col-lg-8">
             <div class="right-side-pro-detail  p-3 m-0">
                 <div class="row">
                     <div class="col-lg-12">
 
-                        <p class="m-0 p-0">{{$photo->name_product}}</p>
+                        <p class="m-0 p-0"><?php echo e($photo->name_product); ?></p>
                     </div>
                     <div class="col-lg-12">
-                        <p class="m-0 p-0 price-pro">${{ $photo->money}}</p>
+                        <p class="m-0 p-0 price-pro">$<?php echo e($photo->money); ?></p>
                         <hr class="p-0 m-0">
                     </div>
                     <div class="col-lg-12 pt-2">
                         <h5>Product Detail</h5>
-                        <span>{{$photo->content}}</span>
+                        <span><?php echo $photo->content; ?></span>
                         <hr class="m-0 pt-2 mt-2">
                     </div>
-
+                    
 
                 </div>
             </div>
@@ -162,26 +159,26 @@
                     <div class="bg-white p-2">
 
 
-                        @foreach($Show_comment as $row)
+                        <?php $__currentLoopData = $Show_comment; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="d-flex flex-row user-info"><img class="rounded-circle"
                                                                         src="/public/upload/user.png" width="40">
 
 
                                 <div class="d-flex flex-column justify-content-start ml-2"><span
-                                        class="d-block font-weight-bold name">{{$row->username}}</span><span
-                                        class="date text-black-50">{{date('M d,Y h:i A',strtotime($row->date_to))}}</span>
+                                        class="d-block font-weight-bold name"><?php echo e($row->username); ?></span><span
+                                        class="date text-black-50"><?php echo e(date('M d,Y h:i A',strtotime($row->date_to))); ?></span>
                                 </div>
                             </div>
                             <div class="mt-2">
-                                <p class="comment-text">{{$row->comment}}</p>
+                                <p class="comment-text"><?php echo e($row->comment); ?></p>
                             </div>
                     </div>
 
 
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     <div class="bg-light p-2">
-                        <form action="/addFeedback/{{$photo->id_product}}" method="POST">
-                            @csrf
+                        <form action="/addFeedback/<?php echo e($photo->id_product); ?>" method="POST">
+                            <?php echo csrf_field(); ?>
                             <div class="d-flex flex-row align-items-start"><img class="rounded-circle"
                                                                                 src="/public/upload/user.png"
                                                                                 width="40"><textarea
@@ -197,13 +194,35 @@
             </div>
         </div>
     </div>
+    <script>
+        function change_image(image){
+
+var container = document.getElementById("main-image");
+
+container.src = image.src;
+}
+
+
+
+document.addEventListener("DOMContentLoaded", function(event) {
+
+
+
+
+
+
+
+});
+    </script>
     <!-- feedback -->
 
-@endsection
-@section('footer')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('footer'); ?>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('myscript')
+<?php $__env->startSection('myscript'); ?>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\project-FANoFAN-2\resources\views/index/CeilingFan.blade.php ENDPATH**/ ?>

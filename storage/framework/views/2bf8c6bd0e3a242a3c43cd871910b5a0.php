@@ -9,23 +9,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
-    <link rel="short icon" href="{{asset('images/icon-title.ico')}}">
-    <title>@yield('title_page')</title>
+    <link rel="short icon" href="<?php echo e(asset('images/icon-title.ico')); ?>">
+    <title><?php echo $__env->yieldContent('index'); ?></title>
     <meta http-equiv="refresh" content="number">
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
 
     <!-- bootstrap css -->
-    <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css ') }}">
+    <link rel="stylesheet" href="<?php echo e(asset('/css/bootstrap.min.css ')); ?>">
     <!-- style css -->
-    <link rel="stylesheet" href="{{ asset('/css/style.css ') }}">
+    <link rel="stylesheet" href="<?php echo e(asset('/css/style.css ')); ?>">
     <!-- Responsive-->
-    <link rel="stylesheet" href="{{ asset('/css/responsive.css ') }}">
-    <!-- fevicon -->
-    <link rel="icon" href="{{ asset('/images/fevicon.png ') }}" type="image/gif"/>
+    <link rel="stylesheet" href="<?php echo e(asset('/css/responsive.css ')); ?>">
     <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="{{ asset('/css/jquery.mCustomScrollbar.min.css ') }}">
+    <link rel="stylesheet" href="<?php echo e(asset('/css/jquery.mCustomScrollbar.min.css ')); ?>">
     <!-- Tweaks for older IEs-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -35,7 +33,8 @@
 
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    @yield('mycss')
+
+    <?php echo $__env->yieldContent('mycss'); ?>
 
 </head>
 <style>
@@ -53,15 +52,19 @@
     body {
         height: 100%;
     }
+
+    iframe {
+        bottom: 18vh !important;
+    }
+
 </style>
 <!-- body -->
 
 <body class="main-layout">
 <!-- loader  -->
-<nav class="navbar navbar-expand-lg navbar-dark scrolling-navbar fixed-top" id="navbar" style="padding-right: 3%">
+<nav class="navbar navbar-expand-lg navbar-dark scrolling-navbar fixed-top " id="navbar">
     <!-- Navbar brand -->
-    <a class="navbar-brand p-0" href="/">
-        <!--FANo<span>FAN</span>-->
+    <a class="navbar-brand p-0" href="/about"><!--FANo<span>FAN</span>-->
         <img
             src="https://d33wubrfki0l68.cloudfront.net/6e39a404f566cec2f989e430771b9895c40253d3/660b4/static/img/logo__icons_svg/logo.png"
             class="img-fluid" alt="">
@@ -71,10 +74,10 @@
             aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <!--search-->
+    <!--sreach-->
     <div class="col-md-3">
         <div class="search">
-            <form action="http://127.0.0.1:8000/search">
+            <form action="/search">
                 <input class="form_sea" type="text" placeholder="Search" name="search">
                 <button type="submit" class="seach_icon"><i class="fa fa-search"></i></button>
             </form>
@@ -89,35 +92,34 @@
                 <a class="nav-link home-link  waves-effect waves-light" href="/">Home </a>
             </li>
             <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-                <a class="nav-link about-link waves-effect waves-light" href="/about">About</a>
+                <a class="nav-link about-link waves-effect waves-light" href="/about">about</a>
             </li>
             <li class="nav-item active  dropdown px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
+
                 <a class="nav-link dropdown-toggle categories-link waves-effect waves-light" href="/categories"
-                   id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                   aria-expanded="false">Categories</a>
+                   id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+
                 <div class="dropdown-menu dropdown-primary  mt-lg-3" style="background-color: #6c757d;"
                      aria-labelledby="navbarDropdownMenuLink">
-                    @foreach($category as $row)
+                    <?php $__currentLoopData = $category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <a class="dropdown-item ceiling-fans-link waves-effect waves-light"
-                           href="/categories_list/{{$row->id}}">{{$row->name}}</a>
-                    @endforeach
+                           href="/categories_list/<?php echo e($row->id); ?>"><?php echo e($row->name); ?></a>
+
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
+
+            </li>
+            <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
+                <a class="nav-link gallery-link waves-effect waves-light" href="/gallery">Gallery</a>
             </li>
             <li class="nav-item active  px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
                 <a class="nav-link contact-link waves-effect waves-light" href="/contact">Contact Us</a>
             </li>
-            <li class="nav-item active  dropdown px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-                <a class="nav-link dropdown-toggle categories-link waves-effect waves-light" href="#"
-                   id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                   aria-expanded="false"><img src="/upload/{{ $list_photo->avatar }}" alt="" width="30"
-                                              style="border-radius: 50%"></a>
-                <div class="dropdown-menu dropdown-primary  mt-lg-3" style="background-color: #6c757d;margin:-63%"
-                     aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item  waves-effect waves-light" href="/user/my_account">My Account</a>
-                    <a class="dropdown-item  waves-effect waves-light" href="/user/history_feedback">History
-                        Feedback</a>
-                    <a class="dropdown-item waves-effect waves-light" href="/logout">Logout</a>
-                </div>
+            <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
+                <a class="nav-link home-link  waves-effect waves-light" href="/login">Login </a>
+            </li>
+            <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
+                <a class="nav-link home-link  waves-effect waves-light" href="/register">Register </a>
             </li>
         </ul>
         <!-- Links -->
@@ -125,18 +127,18 @@
     <!-- Collapsible content -->
 </nav>
 <!-- <li class="nav-item">
-                             <a class="nav-link" href="fashion.html">Fashion</a>
-                          </li>
-                          <li class="nav-item">
-                             <a class="nav-link" href="news.html">News</a>
-                          </li> -->
+                              <a class="nav-link" href="fashion.html">Fashion</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" href="news.html">News</a>
+                           </li> -->
 
-<header class="img-fluid" style="padding: 11% 0px;">
+<header class="img-fluid" style="    padding: 11% 0px;">
 </header>
 <!-- end loader -->
 <!-- header -->
 <!-- <header>
-  <!-- header inner -->
+   <!-- header inner -->
 <!-- </div> -->
 
 </div>
@@ -145,7 +147,7 @@
 <!-- end header -->
 <div class="main-panel">
     <section>
-        @yield('body_content')
+        <?php echo $__env->yieldContent('body_content'); ?>
     </section>
 </div>
 
@@ -303,19 +305,19 @@
         <a href="/"> FANoFAN</a>
     </div>
     <!-- Copyright -->
-    <img src="{{asset('images/back-to-top-button.png')}}" alt="" onclick="scroll_to_top()" id="scroll_top"
+    <img src="<?php echo e(asset('images/back-to-top-button.png')); ?>" alt="" onclick="scroll_to_top()" id="scroll_top"
          style="position: fixed; bottom: 3vh; right: 1vw; width: 3rem; display: none">
 </footer>
 <!-- end footer -->
 <!-- Javascript files-->
-<script src="{{ asset('/js/jquery.min.js') }}"></script>
-<script src="{{ asset('/js/popper.min.js ') }}"></script>
-<script src="{{ asset('/js/bootstrap.bundle.min.js ') }}"></script>
-<script src="{{ asset('/js/jquery-3.0.0.min.js ') }}"></script>
+<script src="<?php echo e(asset('/js/jquery.min.js')); ?>"></script>
+<script src="<?php echo e(asset('/js/popper.min.js ')); ?>"></script>
+<script src="<?php echo e(asset('/js/bootstrap.bundle.min.js ')); ?>"></script>
+<script src="<?php echo e(asset('/js/jquery-3.0.0.min.js ')); ?>"></script>
 <!-- sidebar -->
-<script src="{{ asset('/js/jquery.mCustomScrollbar.concat.min.js ') }}"></script>
-<script src="{{ asset('/js/custom.js ') }}"></script>
-@yield('myscript')
+<script src="<?php echo e(asset('/js/jquery.mCustomScrollbar.concat.min.js ')); ?>"></script>
+<script src="<?php echo e(asset('/js/custom.js ')); ?>"></script>
+<?php echo $__env->yieldContent('myscript'); ?>
 <script src="https://kit.fontawesome.com/1fa6a2ee32.js" crossorigin="anonymous"></script>
 <script>
     window.addEventListener('scroll', () => {
@@ -331,7 +333,7 @@
     });
 </script>
 <!-- Messenger Plugin chat Code -->
-<div id="fb-root"></div>
+<div id="fb-root" style="bottom: 23vh;"></div>
 
 <!-- Your Plugin chat code -->
 <div id="fb-customer-chat" class="fb-customerchat">
@@ -361,6 +363,12 @@
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 </script>
+<script>
+    function scroll_to_top() {
+        window.scroll(0, 0);
+    }
+</script>
 </body>
 
 </html>
+<?php /**PATH C:\xampp\htdocs\project-FANoFAN-2\resources\views/layouts/template.blade.php ENDPATH**/ ?>

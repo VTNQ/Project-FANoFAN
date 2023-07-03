@@ -50,7 +50,7 @@ class ProductController extends Controller
         $get_image = $request->file('fileImg');
         if ($get_image) {
             $new_image = rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
-            $get_image->move('public/upload', $new_image);
+            $get_image->move('upload', $new_image);
             $data['value'] = $new_image;
             DB::table('photo')->insert($data);
             return redirect('add_Product')->with('success', 'add Photo success');

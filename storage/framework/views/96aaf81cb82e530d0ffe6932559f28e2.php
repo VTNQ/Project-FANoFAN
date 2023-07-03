@@ -14,23 +14,23 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- //bootstrap-css -->
     <!-- Custom CSS -->
-    <link href="{{asset('admin/css/style.css')}}" rel='stylesheet' type='text/css'/>
-    <link href="{{asset('css/style-responsive.css')}}" rel="stylesheet"/>
+    <link href="<?php echo e(asset('admin/css/style.css')); ?>" rel='stylesheet' type='text/css'/>
+    <link href="<?php echo e(asset('css/style-responsive.css')); ?>" rel="stylesheet"/>
     <!-- font CSS -->
     <link
         href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic'
         rel='stylesheet' type='text/css'>
     <!-- font-awesome icons -->
-    <link rel="stylesheet" href="{{asset('admin/css/font.css')}}" type="text/css"/>
-    <link href="{{asset('admin/css/font-awesome.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('admin/css/morris.css')}}" type="text/css"/>
+    <link rel="stylesheet" href="<?php echo e(asset('admin/css/font.css')); ?>" type="text/css"/>
+    <link href="<?php echo e(asset('admin/css/font-awesome.css')); ?>" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo e(asset('admin/css/morris.css')); ?>" type="text/css"/>
     <!-- calendar -->
     <link rel="stylesheet" href="css/monthly.css">
     <!-- //calendar -->
     <!-- //font-awesome icons -->
-    <script src="{{asset('admin/js/jquery2.0.3.min.js')}}"></script>
-    <script src="{{asset('admin/js/raphael-min.js')}}"></script>
-    <script src="{{asset('admin/js/morris.js')}}"></script>
+    <script src="<?php echo e(asset('admin/js/jquery2.0.3.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('admin/js/raphael-min.js')); ?>"></script>
+    <script src="<?php echo e(asset('admin/js/morris.js')); ?>"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
@@ -111,7 +111,7 @@
                 <!-- user login dropdown start-->
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <img src="/upload/{{$list_photo->avatar}}" alt="">
+                        <img src="/upload/<?php echo e($list_photo->avatar); ?>" alt="">
                         <span class="username"> <?php
                                                 $name = Session::get('username_admin');
                                                 if ($name) {
@@ -192,9 +192,9 @@
                     <table class="table table-striped">
     <thead>
       <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Total</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
       </tr>
     </thead>
     <tbody>
@@ -237,16 +237,16 @@
                             <th>Money</th>
                         </tr>
 
-                        @foreach($new_product as $key=>$row)
+                        <?php $__currentLoopData = $new_product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
 
-                                <td class="home4">{{++$key}}</td>
-                                <td class="home4">{{$row->name_product}}</td>
-                                <td class="home4">{{$row->name}}</td>
-                                <td class="home4">{{$row->money}}$</td>
+                                <td class="home4"><?php echo e(++$key); ?></td>
+                                <td class="home4"><?php echo e($row->name_product); ?></td>
+                                <td class="home4"><?php echo e($row->name); ?></td>
+                                <td class="home4"><?php echo e($row->money); ?>$</td>
 
                             </tr>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </table>
 
 
@@ -280,14 +280,14 @@
     </section>
     <!--main content end-->
 </section>
-<script src="{{asset('admin/js/bootstrap.js')}}"></script>
-<script src="{{asset('admin/js/jquery.dcjqaccordion.2.7.js')}}"></script>
-<script src="{{asset('admin/js/scripts.js')}}"></script>
-<script src="{{asset('admin/js/jquery.slimscroll.js')}}"></script>
-<script src="{{asset('admin/js/jquery.nicescroll.js')}}"></script>
+<script src="<?php echo e(asset('admin/js/bootstrap.js')); ?>"></script>
+<script src="<?php echo e(asset('admin/js/jquery.dcjqaccordion.2.7.js')); ?>"></script>
+<script src="<?php echo e(asset('admin/js/scripts.js')); ?>"></script>
+<script src="<?php echo e(asset('admin/js/jquery.slimscroll.js')); ?>"></script>
+<script src="<?php echo e(asset('admin/js/jquery.nicescroll.js')); ?>"></script>
 <!--[if lte IE 8]>
 <script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
-<script src="{{asset('admin/js/jquery.scrollTo.js')}}"></script>
+<script src="<?php echo e(asset('admin/js/jquery.scrollTo.js')); ?>"></script>
 <!-- Messenger Plugin chat Code -->
 
 <!-- Your SDK code -->
@@ -411,3 +411,4 @@
 <!-- //calendar -->
 </body>
 </html>
+<?php /**PATH C:\xampp\htdocs\project-FANoFAN-2\resources\views/admin/admin.blade.php ENDPATH**/ ?>

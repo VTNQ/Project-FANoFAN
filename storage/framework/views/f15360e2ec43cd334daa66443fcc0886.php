@@ -1,8 +1,7 @@
-@extends('layouts.admin')
-@section('title_page')
+<?php $__env->startSection('title_page'); ?>
     Detail Product
-    @endsection
-    @section('body_content')<!DOCTYPE html>
+    <?php $__env->stopSection(); ?>
+    <?php $__env->startSection('body_content'); ?><!DOCTYPE html>
     <!--main content start-->
     <style>
         button.btn.btn-outline-primary {
@@ -36,7 +35,8 @@
                             <div class="col-lg-12 col-sm=12 col-md-12">
                                 <div class="form-group">
                                     <strong>Name Product:</strong>
-                                    {{$data->name_product}}
+                                    <?php echo e($data->name_product); ?>
+
                                 </div>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                             <div class="col-lg-12 col-sm=12 col-md-12">
                                 <div class="form-group">
                                     <strong>Money:</strong>
-                                    {{$data->money}}$
+                                    <?php echo e($data->money); ?>$
                                 </div>
                             </div>
 
@@ -55,9 +55,9 @@
                             <div class="col-lg-12 col-sm=12 col-md-12">
                                 <div class="form-group">
                                     <strong>Image:</strong>
-                                    @foreach($data1 as $row)
-                                        <img src="/upload/{{$row->value}}" alt="" width="200px">
-                                    @endforeach
+                                    <?php $__currentLoopData = $data1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <img src="/public/upload/<?php echo e($row->value); ?>" alt="" width="200px">
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +65,8 @@
                             <div class="col-lg-12 col-sm=12 col-md-12">
                                 <div class="form-group">
                                     <strong>category Product:</strong>
-                                    {{$data->name}}
+                                    <?php echo e($data->name); ?>
+
                                 </div>
                             </div>
 
@@ -89,4 +90,6 @@
 
     <!--main content end-->
     </section>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\project-FANoFAN-2\resources\views/Product/detail_product.blade.php ENDPATH**/ ?>
