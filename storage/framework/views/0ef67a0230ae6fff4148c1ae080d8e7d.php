@@ -117,10 +117,10 @@
 
     <div class="row m-0">
         <div class="col-lg-4 left-side-product-box pb-3">
-            <img id="main-image" src="/public/upload/<?php echo e($photo->value); ?>" class=" p-3">
+            <img id="main-image" src="/upload/<?php echo e($photo->value); ?>" class=" p-3">
             <?php $__currentLoopData = $data3; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <span class="sub-img">
-						<img onclick="change_image(this)" src="/public/upload/<?php echo e($row->value); ?>" class=" p-2">
+						<img onclick="change_image(this)" src="/upload/<?php echo e($row->value); ?>" class=" p-2">
 
 					</span>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

@@ -189,30 +189,22 @@
                 <div class="container">
                     <br>
                     <h3>the most user feedback</h3>
-                    <table class="table table-striped">
+                    <table >
     <thead>
       <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
+        <th>#</th>
+        <th>Name</th>
+        <th>Total</th>
       </tr>
     </thead>
     <tbody>
+    <?php $__currentLoopData = $count; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=> $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
       <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
+      <td ><?php echo e(++$key); ?></td>
+                                <td><?php echo e($row->username); ?></td>
+                                <td><?php echo e($row->total); ?></td>
       </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </tbody>
   </table>
 

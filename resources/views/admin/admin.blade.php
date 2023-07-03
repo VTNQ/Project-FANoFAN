@@ -189,7 +189,7 @@
                 <div class="container">
                     <br>
                     <h3>the most user feedback</h3>
-                    <table class="table table-striped">
+                    <table >
     <thead>
       <tr>
         <th>#</th>
@@ -198,21 +198,13 @@
       </tr>
     </thead>
     <tbody>
+    @foreach($count as $key=> $row)
       <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
+      <td >{{++$key}}</td>
+                                <td>{{$row->username}}</td>
+                                <td>{{$row->total}}</td>
       </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
+      @endforeach
     </tbody>
   </table>
 

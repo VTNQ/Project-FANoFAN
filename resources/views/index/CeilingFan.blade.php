@@ -119,10 +119,10 @@
 
     <div class="row m-0">
         <div class="col-lg-4 left-side-product-box pb-3">
-            <img id="main-image" src="/public/upload/{{$photo->value}}" class=" p-3">
+            <img id="main-image" src="/upload/{{$photo->value}}" class=" p-3">
             @foreach($data3 as $row)
                 <span class="sub-img">
-						<img onclick="change_image(this)" src="/public/upload/{{$row->value}}" class=" p-2">
+						<img onclick="change_image(this)" src="/upload/{{$row->value}}" class=" p-2">
 
 					</span>
             @endforeach

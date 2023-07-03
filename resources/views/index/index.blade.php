@@ -370,7 +370,7 @@
             <div class="col-12 col-md-4 mb-4">
                 <div class="card h-100">
                     <a href="#">
-                        <img src="/public/upload/{{$row->value}}" class="card-img-top" alt="...">
+                        <img src="/upload/{{$row->value}}" class="card-img-top" alt="...">
                     </a>
                     <div class="card-body">
                         <ul class="list-unstyled d-flex justify-content-between">
@@ -384,10 +384,7 @@
                             <li class="text-muted text-right">${{$row->money}}</li>
                         </ul>
                         <h1>{{$row->name_product}}</h1>
-                        <p class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt in culpa qui officia
-                            deserunt.
-                        </p>
+                       
                         <a href="/CeilingFan/{{$row->id_product}}"><p class="text-muted">Details Product</p></a>
                     </div>
 
