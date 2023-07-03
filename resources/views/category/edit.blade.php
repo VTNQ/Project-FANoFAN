@@ -19,17 +19,17 @@
                             <div class="panel-body">
 
                                 <div class="position-center">
-                                    <form method="post" role="form" action="/update/{{$student[0]->id}}">
+                                    <form method="post" role="form" action="/update/{{$category[0]->id}}">
                                         @csrf
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Name category</label>
-                                            <input type="text" class="form-control" value="{{$student[0]->name}}"
+                                            <input type="text" class="form-control" value="{{$category[0]->name}}"
                                                    id="exampleInputEmail1" name="name_category"
                                                    placeholder="Enter name category">
                                         </div>
 
 
-                                        <button type="submit" class="btn btn-info">Add catelogies</button>
+                                        <button type="submit" class="btn btn-info">Edit Category</button>
                                     </form>
                                 </div>
 
@@ -45,9 +45,10 @@
             </div>
 
             <!-- footer -->
-            <div class="footer" style="width: 100%; position: absolute; bottom: 0; text-align: center">
+            <div class="footer"
+                 style="bottom: 0;position: absolute; width: 100%; text-align: center;">
                 <div class="wthree-copyright">
-                    <p>© 2023. All rights reserved | Design by <a href="/about">Favorable Team</a></p>
+                    <p>© 2023. All rights reserved | Design by <a href="/about">Favorable team</a></p>
                 </div>
             </div>
             <!-- / footer -->

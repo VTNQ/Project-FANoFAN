@@ -4,11 +4,11 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CeilingFanController;
 use App\Http\Controllers\IndexController;
-use App\Http\Controllers\UserEmailController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserEmailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,18 +36,20 @@ Route::prefix('/user')->group(function () {
     Route::get('/my_account/edit_email', [UserController::class, 'EditEmail']);
     Route::get('/my_account/edit_password', [UserController::class, 'EditPassword']);
 });
-Route::get('/admin/dashboard', [AdminController::class, 'dashboard']);
+
+Route::prefix('/admin')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'dashboard']);
+    Route::get('/logout', [AdminController::class, 'logout']);
+});
 //xu ly login xem user va pass
 Route::post('/login', [AdminController::class, 'check_login']);
 Route::get('/login', [AdminController::class, 'login']);
 //xu y logout
-Route::get('/admin/logout', [AdminController::class, 'logout']);
 Route::get('/logout', [AdminController::class, 'logout1']);
 //xu ly register
 Route::get('/register', [AdminController::class, 'register']);
 Route::post('/add_register', [AdminController::class, 'addRegister']);
 //category product
-
 Route::post('/save_category', [CategoryController::class, 'save_category']);
 //list_category
 Route::get('/profile_category', [CategoryController::class, 'list_category']);
@@ -66,8 +68,8 @@ Route::get('/list_product', [ProductController::class, 'show_add_product']);
 //page products index
 Route::get('/category', [CategoryController::class, 'index']);
 //delete category
-Route::get('/delete/{id}',[CategoryController::class,'delete']);
-Route::delete('/delete_all',[CategoryController::class,'delete_all'])->name('category.delete');
+Route::get('/delete/{id}', [CategoryController::class, 'delete']);
+Route::delete('/delete_all', [CategoryController::class, 'delete_all'])->name('category.delete');
 //edit category
 Route::get('/edit/{id}', [CategoryController::class, 'edit']);
 Route::post('/update/{id}', [CategoryController::class, 'update']);
@@ -94,6 +96,10 @@ Route::post('/forgot-password', [UserEmailController::class, 'resetPassword'])->
 Route::put('reset-password', [UserEmailController::class, 'updatePassword'])->name('reset-password');
 //
 Route::get('categories_list/{id}', [CeilingFanController::class, 'categories_list']);
-Route::get('/filter_product',[ProductController::class,'filter_product']);
-Route::post('/account',[UserController::class,'upload_photo']);
-Route::post('/filter-feedback-by-date',[AdminController::class,'filter_feedback_by_date']);
+
+Route::post('/account', [UserController::class, 'upload_photo']);
+
+Route::post('/contact_post', [IndexController::class, 'postContact']);
+Route::delete('/delete_product', [ProductController::class, 'delete_all_product'])->name('product.delete');
+Route::delete('/delete_all_photo', [PhotoController::class, 'delete_all_photo'])->name('photo.delete');
+Route::get('/filter', [PhotoController::class, 'filter']);

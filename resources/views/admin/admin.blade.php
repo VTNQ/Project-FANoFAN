@@ -34,6 +34,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
+
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
 </head>
 <style>
@@ -98,7 +99,7 @@
         <!--logo end-->
 
         <div class="top-nav clearfix">
-            <!--search & user info start-->
+            <!--user info start-->
             <ul class="nav pull-right top-menu">
                 <!-- user login dropdown start-->
                 <li class="dropdown">
@@ -120,7 +121,7 @@
                 <!-- user login dropdown end -->
 
             </ul>
-            <!--search & user info end-->
+            <!--user info end-->
         </div>
     </header>
     <!--header end-->
@@ -248,16 +249,15 @@
 
         </section>
         <!-- footer -->
-        <div class="footer" style="width: 100%; position: absolute; bottom: 0; text-align: center">
+        <div class="footer" style="bottom: 0; width: 100%; text-align: center">
             <div class="wthree-copyright">
-                <p>© 2023. All rights reserved | Design by <a href="/about">Favorable Team</a></p>
+                <p>© 2023. All rights reserved | Design by <a href="/about">Favorable team</a></p>
             </div>
         </div>
         <!-- / footer -->
     </section>
     <!--main content end-->
 </section>
-<script src="https://kit.fontawesome.com/1fa6a2ee32.js" crossorigin="anonymous"></script>
 <script src="{{asset('admin/js/bootstrap.js')}}"></script>
 <script src="{{asset('admin/js/jquery.dcjqaccordion.2.7.js')}}"></script>
 <script src="{{asset('admin/js/scripts.js')}}"></script>

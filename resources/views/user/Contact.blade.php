@@ -100,7 +100,11 @@
                 </div>
                 <div class="col-md-6 col-xl-4">
                     <div>
-                        <form class="p-3 p-xl-4" method="post" style="color: white">
+                    @if (session()->has('success'))
+                    <div class="alert alert-success text-center" role="alert">{{ session('success') }}</div>
+                    @endif
+                        <form class="p-3 p-xl-4" method="post" style="color: white" action="/contact_post">
+                        @csrf
                             <h4>Contact us</h4>
                             <div class="mb-3">
                                 <label class="form-label" for="name">Name</label
@@ -109,6 +113,7 @@
                                     type="text"
                                     id="name"
                                     name="name"
+                                    value="<?php echo $name ?>"
                                 />
                             </div>
                             <div class="mb-3">
@@ -118,6 +123,7 @@
                                     type="email"
                                     id="email"
                                     name="email"
+                                    value="<?php  echo $email?>"
                                 />
                             </div>
                             <div class="mb-3">

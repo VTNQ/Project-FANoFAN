@@ -26,8 +26,8 @@
     <link href="{{asset('admin/css/font-awesome.css')}}" rel="stylesheet">
     <!-- //font-awesome icons -->
     <script src="{{asset('admin/js/jquery2.0.3.min.js')}}"></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/[version.number]/[distribution]/ckeditor.js"></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/38.1.0/classic/ckeditor.js"></script>
+    <script src="{{asset('admin/ckeditor/ckeditor.js')}}"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
             integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
           integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
 </head>
 <style>
     span.fa-solid.fa-toggle-off {
@@ -63,6 +64,10 @@
         font-size: 18px;
         margin-left: 15px;
     }
+
+    .wrapper {
+        padding: 0;
+    }
 </style>
 <body>
 <section id="container">
@@ -78,6 +83,15 @@
             </div>
         </div>
         <!--logo end-->
+
+        <!-- settings end -->
+        <!-- inbox dropdown start-->
+
+
+        <!-- notification dropdown end -->
+        </ul>
+        <!--  notification end -->
+        </div>
         <div class="top-nav clearfix">
             <!--search & user info start-->
             <ul class="nav pull-right top-menu">
@@ -96,6 +110,7 @@
                     </a>
                     <ul class="dropdown-menu extended logout">
                         <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
+                        <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
                         <li><a href="/admin/logout"><i class="fa fa-key"></i> Log Out</a></li>
                     </ul>
                 </li>
@@ -152,7 +167,7 @@
     <!--sidebar end-->
     @yield('body_content')
 </section>
-<script src="https://kit.fontawesome.com/1fa6a2ee32.js" crossorigin="anonymous"></script>
+
 <script src="{{asset('admin/js/bootstrap.js')}}"></script>
 <script src="{{asset('admin/js/jquery.dcjqaccordion.2.7.js')}}"></script>
 <script src="{{asset('admin/js/scripts.js')}}"></script>
@@ -193,31 +208,7 @@
             pointSize: 0,
             lineWidth: 0,
             fillOpacity: 0.85,
-            data: [
-                {period: '2015 Q1', iphone: 2668, ipad: null, itouch: 2649},
-                {period: '2015 Q2', iphone: 15780, ipad: 13799, itouch: 12051},
-                {period: '2015 Q3', iphone: 12920, ipad: 10975, itouch: 9910},
-                {period: '2015 Q4', iphone: 8770, ipad: 6600, itouch: 6695},
-
-                {period: '2016 Q1', iphone: 10820, ipad: 10924, itouch: 12300},
-                {period: '2016 Q2', iphone: 9680, ipad: 9010, itouch: 7891},
-                {period: '2016 Q3', iphone: 4830, ipad: 3805, itouch: 1598},
-                {period: '2016 Q4', iphone: 15083, ipad: 8977, itouch: 5185},
-                {period: '2017 Q1', iphone: 10697, ipad: 4470, itouch: 2038},
-
-            ],
-            lineColors: ['#eb6f6f', '#926383', '#eb6f6f'],
-            xkey: 'period',
-            redraw: true,
-            ykeys: ['iphone', 'ipad', 'itouch'],
-            labels: ['All Visitors', 'Returning Visitors', 'Unique Visitors'],
-            pointSize: 2,
-            hideHover: 'auto',
-            resize: true
         });
-
-
-    });
 </script>
 <!-- calendar -->
 <script type="text/javascript" src="js/monthly.js"></script>
@@ -270,16 +261,6 @@
     }
 
 </script>
-<script>
-    ClassicEditor
-        .create(document.querySelector('#editor'))
-        .then(editor => {
-            console.log(editor);
-        })
-        .catch(error => {
-            console.error(error);
-        });
 
-</script>
 </body>
 </html>

@@ -3,35 +3,35 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
 class MailNotify extends Mailable
 {
-   use Queueable, SerializesModels;
+    use Queueable, SerializesModels;
 
-   public $data;
-   /**
-    * Create a new data instance.
-    *
-    * @return void
-    */
+    public $data;
 
-   public function __construct($data)
-   {
-       $this->data = $data;
-   }
+    /**
+     * Create a new data instance.
+     *
+     * @return void
+     */
 
-   /**
-    * Build the message.
-    *
-    * @return $this
-    */
-   public function build()
-   {
-       return $this->from('tranp6648@gmail.com')
-           ->view('mails.mail-notify')
-           ->subject('Notification email');
-   }
+    public function __construct($data)
+    {
+        $this->data = $data;
+    }
+
+    /**
+     * Build the message.
+     *
+     * @return $this
+     */
+    public function build()
+    {
+        return $this->from('FANoFAN')
+            ->view('mails.mail-notify')
+            ->subject('Notification email');
+    }
 }

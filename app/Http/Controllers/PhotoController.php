@@ -80,4 +80,24 @@ class PhotoController extends Controller
         $category->delete();
         return redirect('/show_photo')->with('success', 'delete photo success');
     }
+    public function delete_all_photo(Request $request){
+        $ids=$request->ids;
+        $photo=DB::table('photo')->where('id_photo',$ids)->delete();
+        return response()->json();
+    }
+    public function filter(Request $request){
+        $roles=$request->roles;
+        $data_last = session()->get('value_admin');
+        $list_photo = DB::table('user')->select('*')->where('avatar', $data_last)->first();
+        
+       if($roles==''){
+        return redirect('show_photo');
+       }else {
+        $photo=DB::table('photo')->join('product','photo.id_product','=','product.id_product')->select('*')->where('photo.status',$roles)->paginate(5);
+        return view('photo.filter')->with('photo',$photo)->with('list_photo',$list_photo);
+       }
+       
+
+
+    }
 }

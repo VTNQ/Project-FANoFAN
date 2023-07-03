@@ -56,6 +56,7 @@
     iframe {
         bottom: 18vh !important;
     }
+
 </style>
 <!-- body -->
 
@@ -305,7 +306,7 @@
     </div>
     <!-- Copyright -->
     <img src="<?php echo e(asset('images/back-to-top-button.png')); ?>" alt="" onclick="scroll_to_top()" id="scroll_top"
-         style="position: fixed; bottom: 3vh; right: 1vw; width: 3rem">
+         style="position: fixed; bottom: 3vh; right: 1vw; width: 3rem; display: none">
 </footer>
 <!-- end footer -->
 <!-- Javascript files-->

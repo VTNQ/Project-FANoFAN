@@ -97,10 +97,10 @@
                    aria-expanded="false">Categories</a>
                 <div class="dropdown-menu dropdown-primary  mt-lg-3" style="background-color: #6c757d;"
                      aria-labelledby="navbarDropdownMenuLink">
-                     @foreach($category as $row)
-                    <a class="dropdown-item ceiling-fans-link waves-effect waves-light"
-                       href="/categories_list/{{$row->id}}">{{$row->name}}</a>
-                   @endforeach
+                    @foreach($category as $row)
+                        <a class="dropdown-item ceiling-fans-link waves-effect waves-light"
+                           href="/categories_list/{{$row->id}}">{{$row->name}}</a>
+                    @endforeach
                 </div>
             </li>
             <li class="nav-item active  px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
@@ -188,8 +188,7 @@
                            aria-hidden="true"> </i>
                     </a>
                     <!--Instagram-->
-                    <a class="social-icons ins-ic" style="visibility: visible;"
-                       href="https://www.instagram.com/">
+                    <a class="social-icons ins-ic" style="visibility: visible;" href="https://www.instagram.com/">
                         <i class="fab fa-instagram white-text " style="font-size: 20px !important;"
                            aria-hidden="true"> </i>
                     </a>
@@ -207,7 +206,7 @@
     <div class="container text-center text-md-left mt-5">
 
         <!-- Grid row -->
-        <div class="row mt-3">
+        <div class="row mt-3" id="row">
 
             <!-- Grid column -->
             <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
@@ -303,38 +302,9 @@
     <div class="footer-copyright text-center py-3">© <span id="currentyear">2023</span> Copyright:
         <a href="/"> FANoFAN</a>
     </div>
-    <!-- Messenger Plugin chat Code -->
-    <div id="fb-root"></div>
-
-    <!-- Your Plugin chat code -->
-    <div id="fb-customer-chat" class="fb-customerchat">
-    </div>
-
-    <script>
-      var chatbox = document.getElementById('fb-customer-chat');
-      chatbox.setAttribute("page_id", "100635189759938");
-      chatbox.setAttribute("attribution", "biz_inbox");
-    </script>
-
-    <!-- Your SDK code -->
-    <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          xfbml            : true,
-          version          : 'v17.0'
-        });
-      };
-
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-    </script>
     <!-- Copyright -->
-
+    <img src="{{asset('images/back-to-top-button.png')}}" alt="" onclick="scroll_to_top()" id="scroll_top"
+         style="position: fixed; bottom: 3vh; right: 1vw; width: 3rem; display: none">
 </footer>
 <!-- end footer -->
 <!-- Javascript files-->
@@ -350,12 +320,46 @@
 <script>
     window.addEventListener('scroll', () => {
         const verticalScrollPx = window.scrollY || window.pageYOffset;
+
         if (verticalScrollPx < 10) {
             document.getElementById('navbar').style.backgroundColor = 'transparent';
-        } else {
+            document.getElementById('scroll_top').style.display = 'none';
+        } else if (verticalScrollPx < 500) {
             document.getElementById('navbar').style.backgroundColor = 'dimgrey';
+            document.getElementById('scroll_top').style.display = 'block';
         }
     });
+</script>
+<!-- Messenger Plugin chat Code -->
+<div id="fb-root"></div>
+
+<!-- Your Plugin chat code -->
+<div id="fb-customer-chat" class="fb-customerchat">
+</div>
+
+<script>
+    var chatbox = document.getElementById('fb-customer-chat');
+    chatbox.setAttribute("page_id", "100635189759938");
+    chatbox.setAttribute("attribution", "biz_inbox");
+</script>
+
+<!-- Your SDK code -->
+<script>
+    window.fbAsyncInit = function () {
+        FB.init({
+            xfbml: true,
+            version: 'v17.0'
+        });
+    };
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
 </script>
 </body>
 
