@@ -64,7 +64,7 @@
 <!-- loader  -->
 <nav class="navbar navbar-expand-lg navbar-dark scrolling-navbar fixed-top " id="navbar">
     <!-- Navbar brand -->
-    <a class="navbar-brand p-0" href="/about"><!--FANo<span>FAN</span>-->
+    <a class="navbar-brand p-0" href="/"><!--FANo<span>FAN</span>-->
         <img
             src="https://d33wubrfki0l68.cloudfront.net/6e39a404f566cec2f989e430771b9895c40253d3/660b4/static/img/logo__icons_svg/logo.png"
             class="img-fluid" alt="">

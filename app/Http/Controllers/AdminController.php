@@ -96,7 +96,7 @@ class AdminController extends Controller
     {
         Session::put('username_admin', null);
         Session::put('id_admin', null);
-        return redirect('login');
+        return redirect('/');
     }
 
     public function logout1()

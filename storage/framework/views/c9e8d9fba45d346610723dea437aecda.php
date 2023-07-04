@@ -93,7 +93,7 @@
                                         <td><input type="checkbox" name="ids" class="checkbox_ids"
                                                    value="<?php echo e($row->id_photo); ?>"></td>
                                         <td><?php echo e(++$key); ?></td>
-                                        <td><img src="/public/upload/<?php echo e($row->value); ?>" alt="" height="100" width="100">
+                                        <td><img src="/upload/<?php echo e($row->value); ?>" alt="" height="100" width="100">
                                         </td>
                                         <td><?php
                                                 if ($row->status == 1) {

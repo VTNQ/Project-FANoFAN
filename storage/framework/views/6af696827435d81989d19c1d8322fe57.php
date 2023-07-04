@@ -36,6 +36,8 @@
 
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+ 
 </head>
 <style>
     .market-update-block.clr-block-2 {
@@ -50,6 +52,10 @@
         margin-left: -49%;
         margin-top: 34px;
     }
+    h3.home1 {
+    width: 28vh;
+
+}
 
     td.home4 {
         padding: 4vh;
@@ -104,7 +110,7 @@
                 <!-- user login dropdown start-->
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <img src="/public/upload/<?php echo e($list_photo->avatar); ?>" alt="">
+                        <img src="/upload/<?php echo e($list_photo->avatar); ?>" alt="">
                         <span class="username"> <?php
                                                 $name = Session::get('username_admin');
                                                 if ($name) {
@@ -179,27 +185,34 @@
                     <p class="tittle">Quantity statistics</p>
                     <div id="donut" class="morris-donut-inverse"></div>
                 </div>
-                <br>
-                <div class="col-md-4 col-xs-12">
+                <div class="container">
                     <br>
                     <h3>the most user feedback</h3>
-                    <table style="text-align: center;">
-                        <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th> Total</th>
-                        </tr>
-                        <?php $__currentLoopData = $count; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=> $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <tr>
-                                <td><?php echo e(++$key); ?></td>
+                    <table >
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+    <?php $__currentLoopData = $count; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=> $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+      <tr>
+      <td ><?php echo e(++$key); ?></td>
                                 <td><?php echo e($row->username); ?></td>
                                 <td><?php echo e($row->total); ?></td>
-                            </tr>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    </table>
+      </tr>
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    </tbody>
+  </table>
 
-                </div>
+                
+                <br>
+                
+    
 
+            </div>
                 <div class="row">
 
 

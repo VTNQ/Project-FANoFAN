@@ -24,7 +24,7 @@ class PhotoController extends Controller
         }else{
             return redirect()->back();
         }
-        
+
     }
 
     public function save_photo(Request $request)
@@ -70,7 +70,9 @@ class PhotoController extends Controller
     }
     public function like($id_photo)
     {
-        DB::update('update photo set status=? where id_photo=?', [1, $id_photo]);
+        $product=DB::table('photo')->where('id_photo',$id_photo)->pluck('id_product')->first();
+        DB::table('photo')->where('id_product',$product)->update(['status'=>0]);
+        DB::table('photo')->where('id_photo',$id_photo)->update(['status' => 1]);
         return redirect('show_photo');
     }
     //delete picture
@@ -89,14 +91,14 @@ class PhotoController extends Controller
         $roles=$request->roles;
         $data_last = session()->get('value_admin');
         $list_photo = DB::table('user')->select('*')->where('avatar', $data_last)->first();
-        
+
        if($roles==''){
         return redirect('show_photo');
        }else {
         $photo=DB::table('photo')->join('product','photo.id_product','=','product.id_product')->select('*')->where('photo.status',$roles)->get();
         return view('photo.filter')->with('photo',$photo)->with('list_photo',$list_photo);
        }
-       
+
 
 
     }

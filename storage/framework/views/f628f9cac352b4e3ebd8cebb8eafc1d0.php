@@ -99,7 +99,7 @@
                 <!-- user login dropdown start-->
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <img src="/public/upload/<?php echo e($list_photo->avatar); ?>" alt="">
+                        <img src="upload/<?php echo e($list_photo->avatar); ?>" alt="">
                         <span class="username"> <?php
                                                 $name = Session::get('username_admin');
                                                 if ($name) {

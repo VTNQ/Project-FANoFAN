@@ -368,7 +368,7 @@
             <div class="col-12 col-md-4 mb-4">
                 <div class="card h-100">
                     <a href="#">
-                        <img src="/public/upload/<?php echo e($row->value); ?>" class="card-img-top" alt="...">
+                        <img src="/upload/<?php echo e($row->value); ?>" class="card-img-top" alt="..." width="30" height="30">
                     </a>
                     <div class="card-body">
                         <ul class="list-unstyled d-flex justify-content-between">
@@ -382,10 +382,7 @@
                             <li class="text-muted text-right">$<?php echo e($row->money); ?></li>
                         </ul>
                         <h1><?php echo e($row->name_product); ?></h1>
-                        <p class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt in culpa qui officia
-                            deserunt.
-                        </p>
+                       
                         <a href="/CeilingFan/<?php echo e($row->id_product); ?>"><p class="text-muted">Details Product</p></a>
                     </div>
 
