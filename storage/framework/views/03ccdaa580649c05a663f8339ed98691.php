@@ -58,13 +58,17 @@
                             </tr>
                             </thead>
                             <?php
+                                $url = $_SERVER['REQUEST_URI'];
+                                $string = substr($url, 19);
+                                $i = $string ? ($string -1)*5 + 1 : 1;
                             $count=0;
+
                             ?>
                             <?php $__currentLoopData = $list_product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr id="product_ids<?php echo e($row->id_product); ?>">
                                     <td><input type="checkbox" name="ids" class="checkbox_ids"
                                                value="<?php echo e($row->id_product); ?>"></td>
-                                    <td><?php echo e($count += 1); ?></td>
+                                    <td><?php echo e($i++); ?></td>
                                     <td><?php echo e($row->name_product); ?></td>
                                     <td><?php echo e($row->name); ?></td>
                                     <td><?php echo e($row->money); ?>$</td>

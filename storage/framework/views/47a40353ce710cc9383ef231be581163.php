@@ -56,7 +56,7 @@
                                 <div class="form-group">
                                     <strong>Image:</strong>
                                     <?php $__currentLoopData = $data1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <img src="/public/upload/<?php echo e($row->value); ?>" alt="" width="200px">
+                                        <img src="/upload/<?php echo e($row->value); ?>" alt="" width="200px">
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </div>
                             </div>

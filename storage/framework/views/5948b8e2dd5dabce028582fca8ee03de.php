@@ -92,7 +92,7 @@
                 <a class="nav-link home-link  waves-effect waves-light" href="/">Home </a>
             </li>
             <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-                <a class="nav-link about-link waves-effect waves-light" href="/about">about</a>
+                <a class="nav-link about-link waves-effect waves-light" href="/about">About</a>
             </li>
             <li class="nav-item active  dropdown px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
 

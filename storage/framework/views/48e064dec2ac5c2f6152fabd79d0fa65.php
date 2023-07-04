@@ -36,11 +36,13 @@
                                                        placeholder="Enter name Product">
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Product Description</label>
-                                                <textarea name="description" id="" class="form-control"
-                                                          style="resize: none;" rows="8"><?php echo e($row->content); ?></textarea>
+                                            <label for="exampleInputEmail1">Product Description</label>
+                                            <textarea name="description" id="ckeditor" class="ckeditor"
+                                                      style="resize: none;" rows="8"
+                                                      placeholder="Enter Product Description"><?php echo e($row->content); ?></textarea>
 
-                                            </div>
+                                        </div>
+                                           
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">category</label>
 
@@ -81,14 +83,16 @@
             </div>
         </section>
         <!-- footer -->
-        <div class="footer" style="width: 100%; position: absolute; bottom: 0; text-align: center">
+        <div class="footer" style="width: 100%; position: absolute; text-align: center">
             <div class="wthree-copyright">
                 <p>© 2023. All rights reserved | Design by <a href="/about">Favorable Team</a></p>
             </div>
         </div>
         <!-- / footer -->
     </section>
-
+    <script>
+        CKEDITOR.replace('ckeditor');
+    </script>
     <!--main content end-->
     </section>
 <?php $__env->stopSection(); ?>

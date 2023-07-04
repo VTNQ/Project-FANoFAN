@@ -28,14 +28,31 @@ class ProductController extends Controller
             $data_last = session()->get('value_admin');
             $list_photo = DB::table('user')->select('*')->where('avatar', $data_last)->first();
             $list_product = DB::table('product')->join('category', 'product.id_category', '=', 'category.id')->orderBy('id_product', 'DESC')->select('*')->paginate(5);
+
             if ($key = request()->key) {
                 $list_product = DB::table('product')->join('category', 'product.id_category', '=', 'category.id')->select('*')->where('product.name_product', 'like', '%' . $key . '%')->paginate(5);
-                $totalProduct = $list_product->lastItem();
+
                 return view('product.filter_product')->with('list_product', $list_product)->with('list_photo', $list_photo)->with('totalProduct',$totalProduct);
             } else {
-                $totalProduct = $list_product->count();
-                return view('product.list_product')->with('list_product', $list_product)->with('list_photo', $list_photo)->with('totalProduct',$totalProduct);
+                $lists = [];
+                $count = $list_product -> count();
+
+
+                foreach ($list_product as $row){
+                    $id=$row->id_product;
+                    $lists[]= $id;
+
+                };
+
+                $values = [
+                    'count' => $count,
+                    'list_photo' => $list_photo,
+                    'list_product' =>$list_product,
+                    'lists' => $lists
+                ];
+                return view('product.list_product', $values);
             }
+
         }else{
             return redirect('/login');
         }

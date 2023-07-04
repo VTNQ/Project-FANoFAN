@@ -5,9 +5,6 @@
 @section('body_content')
     <!--main content start-->
     <style>
-        .col-md-3 {
-            margin-top: 1vh;
-        }
     </style>
     <section id="main-content">
         <section class="wrapper">
@@ -26,7 +23,7 @@
                             <div class="input-group">
                                 <input type="text" class="input-sm form-control" name="key" placeholder="Search">
                                 <span class="input-group-btn">
-            <button class="btn btn-sm btn-default" type="submit">Go!</button>
+                                <button class="btn btn-sm btn-default" type="submit">Go!</button>
           </span>
                             </div>
                         </form>
@@ -59,13 +56,15 @@
                             </tr>
                             </thead>
                             <?php
-                            $count=0;
+                                $url = $_SERVER['REQUEST_URI'];
+                                $string = substr($url, 19);
+                                $i = $string ? ($string -1)*5 + 1 : 1;
                             ?>
                             @foreach($list_product as $row)
                                 <tr id="product_ids{{$row->id_product}}">
                                     <td><input type="checkbox" name="ids" class="checkbox_ids"
                                                value="{{$row->id_product}}"></td>
-                                    <td>{{$count += 1}}</td>
+                                    <td>{{$i++}}</td>
                                     <td>{{$row->name_product}}</td>
                                     <td>{{$row->name}}</td>
                                     <td>{{$row->money}}$</td>
@@ -73,9 +72,9 @@
                                             <button class="btn btn-sm btn-secondary">view</button>
                                         </a></td>
                                     <td>
-                                        <a href="{{url('/edit_product/'.$row->id_product)}}" class="active"
-                                           ui-toggle-class=""><i class="fas fa-edit"> </a></i><a
-                                            href="{{url('/delete_product/'.$row->id_product)}}"
+                                        < href="{{url('/edit_product/'.$row->id_product)}}" class="active"
+                                           ui-toggle-class=""><i class="fas fa-edit"> </i>
+                                            <a href="{{url('/delete_product/'.$row->id_product)}}"
                                             onclick="return confirm('Are you want to delete product?')"> <i
                                                 class="fa fa-times text-danger text"></i></a>
                                     </td>
