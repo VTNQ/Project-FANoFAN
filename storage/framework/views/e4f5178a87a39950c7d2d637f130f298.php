@@ -1,8 +1,7 @@
-@extends('layouts.admin')
-@section('title_page')
+<?php $__env->startSection('title_page'); ?>
     List Picture
-@endsection
-@section('body_content')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('body_content'); ?>
     <style>
         .btn-danger {
             color: #fff;
@@ -41,12 +40,12 @@
 
                     ?>
                     <div class="panel-body">
-                        @if(Session::has('success'))
+                        <?php if(Session::has('success')): ?>
                             <script>
-                                toastr.success("{{session('success')}}")
+                                toastr.success("<?php echo e(session('success')); ?>")
                             </script>
 
-                        @endif
+                        <?php endif; ?>
 
                         <div class="table-responsive">
                             <div class="row py-2" style="    margin-right: 1vh;">
@@ -55,7 +54,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <form action="{{url('filter')}}">
+                                        <form action="<?php echo e(url('filter')); ?>">
                                             <div class="row" style="margin-left: 4px;">
                                                 <div class="col-md-8">
                                                     <select name="roles" id="" class="form-control">
@@ -88,13 +87,13 @@
 
                                 </tr>
                                 </thead>
-                                @foreach($photo  as $key=> $row )
+                                <?php $__currentLoopData = $photo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=> $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
-                                    <tr id="photo_ids{{$row->id_photo}}">
+                                    <tr id="photo_ids<?php echo e($row->id_photo); ?>">
                                         <td><input type="checkbox" name="ids" class="checkbox_ids"
-                                                   value="{{$row->id_photo}}"></td>
-                                        <td>{{++$key}}</td>
-                                        <td><img src="/upload/{{$row->value}}" alt="" height="100" width="100">
+                                                   value="<?php echo e($row->id_photo); ?>"></td>
+                                        <td><?php echo e(++$key); ?></td>
+                                        <td><img src="/upload/<?php echo e($row->value); ?>" alt="" height="100" width="100">
                                         </td>
                                         <td><?php
                                                 if ($row->status == 1) {
@@ -107,12 +106,12 @@
         <?php
                                                 if ($row->status == 1){
                                                     ?>
-             <a href="{{ url('/unlike/'.$row->id_photo) }}"><span class="fa-solid fa-toggle-on"></span></a>
+             <a href="<?php echo e(url('/unlike/'.$row->id_photo)); ?>"><span class="fa-solid fa-toggle-on"></span></a>
              <?php
                                                 }else{
                                                     ?>
 
-            <a href="{{ url('/like/'.$row->id_photo) }}"><span class="fa-solid fa-toggle-off"></span></a>
+            <a href="<?php echo e(url('/like/'.$row->id_photo)); ?>"><span class="fa-solid fa-toggle-off"></span></a>
             <?php
                                                 }
                                                     ?>
@@ -121,13 +120,13 @@
 
 
                                         </td>
-                                        <td>{{$row->name_product}}</td>
+                                        <td><?php echo e($row->name_product); ?></td>
                                         <td>
                                             <a onclick="return confirm('Do you want delete this photo?')"
-                                               href="{{url('/delete_picture/'.$row->id_photo)}}"><i
+                                               href="<?php echo e(url('/delete_picture/'.$row->id_photo)); ?>"><i
                                                     class="fa fa-times text-danger text"></i></a>
                                         </td>
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 
                             </table>
@@ -178,11 +177,11 @@
                     all_ids.push($(this).val());
                 })
                 $.ajax({
-                    url: "{{route('photo.delete')}}",
+                    url: "<?php echo e(route('photo.delete')); ?>",
                     type: 'DELETE',
                     data: {
                         ids: all_ids,
-                        _token: '{{csrf_token()}}'
+                        _token: '<?php echo e(csrf_token()); ?>'
                     },
                     success: function (response) {
                         $.each(all_ids, function (key, val) {
@@ -221,4 +220,6 @@
             }
         });
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\project-FANoFAN-2\resources\views/photo/filter.blade.php ENDPATH**/ ?>

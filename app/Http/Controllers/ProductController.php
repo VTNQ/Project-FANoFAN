@@ -40,27 +40,7 @@ class ProductController extends Controller
 
     }
 
-    public function bonus_photo(Request $request)
-    {
-        $data = array();
-        $request->validate(['fileImg' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048']);
-
-        $data['status'] = $request->status;
-        $data['id_product'] = $request->product;
-        $get_image = $request->file('fileImg');
-        if ($get_image) {
-            $new_image = rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
-            $get_image->move('upload', $new_image);
-            $data['value'] = $new_image;
-            DB::table('photo')->insert($data);
-            return redirect('add_Product')->with('success', 'add Photo success');
-        }
-        $data['value'] = '';
-        DB::table('photo')->insert($data);
-
-        return redirect('add_Product')->with('success', 'add Photo success');
-    }
-
+    
     public function add_product(Request $request)
     {
         $data = array();

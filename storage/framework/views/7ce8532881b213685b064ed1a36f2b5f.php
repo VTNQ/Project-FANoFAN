@@ -85,10 +85,12 @@ unset($__errorArgs, $__bag); ?>
 
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Picture
-                                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                        data-target="#exampleModal" data-whatever="@mdo">Add photo
-                                                </button>
+                                            <label for="exampleInputEmail1" >Picture
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"  data-whatever="@mdo">Add photo</button>
+                                        </div>
+                                        <div class="form-group">
+                                        <label class="form-label" for="customFile">Default file input example</label>
+<input type="file" class="form-control" id="customFile" />
                                         </div>
                                         </label>
                                 </div>
@@ -100,6 +102,68 @@ unset($__errorArgs, $__bag); ?>
         </section>
 
         </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New Photo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="position-center">
+
+                    <form role="form" action="/bonus_photo" method="post" enctype="multipart/form-data">
+                        <?php echo csrf_field(); ?>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Name photo</label>
+                            <input type="file" class="form-control" id="fileImg" accept="image/*" name="fileImg"  placeholder="Enter name category">
+                            <div class="preview">
+                                <img src="https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg" alt="Preview" id="img" style="width: 100%; height: 100%;">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Status</label>
+                            <select name="status" class="form_control input-sm m-bot15" id="">
+                                <option value="1">Main</option>
+                                <option value="0">Extra</option>
+                            </select>
+
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Product</label>
+                            <select name="product" class="form_control input-sm m-bot15" id="" style="width: 36vh;">
+                                <?php $__currentLoopData = $list_product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($row->id_product); ?>"><?php echo e($row->name_product); ?></option>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            </select>
+
+                        </div>
+
+
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" name="">Send message</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+   
+
+
+   
+</div>
         <section class="panel">
             </form>
             </div>
@@ -118,67 +182,6 @@ unset($__errorArgs, $__bag); ?>
     <!--main content end-->
     </section>
 
-
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">New Photo</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <div class="modal-body">
-
-                    <div class="position-center">
-
-                        <form role="form" action="/bonus_photo" method="post" enctype="multipart/form-data">
-                            <?php echo csrf_field(); ?>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Name photo</label>
-                                <input type="file" class="form-control" id="fileImg" accept="image/*" name="fileImg"
-                                       placeholder="Enter name category">
-                                <div class="preview">
-                                    <img
-                                        src="https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg"
-                                        alt="Preview" id="img" style="width: 100%; height: 100%;">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Status</label>
-                                <select name="status" class="form_control input-sm m-bot15" id="">
-                                    <option value="1">Main</option>
-                                    <option value="0">Extra</option>
-                                </select>
-
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Product</label>
-                                <select name="product" class="form_control input-sm m-bot15" id="">
-                                    <?php $__currentLoopData = $list_product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <option value="<?php echo e($row->id_product); ?>"><?php echo e($row->name_product); ?></option>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                </select>
-
-                            </div>
-
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary" name="">Send message</button>
-                            </div>
-
-                        </form>
-
-                    </div>
-                </div>
-            </div>
-            </form>
-        </div>
 
 
     </div>

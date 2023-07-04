@@ -14,16 +14,16 @@ class IndexController extends Controller
     {
         $data_session = session()->get('id');
         if (!$data_session) {
-            $data_last = session()->get('value');
+           
             $list_photo = DB::table('user')->select('*')->where('id', $data_session)->first();
-            $data2 = DB::table('photo')->select('*')->join('product', 'photo.id_product', '=', 'product.id_product')->join('category', 'product.id_category', '=', 'category.id')->get();
+            $data2 = DB::table('photo')->select('*')->join('product', 'photo.id_product', '=', 'product.id_product')->join('category', 'product.id_category', '=', 'category.id')->paginate(5);
             $category=DB::table('category')->orderBy('id','DESC')->select('*')->get();
             return view('index.index')->with('photo', $data2)->with('list_photo', $list_photo)->with('category',$category);
         }elseif($data_session){
-            $data_last = session()->get('value');
+           
             $list_photo = DB::table('user')->select('*')->where('id', $data_session)->first();
             $category=DB::table('category')->orderBy('id','DESC')->select('*')->get();
-            $data2 = DB::table('photo')->select('*')->join('product', 'photo.id_product', '=', 'product.id_product')->where('photo.status','1')->join('category', 'product.id_category', '=', 'category.id')->get();
+            $data2 = DB::table('photo')->select('*')->join('product', 'photo.id_product', '=', 'product.id_product')->where('photo.status','1')->join('category', 'product.id_category', '=', 'category.id')->paginate(5);
             return view('user.Home')->with('list_photo',$list_photo)->with('photo',$data2)->with('category',$category);
         }
     }

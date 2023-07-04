@@ -75,8 +75,7 @@ Route::get('/edit/{id}', [CategoryController::class, 'edit']);
 Route::post('/update/{id}', [CategoryController::class, 'update']);
 //delete photo
 Route::get('/delete_picture/{id_photo}', [PhotoController::class, 'delete_picture']);
-//bonus_photo
-Route::post('/bonus_photo', [ProductController::class, 'bonus_photo']);
+
 //delete product
 Route::get('/delete_product/{id}', [ProductController::class, 'delete_product']);
 //edit product
