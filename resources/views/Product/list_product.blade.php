@@ -58,16 +58,15 @@
 
                             </tr>
                             </thead>
-                            @foreach($list_product as $key=> $row )
-
+                            <?php
+                            $count=0;
+                            ?>
+                            @foreach($list_product as $row)
                                 <tr id="product_ids{{$row->id_product}}">
                                     <td><input type="checkbox" name="ids" class="checkbox_ids"
                                                value="{{$row->id_product}}"></td>
-                                    <td>{{++$key}}</td>
-
-
+                                    <td>{{$count += 1}}</td>
                                     <td>{{$row->name_product}}</td>
-
                                     <td>{{$row->name}}</td>
                                     <td>{{$row->money}}$</td>
                                     <td><a href="{{url('/detail_product/'.$row->id_product)}}">
@@ -82,7 +81,6 @@
                                     </td>
                                 </tr>
                             @endforeach
-
                         </table>
                         {{$list_product->links()}}
                     </div>

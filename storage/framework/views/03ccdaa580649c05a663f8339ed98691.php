@@ -57,16 +57,15 @@
 
                             </tr>
                             </thead>
-                            <?php $__currentLoopData = $list_product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=> $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-
+                            <?php
+                            $count=0;
+                            ?>
+                            <?php $__currentLoopData = $list_product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr id="product_ids<?php echo e($row->id_product); ?>">
                                     <td><input type="checkbox" name="ids" class="checkbox_ids"
                                                value="<?php echo e($row->id_product); ?>"></td>
-                                    <td><?php echo e(++$key); ?></td>
-
-
+                                    <td><?php echo e($count += 1); ?></td>
                                     <td><?php echo e($row->name_product); ?></td>
-
                                     <td><?php echo e($row->name); ?></td>
                                     <td><?php echo e($row->money); ?>$</td>
                                     <td><a href="<?php echo e(url('/detail_product/'.$row->id_product)); ?>">
@@ -81,7 +80,6 @@
                                     </td>
                                 </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
                         </table>
                         <?php echo e($list_product->links()); ?>
 

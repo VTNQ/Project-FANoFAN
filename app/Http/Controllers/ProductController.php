@@ -30,17 +30,19 @@ class ProductController extends Controller
             $list_product = DB::table('product')->join('category', 'product.id_category', '=', 'category.id')->orderBy('id_product', 'DESC')->select('*')->paginate(5);
             if ($key = request()->key) {
                 $list_product = DB::table('product')->join('category', 'product.id_category', '=', 'category.id')->select('*')->where('product.name_product', 'like', '%' . $key . '%')->paginate(5);
-                return view('product.filter_product')->with('list_product', $list_product)->with('list_photo', $list_photo);
+                $totalProduct = $list_product->lastItem();
+                return view('product.filter_product')->with('list_product', $list_product)->with('list_photo', $list_photo)->with('totalProduct',$totalProduct);
             } else {
-                return view('product.list_product')->with('list_product', $list_product)->with('list_photo', $list_photo);
+                $totalProduct = $list_product->count();
+                return view('product.list_product')->with('list_product', $list_product)->with('list_photo', $list_photo)->with('totalProduct',$totalProduct);
             }
-        } else {
+        }else{
             return redirect('/login');
         }
 
     }
 
-    
+
     public function add_product(Request $request)
     {
         $data = array();
