@@ -16,7 +16,7 @@ class UserController extends Controller
 
     public function my_account()
     {
-        if(session('member') and session('id')){
+        if(session('member') && session('id')){
             $data_session = session()->get('id');
             $list_photo = DB::table('user')->select('*')->where('id', $data_session)->first();
             $list_user = DB::select('select username,password,email,phone from user where id=?', [$data_session]);
@@ -81,7 +81,7 @@ class UserController extends Controller
 
     public function history_feedback()
     {
-        if(!Session('id') and !Session('member')){
+        if(!Session('id') && !Session('member')){
            return redirect('login');
         }else if(Session('id') and Session('member')){
             $data_session = session()->get('id');
