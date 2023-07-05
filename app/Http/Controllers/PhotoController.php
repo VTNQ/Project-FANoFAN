@@ -66,14 +66,14 @@ class PhotoController extends Controller
     public function unlike($id_photo)
     {
         DB::update('update photo set status=? where id_photo=?', [0, $id_photo]);
-        return redirect('show_photo');
+        return redirect()->back();
     }
     public function like($id_photo)
     {
         $product=DB::table('photo')->where('id_photo',$id_photo)->pluck('id_product')->first();
         DB::table('photo')->where('id_product',$product)->update(['status'=>0]);
         DB::table('photo')->where('id_photo',$id_photo)->update(['status' => 1]);
-        return redirect('show_photo');
+        return redirect()->back();
     }
     //delete picture
     public function delete_picture($id_photo)

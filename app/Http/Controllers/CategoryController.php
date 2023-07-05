@@ -9,6 +9,7 @@ class CategoryController extends Controller
 {
     public function save_category(Request $request)
     {
+        $request->validate(['name_category'=>'required']);
         $data = array();
         $data['name'] = $request->name_category;
         DB::table('category')->insert($data);

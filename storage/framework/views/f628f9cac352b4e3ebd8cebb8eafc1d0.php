@@ -106,7 +106,7 @@
                                                     echo $name;
                                                 }
                                                 ?></span>
-                        <b class="caret"></b>
+                      
                     </a>
                     <ul class="dropdown-menu extended logout">
                         <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
