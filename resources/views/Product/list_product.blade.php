@@ -72,11 +72,12 @@
                                             <button class="btn btn-sm btn-secondary">view</button>
                                         </a></td>
                                     <td>
-                                        < href="{{url('/edit_product/'.$row->id_product)}}" class="active"
+                                        <a href="{{url('/edit_product/'.$row->id_product)}}" class="active"
                                            ui-toggle-class=""><i class="fas fa-edit"> </i>
+                                        </a>
                                             <a href="{{url('/delete_product/'.$row->id_product)}}"
-                                            onclick="return confirm('Are you want to delete product?')"> <i
-                                                class="fa fa-times text-danger text"></i></a>
+                                            onclick="return confirm('Are you want to delete product?')">
+                                                <i class="fa fa-times text-danger text"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

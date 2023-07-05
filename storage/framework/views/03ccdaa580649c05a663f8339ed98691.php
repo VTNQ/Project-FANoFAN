@@ -4,9 +4,6 @@
 <?php $__env->startSection('body_content'); ?>
     <!--main content start-->
     <style>
-        .col-md-3 {
-            margin-top: 1vh;
-        }
     </style>
     <section id="main-content">
         <section class="wrapper">
@@ -25,7 +22,7 @@
                             <div class="input-group">
                                 <input type="text" class="input-sm form-control" name="key" placeholder="Search">
                                 <span class="input-group-btn">
-            <button class="btn btn-sm btn-default" type="submit">Go!</button>
+                                <button class="btn btn-sm btn-default" type="submit">Go!</button>
           </span>
                             </div>
                         </form>
@@ -61,8 +58,6 @@
                                 $url = $_SERVER['REQUEST_URI'];
                                 $string = substr($url, 19);
                                 $i = $string ? ($string -1)*5 + 1 : 1;
-                            $count=0;
-
                             ?>
                             <?php $__currentLoopData = $list_product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr id="product_ids<?php echo e($row->id_product); ?>">
@@ -77,10 +72,11 @@
                                         </a></td>
                                     <td>
                                         <a href="<?php echo e(url('/edit_product/'.$row->id_product)); ?>" class="active"
-                                           ui-toggle-class=""><i class="fas fa-edit"> </a></i><a
-                                            href="<?php echo e(url('/delete_product/'.$row->id_product)); ?>"
-                                            onclick="return confirm('Are you want to delete product?')"> <i
-                                                class="fa fa-times text-danger text"></i></a>
+                                           ui-toggle-class=""><i class="fas fa-edit"> </i>
+                                        </a>
+                                            <a href="<?php echo e(url('/delete_product/'.$row->id_product)); ?>"
+                                            onclick="return confirm('Are you want to delete product?')">
+                                                <i class="fa fa-times text-danger text"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

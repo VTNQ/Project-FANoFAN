@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\feedback;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
@@ -22,7 +25,7 @@ class ProductController extends Controller
 
     }
 
-    public function show_add_product()
+    public function show_list_product()
     {
         if (session('username_admin') and session('id_admin')) {
             $data_last = session()->get('value_admin');
@@ -32,27 +35,14 @@ class ProductController extends Controller
             if ($key = request()->key) {
                 $list_product = DB::table('product')->join('category', 'product.id_category', '=', 'category.id')->select('*')->where('product.name_product', 'like', '%' . $key . '%')->paginate(5);
 
-                return view('product.filter_product')->with('list_product', $list_product)->with('list_photo', $list_photo)->with('totalProduct',$totalProduct);
+                return view('product.filter_product')->with('list_product', $list_product)->with('list_photo', $list_photo);
             } else {
-                $lists = [];
-                $count = $list_product -> count();
-
-
-                foreach ($list_product as $row){
-                    $id=$row->id_product;
-                    $lists[]= $id;
-
-                };
-
                 $values = [
-                    'count' => $count,
                     'list_photo' => $list_photo,
                     'list_product' =>$list_product,
-                    'lists' => $lists
                 ];
                 return view('product.list_product', $values);
             }
-
         }else{
             return redirect('/login');
         }
@@ -116,8 +106,51 @@ class ProductController extends Controller
     public function delete_all_product(Request $request)
     {
         $ids = $request->ids;
-        $product = DB::table('product')->where('id_product', $ids)->delete();
+        DB::table('product')->where('id_product', $ids)->delete();
         return response()->json();
     }
-}
+    public function ShowProduct($id_product)
+    {
+        if (!session('id') and !session('member')) {
+            $photo = DB::table('photo')->join('product', 'photo.id_product', '=', 'product.id_product')->where('product.id_product', $id_product)->select('*');
+            $product = DB::table('product')->join('category', 'category.id', '=', 'product.id_category')->where('product.id_product', $id_product)->get();
+            $category = DB::table('category')->orderBy('id', 'DESC')->select('*')->get();
+            $feedback = DB::table('feedback')->select('*')->get();
+            $show_comment = DB::table('user')->join('feedback', 'user.id', '=', 'feedback.id_user')->join('product', 'feedback.id_product', '=', 'product.id_product')->select('*')->where('product.id_product', $id_product)->get();
+            return view('index.CeilingFan')->with('photo', $photo)->with('product', $product)->with('category', $category)->with('Show_comment', $show_comment)->with('feedback', $feedback);
 
+        } else {
+            $data_session = session()->get('id');
+            $data2 = DB::table('photo')->join('product', 'product.id_product', '=', 'photo.id_product')->join('category', 'product.id_category', '=', 'category.id')->where('product.id_product', $id_product)->first();
+            $data3=DB::table('product')->join('photo', 'product.id_product', '=', 'photo.id_product')->where('product.id_product',$id_product)->get();
+            $avatar = DB::table('user')->select('*')->where('id', $data_session)->first();
+            $product = DB::table('product')->join('photo', 'product.id_product', '=', 'photo.id_product')->where('product.id_product',$id_product)->first();
+            $category = DB::table('category')->orderBy('id', 'DESC')->select('*')->get();
+            $feedback = DB::table('feedback')->select('*')->get();
+            $show_comment = DB::table('user')->join('feedback', 'user.id', '=', 'feedback.id_user')->join('product', 'feedback.id_product', '=', 'product.id_product')->select('*')->where('product.id_product', $id_product)->get();
+            return view('user.CeilingFan')->with('product', $product)->with('category', $category)->with('Show_comment', $show_comment)->with('feedback', $feedback)->with('avatar', $avatar)->with('data3',$data3)->with('photo',$data2);
+        }
+    }
+    public function addFeedback(Request $request, $id_product)
+    {
+        $new_feedback=new feedback;
+        $feedback = $request->input('Message');
+        $id = Session::get('id');
+        if(session('id') and session('member')){
+            $new_feedback->id_user=$id;
+            $new_feedback->id_product=$id_product;
+            $new_feedback->comment=$feedback;
+            $new_feedback->date_to=Carbon::now('Asia/Ho_Chi_Minh');
+            $new_feedback->save();
+            return redirect()->back();
+        }else{
+            return view();
+        }
+    }
+    public function categories_list($id){
+        $row=DB::table('category')->join('product','category.id','=','product.id_category')->join('photo','photo.id_product','=','product.id_product')->where('category.id',$id)->get();
+        $category=DB::table('category')->orderBy('id','DESC')->select('*')->get();
+        return view('index.categories_list')->with('category',$category)->with('row',$row);
+    }
+
+}

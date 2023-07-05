@@ -39,19 +39,24 @@
 
 </head>
 <style>
-    .navbar.scrolling-navbar {
-        padding-top: 12px;
-        padding-bottom: 12px;
-        -webkit-transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
-        transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: transparent;
+        transition: background-color 0.3s ease;
     }
-
     a {
         color: #fff;
     }
 
     body {
         height: 100%;
+    }
+    .navbar:hover,
+    .navbar.scrolled{
+        background-color: #36454f;
     }
 </style>
 <!-- body -->
@@ -109,7 +114,7 @@
             <li class="nav-item active  dropdown px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
                 <a class="nav-link dropdown-toggle categories-link waves-effect waves-light" href="#"
                    id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                   aria-expanded="false"><img src="/upload/{{ $list_photo->avatar }}" alt="" width="30"
+                   aria-expanded="false"><img src="/upload/{{ $avatar->avatar }}" alt="" width="30"
                                               style="border-radius: 50%"></a>
                 <div class="dropdown-menu dropdown-primary  mt-lg-3" style="background-color: #6c757d;margin:-63%"
                      aria-labelledby="navbarDropdownMenuLink">
@@ -322,11 +327,16 @@
         const verticalScrollPx = window.scrollY || window.pageYOffset;
 
         if (verticalScrollPx < 10) {
-            document.getElementById('navbar').style.backgroundColor = 'transparent';
             document.getElementById('scroll_top').style.display = 'none';
         } else if (verticalScrollPx < 500) {
-            document.getElementById('navbar').style.backgroundColor = 'dimgrey';
             document.getElementById('scroll_top').style.display = 'block';
+        }
+    });
+    $(window).scroll(function() {
+        if ($(window).scrollTop() > 50) {
+            $('.navbar').addClass('scrolled');
+        } else {
+            $('.navbar').removeClass('scrolled');
         }
     });
 </script>

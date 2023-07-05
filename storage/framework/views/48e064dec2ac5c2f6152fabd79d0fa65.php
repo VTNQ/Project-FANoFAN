@@ -19,6 +19,7 @@
 
 
                                 <div class="position-center">
+
                                     <?php $__currentLoopData = $student; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <form role="form" action="<?php echo e(URL::to('/update_product/'.$row->id_product)); ?>"
                                               method="post">
@@ -36,16 +37,16 @@
                                                        placeholder="Enter name Product">
                                             </div>
                                             <div class="form-group">
-                                            <label for="exampleInputEmail1">Product Description</label>
-                                            <textarea name="description" id="ckeditor" class="ckeditor"
+                                                <label for="exampleInputEmail1">Product Description</label>
+                                                <textarea name="description" id="ckeditor" class="ckeditor"
                                                       style="resize: none;" rows="8"
-                                                      placeholder="Enter Product Description"><?php echo e($row->content); ?></textarea>
+                                                      placeholder="Enter Product Description"><?php echo e($row->content); ?>
 
-                                        </div>
-                                           
+                                                </textarea>
+                                            </div>
+
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">category</label>
-
+                                                <label for="category">category</label>
                                                 <select name="category" class="form_control input-sm m-bot15" id="">
                                                     <?php $__currentLoopData = $list_category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                         <?php if($category->id==$row->id_category): ?>
@@ -57,30 +58,22 @@
                                                         <?php endif; ?>
                                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                 </select>
-
-
                                             </div>
-
-
-                                            </label>
+                                        </form>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </div>
 
 
                                 <button type="submit" class="btn btn-info">Add catelogies</button>
-                                </form>
+
                             </div>
-
+                        </section>
                     </div>
+                </div>
+            </div>
         </section>
-
-        </div>
         <section class="panel">
-            </form>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-            </div>
-            <!-- page end-->
-            </div>
+            <div></div>
         </section>
         <!-- footer -->
         <div class="footer" style="width: 100%; position: absolute; text-align: center">

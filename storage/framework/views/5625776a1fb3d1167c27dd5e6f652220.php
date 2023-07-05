@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="short icon" href="{{asset('images/icon-title.ico')}}">
+    <link rel="short icon" href="<?php echo e(asset('images/icon-title.ico')); ?>">
     <title>My Account</title>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -97,45 +97,48 @@
 
         </nav>
         <!-- /Breadcrumb -->
-        @if (session()->has('message'))
-            <div class="alert alert-success text-center" role="alert">{{ session('message') }}</div>
-        @elseif(session()->has('old'))
-            <div class="alert alert-danger" role="alert">{{ session('old') }}</div>
-        @elseif(session()->has('accept'))
-            <div class="alert alert-danger" role="alert">{{ session('accept') }}</div>
+        <?php if(session()->has('message')): ?>
+            <div class="alert alert-success text-center" role="alert"><?php echo e(session('message')); ?></div>
+        <?php elseif(session()->has('old')): ?>
+            <div class="alert alert-danger" role="alert"><?php echo e(session('old')); ?></div>
+        <?php elseif(session()->has('accept')): ?>
+            <div class="alert alert-danger" role="alert"><?php echo e(session('accept')); ?></div>
 
-        @elseif(session()->has('same'))
-            <div class="alert alert-danger" role="alert">{{ session('same') }}</div>
+        <?php elseif(session()->has('same')): ?>
+            <div class="alert alert-danger" role="alert"><?php echo e(session('same')); ?></div>
 
-        @endif
+        <?php endif; ?>
         <div class="row gutters-sm">
             <h3>History Feedback</h3>
-            <table class="table" style="border-radius: 13px; text-align: center; ">
+            <table class="table" style="border-radius: 13px; text-align: center">
                 <tr>
                     <th scope="col"></th>
                     <th scope="col">Product</th>
                     <th scope="col">User</th>
                     <th scope="col">Feedback</th>
                 </tr>
-                @foreach ($data_feedback as $data)
+                <?php $__currentLoopData = $data_feedback; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
-                        @foreach($list_photo as $photo)
+                        <?php $__currentLoopData = $list_photo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $photo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <td>
-                                <img src="/upload/{{$photo->value}}" alt="" style="width: 6vw">
+                                <img src="/upload/<?php echo e($photo->value); ?>" alt="" style="width: 6vw">
                             </td>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                         <td>
-                            {{$data->name_product}}
+                            <?php echo e($data->name_product); ?>
+
                         </td>
                         <td>
-                            {{$data->username}}
+                            <?php echo e($data->username); ?>
+
                         </td>
                         <td>
-                            {{$data->comment}}
+                            <?php echo e($data->comment); ?>
+
                         </td>
                     </tr>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </table>
         </div>
     </div>
@@ -152,3 +155,4 @@
 </script>
 </body>
 </html>
+<?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/user/history_feedback.blade.php ENDPATH**/ ?>

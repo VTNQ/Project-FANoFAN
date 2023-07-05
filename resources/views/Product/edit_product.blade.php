@@ -20,6 +20,7 @@
 
 
                                 <div class="position-center">
+
                                     @foreach($student as $row)
                                         <form role="form" action="{{URL::to('/update_product/'.$row->id_product)}}"
                                               method="post">
@@ -37,16 +38,15 @@
                                                        placeholder="Enter name Product">
                                             </div>
                                             <div class="form-group">
-                                            <label for="exampleInputEmail1">Product Description</label>
-                                            <textarea name="description" id="ckeditor" class="ckeditor"
+                                                <label for="exampleInputEmail1">Product Description</label>
+                                                <textarea name="description" id="ckeditor" class="ckeditor"
                                                       style="resize: none;" rows="8"
-                                                      placeholder="Enter Product Description">{{$row->content}}</textarea>
+                                                      placeholder="Enter Product Description">{{$row->content}}
+                                                </textarea>
+                                            </div>
 
-                                        </div>
-                                           
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">category</label>
-
+                                                <label for="category">category</label>
                                                 <select name="category" class="form_control input-sm m-bot15" id="">
                                                     @foreach($list_category as $category)
                                                         @if($category->id==$row->id_category)
@@ -58,30 +58,22 @@
                                                         @endif
                                                     @endforeach
                                                 </select>
-
-
                                             </div>
-
-
-                                            </label>
+                                        </form>
+                                    @endforeach
                                 </div>
 
 
                                 <button type="submit" class="btn btn-info">Add catelogies</button>
-                                </form>
+
                             </div>
-
+                        </section>
                     </div>
+                </div>
+            </div>
         </section>
-
-        </div>
         <section class="panel">
-            </form>
-            @endforeach
-
-            </div>
-            <!-- page end-->
-            </div>
+            <div></div>
         </section>
         <!-- footer -->
         <div class="footer" style="width: 100%; position: absolute; text-align: center">

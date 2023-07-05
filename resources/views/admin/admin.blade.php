@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <head>
+    <link rel="short icon" href="{{asset('images/icon-title.ico')}}">
     <title>Admin Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -37,7 +38,7 @@
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
- 
+
 </head>
 <style>
     .market-update-block.clr-block-2 {
@@ -187,13 +188,13 @@
                 </div>
                 <div class="container">
                     <br>
-                    <h3>the most user feedback</h3>
+                    <h3 style="text-transform: uppercase">the most user feedback</h3>
                     <table >
     <thead>
       <tr>
         <th>#</th>
-        <th>Name</th>
-        <th>Total</th>
+        <th>NAME</th>
+        <th>TOTAL</th>
       </tr>
     </thead>
     <tbody>
@@ -207,10 +208,10 @@
     </tbody>
   </table>
 
-                
+
                 <br>
-                
-    
+
+
 
             </div>
                 <div class="row">
@@ -218,7 +219,7 @@
 
                     <table class="left" style="text-align: center;">
                         <tr>
-                            <th class="home"><h3 class="home1">Name product</h3></th>
+                            <th class="home"><h3 class="home1" style="text-transform: uppercase; font-size: 3rem">Name product</h3></th>
                         </tr>
                         <tr>
 

@@ -14,17 +14,14 @@ class IndexController extends Controller
     {
         $data_session = session()->get('id');
         if (!$data_session) {
-
-            $list_photo = DB::table('user')->select('*')->where('id', $data_session)->first();
             $data2 = DB::table('photo')->select('*')->join('product', 'photo.id_product', '=', 'product.id_product')->join('category', 'product.id_category', '=', 'category.id')->where('status',1)->get();
             $category=DB::table('category')->orderBy('id','DESC')->select('*')->get();
-            return view('index.index')->with('photo', $data2)->with('list_photo', $list_photo)->with('category',$category);
+            return view('index.index')->with('photo', $data2)->with('avatar', $data2)->with('category',$category);
         }elseif($data_session){
-
-            $list_photo = DB::table('user')->select('*')->where('id', $data_session)->first();
+            $avatar = DB::table('user')->select('*')->where('id', $data_session)->first();
             $category=DB::table('category')->orderBy('id','DESC')->select('*')->get();
             $data2 = DB::table('photo')->select('*')->join('product', 'photo.id_product', '=', 'product.id_product')->where('photo.status','1')->join('category', 'product.id_category', '=', 'category.id')->paginate(5);
-            return view('user.Home')->with('list_photo',$list_photo)->with('photo',$data2)->with('category',$category);
+            return view('user.Home')->with('avatar',$avatar)->with('photo',$data2)->with('category',$category);
         }
     }
     public function about(){
@@ -35,8 +32,8 @@ class IndexController extends Controller
         }elseif($data_session){
             $data_last = session()->get('value');
             $category=DB::table('category')->orderBy('id','DESC')->select('*')->get();
-            $list_photo = DB::table('user')->join('photo', 'user.id_photo', '=', 'photo.id_photo')->select('*')->where('user.id_photo', $data_last)->first();
-            return view('user.About')->with('list_photo', $list_photo)->with('category',$category);
+            $avatar = DB::table('user')->where('user.avatar', $data_last)->first();
+            return view('user.About')->with('avatar', $avatar)->with('category',$category);
         }
     }
     public function contact(){
@@ -50,8 +47,8 @@ class IndexController extends Controller
             $name=session()->get('member');
             $email=session()->get('email');
             $category=DB::table('category')->orderBy('id','DESC')->select('*')->get();
-            $list_photo = DB::table('user')->select('*')->where('id', $data_session)->first();
-            return view('user.Contact')->with('list_photo', $list_photo)->with('category',$category)->with('email',$email)->with('name',$name);
+            $avatar = DB::table('user')->select('avatar')->where('id', $data_session)->first();
+            return view('user.Contact')->with('avatar', $avatar)->with('category',$category)->with('email',$email)->with('name',$name);
         }
     }
    public function postContact(Request $request){
