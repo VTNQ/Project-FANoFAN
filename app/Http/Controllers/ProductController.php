@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use App\Models\product;
+use App\Models\Photo;
 
 class ProductController extends Controller
 {
@@ -52,15 +54,39 @@ class ProductController extends Controller
 
     public function add_product(Request $request)
     {
-        $data = array();
-        $request->validate(['nameProduct' => 'required', 'Price' => 'required', 'description' => 'required']);
-        $data['name_product'] = $request->nameProduct;
-        $data['id_category'] = $request->category;
-        $data['money'] = $request->Price;
-        $data['content'] = $request->description;
-        DB::table('product')->insert($data);
+      
 
-        return redirect('/add_Product')->with('success', 'add Product success');
+        $request->validate(['nameProduct'=>'required','Price'=>'required|numeric|min:0','description'=>'required','file'=>'required_without:Main','Main'=>'required_without:file    ']);
+        $product=new Product();
+        $product->name_product=$request->nameProduct;
+        $product->content=$request->description;
+       $product->save();
+        $list=DB::table('product')->select('*')->orderBy('id_product','DESC')->first();
+        Session::put('id',$list->id_product);
+        $id=Session::get('id');
+       $image=array();
+       $main=$request->file('Main');
+       if($main ){
+        $new_image=rand(0,99).'.'.$main->getClientOriginalExtension();
+        $main->move('upload',$new_image);
+        DB::table('photo')->insert(['value'=>$new_image,'status'=>1,'id_product'=>$id]);
+       }else if($main==null) {
+        $files=$request->file('file');
+        foreach($files as $file){
+            $image_name=md5(rand(1000,10000));
+            $ext=strtolower($file->getClientOriginalExtension());
+            $image_full_name=$image_name.'.'.$ext;
+            $upload_path='upload/';
+            $image_url=$upload_path.$image_full_name;
+            $file->move($upload_path,$image_full_name);
+            $image[]=$image_url;
+        }
+        Photo::insert(['value'=>implode('|',$image),'id_product'=>$id]);
+       }
+    
+       $list=DB::table('photo')->select('*')->orderBy('id_product','DESC')->first();
+       $hast=Session::put('id',$list->id_product);
+       return back()->with('hast',$hast);
     }
 
     public function delete_product($id)

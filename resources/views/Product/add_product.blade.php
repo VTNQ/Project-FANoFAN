@@ -9,7 +9,9 @@
             margin-left: 28vh;
         }
     </style>
-
+ <link href=
+"https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
+          rel="stylesheet">
     <section id="main-content">
         <section class="wrapper">
             <div class="form-w3layouts">
@@ -28,9 +30,7 @@
                                     </script>
 
                                 @endif
-                                @if(count($errors)>0)
-                                    <div class="alert alert-danger">{{$errors->first()}}</div>
-                                @endif
+                             
                                 <div class="position-center">
                                     <form role="form" action="/add_Product" method="post" enctype="multipart/form-data">
                                         @csrf
@@ -46,9 +46,10 @@
                                             <label for="exampleInputEmail1">Price</label>
                                             <input type="number" class="form-control" id="exampleInputEmail1"
                                                    name="Price" placeholder="Enter name Product">
-                                            @error('Price')
-                                            <div class="alert alert-danger">Please Enter Price Product</div>
-                                            @enderror
+                                                   @error('Price')
+                                                   <div class="alert alert-danger">Please Enter Money again</div>
+                                                   @enderror
+                                           
                                         </div>
 
                                         <div class="form-group">
@@ -56,7 +57,9 @@
                                             <textarea name="description" id="ckeditor" class="ckeditor"
                                                       style="resize: none;" rows="8"
                                                       placeholder="Enter Product Description"></textarea>
-
+                                                      @error('description')
+                                            <div class="alert alert-danger">Please Enter description again</div>
+                                            @enderror
                                         </div>
 
 
@@ -71,13 +74,31 @@
 
 
                                         </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1" >Picture
-                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"  data-whatever="@mdo">Add photo</button>
-                                        </div>
-
-                                        </label>
-                                </div>
+                                        <div class="mb-3">
+        <label for="MultipleFile" 
+               class="form-label">
+               Main
+        </label>
+        <input class="form-control" 
+               type="file"
+                name="Main"
+               id="MultipleFile" >
+               @error('Main')
+               <div class="alert alert-danger">Please require 1 of 2</div>
+               @enderror
+    </div>
+    <div class="mb-3">
+        <label for="MultipleFile" 
+               class="form-label">
+               Extra
+        </label>
+        <input class="form-control" 
+               type="file" 
+               id="file" name="file[]" multiple>
+               @error('file')
+               <div class="alert alert-danger">Please require 1 of 2</div>
+               @enderror
+    </div>
                                 <button type="submit" class="btn btn-info">Add Product</button>
                                 </form>
                             </div>

@@ -8,7 +8,9 @@
             margin-left: 28vh;
         }
     </style>
-
+ <link href=
+"https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
+          rel="stylesheet">
     <section id="main-content">
         <section class="wrapper">
             <div class="form-w3layouts">
@@ -27,9 +29,7 @@
                                     </script>
 
                                 <?php endif; ?>
-                                <?php if(count($errors)>0): ?>
-                                    <div class="alert alert-danger"><?php echo e($errors->first()); ?></div>
-                                <?php endif; ?>
+                             
                                 <div class="position-center">
                                     <form role="form" action="/add_Product" method="post" enctype="multipart/form-data">
                                         <?php echo csrf_field(); ?>
@@ -52,16 +52,17 @@ unset($__errorArgs, $__bag); ?>
                                             <label for="exampleInputEmail1">Price</label>
                                             <input type="number" class="form-control" id="exampleInputEmail1"
                                                    name="Price" placeholder="Enter name Product">
-                                            <?php $__errorArgs = ['Price'];
+                                                   <?php $__errorArgs = ['Price'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                            <div class="alert alert-danger">Please Enter Price Product</div>
-                                            <?php unset($message);
+                                                   <div class="alert alert-danger">Please Enter Money again</div>
+                                                   <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+                                           
                                         </div>
 
                                         <div class="form-group">
@@ -69,7 +70,16 @@ unset($__errorArgs, $__bag); ?>
                                             <textarea name="description" id="ckeditor" class="ckeditor"
                                                       style="resize: none;" rows="8"
                                                       placeholder="Enter Product Description"></textarea>
-
+                                                      <?php $__errorArgs = ['description'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                            <div class="alert alert-danger">Please Enter description again</div>
+                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                         </div>
 
 
@@ -84,13 +94,45 @@ unset($__errorArgs, $__bag); ?>
 
 
                                         </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1" >Picture
-                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"  data-whatever="@mdo">Add photo</button>
-                                        </div>
-
-                                        </label>
-                                </div>
+                                        <div class="mb-3">
+        <label for="MultipleFile" 
+               class="form-label">
+               Main
+        </label>
+        <input class="form-control" 
+               type="file"
+                name="Main"
+               id="MultipleFile" >
+               <?php $__errorArgs = ['Main'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+               <div class="alert alert-danger">Please require 1 of 2</div>
+               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+    </div>
+    <div class="mb-3">
+        <label for="MultipleFile" 
+               class="form-label">
+               Extra
+        </label>
+        <input class="form-control" 
+               type="file" 
+               id="file" name="file[]" multiple>
+               <?php $__errorArgs = ['file'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+               <div class="alert alert-danger">Please require 1 of 2</div>
+               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+    </div>
                                 <button type="submit" class="btn btn-info">Add Product</button>
                                 </form>
                             </div>
