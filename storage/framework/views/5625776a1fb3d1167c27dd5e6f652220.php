@@ -110,7 +110,7 @@
         <?php endif; ?>
         <div class="row gutters-sm">
             <h3>History Feedback</h3>
-            <table class="table" style="border-radius: 13px; text-align: center">
+            <table class="table" style="border-radius: 13px; text-align: center; ">
                 <tr>
                     <th scope="col"></th>
                     <th scope="col">Product</th>

@@ -115,12 +115,12 @@
             <div class="col-md-4 mb-3">
                 <div class="card">
                     <div class="card-body">
-                       <form action="/account" method="post" enctype="multipart/form-data">
+                       <form action="/upload_photo" method="post" enctype="multipart/form-data">
                         @csrf
                             <div class="d-flex flex-column align-items-center text-center">
                                 <img src="/upload/{{$list_photo->avatar}}" alt="Admin"
                                      class="rounded-circle" width="150" id="img">
-                                    
+
                                 <div class="mt-3">
                                     @foreach($list_user as $user)
                                         <h4>{{$user->username}}</h4>
@@ -131,25 +131,19 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                                             <br>
-                                            
                                         </div>
-                                        
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" id="fileImg"
                                                    aria-describedby="inputGroupFileAddon01" name="fileImg">
                                             <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                                         </div>
-                                        
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
-                                    </form> 
                                 </div>
                             </div>
-                        
-
+                       </form>
                     </div>
                 </div>
-
             </div>
             <div class="col-md-8">
                 <div class="card mb-3">
@@ -314,15 +308,15 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">OLD PASSWORD:</label>
-                        <input type="text" class="form-control" id="recipient-name" name="old_password">
+                        <input type="password" class="form-control" id="recipient-name" name="old_password">
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">NEW PASSWORD:</label>
-                        <input type="text" class="form-control" id="recipient-name" name="new_password">
+                        <input type="password" class="form-control" id="recipient-name" name="new_password">
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">RE-ENTER PASSWORD:</label>
-                        <input type="text" class="form-control" id="recipient-name" name="re_new_password">
+                        <input type="password" class="form-control" id="recipient-name" name="re_new_password">
                     </div>
                 </div>
                 <div class="modal-footer">
