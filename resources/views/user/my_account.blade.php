@@ -120,7 +120,7 @@
                             <div class="d-flex flex-column align-items-center text-center">
                                 <img src="/upload/{{$list_photo->avatar}}" alt="Admin"
                                      class="rounded-circle" width="150" id="img">
-                                    
+
                                 <div class="mt-3">
                                     @foreach($list_user as $user)
                                         <h4>{{$user->username}}</h4>
@@ -131,25 +131,19 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                                             <br>
-                                            
                                         </div>
-                                        
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" id="fileImg"
                                                    aria-describedby="inputGroupFileAddon01" name="fileImg">
                                             <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                                         </div>
-                                        
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
-                                  
                                 </div>
                             </div>
-                            </form>
-
+                       </form>
                     </div>
                 </div>
-
             </div>
             <div class="col-md-8">
                 <div class="card mb-3">

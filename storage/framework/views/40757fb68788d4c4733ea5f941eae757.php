@@ -317,6 +317,17 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">OLD PASSWORD:</label>
+<<<<<<< HEAD
+                        <input type="text" class="form-control" id="recipient-name" name="old_password">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">NEW PASSWORD:</label>
+                        <input type="text" class="form-control" id="recipient-name" name="new_password">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">RE-ENTER PASSWORD:</label>
+                        <input type="text" class="form-control" id="recipient-name" name="re_new_password">
+=======
                         <input type="password" class="form-control" id="recipient-name" name="old_password">
                     </div>
                     <div class="form-group">
@@ -326,6 +337,7 @@
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">RE-ENTER PASSWORD:</label>
                         <input type="password" class="form-control" id="recipient-name" name="re_new_password">
+>>>>>>> cc53e159f5c572b8287493d54f30dc86c460cf69
                     </div>
                 </div>
                 <div class="modal-footer">
