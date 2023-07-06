@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="short icon" href="{{asset('images/icon-title.ico')}}">
+    <link rel="short icon" href="<?php echo e(asset('images/icon-title.ico')); ?>">
     <title>My Account</title>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -100,33 +100,33 @@
 
         </nav>
         <!-- /Breadcrumb -->
-        @if (session()->has('message'))
-            <div class="alert alert-success text-center" role="alert">{{ session('message') }}</div>
-        @elseif(session()->has('old'))
-            <div class="alert alert-danger" role="alert">{{ session('old') }}</div>
-        @elseif(session()->has('accept'))
-            <div class="alert alert-danger" role="alert">{{ session('accept') }}</div>
+        <?php if(session()->has('message')): ?>
+            <div class="alert alert-success text-center" role="alert"><?php echo e(session('message')); ?></div>
+        <?php elseif(session()->has('old')): ?>
+            <div class="alert alert-danger" role="alert"><?php echo e(session('old')); ?></div>
+        <?php elseif(session()->has('accept')): ?>
+            <div class="alert alert-danger" role="alert"><?php echo e(session('accept')); ?></div>
 
-        @elseif(session()->has('same'))
-            <div class="alert alert-danger" role="alert">{{ session('same') }}</div>
+        <?php elseif(session()->has('same')): ?>
+            <div class="alert alert-danger" role="alert"><?php echo e(session('same')); ?></div>
 
-        @endif
+        <?php endif; ?>
         <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
                 <div class="card">
                     <div class="card-body">
-                       <form action="/upload_photo" method="post" enctype="multipart/form-data">
-                        @csrf
+                       <form action="/account" method="post" enctype="multipart/form-data">
+                        <?php echo csrf_field(); ?>
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img src="/upload/{{$list_photo->avatar}}" alt="Admin"
+                                <img src="/upload/<?php echo e($list_photo->avatar); ?>" alt="Admin"
                                      class="rounded-circle" width="150" id="img">
                                     
                                 <div class="mt-3">
-                                    @foreach($list_user as $user)
-                                        <h4>{{$user->username}}</h4>
-                                        <p class="text-secondary mb-1">{{$user->email}}</p>
-                                        <p class="text-muted font-size-sm">{{$user->phone}}</p>
-                                    @endforeach
+                                    <?php $__currentLoopData = $list_user; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <h4><?php echo e($user->username); ?></h4>
+                                        <p class="text-secondary mb-1"><?php echo e($user->email); ?></p>
+                                        <p class="text-muted font-size-sm"><?php echo e($user->phone); ?></p>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
@@ -158,13 +158,14 @@
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Username</h6>
                             </div>
-                            @foreach($list_user as $user)
+                            <?php $__currentLoopData = $list_user; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <div class="col-sm-9 text-secondary">
-                                    {{$user->username}}
+                                    <?php echo e($user->username); ?>
+
                                     <a class="col-1" data-toggle="modal" data-target="#edit_username">
                                         <i class="fa-solid fa-pen-to-square"></i></a>
                                 </div>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                         </div>
                         <hr>
@@ -172,14 +173,15 @@
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Email</h6>
                             </div>
-                            @foreach ($list_user as $user)
+                            <?php $__currentLoopData = $list_user; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                                 <div class="col-sm-9 text-secondary">
-                                    {{$user->email}}
+                                    <?php echo e($user->email); ?>
+
                                     <a class="col-1" data-toggle="modal" data-target="#edit_email"><i
                                             class="fa-solid fa-pen-to-square"></i></a>
                                 </div>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                         </div>
                         <hr>
@@ -187,13 +189,14 @@
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Phone</h6>
                             </div>
-                            @foreach($list_user as $user)
+                            <?php $__currentLoopData = $list_user; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <div class="col-sm-9 text-secondary">
-                                    {{$user->phone}}
+                                    <?php echo e($user->phone); ?>
+
                                     <a class="col-1" data-toggle="modal" data-target="#edit_phone"><i
                                             class="fa-solid fa-pen-to-square"></i></a>
                                 </div>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                         </div>
                         <hr>
@@ -345,3 +348,4 @@
 </script>
 </body>
 </html>
+<?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/user/my_account.blade.php ENDPATH**/ ?>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="short icon" href="<?php echo e(asset('images/icon-title.ico')); ?>">
-    <title>My Account</title>
+    <title>User</title>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
@@ -90,11 +90,9 @@
         <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item"><a href="/user">User</a></li>
-                <li class="breadcrumb-item active" aria-current="page">History Feedback</li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="/user">User</a></li>
 
             </ol>
-
         </nav>
         <!-- /Breadcrumb -->
         <?php if(session()->has('message')): ?>
@@ -109,43 +107,16 @@
 
         <?php endif; ?>
         <div class="row gutters-sm">
-            <h3>History Feedback</h3>
-            <table class="table" style="border-radius: 13px; text-align: center; ">
-                <tr>
-                    <th scope="col"></th>
-                    <th scope="col">Product</th>
-                    <th scope="col">User</th>
-                    <th scope="col">Feedback</th>
-                </tr>
-                <?php $__currentLoopData = $data_feedback; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <tr>
-                        <?php $__currentLoopData = $list_photo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $photo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <td>
-                                <img src="/upload/<?php echo e($photo->value); ?>" alt="" style="width: 6vw">
-                            </td>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-                        <td>
-                            <?php echo e($data->name_product); ?>
-
-                        </td>
-                        <td>
-                            <?php echo e($data->username); ?>
-
-                        </td>
-                        <td>
-                            <?php echo e($data->comment); ?>
-
-                        </td>
-                    </tr>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            </table>
+            <div class="container-fluid"></div>
+            <div class="container-fluid"></div>
         </div>
     </div>
+
+
 </div>
 <script src="https://kit.fontawesome.com/1fa6a2ee32.js" crossorigin="anonymous"></script>
 <script type="text/javascript">
-    document.getElementById('fileImg').onchange = evt => {
+    fileImg.onchange = evt => {
         const [file] = fileImg.files;
         if (file) {
             img.src = URL.createObjectURL(file);
@@ -155,4 +126,4 @@
 </script>
 </body>
 </html>
-<?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/user/history_feedback.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/user/User.blade.php ENDPATH**/ ?>
