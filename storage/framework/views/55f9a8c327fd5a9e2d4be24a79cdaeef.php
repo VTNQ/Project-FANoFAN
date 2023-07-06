@@ -6,11 +6,36 @@ home page
 
 <?php $__env->startSection('mycss'); ?>
 <style>
+  @media (min-width: 576px){
+    .col-sm-9 {
+    flex: 0 0 auto;
+    width: 74%;
+}
+  }
+  #nav{
+    display: inherit;
+  }
+
     .main-panel {
         background-color: #1c2331;
         color: white;
         text-align: initial;
     }
+    #card {
+    position: relative;
+    display: grid;
+    margin-top: 4vh;
+    flex-direction: column;
+    place-items: center;
+    /* min-width: 37vh; */
+    height: 41vh;
+    width: 30vh;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
     div#row {
     display: inline-flex;
 }
@@ -20,7 +45,6 @@ home page
 
 <?php $__env->startSection('body_content'); ?>
 
-<?php $__currentLoopData = $row; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,6 +56,12 @@ home page
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" ></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css">
+ 
 <style>
 body, ul, li, p, a, label, input, div {
     font-family: 'Roboto', sans-serif;
@@ -47,6 +77,9 @@ body, ul, li, p, a, label, input, div {
     font-family: 'Roboto', sans-serif;
     font-size: 30px !important;
     font-weight: 300;
+  }
+  #h1{
+    font-size: 12px;
   }
   .h3 {
     font-family: 'Roboto', sans-serif;
@@ -92,22 +125,7 @@ body, ul, li, p, a, label, input, div {
   .product-wap .product-color-dot.color-dot-black { background:#000000;}
   .product-wap .product-color-dot.color-dot-light { background:#e0e0e0;}
   .product-wap .product-color-dot.color-dot-green { background:#0bff7e;}
-  .card.product-wap .card .product-overlay {
-    background: rgba(0,0,0,.2);
-    visibility: hidden;
-    opacity: 0;
-    transition: .3s;
-  }
-  .card.product-wap:hover .card .product-overlay {
-    visibility: visible;
-    opacity: 1;
-  }
-  .card.product-wap a { color: #000;}
-  #carousel-related-product .slick-slide:focus { outline: none !important;}
-  #carousel-related-product .slick-dots li button:before {
-    font-size: 15px;
-    margin-top: 20px;
-  }
+ 
   /* Brand */
   .brand-img {
     filter: grayscale(100%);
@@ -153,106 +171,229 @@ body, ul, li, p, a, label, input, div {
     background-color: #cfd6e1;
     transition: .5s;
   }
-  #tempaltemo_footer ul.footer-icons li:hover i {
-    color: #212934;
-    transition: .5s;
-  }
-  #tempaltemo_footer .border-light { border-color: #2d343f !important;}
-  /*
-  // Extra small devices (portrait phones, less than 576px)
-  // No media query since this is the default in Bootstrap
-  */
-  /* Small devices (landscape phones, 576px and up)*/
-  .product-wap .h3, .product-wap li, .product-wap i, .product-wap p {
-    font-size: 12px !important;
-  }
-  .product-wap .product-color-dot {
-    width: 6px;
-    height: 6px;
-  }
-  
-  @media (min-width: 576px) {
-    .tempaltemo-carousel .h1 { font-size: 1em !important;}
-  }
-  
-  /*// Medium devices (tablets, 768px and up)*/
-  @media (min-width: 768px) {
-    #templatemo_main_nav .navbar-nav {max-width: 450px;}
-   }
-  
-  /* Large devices (desktops, 992px and up)*/
-  @media (min-width: 992px) {
-    #templatemo_main_nav .navbar-nav {max-width: 550px;}
-    #template-mo-jassa-hero-carousel .carousel-item {min-height: 30rem !important;}
-    .product-wap .h3, .product-wap li, .product-wap i, .product-wap p {font-size: 18px !important;}
-    .product-wap .product-color-dot {
-      width: 12px;
-      height: 12px;
-    }
-  }
-  img.card-img-top {
-    width: 373px;
+  .col-sm-9 {
     display: flex;
-    /* text-align: center; */
-    margin-left: 11px;
 }
-h1 {
-    font-size: 12px;
-}
-.row {
-    display: inline;
-}
-.col-12.col-md-4.mb-4 {
-    display: inline-block;
-    margin-top: 21px;
-    margin-right: 11px;
-}
-  a{
-    color: #fff;
-  }
-  /* Extra large devices (large desktops, 1200px and up)*/
-  @media (min-width: 1200px) {}
+  
 </style>
 </head>
 <body>
  <!-- Start Top Nav -->
 
- <div class="row">
-          <div class="col-12 col-md-4 mb-4">
-              <div class="card h-100">
-                  <a href="#">
-                      <img src="/upload/<?php echo e($product->value); ?>" class="card-img-top" alt="...">
-                  </a>
-                  <div class="card-body">
-                      <ul class="list-unstyled d-flex justify-content-between">
-                          <li>
-                              <i class="text-warning fa fa-star"></i>
-                              <i class="text-warning fa fa-star"></i>
-                              <i class="text-warning fa fa-star"></i>
-                              <i class="text-muted fa fa-star"></i>
-                              <i class="text-muted fa fa-star"></i>
-                          </li>
-                          <li class="text-muted text-right">$<?php echo e($product->money); ?></li>
-                      </ul>
-                    <h1><?php echo e($product->name_product); ?></h1>
-                      <p class="card-text">
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt in culpa qui officia deserunt.
-                      </p>
-                     <a href="/CeilingFan/<?php echo e($product->id_product); ?>"><p class="text-muted">Details Product</p></a> 
+ 
+     
+ <div class="container">
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="left-sidebar">
+						<h2>Category</h2>
+						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
+											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
+											Sportswear
+										</a>
+									</h4>
+								</div>
+								<div id="sportswear" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul>
+											<li><a href="#">Nike </a></li>
+											<li><a href="#">Under Armour </a></li>
+											<li><a href="#">Adidas </a></li>
+											<li><a href="#">Puma</a></li>
+											<li><a href="#">ASICS </a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-parent="#accordian" href="#mens">
+											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
+											Mens
+										</a>
+									</h4>
+								</div>
+								<div id="mens" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul>
+											<li><a href="#">Fendi</a></li>
+											<li><a href="#">Guess</a></li>
+											<li><a href="#">Valentino</a></li>
+											<li><a href="#">Dior</a></li>
+											<li><a href="#">Versace</a></li>
+											<li><a href="#">Armani</a></li>
+											<li><a href="#">Prada</a></li>
+											<li><a href="#">Dolce and Gabbana</a></li>
+											<li><a href="#">Chanel</a></li>
+											<li><a href="#">Gucci</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-parent="#accordian" href="#womens">
+											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
+											Womens
+										</a>
+									</h4>
+								</div>
+								<div id="womens" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul>
+											<li><a href="#">Fendi</a></li>
+											<li><a href="#">Guess</a></li>
+											<li><a href="#">Valentino</a></li>
+											<li><a href="#">Dior</a></li>
+											<li><a href="#">Versace</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="#">Kids</a></h4>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="#">Fashion</a></h4>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="#">Households</a></h4>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="#">Interiors</a></h4>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="#">Clothing</a></h4>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="#">Bags</a></h4>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="#">Shoes</a></h4>
+								</div>
+							</div>
+						</div><!--/category-products-->
+					
+						<div class="brands_products"><!--brands_products-->
+							<h2>Category</h2>
+							<div class="brands-name">
+								<ul class="nav nav-pills nav-stacked" id="nav">
+                  <?php $__currentLoopData = $ceiling; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ceiling1): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+									<li><a href="#"> <span class="pull-right">(<?php echo e($ceiling1->total); ?>)</span><?php echo e($ceiling1->name); ?></a></li>
+								<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+								</ul>
+							</div>
+						</div><!--/brands_products-->
+						
+						<div class="price-range"><!--price-range-->
+							<h2>Price Range</h2>
+             <form action="">
+              <p>
+  <label for="amount">Price range:</label>
+  <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+ 
+</p>
+ 
+<div id="slider-range"></div>
+<br>
+  <input type="submit" name="filter_price" value="filter_price" class="btn btn-success">
+  <input type="hidden" name="start_price" id="start_price">
+  <input type="hidden" name="end_price" id="end_price">
+</form>
+ 
+						</div><!--/price-range-->
+						
+						<div class="shipping text-center"><!--shipping-->
+							<img src="images/home/shipping.jpg" alt="" />
+						</div><!--/shipping-->
+					
+					</div>
+				</div>
+				
+				<div class="col-sm-9 padding-right">
+          <?php $__currentLoopData = $row; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+				
+					
+						<div class="col-sm-4">
+							<div class="product-image-wrapper">
+								<div class="single-products">
+                <div class="col-12 col-md-4 mb-4">
+                <div class="card " id="card">
+                  <div class="container">
+                    
                   </div>
-                  
-              </div>
-             
-          </div>
-          
-          
-      </div>
-      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    <a href="#">
+                        <img src="/upload/<?php echo e($row->value); ?>" class="img-fluid" alt="..."  >
+                    </a>
+                    <div class="card-body">
+                        <ul class="list-unstyled d-flex justify-content-between">
+                            <li>
+                                <i class="text-warning fa fa-star"></i>
+                                <i class="text-warning fa fa-star"></i>
+                                <i class="text-warning fa fa-star"></i>
+                                <i class="text-muted fa fa-star"></i>
+                                <i class="text-muted fa fa-star"></i>
+                            </li>
+                            <li class="text-muted text-right">$<?php echo e($row->money); ?></li>
+                        </ul>
+                        <h1  id="h1"><?php echo e($row->name_product); ?></h1>
+
+                        <a href="/CeilingFan/<?php echo e($row->id_product); ?>"><p class="text-muted">Details Product</p></a>
+                    </div>
+
+                </div>
+
+            </div>
+										
+								</div>
+							
+							</div>
+						</div>
+						<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+					
+					
+						
+						
+					<!--features_items-->
+					
+					<div class="category-tab"><!--category-tab-->
+						<div class="col-sm-12">
+							
+						</div>
+					
+					</div><!--/category-tab-->
+					
+			<!--/recommended_items-->
+					
+				</div>
+			</div>
+		</div>
       
 <!-- End Featured Product -->
 <!-- Start Footer -->
 
 <!-- End Footer -->
+
 </body>
 </html>
 

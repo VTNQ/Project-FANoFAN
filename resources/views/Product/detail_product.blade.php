@@ -14,6 +14,9 @@
             /* color: whitesmoke; */
             margin-left: -14px;
         }
+        div#Extra {
+    display: inline-block;
+}
     </style>
 
     <section id="main-content">
@@ -54,11 +57,22 @@
                         <div class="row">
                             <div class="col-lg-12 col-sm=12 col-md-12">
                                 <div class="form-group">
-                                    <strong>Image:</strong>
-                                    @foreach($data1 as $row)
-                                        <img src="/upload/{{$row->value}}" alt="" width="200px">
-                                    @endforeach
+                                    <strong>Main:</strong>
+                                   
+                                        <img src="/upload/{{$Main->value}}" alt="" width="200px">
+                                   
                                 </div>
+                                @if($Extra)
+                                <div class="form-group" id="Extra">
+                                    <strong>Extra:</strong>
+                                @foreach($Extra as $row)
+                              
+                                   
+                                        <img src="/upload/{{$row->value}}" alt="" width="200px">
+                                   
+                                </div>
+                                @endforeach
+                                @endif
                             </div>
                         </div>
                         <div class="row">
