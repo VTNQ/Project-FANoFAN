@@ -1,12 +1,10 @@
-@extends('layouts.template')
-
-@section('title_page')
+<?php $__env->startSection('title_page'); ?>
 
 home page
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('mycss')
+<?php $__env->startSection('mycss'); ?>
 <style>
     .main-panel {
         background-color: #1c2331;
@@ -18,11 +16,11 @@ home page
 }
 
 </style>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('body_content')
+<?php $__env->startSection('body_content'); ?>
 
-@foreach($row as $product)
+<?php $__currentLoopData = $row; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -223,7 +221,7 @@ h1 {
           <div class="col-12 col-md-4 mb-4">
               <div class="card h-100">
                   <a href="#">
-                      <img src="/upload/{{$product->value}}" class="card-img-top" alt="...">
+                      <img src="/upload/<?php echo e($product->value); ?>" class="card-img-top" alt="...">
                   </a>
                   <div class="card-body">
                       <ul class="list-unstyled d-flex justify-content-between">
@@ -234,13 +232,13 @@ h1 {
                               <i class="text-muted fa fa-star"></i>
                               <i class="text-muted fa fa-star"></i>
                           </li>
-                          <li class="text-muted text-right">${{$product->money}}</li>
+                          <li class="text-muted text-right">$<?php echo e($product->money); ?></li>
                       </ul>
-                    <h1>{{$product->name_product}}</h1>
+                    <h1><?php echo e($product->name_product); ?></h1>
                       <p class="card-text">
                           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt in culpa qui officia deserunt.
                       </p>
-                     <a href="/CeilingFan/{{$product->id_product}}"><p class="text-muted">Details Product</p></a> 
+                     <a href="/CeilingFan/<?php echo e($product->id_product); ?>"><p class="text-muted">Details Product</p></a> 
                   </div>
                   
               </div>
@@ -249,7 +247,7 @@ h1 {
           
           
       </div>
-      @endforeach
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       
 <!-- End Featured Product -->
 <!-- Start Footer -->
@@ -258,8 +256,9 @@ h1 {
 </body>
 </html>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('myscript')
+<?php $__env->startSection('myscript'); ?>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/index/categories_list.blade.php ENDPATH**/ ?>

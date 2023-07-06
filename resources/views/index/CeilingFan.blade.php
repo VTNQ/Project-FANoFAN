@@ -163,7 +163,7 @@
 
                         @foreach($Show_comment as $row)
                             <div class="d-flex flex-row user-info"><img class="rounded-circle"
-                                                                        src="/public/upload/user.png" width="40">
+                                                                        src="/upload/user.png" width="40">
 
 
                                 <div class="d-flex flex-column justify-content-start ml-2"><span
@@ -179,23 +179,42 @@
 
                     @endforeach
                     <div class="bg-light p-2">
-                        <form action="/addFeedback/{{$photo->id_product}}" method="POST">
-                            @csrf
+                        
+                            
                             <div class="d-flex flex-row align-items-start"><img class="rounded-circle"
-                                                                                src="/public/upload/user.png"
+                                                                                src="/upload/user.png"
                                                                                 width="40"><textarea
                                     class="form-control ml-1 shadow-none textarea" name="Message"></textarea></div>
                             <div class="mt-2 text-right">
-                                <button class="btn btn-primary btn-sm shadow-none" type="submit">Post comment</button>
+                                <button class="btn btn-primary btn-sm shadow-none" type="button" data-toggle="modal" data-target="#exampleModal">Post comment</button>
                                 <button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel
                                 </button>
                             </div>
-                        </form>
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Notification</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Please login before feedback
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a href="/login"><button type="button" class="btn btn-primary">Login</button></a>
+      </div>
+    </div>
+  </div>
+</div>
     <script>
         function change_image(image){
 
@@ -216,6 +235,25 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 });
     </script>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
     <!-- feedback -->
 
 @endsection
