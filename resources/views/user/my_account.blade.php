@@ -95,7 +95,7 @@
                 <li class="breadcrumb-item"><a href="/">Home</a></li>
                 <li class="breadcrumb-item"><a href="/user">User</a></li>
                 <li class="breadcrumb-item active" aria-current="page">My Information</li>
-
+                <a href="/logout" style="float: right; margin: 0 0 0 50vw">Logout</a>
             </ol>
 
         </nav>
@@ -115,7 +115,7 @@
             <div class="col-md-4 mb-3">
                 <div class="card">
                     <div class="card-body">
-                       <form action="/upload_photo" method="post" enctype="multipart/form-data">
+                       <form action="/user/upload_photo" method="post" enctype="multipart/form-data">
                         @csrf
                             <div class="d-flex flex-column align-items-center text-center">
                                 <img src="/upload/{{$list_photo->avatar}}" alt="Admin"

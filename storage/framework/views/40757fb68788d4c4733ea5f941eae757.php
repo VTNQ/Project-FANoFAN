@@ -95,7 +95,7 @@
                 <li class="breadcrumb-item"><a href="/">Home</a></li>
                 <li class="breadcrumb-item"><a href="/user">User</a></li>
                 <li class="breadcrumb-item active" aria-current="page">My Information</li>
-
+                <a href="/logout" style="float: right; margin: 0 0 0 50vw">Logout</a>
             </ol>
 
         </nav>
@@ -115,12 +115,12 @@
             <div class="col-md-4 mb-3">
                 <div class="card">
                     <div class="card-body">
-                       <form action="/account" method="post" enctype="multipart/form-data">
+                       <form action="/user/upload_photo" method="post" enctype="multipart/form-data">
                         <?php echo csrf_field(); ?>
                             <div class="d-flex flex-column align-items-center text-center">
                                 <img src="/upload/<?php echo e($list_photo->avatar); ?>" alt="Admin"
                                      class="rounded-circle" width="150" id="img">
-                                    
+
                                 <div class="mt-3">
                                     <?php $__currentLoopData = $list_user; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <h4><?php echo e($user->username); ?></h4>
@@ -131,25 +131,19 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                                             <br>
-                                            
                                         </div>
-                                        
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" id="fileImg"
                                                    aria-describedby="inputGroupFileAddon01" name="fileImg">
                                             <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                                         </div>
-                                        
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
-                                    </form> 
                                 </div>
                             </div>
-                        
-
+                       </form>
                     </div>
                 </div>
-
             </div>
             <div class="col-md-8">
                 <div class="card mb-3">
@@ -317,17 +311,6 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">OLD PASSWORD:</label>
-<<<<<<< HEAD
-                        <input type="text" class="form-control" id="recipient-name" name="old_password">
-                    </div>
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">NEW PASSWORD:</label>
-                        <input type="text" class="form-control" id="recipient-name" name="new_password">
-                    </div>
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">RE-ENTER PASSWORD:</label>
-                        <input type="text" class="form-control" id="recipient-name" name="re_new_password">
-=======
                         <input type="password" class="form-control" id="recipient-name" name="old_password">
                     </div>
                     <div class="form-group">
@@ -337,7 +320,6 @@
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">RE-ENTER PASSWORD:</label>
                         <input type="password" class="form-control" id="recipient-name" name="re_new_password">
->>>>>>> cc53e159f5c572b8287493d54f30dc86c460cf69
                     </div>
                 </div>
                 <div class="modal-footer">
