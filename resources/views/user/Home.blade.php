@@ -370,7 +370,7 @@
             <div class="col-12 col-md-4 mb-4">
                 <div class="card h-100">
                     <a href="#">
-                        <img src="/upload/{{$row->value}}" class="card-img-top" alt="...">
+                        <img src="/upload/{{$row->value}}" class="img-fluid img-thumbnail" alt="...">
                     </a>
                     <div class="card-body">
                         <ul class="list-unstyled d-flex justify-content-between">

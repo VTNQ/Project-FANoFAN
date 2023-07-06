@@ -83,8 +83,9 @@
                type="file"
                 name="Main"
                id="MultipleFile" >
-               @error('Main')
+               @error('Main')  @error('file')
                <div class="alert alert-danger">Please require 1 of 2</div>
+               @enderror
                @enderror
     </div>
     <div class="mb-3">
@@ -95,9 +96,7 @@
         <input class="form-control" 
                type="file" 
                id="file" name="file[]" multiple>
-               @error('file')
-               <div class="alert alert-danger">Please require 1 of 2</div>
-               @enderror
+               
     </div>
                                 <button type="submit" class="btn btn-info">Add Product</button>
                                 </form>
