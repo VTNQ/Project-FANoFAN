@@ -37,7 +37,7 @@
                   href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
             <style>
-            
+
                 @media (min-width: 576px) {
                     .tempaltemo-carousel .h1 {
                         font-size: 1em !important;
@@ -71,6 +71,12 @@
                     }
                 }
 
+                img.card-img-top {
+                    width: 30vw;
+                    display: flex;
+                    height: 50vh;
+                    object-fit: cover;
+                }
 
                 h1 {
                     font-size: 12px;
@@ -116,7 +122,7 @@
                             <li class="text-muted text-right">${{$row->money}}</li>
                         </ul>
                         <h1>{{$row->name_product}}</h1>
-                       
+
                         <a href="/CeilingFan/{{$row->id_product}}"><p class="text-muted">Details Product</p></a>
                     </div>
 

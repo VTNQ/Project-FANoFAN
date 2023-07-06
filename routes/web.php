@@ -34,6 +34,7 @@ Route::prefix('/user')->group(function () {
     Route::get('/history_feedback', [UserController::class, 'history_feedback']);
     Route::get('/my_account/edit_username', [UserController::class, 'EditUsername']);
     Route::get('/my_account/edit_email', [UserController::class, 'EditEmail']);
+    Route::get('/my_account/edit_password', [UserController::class, 'EditPhone']);
     Route::get('/my_account/edit_password', [UserController::class, 'EditPassword']);
     Route::post('/upload_photo', [UserController::class, 'upload_photo']);
 });
