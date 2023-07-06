@@ -332,10 +332,10 @@
                 }
 
                 img.card-img-top {
-                    width: 373px;
+                    width: 30vw;
                     display: flex;
-                    /* text-align: center; */
-                    margin-left: 11px;
+                    height: 50vh;
+                    object-fit: cover;
                 }
 
                 h1 {
@@ -382,7 +382,7 @@
                             <li class="text-muted text-right">$<?php echo e($row->money); ?></li>
                         </ul>
                         <h1><?php echo e($row->name_product); ?></h1>
-                       
+
                         <a href="/CeilingFan/<?php echo e($row->id_product); ?>"><p class="text-muted">Details Product</p></a>
                     </div>
 

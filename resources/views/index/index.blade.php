@@ -334,10 +334,10 @@
                 }
 
                 img.card-img-top {
-                    width: 373px;
+                    width: 30vw;
                     display: flex;
-                    /* text-align: center; */
-                    margin-left: 11px;
+                    height: 50vh;
+                    object-fit: cover;
                 }
 
                 h1 {
@@ -384,7 +384,7 @@
                             <li class="text-muted text-right">${{$row->money}}</li>
                         </ul>
                         <h1>{{$row->name_product}}</h1>
-                       
+
                         <a href="/CeilingFan/{{$row->id_product}}"><p class="text-muted">Details Product</p></a>
                     </div>
 

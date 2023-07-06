@@ -56,7 +56,10 @@
     iframe {
         bottom: 18vh !important;
     }
-
+    .navbar:hover,
+    .navbar.scrolled{
+        background-color: #36454f;
+    }
 </style>
 <!-- body -->
 
@@ -324,11 +327,16 @@
         const verticalScrollPx = window.scrollY || window.pageYOffset;
 
         if (verticalScrollPx < 10) {
-            document.getElementById('navbar').style.backgroundColor = 'transparent';
             document.getElementById('scroll_top').style.display = 'none';
         } else if (verticalScrollPx < 500) {
-            document.getElementById('navbar').style.backgroundColor = 'dimgrey';
             document.getElementById('scroll_top').style.display = 'block';
+        }
+    });
+    $(window).scroll(function() {
+        if ($(window).scrollTop() > 50) {
+            $('.navbar').addClass('scrolled');
+        } else {
+            $('.navbar').removeClass('scrolled');
         }
     });
 </script>
