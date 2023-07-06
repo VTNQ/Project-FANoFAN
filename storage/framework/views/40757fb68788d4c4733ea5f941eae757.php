@@ -115,7 +115,7 @@
             <div class="col-md-4 mb-3">
                 <div class="card">
                     <div class="card-body">
-                       <form action="/account" method="post" enctype="multipart/form-data">
+                       <form action="/user/upload_photo" method="post" enctype="multipart/form-data">
                         <?php echo csrf_field(); ?>
                             <div class="d-flex flex-column align-items-center text-center">
                                 <img src="/upload/<?php echo e($list_photo->avatar); ?>" alt="Admin"
@@ -142,10 +142,10 @@
                                         
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
-                                    </form> 
+                                  
                                 </div>
                             </div>
-                        
+                            </form>
 
                     </div>
                 </div>

@@ -322,6 +322,10 @@
 <script src="{{ asset('/js/custom.js ')}}"></script>
 @yield('myscript')
 <script src="https://kit.fontawesome.com/1fa6a2ee32.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css">
 <script>
     window.addEventListener('scroll', () => {
         const verticalScrollPx = window.scrollY || window.pageYOffset;
@@ -376,6 +380,24 @@
         window.scroll(0, 0);
     }
 </script>
+<script>
+  $( function() {
+    $( "#slider-range" ).slider({
+      range: true,
+      min: 0,
+      max: 2000,
+      values: [ 75, 300 ],
+      step:10,
+      slide: function( event, ui ) {
+        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+        $('#start_price').val(ui.values[0]);
+        $('#end_price').val(ui.values[1]);
+      }
+    });
+    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+  } );
+  </script>
 </body>
 
 </html>

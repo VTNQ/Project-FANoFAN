@@ -13,6 +13,9 @@
             /* color: whitesmoke; */
             margin-left: -14px;
         }
+        div#Extra {
+    display: inline-block;
+}
     </style>
 
     <section id="main-content">
@@ -54,11 +57,22 @@
                         <div class="row">
                             <div class="col-lg-12 col-sm=12 col-md-12">
                                 <div class="form-group">
-                                    <strong>Image:</strong>
-                                    <?php $__currentLoopData = $data1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <img src="/upload/<?php echo e($row->value); ?>" alt="" width="200px">
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <strong>Main:</strong>
+                                   
+                                        <img src="/upload/<?php echo e($Main->value); ?>" alt="" width="200px">
+                                   
                                 </div>
+                                <?php if($Extra): ?>
+                                <div class="form-group" id="Extra">
+                                    <strong>Extra:</strong>
+                                <?php $__currentLoopData = $Extra; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                              
+                                   
+                                        <img src="/upload/<?php echo e($row->value); ?>" alt="" width="200px">
+                                   
+                                </div>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php endif; ?>
                             </div>
                         </div>
                         <div class="row">

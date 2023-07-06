@@ -101,7 +101,7 @@ class UserController extends Controller
             $new_image=$name_image.rand(0,99). '.' .$get_image->getClientOriginalExtension();
             $get_image->move('upload',$new_image);
             $data['avatar']=$new_image;
-            DB::table('user')->where('id',$id_user)->update(['avatar'=>$data]);
+            DB::table('user')->where('id',$id_user)->update($data);
 
             return redirect('user/my_account')->with('success','update Photo success');
         }

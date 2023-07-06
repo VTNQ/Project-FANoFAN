@@ -125,8 +125,10 @@ class ProductController extends Controller
         $data_last = session()->get('value_admin');
         $list_photo = DB::table('user')->select('*')->where('avatar', $data_last)->first();
         $data = DB::table('product')->select('*')->join('photo', 'product.id_product', '=', 'photo.id_product')->join('category', 'product.id_category', '=', 'category.id')->where('product.id_product', $id_product)->first();
-        $data1 = DB::table('product')->select('*')->join('photo', 'product.id_product', '=', 'photo.id_product')->where('product.id_product', $id_product)->get();
-        return view('Product.detail_product')->with('data', $data)->with('data1', $data1)->with('list_photo', $list_photo);
+        $Main = DB::table('product')->select('*')->join('photo', 'product.id_product', '=', 'photo.id_product')->where('product.id_product', $id_product)->where('photo.status','=',1)->first();
+        $Extra=DB::table('product')->select('*')->join('photo','product.id_product','=','photo.id_product')->where('product.id_product',$id_product)->where('photo.status','=',0)->get();
+        
+        return view('Product.detail_product')->with('data', $data)->with('Main', $Main)->with('list_photo', $list_photo)->with('Extra',$Extra);
     }
 
     public function delete_all_product(Request $request)
@@ -142,6 +144,7 @@ class ProductController extends Controller
             $product = DB::table('product')->join('category', 'category.id', '=', 'product.id_category')->where('product.id_product', $id_product)->get();
             $category = DB::table('category')->orderBy('id', 'DESC')->select('*')->get();
             $feedback = DB::table('feedback')->select('*')->get();
+
             $data3=DB::table('product')->join('photo', 'product.id_product', '=', 'photo.id_product')->where('product.id_product',$id_product)->get();
             $show_comment = DB::table('user')->join('feedback', 'user.id', '=', 'feedback.id_user')->join('product', 'feedback.id_product', '=', 'product.id_product')->select('*')->where('product.id_product', $id_product)->get();
             return view('index.CeilingFan')->with('photo', $photo)->with('product', $product)->with('category', $category)->with('Show_comment', $show_comment)->with('feedback', $feedback)->with('data3',$data3);
@@ -154,6 +157,7 @@ class ProductController extends Controller
             $product = DB::table('product')->join('photo', 'product.id_product', '=', 'photo.id_product')->where('product.id_product',$id_product)->first();
             $category = DB::table('category')->orderBy('id', 'DESC')->select('*')->get();
             $feedback = DB::table('feedback')->select('*')->get();
+
             $show_comment = DB::table('user')->join('feedback', 'user.id', '=', 'feedback.id_user')->join('product', 'feedback.id_product', '=', 'product.id_product')->select('*')->where('product.id_product', $id_product)->get();
             return view('user.CeilingFan')->with('product', $product)->with('category', $category)->with('Show_comment', $show_comment)->with('feedback', $feedback)->with('avatar', $avatar)->with('data3',$data3)->with('photo',$data2);
         }
@@ -177,7 +181,13 @@ class ProductController extends Controller
     public function categories_list($id){
         $row=DB::table('category')->join('product','category.id','=','product.id_category')->join('photo','photo.id_product','=','product.id_product')->where('category.id',$id)->where('photo.status','=',1)->get();
         $category=DB::table('category')->orderBy('id','DESC')->select('*')->get();
-        return view('index.categories_list')->with('category',$category)->with('row',$row);
+        $ceiling=DB::table('category')->join('product','category.id','=','product.id_category')->groupBy('category.name')->select('category.name', DB::raw('count(product.id_product) as total'))->get();
+        if(isset($_GET['start_price']) && $_GET['end_price']){
+            $min_price=$_GET['start_price'];
+            $max_price=$_GET['end_price'];
+            $row=DB::table('category')->join('product','category.id','=','product.id_category')->join('photo','photo.id_product','=','product.id_product')->where('category.id',$id)->where('photo.status','=',1)->whereBetween('product.money',[$min_price,$max_price])->paginate(5)->appends(request()->query());
+        }
+        return view('index.categories_list')->with('category',$category)->with('row',$row)->with('ceiling',$ceiling);
     }
 
 }
