@@ -123,7 +123,7 @@
                         </ul>
                         <h1>{{$row->name_product}}</h1>
 
-                        <a href="/CeilingFan/{{$row->id_product}}"><p class="text-muted">Details Product</p></a>
+                        <a href="Product/{{$row->id_product}}"><p class="text-muted">Details Product</p></a>
                     </div>
 
                 </div>

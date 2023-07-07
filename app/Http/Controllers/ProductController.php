@@ -54,7 +54,7 @@ class ProductController extends Controller
 
     public function add_product(Request $request)
     {
-      
+
 
         $request->validate(['nameProduct'=>'required','Price'=>'required|numeric|min:0','description'=>'required','file'=>'required_without:Main','Main'=>'required_without:file    ']);
         $product=new Product();
@@ -83,7 +83,7 @@ class ProductController extends Controller
         }
         Photo::insert(['value'=>implode('|',$image),'id_product'=>$id]);
        }
-    
+
        $list=DB::table('photo')->select('*')->orderBy('id_product','DESC')->first();
        $hast=Session::put('id',$list->id_product);
        return back()->with('hast',$hast);
@@ -127,7 +127,7 @@ class ProductController extends Controller
         $data = DB::table('product')->select('*')->join('photo', 'product.id_product', '=', 'photo.id_product')->join('category', 'product.id_category', '=', 'category.id')->where('product.id_product', $id_product)->first();
         $Main = DB::table('product')->select('*')->join('photo', 'product.id_product', '=', 'photo.id_product')->where('product.id_product', $id_product)->where('photo.status','=',1)->first();
         $Extra=DB::table('product')->select('*')->join('photo','product.id_product','=','photo.id_product')->where('product.id_product',$id_product)->where('photo.status','=',0)->get();
-        
+
         return view('Product.detail_product')->with('data', $data)->with('Main', $Main)->with('list_photo', $list_photo)->with('Extra',$Extra);
     }
 
@@ -144,10 +144,9 @@ class ProductController extends Controller
             $product = DB::table('product')->join('category', 'category.id', '=', 'product.id_category')->where('product.id_product', $id_product)->get();
             $category = DB::table('category')->orderBy('id', 'DESC')->select('*')->get();
             $feedback = DB::table('feedback')->select('*')->get();
-
             $data3=DB::table('product')->join('photo', 'product.id_product', '=', 'photo.id_product')->where('product.id_product',$id_product)->get();
             $show_comment = DB::table('user')->join('feedback', 'user.id', '=', 'feedback.id_user')->join('product', 'feedback.id_product', '=', 'product.id_product')->select('*')->where('product.id_product', $id_product)->get();
-            return view('index.CeilingFan')->with('photo', $photo)->with('product', $product)->with('category', $category)->with('Show_comment', $show_comment)->with('feedback', $feedback)->with('data3',$data3);
+            return view('index.Product')->with('photo', $photo)->with('product', $product)->with('category', $category)->with('Show_comment', $show_comment)->with('feedback', $feedback)->with('data3',$data3);
 
         } else {
             $data_session = session()->get('id');
@@ -157,9 +156,8 @@ class ProductController extends Controller
             $product = DB::table('product')->join('photo', 'product.id_product', '=', 'photo.id_product')->where('product.id_product',$id_product)->first();
             $category = DB::table('category')->orderBy('id', 'DESC')->select('*')->get();
             $feedback = DB::table('feedback')->select('*')->get();
-
             $show_comment = DB::table('user')->join('feedback', 'user.id', '=', 'feedback.id_user')->join('product', 'feedback.id_product', '=', 'product.id_product')->select('*')->where('product.id_product', $id_product)->get();
-            return view('user.CeilingFan')->with('product', $product)->with('category', $category)->with('Show_comment', $show_comment)->with('feedback', $feedback)->with('avatar', $avatar)->with('data3',$data3)->with('photo',$data2);
+            return view('user.Product')->with('product', $product)->with('category', $category)->with('Show_comment', $show_comment)->with('feedback', $feedback)->with('avatar', $avatar)->with('data3',$data3)->with('photo',$data2);
         }
     }
     public function addFeedback(Request $request, $id_product)

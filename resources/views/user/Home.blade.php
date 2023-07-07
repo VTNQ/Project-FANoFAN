@@ -384,18 +384,12 @@
                             <li class="text-muted text-right">${{$row->money}}</li>
                         </ul>
                         <h1>{{$row->name_product}}</h1>
-                        <p class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt in culpa qui officia
-                            deserunt.
-                        </p>
-                        <a href="/CeilingFan/{{$row->id_product}}"><p class="text-muted">Details Product</p></a>
+                        <a href="/Product/{{$row->id_product}}"><p class="text-muted">Details Product</p></a>
                     </div>
 
                 </div>
 
             </div>
-
-
         </div>
         @endforeach
 

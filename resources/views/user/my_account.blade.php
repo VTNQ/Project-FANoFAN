@@ -95,7 +95,7 @@
                 <li class="breadcrumb-item"><a href="/">Home</a></li>
                 <li class="breadcrumb-item"><a href="/user">User</a></li>
                 <li class="breadcrumb-item active" aria-current="page">My Information</li>
-
+                <a href="/logout" style="float: right; margin: 0 0 0 50vw">Logout</a>
             </ol>
 
         </nav>

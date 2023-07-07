@@ -205,4 +205,4 @@
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Phong\project-FANoFAN\resources\views/index/CeilingFan.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Phong\project-FANoFAN\resources\views/index/Product.blade.php ENDPATH**/ ?>

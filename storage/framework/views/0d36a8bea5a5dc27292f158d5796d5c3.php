@@ -141,7 +141,7 @@
                         <span><?php echo $photo->content; ?></span>
                         <hr class="m-0 pt-2 mt-2">
                     </div>
-                    
+
 
                 </div>
             </div>
@@ -177,8 +177,8 @@
 
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     <div class="bg-light p-2">
-                        
-                            
+
+
                             <div class="d-flex flex-row align-items-start"><img class="rounded-circle"
                                                                                 src="/upload/user.png"
                                                                                 width="40"><textarea
@@ -188,7 +188,7 @@
                                 <button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel
                                 </button>
                             </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -263,4 +263,4 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/index/CeilingFan.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/index/Product.blade.php ENDPATH**/ ?>

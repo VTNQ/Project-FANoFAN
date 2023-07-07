@@ -141,7 +141,7 @@
                         <span><?php echo $photo->content; ?></span>
                         <hr class="m-0 pt-2 mt-2">
                     </div>
-                    
+
 
                 </div>
             </div>
@@ -225,4 +225,4 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\project-FANoFAN-2\resources\views/index/CeilingFan.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\project-FANoFAN-2\resources\views/index/Product.blade.php ENDPATH**/ ?>

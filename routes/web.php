@@ -79,7 +79,7 @@ Route::get('/edit_product/{id_product}', [ProductController::class, 'edit_produc
 Route::post('/update_product/{id_product}', [ProductController::class, 'update_product']);
 //detail_product
 Route::get('/detail_product/{id_product}', [ProductController::class, 'detail_product']);
-Route::get('/CeilingFan/{id_product}', [ProductController::class, 'ShowProduct']);
+Route::get('/Product/{id_product}', [ProductController::class, 'ShowProduct']);
 Route::post('/addFeedback/{id_product}', [ProductController::class, 'addFeedback']);
 Route::get('categories_list/{id}', [ProductController::class, 'categories_list']);
 Route::delete('/delete_product', [ProductController::class, 'delete_all_product'])->name('product.delete');
