@@ -112,19 +112,21 @@
             <h3>History Feedback</h3>
             <table class="table" style="border-radius: 13px; text-align: center; ">
                 <tr>
-                    <th scope="col"></th>
+                <th scope="col">Image</th>
                     <th scope="col">Product</th>
                     <th scope="col">User</th>
                     <th scope="col">Feedback</th>
+                    <th scope="col">Day Feedback</th>
+                    
                 </tr>
-                <?php $__currentLoopData = $data_feedback; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                
                     <tr>
-                        <?php $__currentLoopData = $list_photo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $photo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    
                             <td>
-                                <img src="/upload/<?php echo e($photo->value); ?>" alt="" style="width: 6vw">
+                                <img src="/upload/<?php echo e($list_photo->value); ?>" alt="" style="width: 6vw">
                             </td>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
+                     
+                            <?php $__currentLoopData = $data_feedback; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <td>
                             <?php echo e($data->name_product); ?>
 
@@ -135,6 +137,10 @@
                         </td>
                         <td>
                             <?php echo e($data->comment); ?>
+
+                        </td>
+                        <td>
+                        <?php echo e(date('M d,Y h:i A',strtotime($data->date_to))); ?>
 
                         </td>
                     </tr>

@@ -112,19 +112,21 @@
             <h3>History Feedback</h3>
             <table class="table" style="border-radius: 13px; text-align: center; ">
                 <tr>
-                    <th scope="col"></th>
+                <th scope="col">Image</th>
                     <th scope="col">Product</th>
                     <th scope="col">User</th>
                     <th scope="col">Feedback</th>
+                    <th scope="col">Day Feedback</th>
+                    
                 </tr>
-                @foreach ($data_feedback as $data)
+                
                     <tr>
-                        @foreach($list_photo as $photo)
+                    
                             <td>
-                                <img src="/upload/{{$photo->value}}" alt="" style="width: 6vw">
+                                <img src="/upload/{{$list_photo->value}}" alt="" style="width: 6vw">
                             </td>
-                        @endforeach
-
+                     
+                            @foreach ($data_feedback as $data)
                         <td>
                             {{$data->name_product}}
                         </td>
@@ -133,6 +135,9 @@
                         </td>
                         <td>
                             {{$data->comment}}
+                        </td>
+                        <td>
+                        {{date('M d,Y h:i A',strtotime($data->date_to))}}
                         </td>
                     </tr>
                 @endforeach

@@ -170,6 +170,13 @@
                             <li><a href="/list_product">Show list Product</a></li>
                         </ul>
                     </li>
+                    <li class="sub-menu">
+                        <a href="/feedback">
+                            <i class="fa fa-th"></i>
+                            <span>Feedback</span>
+                        </a>
+                     
+                    </li>
                 </ul>
             </div>
             <!-- sidebar menu end-->

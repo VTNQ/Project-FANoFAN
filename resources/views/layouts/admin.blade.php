@@ -110,7 +110,7 @@
                     </a>
                     <ul class="dropdown-menu extended logout">
                         <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
-                        <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+                     
                         <li><a href="/admin/logout"><i class="fa fa-key"></i> Log Out</a></li>
                     </ul>
                 </li>
@@ -158,6 +158,13 @@
                             <li><a href="/add_Product">Add Product</a></li>
                             <li><a href="/list_product">Show list Product</a></li>
                         </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="/feedback">
+                            <i class="fa fa-th"></i>
+                            <span>Feedback</span>
+                        </a>
+                     
                     </li>
                 </ul>
             </div>
