@@ -382,18 +382,12 @@
                             <li class="text-muted text-right">$<?php echo e($row->money); ?></li>
                         </ul>
                         <h1><?php echo e($row->name_product); ?></h1>
-                        <p class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt in culpa qui officia
-                            deserunt.
-                        </p>
-                        <a href="/CeilingFan/<?php echo e($row->id_product); ?>"><p class="text-muted">Details Product</p></a>
+                        <a href="/Product/<?php echo e($row->id_product); ?>"><p class="text-muted">Details Product</p></a>
                     </div>
 
                 </div>
 
             </div>
-
-
         </div>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
