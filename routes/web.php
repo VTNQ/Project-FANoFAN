@@ -103,6 +103,8 @@ Route::get('/forgot-password', [UserEmailController::class, 'forgotPassword'])->
 Route::get('/forgot-password/{token}', [UserEmailController::class, 'forgotPasswordValidate']);
 Route::post('/forgot-password', [UserEmailController::class, 'resetPassword'])->name('forgot-password');
 Route::put('reset-password', [UserEmailController::class, 'updatePassword'])->name('reset-password');
+Route::get('/feedback',[AdminController::class,'feedback']);
+Route::get('/filter_date',[AdminController::class,'filter_date']);
 
 
 

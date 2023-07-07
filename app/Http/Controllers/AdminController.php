@@ -7,6 +7,7 @@ use App\Models\Photo;
 use App\Models\product;
 use App\Models\UserModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
@@ -106,5 +107,19 @@ class AdminController extends Controller
         Session::put('value', null);
         return redirect('/');
     }
+public function feedback(){
+    $data_last = session()->get('value_admin');
+    $list_photo = DB::table('user')->select('*')->where('user.avatar', $data_last)->first();
+    $feedback=DB::table('feedback')->join('user','feedback.id_user','=','user.id')->join('product','feedback.id_product','=','product.id_product')->join('photo','photo.id_product','=','product.id_product')->where('photo.status','=',1)->get();
+    return view('feedback.feedback')->with('list_photo',$list_photo)->with('feedback',$feedback);
+}
+public function filter_date(Request $request){
+      $data_last = session()->get('value_admin');
+$start_date=$request->start_date;
+$End_date=$request->End_date;
 
+$list_photo = DB::table('user')->select('*')->where('user.avatar', $data_last)->first();
+$filter=DB::table('feedback')->join('user','feedback.id_user','=','user.id')->join('product','feedback.id_product','=','product.id_product')->join('photo','photo.id_product','=','product.id_product')->whereBetween('date_to',[$start_date,$End_date])->where('photo.status','=',1)->get();
+return view('feedback.filter_date')->with('filter',$filter)->with('list_photo',$list_photo);
+}
 }
