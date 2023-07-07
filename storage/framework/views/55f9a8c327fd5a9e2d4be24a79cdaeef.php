@@ -61,7 +61,7 @@ home page
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css">
- 
+
 <style>
 body, ul, li, p, a, label, input, div {
     font-family: 'Roboto', sans-serif;
@@ -110,7 +110,7 @@ body, ul, li, p, a, label, input, div {
   #templatemo_main_nav a { color: #212934;}
   #templatemo_main_nav a:hover { color: #69bb7e;}
   #templatemo_main_nav .navbar .nav-icon { margin-right: 20px;}
-  
+
   /* Hero Carousel */
   #template-mo-jassa-hero-carousel { background: #efefef !important;}
   /* Accordion */
@@ -125,7 +125,7 @@ body, ul, li, p, a, label, input, div {
   .product-wap .product-color-dot.color-dot-black { background:#000000;}
   .product-wap .product-color-dot.color-dot-light { background:#e0e0e0;}
   .product-wap .product-color-dot.color-dot-green { background:#0bff7e;}
- 
+
   /* Brand */
   .brand-img {
     filter: grayscale(100%);
@@ -174,14 +174,14 @@ body, ul, li, p, a, label, input, div {
   .col-sm-9 {
     display: flex;
 }
-  
+
 </style>
 </head>
 <body>
  <!-- Start Top Nav -->
 
- 
-     
+
+
  <div class="container">
 			<div class="row">
 				<div class="col-sm-3">
@@ -235,7 +235,7 @@ body, ul, li, p, a, label, input, div {
 									</div>
 								</div>
 							</div>
-							
+
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4 class="panel-title">
@@ -293,7 +293,7 @@ body, ul, li, p, a, label, input, div {
 								</div>
 							</div>
 						</div><!--/category-products-->
-					
+
 						<div class="brands_products"><!--brands_products-->
 							<h2>Category</h2>
 							<div class="brands-name">
@@ -304,43 +304,43 @@ body, ul, li, p, a, label, input, div {
 								</ul>
 							</div>
 						</div><!--/brands_products-->
-						
+
 						<div class="price-range"><!--price-range-->
 							<h2>Price Range</h2>
              <form action="">
               <p>
   <label for="amount">Price range:</label>
   <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
- 
+
 </p>
- 
+
 <div id="slider-range"></div>
 <br>
   <input type="submit" name="filter_price" value="filter_price" class="btn btn-success">
   <input type="hidden" name="start_price" id="start_price">
   <input type="hidden" name="end_price" id="end_price">
 </form>
- 
+
 						</div><!--/price-range-->
-						
+
 						<div class="shipping text-center"><!--shipping-->
 							<img src="images/home/shipping.jpg" alt="" />
 						</div><!--/shipping-->
-					
+
 					</div>
 				</div>
-				
+
 				<div class="col-sm-9 padding-right">
           <?php $__currentLoopData = $row; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-				
-					
+
+
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
 								<div class="single-products">
                 <div class="col-12 col-md-4 mb-4">
                 <div class="card " id="card">
                   <div class="container">
-                    
+
                   </div>
                     <a href="#">
                         <img src="/upload/<?php echo e($row->value); ?>" class="img-fluid" alt="..."  >
@@ -358,37 +358,37 @@ body, ul, li, p, a, label, input, div {
                         </ul>
                         <h1  id="h1"><?php echo e($row->name_product); ?></h1>
 
-                        <a href="/CeilingFan/<?php echo e($row->id_product); ?>"><p class="text-muted">Details Product</p></a>
+                        <a href="/Product/<?php echo e($row->id_product); ?>"><p class="text-muted">Details Product</p></a>
                     </div>
 
                 </div>
 
             </div>
-										
+
 								</div>
-							
+
 							</div>
 						</div>
 						<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-					
-					
-						
-						
+
+
+
+
 					<!--features_items-->
-					
+
 					<div class="category-tab"><!--category-tab-->
 						<div class="col-sm-12">
-							
+
 						</div>
-					
+
 					</div><!--/category-tab-->
-					
+
 			<!--/recommended_items-->
-					
+
 				</div>
 			</div>
 		</div>
-      
+
 <!-- End Featured Product -->
 <!-- Start Footer -->
 
@@ -402,4 +402,5 @@ body, ul, li, p, a, label, input, div {
 <?php $__env->startSection('myscript'); ?>
 
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layouts.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/index/categories_list.blade.php ENDPATH**/ ?>

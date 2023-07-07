@@ -121,7 +121,7 @@
                         </ul>
                         <h1><?php echo e($row->name_product); ?></h1>
 
-                        <a href="/CeilingFan/<?php echo e($row->id_product); ?>"><p class="text-muted">Details Product</p></a>
+                        <a href="Product/<?php echo e($row->id_product); ?>"><p class="text-muted">Details Product</p></a>
                     </div>
 
                 </div>
