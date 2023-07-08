@@ -193,9 +193,10 @@ body, ul, li, p, a, label, input, div {
 							<h2>Category</h2>
 							<div class="brands-name">
 								<ul class="nav nav-pills nav-stacked" id="nav">
-                  @foreach($ceiling as $ceiling1)
-									<li><a href="#"> <span class="pull-right">({{$ceiling1->total}})</span>{{$ceiling1->name}}</a></li>
-								@endforeach
+                                    <li><a href=""></a></li>
+                                     @foreach($count_category as $count)
+									    <li><a href="#"> <span class="pull-right">({{$count->total}})</span>{{$count->name}}</a></li>
+								      @endforeach
 								</ul>
 							</div>
 						</div><!--/brands_products-->
@@ -215,18 +216,12 @@ body, ul, li, p, a, label, input, div {
   <input type="hidden" name="start_price" id="start_price">
   <input type="hidden" name="end_price" id="end_price">
 </form>
-
 						</div><!--/price-range-->
-
-						<div class="shipping text-center"><!--shipping-->
-							<img src="images/home/shipping.jpg" alt="" />
-						</div><!--/shipping-->
-
 					</div>
 				</div>
 
 				<div class="col-sm-9 padding-right">
-          @foreach($row as $row)
+          @foreach($row as $)
 
 
 						<div class="col-sm-4">
@@ -237,18 +232,11 @@ body, ul, li, p, a, label, input, div {
                   <div class="container">
 
                   </div>
-                    <a href="#">
+                    <a href="/Product/{{$row->id_product}}">
                         <img src="/upload/{{$row->value}}" class="img-fluid" alt="..."  >
                     </a>
                     <div class="card-body">
                         <ul class="list-unstyled d-flex justify-content-between">
-                            <li>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-muted fa fa-star"></i>
-                                <i class="text-muted fa fa-star"></i>
-                            </li>
                             <li class="text-muted text-right">${{$row->money}}</li>
                         </ul>
                         <h1  id="h1">{{$row->name_product}}</h1>

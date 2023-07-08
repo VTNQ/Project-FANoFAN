@@ -263,10 +263,6 @@
                 <p class="py-1 m-0">
                     <a href="/about">About Us</a>
                 </p>
-
-                <p class="py-1 m-0">
-                    <a href="/gallery">Gallery</a>
-                </p>
                 <p class="py-1 m-0">
                     <a href="/contact">Contact Us</a>
                 </p>

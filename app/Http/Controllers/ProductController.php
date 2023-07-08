@@ -177,13 +177,13 @@ class ProductController extends Controller
     public function categories_list($id){
         $row=DB::table('category')->join('product','category.id','=','product.id_category')->join('photo','photo.id_product','=','product.id_product')->where('category.id',$id)->where('photo.status','=',1)->get();
         $category=DB::table('category')->orderBy('id','DESC')->select('*')->get();
-        $ceiling=DB::table('category')->join('product','category.id','=','product.id_category')->groupBy('category.name')->select('category.name', DB::raw('count(product.id_product) as total'))->get();
+        $count_category=DB::table('category')->join('product','category.id','=','product.id_category')->groupBy('category.name')->select('category.name', DB::raw('count(product.id_product) as total'))->get();
         if(isset($_GET['start_price']) && $_GET['end_price']){
             $min_price=$_GET['start_price'];
             $max_price=$_GET['end_price'];
             $row=DB::table('category')->join('product','category.id','=','product.id_category')->join('photo','photo.id_product','=','product.id_product')->where('category.id',$id)->where('photo.status','=',1)->whereBetween('product.money',[$min_price,$max_price])->paginate(5)->appends(request()->query());
         }
-        return view('index.categories_list')->with('category',$category)->with('row',$row)->with('ceiling',$ceiling);
+        return view('index.categories_list')->with('category',$category)->with('row',$row)->with('count_category',$count_category);
     }
 
 }

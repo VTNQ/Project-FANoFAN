@@ -191,8 +191,8 @@ body, ul, li, p, a, label, input, div {
 							<h2>Category</h2>
 							<div class="brands-name">
 								<ul class="nav nav-pills nav-stacked" id="nav">
-                  <?php $__currentLoopData = $ceiling; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ceiling1): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-									<li><a href="#"> <span class="pull-right">(<?php echo e($ceiling1->total); ?>)</span><?php echo e($ceiling1->name); ?></a></li>
+                  <?php $__currentLoopData = $count_category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $count): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+									<li><a href="#"> <span class="pull-right">(<?php echo e($count->total); ?>)</span><?php echo e($count->name); ?></a></li>
 								<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 								</ul>
 							</div>
