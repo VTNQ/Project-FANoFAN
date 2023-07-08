@@ -51,6 +51,7 @@
         flex: 1 1 auto;
         min-height: 1px;
         padding: 1rem;
+        height: auto !important;
     }
 
     .gutters-sm {
@@ -94,21 +95,30 @@
 
         <!-- Breadcrumb -->
         <nav aria-label="breadcrumb" class="main-breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item" style="line-height: 4vh"><a href="/">Home</a></li>
-                <li class="breadcrumb-item active dropdown" aria-current="page">
-                    <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" id="button">My Information</button>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="/user/history_feedback" class="dropdown-item">
-                                History Feedback
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <a href="/logout" style="float: right; margin: 0 0 0 40vw; line-height: 4vh">Logout</a>
-            </ol>
+            <div class="container-fluid" style="float:left; ">
+                <div class="row">
+                    <div class="col-4">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item" style="line-height: 4vh;><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active dropdown" aria-current="page" >
+                                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" id="button">My Information</button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="/user/history_feedback" class="dropdown-item">
+                                            History Feedback
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="col-7 breadcrumb">&nbsp;</div>
+                    <div class="col-1 breadcrumb">
+                        <a href="/logout" class="navbar-text">Logout</a>
+                    </div>
+                </div>
 
+            </div>
         </nav>
         <!-- /Breadcrumb -->
         @if (session()->has('message'))
@@ -158,7 +168,7 @@
             </div>
             <div class="col-md-8">
                 <div class="card mb-3">
-                    <div class="card-body">
+                    <div class="card-body" style="margin: 10%">
                         <div class="row">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Username</h6>

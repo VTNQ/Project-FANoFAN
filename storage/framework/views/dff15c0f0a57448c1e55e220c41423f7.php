@@ -332,6 +332,9 @@
             document.getElementById('scroll_top').style.display = 'block';
         }
     });
+    function scroll_to_top(){
+        window.scroll(0,0);
+    }
     $(window).scroll(function() {
         if ($(window).scrollTop() > 50) {
             $('.navbar').addClass('scrolled');
@@ -339,6 +342,7 @@
             $('.navbar').removeClass('scrolled');
         }
     });
+
 </script>
 <!-- Messenger Plugin chat Code -->
 <div id="fb-root"></div>

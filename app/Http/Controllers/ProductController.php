@@ -54,8 +54,6 @@ class ProductController extends Controller
 
     public function add_product(Request $request)
     {
-
-
         $request->validate(['nameProduct'=>'required','Price'=>'required|numeric|min:0','description'=>'required','file'=>'required_without:Main','Main'=>'required_without:file    ']);
         $product=new Product();
         $product->name_product=$request->nameProduct;
