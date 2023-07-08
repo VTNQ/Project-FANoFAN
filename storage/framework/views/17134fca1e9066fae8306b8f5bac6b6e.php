@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('title_page'); ?>
     List Picture
 <?php $__env->stopSection(); ?>
