@@ -59,13 +59,13 @@
                                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                 </select>
                                             </div>
-                                        </form>
+                                    
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </div>
 
 
                                 <button type="submit" class="btn btn-info">Add catelogies</button>
-
+                                </form>
                             </div>
                         </section>
                     </div>

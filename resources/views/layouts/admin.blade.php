@@ -109,7 +109,7 @@
                       
                     </a>
                     <ul class="dropdown-menu extended logout">
-                        <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
+                        
                      
                         <li><a href="/admin/logout"><i class="fa fa-key"></i> Log Out</a></li>
                     </ul>
@@ -163,6 +163,13 @@
                         <a href="/feedback">
                             <i class="fa fa-th"></i>
                             <span>Feedback</span>
+                        </a>
+                     
+                    </li>
+                    <li class="sub-menu">
+                        <a href="/feedback">
+                            <i class="fa fa-th"></i>
+                            <span>Change Password</span>
                         </a>
                      
                     </li>

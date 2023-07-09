@@ -16,7 +16,8 @@ class IndexController extends Controller
         if (!$data_session) {
             $data2 = DB::table('photo')->select('*')->join('product', 'photo.id_product', '=', 'product.id_product')->join('category', 'product.id_category', '=', 'category.id')->where('status',1)->get();
             $category=DB::table('category')->orderBy('id','DESC')->select('*')->get();
-            return view('index.index')->with('photo', $data2)->with('avatar', $data2)->with('category',$category);
+            $product=DB::table('product')->join('photo','product.id_product','=','photo.id_product')->select('*')->orderBy('product.id_product','DESC')->paginate(6);
+            return view('index.index')->with('photo', $data2)->with('avatar', $data2)->with('category',$category)->with('product',$product);
         }elseif($data_session){
             $avatar = DB::table('user')->select('*')->where('id', $data_session)->first();
             $category=DB::table('category')->orderBy('id','DESC')->select('*')->get();

@@ -88,12 +88,17 @@
 
                                 </tr>
                                 </thead>
+                                <?php
+                          $url = $_SERVER['REQUEST_URI'];
+                          $string = substr($url, 17);
+                          $i = $string ? ($string -1)*5 + 1 : 1;
+                            ?>
                                 @foreach($photo  as $key=> $row )
 
                                     <tr id="photo_ids{{$row->id_photo}}">
                                         <td><input type="checkbox" name="ids" class="checkbox_ids"
                                                    value="{{$row->id_photo}}"></td>
-                                        <td>{{++$key}}</td>
+                                                   <td>{{$i++}}</td>
                                         <td><img src="/upload/{{$row->value}}" alt="" height="100" width="100">
                                         </td>
                                         <td><?php
