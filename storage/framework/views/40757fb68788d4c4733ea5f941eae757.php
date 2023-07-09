@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+
 </head>
 <style>
     body {
@@ -50,6 +51,7 @@
         flex: 1 1 auto;
         min-height: 1px;
         padding: 1rem;
+        height: auto !important;
     }
 
     .gutters-sm {
@@ -61,7 +63,9 @@
         padding-right: 8px;
         padding-left: 8px;
     }
-
+#button{
+    border: none;
+}
     .mb-3, .my-3 {
         margin-bottom: 1rem !important;
     }
@@ -91,13 +95,30 @@
 
         <!-- Breadcrumb -->
         <nav aria-label="breadcrumb" class="main-breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page" onmouseover="show_choice()">My Information</li>
-                <div style="display: none" id="choice"></div>
-                <a href="/logout" style="float: right; margin: 0 0 0 55vw">Logout</a>
-            </ol>
+            <div class="container-fluid" style="float:left; ">
+                <div class="row">
+                    <div class="col-4">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item" style="line-height: 4vh;><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active dropdown" aria-current="page" >
+                                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" id="button">My Information</button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="/user/history_feedback" class="dropdown-item">
+                                            History Feedback
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="col-7 breadcrumb">&nbsp;</div>
+                    <div class="col-1 breadcrumb">
+                        <a href="/logout" class="navbar-text">Logout</a>
+                    </div>
+                </div>
 
+            </div>
         </nav>
         <!-- /Breadcrumb -->
         <?php if(session()->has('message')): ?>
@@ -147,7 +168,7 @@
             </div>
             <div class="col-md-8">
                 <div class="card mb-3">
-                    <div class="card-body">
+                    <div class="card-body" style="margin: 10%">
                         <div class="row">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Username</h6>
@@ -235,7 +256,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    
+
                     <button type="submit" class="btn btn-primary">submit</button>
                 </div>
             </div>
@@ -341,6 +362,9 @@
     }
     function show_choice(){
         document.getElementById('choice').style.display="block";
+    }
+    function hide_choice(){
+        document.getElementById('choice').style.display="none";
     }
 </script>
 </body>

@@ -125,9 +125,6 @@ h1#row_cou {
                 </div>
 
             </li>
-            <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-                <a class="nav-link gallery-link waves-effect waves-light" href="/gallery">Gallery</a>
-            </li>
             <li class="nav-item active  px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
                 <a class="nav-link contact-link waves-effect waves-light" href="/contact">Contact Us</a>
             </li>
@@ -405,6 +402,9 @@ h1#row_cou {
             $('.navbar').removeClass('scrolled');
         }
     });
+    function scroll_to_top(){
+        window.scroll(0,0);
+    }
 </script>
 <div id="fb-root"></div>
 

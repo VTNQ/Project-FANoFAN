@@ -88,12 +88,30 @@
 
         <!-- Breadcrumb -->
         <nav aria-label="breadcrumb" class="main-breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item"><a href="/user">User</a></li>
-                <li class="breadcrumb-item active" aria-current="page">History Feedback</li>
+            <div class="container-fluid" style="float:left; ">
+                <div class="row">
+                    <div class="col-4">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item" style="line-height: 4vh;"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active dropdown" aria-current="page" >
+                                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" id="button">History Feedback</button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="/user/my_account" class="dropdown-item">
+                                            My Information
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="col-7 breadcrumb">&nbsp;</div>
+                    <div class="col-1 breadcrumb">
+                        <a href="/logout" class="navbar-text">Logout</a>
+                    </div>
+                </div>
 
-            </ol>
+            </div>
 
         </nav>
         <!-- /Breadcrumb -->
@@ -117,16 +135,13 @@
                     <th scope="col">User</th>
                     <th scope="col">Feedback</th>
                     <th scope="col">Day Feedback</th>
-                    
+
                 </tr>
-                
+                @foreach ($data_feedback as $data)
                     <tr>
-                    
                             <td>
-                                <img src="/upload/{{$list_photo->value}}" alt="" style="width: 6vw">
+                                <img src="/upload/{{$data->value}}" alt="" style="width: 6vw">
                             </td>
-                     
-                            @foreach ($data_feedback as $data)
                         <td>
                             {{$data->name_product}}
                         </td>
@@ -142,6 +157,7 @@
                     </tr>
                 @endforeach
             </table>
+            {{$data_feedback->links()}}
         </div>
     </div>
 </div>
