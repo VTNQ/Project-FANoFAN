@@ -100,7 +100,7 @@
                 <a class="nav-link about-link waves-effect waves-light" href="/about">About</a>
             </li>
             <li class="nav-item active  dropdown px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-                <a class="nav-link dropdown-toggle categories-link waves-effect waves-light" href="/categories"
+                <a class="nav-link dropdown-toggle categories-link waves-effect waves-light" href="/categories_list/all"
                    id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                    aria-expanded="false">Categories</a>
                 <div class="dropdown-menu dropdown-primary  mt-lg-3" style="background-color: #6c757d;"
@@ -132,20 +132,6 @@
     </div>
     <!-- Collapsible content -->
 </nav>
-<!-- <li class="nav-item">
-                             <a class="nav-link" href="fashion.html">Fashion</a>
-                          </li>
-                          <li class="nav-item">
-                             <a class="nav-link" href="news.html">News</a>
-                          </li> -->
-
-<header class="img-fluid" style="padding: 11% 0px;">
-</header>
-<!-- end loader -->
-<!-- header -->
-
-
-</div>
 <!-- </header> -->
 <!-- end header inner -->
 <!-- end header -->

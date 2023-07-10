@@ -177,9 +177,8 @@ a{
 							<h2>Category</h2>
 							<div class="brands-name">
 								<ul class="nav nav-pills nav-stacked" id="nav">
-                                    <li><a href=""></a></li>
                                      <?php $__currentLoopData = $count_category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $count): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-									    <li><a href="#"> <span class="pull-right">(<?php echo e($count->total); ?>)</span><?php echo e($count->name); ?></a></li>
+									    <li><a href="/categories_list/<?php echo e($count->id); ?>"> <span class="pull-right">(<?php echo e($count->total); ?>)</span><?php echo e($count->name); ?></a></li>
 								      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 								</ul>
 							</div>

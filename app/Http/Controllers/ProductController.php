@@ -175,15 +175,34 @@ class ProductController extends Controller
         }
     }
     public function categories_list($id){
+        $data_session = session()->get('id');
         $row=DB::table('category')->join('product','category.id','=','product.id_category')->join('photo','photo.id_product','=','product.id_product')->where('category.id',$id)->where('photo.status','=',1)->get();
         $category=DB::table('category')->orderBy('id','DESC')->select('*')->get();
-        $count_category=DB::table('category')->join('product','category.id','=','product.id_category')->groupBy('category.name')->select('category.name', DB::raw('count(product.id_product) as total'))->get();
+        $count_category=DB::table('category')->join('product','category.id','=','product.id_category')->select('category.id','category.name', DB::raw('count(product.id_product) as total'))->groupBy('category.name','category.id')->get();
         if(isset($_GET['start_price']) && $_GET['end_price']){
             $min_price=$_GET['start_price'];
             $max_price=$_GET['end_price'];
             $row=DB::table('category')->join('product','category.id','=','product.id_category')->join('photo','photo.id_product','=','product.id_product')->where('category.id',$id)->where('photo.status','=',1)->whereBetween('product.money',[$min_price,$max_price])->paginate(5)->appends(request()->query());
         }
-        return view('index.categories_list')->with('category',$category)->with('row',$row)->with('count_category',$count_category);
+        if (!$data_session){
+            return view('index.categories_list')->with('category',$category)->with('row',$row)->with('count_category',$count_category);
+        }else{
+            $data_last = session()->get('value');
+            $avatar = DB::table('user')->where('user.avatar', $data_last)->first();
+            return view('user.categories_list')->with('category',$category)->with('row',$row)->with('count_category',$count_category)->with('avatar',$avatar);
+        }
     }
-
+    public function all_product(){
+        $data_session = session()->get('id');
+        $row=DB::table('category')->join('product','category.id','=','product.id_category')->join('photo','photo.id_product','=','product.id_product')->where('category.id',$id)->where('photo.status','=',1)->get();
+        $category=DB::table('category')->orderBy('id','DESC')->select('*')->get();
+        $count_category=DB::table('category')->join('product','category.id','=','product.id_category')->select('category.id','category.name', DB::raw('count(product.id_product) as total'))->groupBy('category.name','category.id')->get();
+        if (!$data_session){
+            return view('index.all_product')->with('category',$category)->with('row',$row)->with('count_category',$count_category);
+        }else{
+            $data_last = session()->get('value');
+            $avatar = DB::table('user')->where('user.avatar', $data_last)->first();
+            return view('user.all_product')->with('category',$category)->with('row',$row)->with('count_category',$count_category)->with('avatar',$avatar);
+        }
+    }
 }
