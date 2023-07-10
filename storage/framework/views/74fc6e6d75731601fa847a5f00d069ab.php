@@ -1,12 +1,10 @@
-@extends('layouts.template4')
-
-@section('title_page')
+<?php $__env->startSection('title_page'); ?>
 
     Ceiling Fan
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('mycss')
+<?php $__env->startSection('mycss'); ?>
 
     <style>
         .main-panel {
@@ -112,48 +110,48 @@
             resize: none
         }
     </style>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('body_content')
+<?php $__env->startSection('body_content'); ?>
 
     <!-- product -->
 
     <div class="row m-0">
         <div class="col-lg-4 left-side-product-box pb-3">
-            <img id="main-image" src="/upload/{{$product->value}}" class=" p-3">
-            @foreach($data3 as $row)
+            <img id="main-image" src="/upload/<?php echo e($product->value); ?>" class=" p-3">
+            <?php $__currentLoopData = $data3; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <span class="sub-img">
-						<img onclick="change_image(this)" src="/upload/{{$row->value}}" class=" p-2">
+						<img onclick="change_image(this)" src="/upload/<?php echo e($row->value); ?>" class=" p-2">
 
 					</span>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
         <div class="col-lg-8">
             <div class="right-side-pro-detail  p-3 m-0">
                 <div class="row">
                     <div class="col-lg-12">
 
-                        <p class="m-0 p-0">{{$photo->name_product}}</p>
+                        <p class="m-0 p-0"><?php echo e($photo->name_product); ?></p>
                     </div>
                     <ul class="list-inline rating" title="Average Rating">
-                        @for($count=1;$count<=5;$count++)
-                        @php
+                        <?php for($count=1;$count<=5;$count++): ?>
+                        <?php
                         if($count<=$rating){
                             $color='color:#ffcc00';
                         }else{
                             $color='color:#ccc';
                         }
-                        @endphp
-                                <li title="star_rating" data-index="{{$count}}" id="{{$photo->id_product}}-{{$count}}" data-product_id="{{$photo->id_product}}" data-rating="{{$rating}}" style="cursor: pointer;{{$color}};font-size: 30px;display:inline" class="rating">&#9733</li>
-                                @endfor
+                        ?>
+                                <li title="star_rating" data-index="<?php echo e($count); ?>" id="<?php echo e($photo->id_product); ?>-<?php echo e($count); ?>" data-product_id="<?php echo e($photo->id_product); ?>" data-rating="<?php echo e($rating); ?>" style="cursor: pointer;<?php echo e($color); ?>;font-size: 30px;display:inline" class="rating">&#9733</li>
+                                <?php endfor; ?>
                             </ul>
                     <div class="col-lg-12">
-                        <p class="m-0 p-0 price-pro">${{ $photo->money}}</p>
+                        <p class="m-0 p-0 price-pro">$<?php echo e($photo->money); ?></p>
                         <hr class="p-0 m-0">
                     </div>
                     <div class="col-lg-12 pt-2">
                         <h5>Product Detail</h5>
-                        <span>{{$photo->content}}</span>
+                        <span><?php echo e($photo->content); ?></span>
                         <hr class="m-0 pt-2 mt-2">
                     </div>
 
@@ -174,26 +172,26 @@
                     <div class="bg-white p-2">
 
 
-                        @foreach($Show_comment as $row)
+                        <?php $__currentLoopData = $Show_comment; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="d-flex flex-row user-info">
                                 <img class="rounded-circle" src ="/upload/user.png" width="40">
 
 
                                 <div class="d-flex flex-column justify-content-start ml-2">
-                                    <span class="d-block font-weight-bold name">{{$row->username}}</span>
-                                    <span class="date text-black-50">{{date('M d,Y h:i A',strtotime($row->date_to))}}</span>
+                                    <span class="d-block font-weight-bold name"><?php echo e($row->username); ?></span>
+                                    <span class="date text-black-50"><?php echo e(date('M d,Y h:i A',strtotime($row->date_to))); ?></span>
                                 </div>
                             </div>
                            
                             <div class="mt-2">
-                                <p class="comment-text">{{$row->comment}}</p>
+                                <p class="comment-text"><?php echo e($row->comment); ?></p>
                             </div>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
 
                     <div class="bg-light p-2">
-                        <form action="/addFeedback/{{$photo->id_product}}" method="POST">
-                            @csrf
+                        <form action="/addFeedback/<?php echo e($photo->id_product); ?>" method="POST">
+                            <?php echo csrf_field(); ?>
                             <div class="d-flex flex-row align-items-start">
                                 <img class="rounded-circle" src="/upload/user.png" width="40">
                                 <textarea class="form-control ml-1 shadow-none textarea" name="Message"></textarea></div>
@@ -251,23 +249,14 @@
             $('#'+product_id+'-'+count).css('color','#ccc');
         }
     })
-    $(document).on('click','.rating',function(){
-        var index=$(this).data('index');
-        var product_id=$(this).data('product_id');
-        var _token=$('input[name="_token"]').val();
-        $.ajax({
-            url:"{{url('insert-rating')}}",
-            method:'POST',
-            data:{index:index,product_id:product_id,_token:_token},
-            success:function(date)
-        })
-    })
 </script>
-@endsection
-@section('footer')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('footer'); ?>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('myscript')
+<?php $__env->startSection('myscript'); ?>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.template4', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Phong\Downloads\project-FANoFAN\resources\views/user/Product.blade.php ENDPATH**/ ?>

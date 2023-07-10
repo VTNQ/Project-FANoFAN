@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use App\Models\product;
 use App\Models\Photo;
+use App\Models\rating;
 
 class ProductController extends Controller
 {
@@ -154,8 +155,11 @@ class ProductController extends Controller
             $product = DB::table('product')->join('photo', 'product.id_product', '=', 'photo.id_product')->where('product.id_product',$id_product)->first();
             $category = DB::table('category')->orderBy('id', 'DESC')->select('*')->get();
             $feedback = DB::table('feedback')->select('*')->get();
+            $rating=rating::where('id_product',$id_product)->avg('rating');
+            $rating=round($rating);
+            
             $show_comment = DB::table('user')->join('feedback', 'user.id', '=', 'feedback.id_user')->join('product', 'feedback.id_product', '=', 'product.id_product')->select('*')->where('product.id_product', $id_product)->get();
-            return view('user.Product')->with('product', $product)->with('category', $category)->with('Show_comment', $show_comment)->with('feedback', $feedback)->with('avatar', $avatar)->with('data3',$data3)->with('photo',$data2);
+             return view('user.Product')->with('product', $product)->with('category', $category)->with('Show_comment', $show_comment)->with('feedback', $feedback)->with('avatar', $avatar)->with('data3',$data3)->with('photo',$data2)->with('rating',$rating);
         }
     }
     public function addFeedback(Request $request, $id_product)
