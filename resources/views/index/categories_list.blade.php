@@ -113,8 +113,6 @@ body, ul, li, p, a, label, input, div {
   #templatemo_main_nav a:hover { color: #69bb7e;}
   #templatemo_main_nav .navbar .nav-icon { margin-right: 20px;}
 
-  /* Hero Carousel */
-  #template-mo-jassa-hero-carousel { background: #efefef !important;}
   /* Accordion */
   .templatemo-accordion a { color: #000;}
   .templatemo-accordion a:hover { color: #333d4a;}
@@ -139,20 +137,6 @@ body, ul, li, p, a, label, input, div {
     opacity: 1;
   }
   /* Carousel Hero */
-  #template-mo-jassa-hero-carousel .carousel-indicators li {
-    margin-top: -50px;
-    background-color: #59ab6e;
-  }
-  #template-mo-jassa-hero-carousel .carousel-control-next i,
-  #template-mo-jassa-hero-carousel .carousel-control-prev i {
-    color: #59ab6e !important;
-    font-size: 2.8em !important;
-  }
-  /* Carousel Brand */
-  .tempaltemo-carousel .h1 {
-    font-size: .5em !important;
-    color: #000 !important;
-  }
   /* Services */
   .services-icon-wap {transition: .3s;}
   .services-icon-wap:hover, .services-icon-wap:hover i {color: #fff;}
@@ -161,7 +145,7 @@ body, ul, li, p, a, label, input, div {
   .leaflet-control a, .leaflet-control { font-size: 10px !important;}
   .form-control { border: 1px solid #e8e8e8;}
   /* Footer */
-  #tempaltemo_footer a { color: #dcdde1;}
+  #tempaltemo_footer a { color: #FFFFFF;}
   #tempaltemo_footer a:hover { color: #68bb7d;}
   #tempaltemo_footer ul.footer-link-list li { padding-top: 10px;}
   #tempaltemo_footer ul.footer-icons li {
@@ -176,7 +160,9 @@ body, ul, li, p, a, label, input, div {
   .col-sm-9 {
     display: flex;
 }
-
+a{
+    color: #FFFFFF;
+}
 </style>
 </head>
 <body>
@@ -221,7 +207,7 @@ body, ul, li, p, a, label, input, div {
 				</div>
 
 				<div class="col-sm-9 padding-right">
-          @foreach($row as $)
+          @foreach($row as $row)
 
 
 						<div class="col-sm-4">
