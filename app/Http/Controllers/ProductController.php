@@ -157,7 +157,7 @@ class ProductController extends Controller
             $feedback = DB::table('feedback')->select('*')->get();
             $rating=rating::where('id_product',$id_product)->avg('rating');
             $rating=round($rating);
-            
+
             $show_comment = DB::table('user')->join('feedback', 'user.id', '=', 'feedback.id_user')->join('product', 'feedback.id_product', '=', 'product.id_product')->select('*')->where('product.id_product', $id_product)->get();
              return view('user.Product')->with('product', $product)->with('category', $category)->with('Show_comment', $show_comment)->with('feedback', $feedback)->with('avatar', $avatar)->with('data3',$data3)->with('photo',$data2)->with('rating',$rating);
         }
@@ -198,15 +198,14 @@ class ProductController extends Controller
     }
     public function all_product(){
         $data_session = session()->get('id');
-        $row=DB::table('category')->join('product','category.id','=','product.id_category')->join('photo','photo.id_product','=','product.id_product')->where('category.id',$id)->where('photo.status','=',1)->get();
         $category=DB::table('category')->orderBy('id','DESC')->select('*')->get();
         $count_category=DB::table('category')->join('product','category.id','=','product.id_category')->select('category.id','category.name', DB::raw('count(product.id_product) as total'))->groupBy('category.name','category.id')->get();
         if (!$data_session){
-            return view('index.all_product')->with('category',$category)->with('row',$row)->with('count_category',$count_category);
+            return view('index.all_product')->with('category',$category)->with('count_category',$count_category);
         }else{
             $data_last = session()->get('value');
             $avatar = DB::table('user')->where('user.avatar', $data_last)->first();
-            return view('user.all_product')->with('category',$category)->with('row',$row)->with('count_category',$count_category)->with('avatar',$avatar);
+            return view('user.all_product')->with('category',$category)->with('count_category',$count_category)->with('avatar',$avatar);
         }
     }
 }
