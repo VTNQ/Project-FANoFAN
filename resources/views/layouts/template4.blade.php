@@ -54,6 +54,13 @@
     body {
         height: 100%;
     }
+    li div#list_category{
+        display: none;
+    }
+    li:hover div#list_category{
+        display: block;
+        position: absolute;
+    }
 </style>
 <!-- body -->
 

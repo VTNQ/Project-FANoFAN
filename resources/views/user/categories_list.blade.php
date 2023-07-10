@@ -1,4 +1,4 @@
-@extends('layouts.template2')
+@extends('layouts.template4')
 
 @section('title_page')
     Product Page

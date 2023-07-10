@@ -86,7 +86,7 @@ class UserController extends Controller
            return redirect('login');
         }else if(Session('id') and Session('member')){
             $data_session = session()->get('id');
-            $data_feedback=DB::table('feedback')->join('product','product.id_product','=','feedback.id_product')->join('user','user.id','=','feedback.id_user')->join('photo','photo.id_product','=','product.id_product')->where('user.id','=',$data_session)->where('photo.status','=',1)->select('*')->paginate(5);
+            $data_feedback=DB::table('feedback')->join('product','product.id_product','=','feedback.id_product')->join('user','user.id','=','feedback.id_user')->join('photo','photo.id_product','=','product.id_product')->where('user.id','=',$data_session)->where('photo.status','=',1)->orderBy('feedback.date_to','DESC')->select('*')->paginate(5);
             return view('user.history_feedback')->with('data_feedback', $data_feedback);
         }
 
