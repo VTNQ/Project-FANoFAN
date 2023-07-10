@@ -1,6 +1,6 @@
 <?php $__env->startSection('title_page'); ?>
 
-home page
+Product Page
 
 <?php $__env->stopSection(); ?>
 

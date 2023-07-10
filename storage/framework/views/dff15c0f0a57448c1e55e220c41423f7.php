@@ -35,6 +35,10 @@
 
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <link rel="stylesheet" href="<?php echo e(asset('/slider-show/css/owl.carousel.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('/slider-show/css/owl.theme.default.min.css')); ?>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
+    <link rel="stylesheet" href="<?php echo e(asset('/slider-show/css/style.css')); ?>">
     <?php echo $__env->yieldContent('mycss'); ?>
 
 </head>
@@ -132,6 +136,68 @@
     </div>
     <!-- Collapsible content -->
 </nav>
+<!-- <li class="nav-item">
+                             <a class="nav-link" href="fashion.html">Fashion</a>
+                          </li>
+                          <li class="nav-item">
+                             <a class="nav-link" href="news.html">News</a>
+                          </li> -->
+
+
+<!-- end loader -->
+<div class="home-slider owl-carousel js-fullheight">
+      <div class="slider-item js-fullheight" style="background-image:url(slider-show/images/b3.jpg);">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+	          <div class="col-md-12 ftco-animate">
+	          	<div class="text w-100 text-center">
+	          <h1 id="row_last" style="text-align: center; color:  #ffffff;">Environmental Sustainability
+            <span style="color: #444444;"></span>
+            </h1>
+		            <h4>Starts from the Right Product Selection</h4>
+	            </div>
+	          </div>
+	        </div>
+        </div>
+      </div>
+
+      <div class="slider-item js-fullheight" style="background-image:url(slider-show/images/a2.jpg);">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+	          <div class="col-md-12 ftco-animate">
+	          	<div class="text w-100 text-center">
+                  <h1 id="row_cou" style="text-align: center; color:  #ffffff;">Choose Better Powerful HVLS Fan
+            <span style="color: #444444;"></span>
+            </h1>
+		            <h4>Best Model for Energy-efficiency & Ventilation</h4>
+	            </div>
+	          </div>
+	        </div>
+        </div>
+      </div>
+
+      <div class="slider-item js-fullheight" style="background-image:url(slider-show/images/a1.jpg);">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+	          <div class="col-md-12 ftco-animate">
+	          	<div class="text w-100 text-center">
+                  <h1 id="row_count_home" style="text-align: center; color:  #ffffff;">Choose Better Powerful HVLS Fan
+            <span style="color: #444444;"></span>
+            </h1>
+		            <h4>Best Model for Energy-efficiency & Ventilation</h4>
+	            </div>
+	          </div>
+	        </div>
+        </div>
+      </div>
+    </div>
+<!-- header -->
+
+
+</div>
 <!-- </header> -->
 <!-- end header inner -->
 <!-- end header -->
@@ -357,6 +423,8 @@
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 </script>
+<script src="<?php echo e(asset('slider-show/js/owl.carousel.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('slider-show/js/main.js')); ?>"></script>
 </body>
 
 </html>

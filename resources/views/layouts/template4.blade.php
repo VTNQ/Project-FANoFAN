@@ -35,35 +35,24 @@
 
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <link rel="stylesheet" href="{{asset('/slider-show/css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{asset('/slider-show/css/owl.theme.default.min.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
-    <link rel="stylesheet" href="{{asset('/slider-show/css/style.css')}}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>    
     @yield('mycss')
 
 </head>
 <style>
-    .navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background-color: transparent;
-        transition: background-color 0.3s ease;
+    .navbar.scrolling-navbar {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        -webkit-transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
+        transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
     }
+
     a {
         color: #fff;
     }
 
     body {
         height: 100%;
-    }
-    .navbar:hover,
-    .navbar.scrolled{
-        background-color: #36454f;
-    }
-    iframe {
-        bottom: 13vh !important;
     }
 </style>
 <!-- body -->
@@ -104,15 +93,19 @@
                 <a class="nav-link about-link waves-effect waves-light" href="/about">About</a>
             </li>
             <li class="nav-item active  dropdown px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-                <a class="nav-link dropdown-toggle categories-link waves-effect waves-light" href="/categories_list/all"
+                <a class="nav-link dropdown-toggle categories-link waves-effect waves-light" href="/categories"
                    id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                    aria-expanded="false">Categories</a>
                 <div class="dropdown-menu dropdown-primary  mt-lg-3" style="background-color: #6c757d;"
                      aria-labelledby="navbarDropdownMenuLink">
-                    @foreach($category as $row)
-                        <a class="dropdown-item ceiling-fans-link waves-effect waves-light"
-                           href="/categories_list/{{$row->id}}">{{$row->name}}</a>
-                    @endforeach
+                    <a class="dropdown-item ceiling-fans-link waves-effect waves-light"
+                       href="/categories_ceiling">Ceiling Fans</a>
+                    <a class="dropdown-item table-fans-link waves-effect waves-light" href="/categories_table">Table
+                        Fans</a>
+                    <a class="dropdown-item standing-fans-link waves-effect waves-light"
+                       href="/categories_standing">Standing Fans</a>
+                    <a class="dropdown-item exhaust-fans-link waves-effect waves-light"
+                       href="/categories_exhaust">Exhuast Fans</a>
                 </div>
             </li>
             <li class="nav-item active  px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
@@ -143,59 +136,13 @@
                              <a class="nav-link" href="news.html">News</a>
                           </li> -->
 
-
+<header class="img-fluid" style="padding: 11% 0px;">
+</header>
 <!-- end loader -->
-<div class="home-slider owl-carousel js-fullheight">
-      <div class="slider-item js-fullheight" style="background-image:url(slider-show/images/b3.jpg);">
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
-	          <div class="col-md-12 ftco-animate">
-	          	<div class="text w-100 text-center">
-	          <h1 id="row_last" style="text-align: center; color:  #ffffff;">Environmental Sustainability
-            <span style="color: #444444;"></span>
-            </h1>
-		            <h4>Starts from the Right Product Selection</h4>
-	            </div>
-	          </div>
-	        </div>
-        </div>
-      </div>
-
-      <div class="slider-item js-fullheight" style="background-image:url(slider-show/images/a2.jpg);">
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
-	          <div class="col-md-12 ftco-animate">
-	          	<div class="text w-100 text-center">
-                  <h1 id="row_cou" style="text-align: center; color:  #ffffff;">Choose Better Powerful HVLS Fan
-            <span style="color: #444444;"></span>
-            </h1>
-		            <h4>Best Model for Energy-efficiency & Ventilation</h4>
-	            </div>
-	          </div>
-	        </div>
-        </div>
-      </div>
-
-      <div class="slider-item js-fullheight" style="background-image:url(slider-show/images/a1.jpg);">
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
-	          <div class="col-md-12 ftco-animate">
-	          	<div class="text w-100 text-center">
-                  <h1 id="row_count_home" style="text-align: center; color:  #ffffff;">Choose Better Powerful HVLS Fan
-            <span style="color: #444444;"></span>
-            </h1>
-		            <h4>Best Model for Energy-efficiency & Ventilation</h4>
-	            </div>
-	          </div>
-	        </div>
-        </div>
-      </div>
-    </div>
 <!-- header -->
-
+<!-- <header>
+  <!-- header inner -->
+<!-- </div> -->
 
 </div>
 <!-- </header> -->
@@ -246,7 +193,8 @@
                            aria-hidden="true"> </i>
                     </a>
                     <!--Instagram-->
-                    <a class="social-icons ins-ic" style="visibility: visible;" href="https://www.instagram.com/">
+                    <a class="social-icons ins-ic" style="visibility: visible;"
+                       href="https://www.instagram.com/">
                         <i class="fab fa-instagram white-text " style="font-size: 20px !important;"
                            aria-hidden="true"> </i>
                     </a>
@@ -264,7 +212,7 @@
     <div class="container text-center text-md-left mt-5">
 
         <!-- Grid row -->
-        <div class="row mt-3" id="row">
+        <div class="row mt-3">
 
             <!-- Grid column -->
             <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
@@ -286,7 +234,7 @@
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 footer-products">
 
                 <!-- Links -->
-                <h6 class="text-uppercase ">Category</h6>
+                <h6 class="text-uppercase ">Products</h6>
                 <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
                     style="width: 60px;background-color: #F8F9FA !important;height: 2px;opacity: 1 ;">
                 <p>
@@ -316,9 +264,14 @@
                 <p class="py-1 m-0">
                     <a href="/about">About Us</a>
                 </p>
+
+                <p class="py-1 m-0">
+                    <a href="/gallery">Gallery</a>
+                </p>
                 <p class="py-1 m-0">
                     <a href="/contact">Contact Us</a>
                 </p>
+
             </div>
             <!-- Grid column -->
 
@@ -356,8 +309,7 @@
         <a href="/"> FANoFAN</a>
     </div>
     <!-- Copyright -->
-    <img src="{{asset('images/back-to-top-button.png')}}" alt="" onclick="scroll_to_top()" id="scroll_top"
-         style="position: fixed; bottom: 3vh; right: 1vw; width: 3rem; display: none">
+
 </footer>
 <!-- end footer -->
 <!-- Javascript files-->
@@ -373,58 +325,13 @@
 <script>
     window.addEventListener('scroll', () => {
         const verticalScrollPx = window.scrollY || window.pageYOffset;
-
         if (verticalScrollPx < 10) {
-            document.getElementById('scroll_top').style.display = 'none';
-        } else if (verticalScrollPx < 500) {
-            document.getElementById('scroll_top').style.display = 'block';
-        }
-    });
-    function scroll_to_top(){
-        window.scroll(0,0);
-    }
-    $(window).scroll(function() {
-        if ($(window).scrollTop() > 50) {
-            $('.navbar').addClass('scrolled');
+            document.getElementById('navbar').style.backgroundColor = 'transparent';
         } else {
-            $('.navbar').removeClass('scrolled');
+            document.getElementById('navbar').style.backgroundColor = 'dimgrey';
         }
     });
-
 </script>
-<!-- Messenger Plugin chat Code -->
-<div id="fb-root"></div>
-
-<!-- Your Plugin chat code -->
-<div id="fb-customer-chat" class="fb-customerchat">
-</div>
-
-<script>
-    var chatbox = document.getElementById('fb-customer-chat');
-    chatbox.setAttribute("page_id", "100635189759938");
-    chatbox.setAttribute("attribution", "biz_inbox");
-</script>
-
-<!-- Your SDK code -->
-<script>
-    window.fbAsyncInit = function () {
-        FB.init({
-            xfbml: true,
-            version: 'v17.0'
-        });
-    };
-
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-</script>
-<script src="{{asset('slider-show/js/owl.carousel.min.js')}}"></script>
-    <script src="{{asset('slider-show/js/main.js')}}"></script>
 </body>
 
 </html>
