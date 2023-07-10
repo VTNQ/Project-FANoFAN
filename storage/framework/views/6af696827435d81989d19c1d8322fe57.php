@@ -177,6 +177,13 @@
                         </a>
                      
                     </li>
+                    <li class="sub-menu">
+                        <a href="/feedback">
+                            <i class="fa fa-th"></i>
+                            <span>Change Password</span>
+                        </a>
+                     
+                    </li>
                 </ul>
             </div>
             <!-- sidebar menu end-->

@@ -59,13 +59,13 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                        </form>
+                                    
                                     @endforeach
                                 </div>
 
 
                                 <button type="submit" class="btn btn-info">Add catelogies</button>
-
+    </form>
                             </div>
                         </section>
                     </div>

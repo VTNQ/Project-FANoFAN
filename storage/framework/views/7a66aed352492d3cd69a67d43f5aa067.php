@@ -79,12 +79,17 @@ unset($__errorArgs, $__bag); ?>
                                 <th style="width: 30px;"></th>
                             </tr>
                             </thead>
+                            <?php
+                                $url = $_SERVER['REQUEST_URI'];
+                                $string = substr($url, 23);
+                                $item=(int)$string;
+                                $i = $item ? ($item -1)*5 + 1 : 1;
+                            ?>
                             <?php $__currentLoopData = $all_list_login; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=> $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                                 <tr id="category_ids<?php echo e($row->id); ?>">
-                                    <td><input type="checkbox" name="ids" class="checkbox_ids" value="<?php echo e($row->id); ?>">
-                                    </td>
-                                    <td><?php echo e(++$key); ?></td>
+                                    <td><input type="checkbox" name="ids" class="checkbox_ids" value="<?php echo e($row->id); ?>"></td>
+                                    <td><?php echo e($i++); ?></td>
                                     <td><?php echo e($row->name); ?></td>
                                     <td>
                                         <a href="<?php echo e(url('/edit/'.$row->id)); ?>" class="active" ui-toggle-class=""><i

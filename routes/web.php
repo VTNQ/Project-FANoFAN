@@ -105,7 +105,7 @@ Route::post('/forgot-password', [UserEmailController::class, 'resetPassword'])->
 Route::put('reset-password', [UserEmailController::class, 'updatePassword'])->name('reset-password');
 Route::get('/feedback',[AdminController::class,'feedback']);
 Route::get('/filter_date',[AdminController::class,'filter_date']);
-
+Route::get('/change_pass',[AdminController::class,'Change_pass']);
 
 
 

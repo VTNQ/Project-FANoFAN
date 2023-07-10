@@ -87,12 +87,17 @@
 
                                 </tr>
                                 </thead>
+                                <?php
+                          $url = $_SERVER['REQUEST_URI'];
+                          $string = substr($url, 17);
+                          $i = $string ? ($string -1)*5 + 1 : 1;
+                            ?>
                                 <?php $__currentLoopData = $photo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=> $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                                     <tr id="photo_ids<?php echo e($row->id_photo); ?>">
                                         <td><input type="checkbox" name="ids" class="checkbox_ids"
                                                    value="<?php echo e($row->id_photo); ?>"></td>
-                                        <td><?php echo e(++$key); ?></td>
+                                                   <td><?php echo e($i++); ?></td>
                                         <td><img src="/upload/<?php echo e($row->value); ?>" alt="" height="100" width="100">
                                         </td>
                                         <td><?php
