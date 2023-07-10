@@ -58,6 +58,9 @@
     .navbar.scrolled{
         background-color: #36454f;
     }
+    iframe {
+        bottom: 13vh !important;
+    }
 </style>
 <!-- body -->
 
@@ -233,7 +236,7 @@
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 footer-products">
 
                 <!-- Links -->
-                <h6 class="text-uppercase ">Products</h6>
+                <h6 class="text-uppercase ">Category</h6>
                 <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
                     style="width: 60px;background-color: #F8F9FA !important;height: 2px;opacity: 1 ;">
                 <p>
@@ -266,7 +269,6 @@
                 <p class="py-1 m-0">
                     <a href="/contact">Contact Us</a>
                 </p>
-
             </div>
             <!-- Grid column -->
 

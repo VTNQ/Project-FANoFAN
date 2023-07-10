@@ -111,8 +111,6 @@ body, ul, li, p, a, label, input, div {
   #templatemo_main_nav a:hover { color: #69bb7e;}
   #templatemo_main_nav .navbar .nav-icon { margin-right: 20px;}
 
-  /* Hero Carousel */
-  #template-mo-jassa-hero-carousel { background: #efefef !important;}
   /* Accordion */
   .templatemo-accordion a { color: #000;}
   .templatemo-accordion a:hover { color: #333d4a;}
@@ -137,20 +135,6 @@ body, ul, li, p, a, label, input, div {
     opacity: 1;
   }
   /* Carousel Hero */
-  #template-mo-jassa-hero-carousel .carousel-indicators li {
-    margin-top: -50px;
-    background-color: #59ab6e;
-  }
-  #template-mo-jassa-hero-carousel .carousel-control-next i,
-  #template-mo-jassa-hero-carousel .carousel-control-prev i {
-    color: #59ab6e !important;
-    font-size: 2.8em !important;
-  }
-  /* Carousel Brand */
-  .tempaltemo-carousel .h1 {
-    font-size: .5em !important;
-    color: #000 !important;
-  }
   /* Services */
   .services-icon-wap {transition: .3s;}
   .services-icon-wap:hover, .services-icon-wap:hover i {color: #fff;}
@@ -159,7 +143,7 @@ body, ul, li, p, a, label, input, div {
   .leaflet-control a, .leaflet-control { font-size: 10px !important;}
   .form-control { border: 1px solid #e8e8e8;}
   /* Footer */
-  #tempaltemo_footer a { color: #dcdde1;}
+  #tempaltemo_footer a { color: #FFFFFF;}
   #tempaltemo_footer a:hover { color: #68bb7d;}
   #tempaltemo_footer ul.footer-link-list li { padding-top: 10px;}
   #tempaltemo_footer ul.footer-icons li {
@@ -174,7 +158,9 @@ body, ul, li, p, a, label, input, div {
   .col-sm-9 {
     display: flex;
 }
-
+a{
+    color: #FFFFFF;
+}
 </style>
 </head>
 <body>
@@ -191,9 +177,10 @@ body, ul, li, p, a, label, input, div {
 							<h2>Category</h2>
 							<div class="brands-name">
 								<ul class="nav nav-pills nav-stacked" id="nav">
-                  <?php $__currentLoopData = $count_category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $count): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-									<li><a href="#"> <span class="pull-right">(<?php echo e($count->total); ?>)</span><?php echo e($count->name); ?></a></li>
-								<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <li><a href=""></a></li>
+                                     <?php $__currentLoopData = $count_category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $count): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+									    <li><a href="#"> <span class="pull-right">(<?php echo e($count->total); ?>)</span><?php echo e($count->name); ?></a></li>
+								      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 								</ul>
 							</div>
 						</div><!--/brands_products-->
@@ -213,13 +200,7 @@ body, ul, li, p, a, label, input, div {
   <input type="hidden" name="start_price" id="start_price">
   <input type="hidden" name="end_price" id="end_price">
 </form>
-
 						</div><!--/price-range-->
-
-						<div class="shipping text-center"><!--shipping-->
-							<img src="images/home/shipping.jpg" alt="" />
-						</div><!--/shipping-->
-
 					</div>
 				</div>
 
@@ -235,18 +216,11 @@ body, ul, li, p, a, label, input, div {
                   <div class="container">
 
                   </div>
-                    <a href="#">
+                    <a href="/Product/<?php echo e($row->id_product); ?>">
                         <img src="/upload/<?php echo e($row->value); ?>" class="img-fluid" alt="..."  >
                     </a>
                     <div class="card-body">
                         <ul class="list-unstyled d-flex justify-content-between">
-                            <li>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-muted fa fa-star"></i>
-                                <i class="text-muted fa fa-star"></i>
-                            </li>
                             <li class="text-muted text-right">$<?php echo e($row->money); ?></li>
                         </ul>
                         <h1  id="h1"><?php echo e($row->name_product); ?></h1>
