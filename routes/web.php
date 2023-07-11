@@ -82,10 +82,10 @@ Route::get('/detail_product/{id_product}', [ProductController::class, 'detail_pr
 Route::get('/Product/{id_product}', [ProductController::class, 'ShowProduct']);
 Route::post('/addFeedback/{id_product}', [ProductController::class, 'addFeedback']);
 Route::get('categories_list/{id}', [ProductController::class, 'categories_list']);
-Route::get('/categories_list/all',[ProductController::class,'all_product']);
+
 Route::delete('/delete_product', [ProductController::class, 'delete_all_product'])->name('product.delete');
 
-
+Route::get('/all_product',[ProductController::class,'all_product']);
 //category product
 Route::post('/save_category', [CategoryController::class, 'save_category']);
 //list_category
@@ -107,6 +107,7 @@ Route::put('reset-password', [UserEmailController::class, 'updatePassword'])->na
 Route::get('/feedback',[AdminController::class,'feedback']);
 Route::get('/filter_date',[AdminController::class,'filter_date']);
 Route::get('/change_pass',[AdminController::class,'Change_pass']);
+Route::post('/insert-rating',[IndexController::class,'insert_rating']);
 
 
 

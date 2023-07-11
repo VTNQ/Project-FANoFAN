@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
+use app\Models\rating;
 use Illuminate\Support\Facades\Mail;
 
 class IndexController extends Controller
@@ -71,5 +72,15 @@ class IndexController extends Controller
         session()->flash('success','Contact sent successfully');
         return redirect()->back();
     }
+   }
+   public function insert_rating(Request $request){
+    $data=$request->all();
+    $rating=new rating();
+    $rating->id_product=$data['product_id'];
+    $rating->rating=$data['index'];
+    $feedback=Session()->get('feedback');
+    $rating->id_feedback=$feedback;
+    $rating->save();
+    echo 'done';
    }
 }

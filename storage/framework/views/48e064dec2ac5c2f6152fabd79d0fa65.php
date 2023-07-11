@@ -65,7 +65,7 @@
 
 
                                 <button type="submit" class="btn btn-info">Add catelogies</button>
-                                </form>
+    </form>
                             </div>
                         </section>
                     </div>
