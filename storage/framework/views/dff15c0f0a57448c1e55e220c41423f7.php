@@ -39,6 +39,7 @@
     <link rel="stylesheet" href="<?php echo e(asset('/slider-show/css/owl.theme.default.min.css')); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
     <link rel="stylesheet" href="<?php echo e(asset('/slider-show/css/style.css')); ?>">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <?php echo $__env->yieldContent('mycss'); ?>
 
 </head>
@@ -71,6 +72,10 @@
     li:hover div#list_category{
         display: block;
         position: absolute;
+    }
+    #card{
+        width: 18vw;
+        height: 60vh;
     }
 </style>
 <!-- body -->
@@ -111,7 +116,7 @@
                 <a class="nav-link about-link waves-effect waves-light" href="/about">About</a>
             </li>
             <li class="nav-item active  dropdown px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-                <a class="nav-link categories-link waves-effect waves-light" href="/categories_list/all"
+                <a class="nav-link categories-link waves-effect waves-light" href="/all_product"
                    id="category" aria-haspopup="true"
                    aria-expanded="false">Categories</a>
                 <div style="background-color: #6c757d;" id="list_category">
@@ -166,7 +171,7 @@
           <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
 	          <div class="col-md-12 ftco-animate">
 	          	<div class="text w-100 text-center">
-                  <h1 id="row_last" style="text-align: center; color:  #ffffff;">Choose Better Powerful HVLS Fan
+                  <h1 id="row_last" style="text-align: center; color:  #ffffff;">Choose Better Powerful Fan
             <span style="color: #444444;"></span>
             </h1>
 		            <h4>Best Model for Energy-efficiency & Ventilation</h4>
@@ -182,7 +187,7 @@
           <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
 	          <div class="col-md-12 ftco-animate">
 	          	<div class="text w-100 text-center">
-                  <h1 id="row_last" style="text-align: center; color:  #ffffff;">Choose Better Powerful HVLS Fan
+                  <h1 id="row_last" style="text-align: center; color:  #ffffff;">Choose Better Powerful Fan
             <span style="color: #444444;"></span>
             </h1>
 		            <h4>Best Model for Energy-efficiency & Ventilation</h4>

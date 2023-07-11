@@ -195,15 +195,10 @@
 
                             <div id="slider-range"></div>
                             <br>
-                            <input type="submit" class="btn btn-success">
+                            <input type="submit" name="filter_price" value="filter_price" class="btn btn-success">
                             <input type="hidden" name="start_price" id="start_price">
                             <input type="hidden" name="end_price" id="end_price">
                         </form>
-                    </div><!--/price-range-->
-                </div>
-            </div>
-
-            <div class="col-sm-9 padding-right">
                     </div><!--/price-range-->
                 </div>
             </div>

@@ -61,6 +61,10 @@
         display: block;
         position: absolute;
     }
+    #card{
+        width: 18vw;
+        height: 60vh;
+    }
 </style>
 <!-- body -->
 
@@ -84,7 +88,7 @@
         <div class="search">
             <form action="http://127.0.0.1:8000/search">
                 <input class="form_sea" type="text" placeholder="Search" name="search">
-                <button type="submit" class="search_icon"><i class="fa fa-search"></i></button>
+                <button type="submit" class="seach_icon"><i class="fa fa-search"></i></button>
             </form>
         </div>
     </div>
@@ -100,8 +104,8 @@
                 <a class="nav-link about-link waves-effect waves-light" href="/about">About</a>
             </li>
             <li class="nav-item active  dropdown px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-                <a class="nav-link dropdown-toggle categories-link waves-effect waves-light" href="/categories_list/all"
-                   id="category" data-toggle="dropdown" aria-haspopup="true"
+                <a class="nav-link categories-link waves-effect waves-light" href="/all_product"
+                   id="category" aria-haspopup="true"
                    aria-expanded="false">Categories</a>
                 <div style="background-color: #6c757d;" id="list_category">
                     <?php $__currentLoopData = $category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
