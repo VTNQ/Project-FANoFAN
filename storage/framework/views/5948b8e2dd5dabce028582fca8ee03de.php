@@ -76,6 +76,10 @@
         display: block;
         position: absolute;
     }
+    #card{
+        width: 18vw;
+        height: 60vh;
+    }
 </style>
 <!-- body -->
 

@@ -9,6 +9,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
    <!-- site metas -->
+    <link rel="short icon" href="<?php echo e(asset('images/icon-title.ico')); ?>">
    <title><?php echo $__env->yieldContent('title_page'); ?></title>
    <meta http-equiv="refresh" content="number">
    <meta name="keywords" content="">
@@ -62,64 +63,74 @@
        display: block;
        position: absolute;
    }
+   #card{
+        width: 18vw;
+       height: 60vh;
+   }
 </style>
 <!-- body -->
 
 <body class="main-layout">
    <!-- loader  -->
-   <nav class="navbar navbar-expand-lg navbar-dark scrolling-navbar fixed-top " id="scroll">
-      <!-- Navbar brand -->
-      <a class="navbar-brand p-0" href="/about"><!--FANo<span>FAN</span>-->
-         <img src="https://d33wubrfki0l68.cloudfront.net/6e39a404f566cec2f989e430771b9895c40253d3/660b4/static/img/logo__icons_svg/logo.png" class="img-fluid" alt="">
-      </a>
-      <!-- Collapse button -->
-      <button class="navbar-toggler  text-dark" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
-      </button>
-      <!--search-->
-      <div class="col-md-3">
-         <div class="search">
-            <form action="/search">
-               <input class="form_sea" type="text" placeholder="Search" name="search">
-               <button type="submit" class="search_icon"><i class="fa fa-search" style="position: absolute;top: 30%;left: 88%;"></i></button>
-            </form>
-         </div>
-      </div>
+   <nav class="navbar navbar-expand-lg navbar-dark scrolling-navbar fixed-top " id="navbar">
+       <!-- Navbar brand -->
+       <a class="navbar-brand p-0" href="/"><!--FANo<span>FAN</span>-->
+           <img
+               src="https://d33wubrfki0l68.cloudfront.net/6e39a404f566cec2f989e430771b9895c40253d3/660b4/static/img/logo__icons_svg/logo.png"
+               class="img-fluid" alt="">
+       </a>
+       <!-- Collapse button -->
+       <button class="navbar-toggler  text-dark" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+               aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+       </button>
+       <!--sreach-->
+       <div class="col-md-3">
+           <div class="search">
+               <form action="/search">
+                   <input class="form_sea" type="text" placeholder="Search" name="search">
+                   <button type="submit" class="seach_icon"><i class="fa fa-search"></i></button>
+               </form>
+           </div>
+       </div>
 
-      <!-- Collapsible content -->
-      <div class="collapse navbar-collapse mt-lg-0 mt-md-3 mt-sm-4" id="basicExampleNav">
-         <!-- Links -->
-         <ul class="navbar-nav ml-auto">
-             <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-                 <a class="nav-link home-link  waves-effect waves-light" href="/">Home </a>
-             </li>
-             <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-                 <a class="nav-link about-link waves-effect waves-light" href="/about">About</a>
-             </li>
-             <li class="nav-item active  dropdown px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-                 <a class="nav-link dropdown-toggle categories-link waves-effect waves-light" href="/all_product"
-                    id="category" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">Categories</a>
-                 <div style="background-color: #6c757d;" id="list_category">
-                     <?php $__currentLoopData = $category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                         <a class="dropdown-item ceiling-fans-link waves-effect waves-light"
-                            href="/categories_list/<?php echo e($row->id); ?>"><?php echo e($row->name); ?></a>
-                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                 </div>
-             </li>
-            <li class="nav-item active  px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-               <a class="nav-link contact-link waves-effect waves-light" href="/contact">Contact Us</a>
-            </li>
-             <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-                 <a class="nav-link home-link  waves-effect waves-light" href="/login">Login </a>
-             </li>
-             <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-                 <a class="nav-link home-link  waves-effect waves-light" href="/register">Register </a>
-             </li>
-         </ul>
-         <!-- Links -->
-      </div>
-      <!-- Collapsible content -->
+       <!-- Collapsible content -->
+       <div class="collapse navbar-collapse mt-lg-0 mt-md-3 mt-sm-4" id="basicExampleNav">
+           <!-- Links -->
+           <ul class="navbar-nav ml-auto">
+               <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
+                   <a class="nav-link home-link  waves-effect waves-light" href="/">Home </a>
+               </li>
+               <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
+                   <a class="nav-link about-link waves-effect waves-light" href="/about">About</a>
+               </li>
+               <li class="nav-item active  dropdown px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
+
+                   <a class="nav-link categories-link waves-effect waves-light" href="/all_product"
+                      id="category" aria-haspopup="true" aria-expanded="false" >Categories</a>
+
+                   <div  style="background-color: #6c757d;" id="list_category">
+                       <?php $__currentLoopData = $category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                           <a class="dropdown-item ceiling-fans-link waves-effect waves-light"
+                              href="/categories_list/<?php echo e($row->id); ?>"><?php echo e($row->name); ?></a>
+
+                       <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                   </div>
+
+               </li>
+               <li class="nav-item active  px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
+                   <a class="nav-link contact-link waves-effect waves-light" href="/contact">Contact Us</a>
+               </li>
+               <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
+                   <a class="nav-link home-link  waves-effect waves-light" href="/login">Login </a>
+               </li>
+               <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
+                   <a class="nav-link home-link  waves-effect waves-light" href="/register">Register </a>
+               </li>
+           </ul>
+           <!-- Links -->
+       </div>
+       <!-- Collapsible content -->
    </nav>
 
 
