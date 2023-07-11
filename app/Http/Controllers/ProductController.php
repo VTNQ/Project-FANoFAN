@@ -157,9 +157,10 @@ class ProductController extends Controller
             $feedback = DB::table('feedback')->select('*')->get();
             $rating=rating::where('id_product',$id_product)->avg('rating');
             $rating=round($rating);
+            $rating_user=DB::table('rating')->join('feedback','rating.id_feedback','=','feedback.id')->join('product','product.id_product','=','feedback.id_product')->join('user','user.id','=','feedback.id_user')->where('feedback.id_product','=',$id_product)->where('feedback.id_user','=',$data_session)->avg('rating.rating');
             
             $show_comment = DB::table('user')->join('feedback', 'user.id', '=', 'feedback.id_user')->join('product', 'feedback.id_product', '=', 'product.id_product')->select('*')->where('product.id_product', $id_product)->get();
-             return view('user.Product')->with('product', $product)->with('category', $category)->with('Show_comment', $show_comment)->with('feedback', $feedback)->with('avatar', $avatar)->with('data3',$data3)->with('photo',$data2)->with('rating',$rating);
+             return view('user.Product')->with('product', $product)->with('category', $category)->with('Show_comment', $show_comment)->with('feedback', $feedback)->with('avatar', $avatar)->with('data3',$data3)->with('photo',$data2)->with('rating',$rating)->with('rating_user',$rating_user);
         }
     }
     public function addFeedback(Request $request, $id_product)
@@ -173,6 +174,8 @@ class ProductController extends Controller
             $new_feedback->comment=$feedback;
             $new_feedback->date_to=Carbon::now('Asia/Ho_Chi_Minh');
             $new_feedback->save();
+            $feed=DB::table('feedback')->select('*')->orderBy('id')->first();
+            Session::put('feedback',$feed->id);
             return redirect()->back();
         }else{
             return view();

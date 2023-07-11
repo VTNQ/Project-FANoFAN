@@ -39,6 +39,7 @@
     <link rel="stylesheet" href="{{asset('/slider-show/css/owl.theme.default.min.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
     <link rel="stylesheet" href="{{asset('/slider-show/css/style.css')}}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>    
     @yield('mycss')
 
 </head>
@@ -62,19 +63,9 @@
     .navbar.scrolled{
         background-color: #36454f;
     }
-<<<<<<< HEAD
-    h1#row_last {
-    line-height: 32vh;
-}
-h1#row_cou {
-    font-size: 16vh;
-    line-height: 31vh;
-}
-=======
     iframe {
         bottom: 13vh !important;
     }
->>>>>>> 3f3f7edba38f95d34a8184c923187b22eb28fef5
 </style>
 <!-- body -->
 
