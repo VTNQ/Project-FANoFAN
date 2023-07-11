@@ -35,6 +35,10 @@
 
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <link rel="stylesheet" href="<?php echo e(asset('/slider-show/css/owl.carousel.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('/slider-show/css/owl.theme.default.min.css')); ?>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
+    <link rel="stylesheet" href="<?php echo e(asset('/slider-show/css/style.css')); ?>">
     <?php echo $__env->yieldContent('mycss'); ?>
 
 </head>
@@ -57,6 +61,16 @@
     .navbar:hover,
     .navbar.scrolled{
         background-color: #36454f;
+    }
+    iframe {
+        bottom: 13vh !important;
+    }
+    li div#list_category{
+        display: none;
+    }
+    li:hover div#list_category{
+        display: block;
+        position: absolute;
     }
 </style>
 <!-- body -->
@@ -97,11 +111,10 @@
                 <a class="nav-link about-link waves-effect waves-light" href="/about">About</a>
             </li>
             <li class="nav-item active  dropdown px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-                <a class="nav-link dropdown-toggle categories-link waves-effect waves-light" href="/categories"
-                   id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                <a class="nav-link categories-link waves-effect waves-light" href="/categories_list/all"
+                   id="category" aria-haspopup="true"
                    aria-expanded="false">Categories</a>
-                <div class="dropdown-menu dropdown-primary  mt-lg-3" style="background-color: #6c757d;"
-                     aria-labelledby="navbarDropdownMenuLink">
+                <div style="background-color: #6c757d;" id="list_category">
                     <?php $__currentLoopData = $category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <a class="dropdown-item ceiling-fans-link waves-effect waves-light"
                            href="/categories_list/<?php echo e($row->id); ?>"><?php echo e($row->name); ?></a>
@@ -129,20 +142,58 @@
     </div>
     <!-- Collapsible content -->
 </nav>
-<!-- <li class="nav-item">
-                             <a class="nav-link" href="fashion.html">Fashion</a>
-                          </li>
-                          <li class="nav-item">
-                             <a class="nav-link" href="news.html">News</a>
-                          </li> -->
-
-<header class="img-fluid" style="padding: 11% 0px;">
-</header>
 <!-- end loader -->
+<div class="home-slider owl-carousel js-fullheight">
+      <div class="slider-item js-fullheight" style="background-image:url(slider-show/images/b3.jpg);">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+	          <div class="col-md-12 ftco-animate">
+	          	<div class="text w-100 text-center">
+	          <h1 id="row_last" style="text-align: center; color:  #ffffff;">Environmental Sustainability
+            <span style="color: #444444;"></span>
+            </h1>
+		            <h4>Starts from the Right Product Selection</h4>
+	            </div>
+	          </div>
+	        </div>
+        </div>
+      </div>
+
+      <div class="slider-item js-fullheight" style="background-image:url(slider-show/images/a2.jpg);">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+	          <div class="col-md-12 ftco-animate">
+	          	<div class="text w-100 text-center">
+                  <h1 id="row_last" style="text-align: center; color:  #ffffff;">Choose Better Powerful HVLS Fan
+            <span style="color: #444444;"></span>
+            </h1>
+		            <h4>Best Model for Energy-efficiency & Ventilation</h4>
+	            </div>
+	          </div>
+	        </div>
+        </div>
+      </div>
+
+      <div class="slider-item js-fullheight" style="background-image:url(slider-show/images/a1.jpg);">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+	          <div class="col-md-12 ftco-animate">
+	          	<div class="text w-100 text-center">
+                  <h1 id="row_last" style="text-align: center; color:  #ffffff;">Choose Better Powerful HVLS Fan
+            <span style="color: #444444;"></span>
+            </h1>
+		            <h4>Best Model for Energy-efficiency & Ventilation</h4>
+	            </div>
+	          </div>
+	        </div>
+        </div>
+      </div>
+    </div>
 <!-- header -->
-<!-- <header>
-  <!-- header inner -->
-<!-- </div> -->
+
 
 </div>
 <!-- </header> -->
@@ -370,6 +421,8 @@
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 </script>
+<script src="<?php echo e(asset('slider-show/js/owl.carousel.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('slider-show/js/main.js')); ?>"></script>
 </body>
 
 </html>

@@ -35,7 +35,7 @@
 
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     @yield('mycss')
 
 </head>
@@ -53,6 +53,13 @@
 
     body {
         height: 100%;
+    }
+    li div#list_category{
+        display: none;
+    }
+    li:hover div#list_category{
+        display: block;
+        position: absolute;
     }
 </style>
 <!-- body -->
@@ -77,7 +84,7 @@
         <div class="search">
             <form action="http://127.0.0.1:8000/search">
                 <input class="form_sea" type="text" placeholder="Search" name="search">
-                <button type="submit" class="seach_icon"><i class="fa fa-search"></i></button>
+                <button type="submit" class="search_icon"><i class="fa fa-search"></i></button>
             </form>
         </div>
     </div>
@@ -93,19 +100,14 @@
                 <a class="nav-link about-link waves-effect waves-light" href="/about">About</a>
             </li>
             <li class="nav-item active  dropdown px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-                <a class="nav-link dropdown-toggle categories-link waves-effect waves-light" href="/categories"
-                   id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                <a class="nav-link dropdown-toggle categories-link waves-effect waves-light" href="/all_product"
+                   id="category" data-toggle="dropdown" aria-haspopup="true"
                    aria-expanded="false">Categories</a>
-                <div class="dropdown-menu dropdown-primary  mt-lg-3" style="background-color: #6c757d;"
-                     aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item ceiling-fans-link waves-effect waves-light"
-                       href="/categories_ceiling">Ceiling Fans</a>
-                    <a class="dropdown-item table-fans-link waves-effect waves-light" href="/categories_table">Table
-                        Fans</a>
-                    <a class="dropdown-item standing-fans-link waves-effect waves-light"
-                       href="/categories_standing">Standing Fans</a>
-                    <a class="dropdown-item exhaust-fans-link waves-effect waves-light"
-                       href="/categories_exhaust">Exhuast Fans</a>
+                <div style="background-color: #6c757d;" id="list_category">
+                    @foreach($category as $row)
+                        <a class="dropdown-item ceiling-fans-link waves-effect waves-light"
+                           href="/categories_list/{{$row->id}}">{{$row->name}}</a>
+                    @endforeach
                 </div>
             </li>
             <li class="nav-item active  px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
@@ -129,25 +131,10 @@
     </div>
     <!-- Collapsible content -->
 </nav>
-<!-- <li class="nav-item">
-                             <a class="nav-link" href="fashion.html">Fashion</a>
-                          </li>
-                          <li class="nav-item">
-                             <a class="nav-link" href="news.html">News</a>
-                          </li> -->
 
 <header class="img-fluid" style="padding: 11% 0px;">
 </header>
-<!-- end loader -->
-<!-- header -->
-<!-- <header>
-  <!-- header inner -->
-<!-- </div> -->
 
-</div>
-<!-- </header> -->
-<!-- end header inner -->
-<!-- end header -->
 <div class="main-panel">
     <section>
         @yield('body_content')
@@ -325,12 +312,79 @@
 <script>
     window.addEventListener('scroll', () => {
         const verticalScrollPx = window.scrollY || window.pageYOffset;
+
         if (verticalScrollPx < 10) {
-            document.getElementById('navbar').style.backgroundColor = 'transparent';
-        } else {
-            document.getElementById('navbar').style.backgroundColor = 'dimgrey';
+            document.getElementById('scroll_top').style.display = 'none';
+        } else if (verticalScrollPx < 500) {
+            document.getElementById('scroll_top').style.display = 'block';
         }
     });
+    $(window).scroll(function() {
+        if ($(window).scrollTop() > 50) {
+            $('.navbar').addClass('scrolled');
+        } else {
+            $('.navbar').removeClass('scrolled');
+        }
+    });
+    function scroll_to_top(){
+        window.scroll(0,0);
+    }
+</script>
+<div id="fb-root"></div>
+
+<!-- Your Plugin chat code -->
+<div id="fb-customer-chat" class="fb-customerchat">
+</div>
+
+<script>
+    var chatbox = document.getElementById('fb-customer-chat');
+    chatbox.setAttribute("page_id", "100635189759938");
+    chatbox.setAttribute("attribution", "biz_inbox");
+</script>
+
+<!-- Your SDK code -->
+<script>
+    window.fbAsyncInit = function () {
+        FB.init({
+            xfbml: true,
+            version: 'v17.0'
+        });
+    };
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+<script>
+    function scroll_to_top() {
+        window.scroll(0, 0);
+    }
+    function show_category(){
+        document.getElementById('list_category').display='block';
+    }
+</script>
+<script>
+    $( function() {
+        $( "#slider-range" ).slider({
+            range: true,
+            min: 0,
+            max: 2000,
+            values: [ 75, 300 ],
+            step:10,
+            slide: function( event, ui ) {
+                $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+                $('#start_price').val(ui.values[0]);
+                $('#end_price').val(ui.values[1]);
+            }
+        });
+        $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+            " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+    } );
 </script>
 </body>
 

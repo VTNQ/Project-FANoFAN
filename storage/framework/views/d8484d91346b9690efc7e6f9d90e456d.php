@@ -122,7 +122,7 @@ About Page
             </div>
             <div class="col-md-6 col-lg-3 col-sm-8 mx-auto item">
                 <div class="box"><img class="rounded-circle" src="https://zpsocial-f49-org.zadn.vn/a8ef798bdd2832766b39.jpg">
-                    <h4 class="name">Vo Tan Nam Quoc</h4>
+                    <h4 class="name">Vo T.N Quoc</h4>
                     <p class="title">Member</p>
                     <div class="social"><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></div>
                 </div>

@@ -157,8 +157,12 @@ class ProductController extends Controller
             $feedback = DB::table('feedback')->select('*')->get();
             $rating=rating::where('id_product',$id_product)->avg('rating');
             $rating=round($rating);
+<<<<<<< HEAD
             $rating_user=DB::table('rating')->join('feedback','rating.id_feedback','=','feedback.id')->join('product','product.id_product','=','feedback.id_product')->join('user','user.id','=','feedback.id_user')->where('feedback.id_product','=',$id_product)->where('feedback.id_user','=',$data_session)->avg('rating.rating');
             
+=======
+
+>>>>>>> eb41cde3cb3f1866a5292e96bcb54ea4408a14df
             $show_comment = DB::table('user')->join('feedback', 'user.id', '=', 'feedback.id_user')->join('product', 'feedback.id_product', '=', 'product.id_product')->select('*')->where('product.id_product', $id_product)->get();
              return view('user.Product')->with('product', $product)->with('category', $category)->with('Show_comment', $show_comment)->with('feedback', $feedback)->with('avatar', $avatar)->with('data3',$data3)->with('photo',$data2)->with('rating',$rating)->with('rating_user',$rating_user);
         }
@@ -182,15 +186,34 @@ class ProductController extends Controller
         }
     }
     public function categories_list($id){
+        $data_session = session()->get('id');
         $row=DB::table('category')->join('product','category.id','=','product.id_category')->join('photo','photo.id_product','=','product.id_product')->where('category.id',$id)->where('photo.status','=',1)->get();
         $category=DB::table('category')->orderBy('id','DESC')->select('*')->get();
-        $count_category=DB::table('category')->join('product','category.id','=','product.id_category')->groupBy('category.name')->select('category.name', DB::raw('count(product.id_product) as total'))->get();
+        $count_category=DB::table('category')->join('product','category.id','=','product.id_category')->select('category.id','category.name', DB::raw('count(product.id_product) as total'))->groupBy('category.name','category.id')->get();
         if(isset($_GET['start_price']) && $_GET['end_price']){
             $min_price=$_GET['start_price'];
             $max_price=$_GET['end_price'];
             $row=DB::table('category')->join('product','category.id','=','product.id_category')->join('photo','photo.id_product','=','product.id_product')->where('category.id',$id)->where('photo.status','=',1)->whereBetween('product.money',[$min_price,$max_price])->paginate(5)->appends(request()->query());
         }
-        return view('index.categories_list')->with('category',$category)->with('row',$row)->with('count_category',$count_category);
+        if (!$data_session){
+            return view('index.categories_list')->with('category',$category)->with('row',$row)->with('count_category',$count_category);
+        }else{
+            $data_last = session()->get('value');
+            $avatar = DB::table('user')->where('user.avatar', $data_last)->first();
+            return view('user.categories_list')->with('category',$category)->with('row',$row)->with('count_category',$count_category)->with('avatar',$avatar);
+        }
     }
-
+    public function all_product(){
+        $data_session = session()->get('id');
+        $category=DB::table('category')->orderBy('id','DESC')->select('*')->get();
+        $count_category=DB::table('category')->join('product','category.id','=','product.id_category')->select('category.id','category.name', DB::raw('count(product.id_product) as total'))->groupBy('category.name','category.id')->get();
+        $product=DB::table('product')->join('photo','photo.id_product','=','product.id_product')->select('*')->where('photo.status','=',1)->get();
+        if (!$data_session){
+            return view('index.all_product')->with('category',$category)->with('count_category',$count_category)->with('product',$product);
+        }else{
+            $data_last = session()->get('value');
+            $avatar = DB::table('user')->where('user.avatar', $data_last)->first();
+            return view('user.all_product')->with('category',$category)->with('count_category',$count_category)->with('avatar',$avatar)->with('product',$product);
+        }
+    }
 }

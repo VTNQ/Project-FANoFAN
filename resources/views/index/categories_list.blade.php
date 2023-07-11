@@ -1,8 +1,8 @@
-@extends('layouts.template')
+@extends('layouts.template3')
 
 @section('title_page')
 
-home page
+Product Page
 
 @endsection
 
@@ -179,9 +179,8 @@ a{
 							<h2>Category</h2>
 							<div class="brands-name">
 								<ul class="nav nav-pills nav-stacked" id="nav">
-                                    <li><a href=""></a></li>
                                      @foreach($count_category as $count)
-									    <li><a href="#"> <span class="pull-right">({{$count->total}})</span>{{$count->name}}</a></li>
+									    <li><a href="/categories_list/{{$count->id}}"> <span class="pull-right">({{$count->total}})</span>{{$count->name}}</a></li>
 								      @endforeach
 								</ul>
 							</div>
@@ -215,9 +214,6 @@ a{
 								<div class="single-products">
                 <div class="col-12 col-md-4 mb-4">
                 <div class="card " id="card">
-                  <div class="container">
-
-                  </div>
                     <a href="/Product/{{$row->id_product}}">
                         <img src="/upload/{{$row->value}}" class="img-fluid" alt="..."  >
                     </a>

@@ -81,7 +81,8 @@ Route::post('/update_product/{id_product}', [ProductController::class, 'update_p
 Route::get('/detail_product/{id_product}', [ProductController::class, 'detail_product']);
 Route::get('/Product/{id_product}', [ProductController::class, 'ShowProduct']);
 Route::post('/addFeedback/{id_product}', [ProductController::class, 'addFeedback']);
-Route::get('categories_list/{id}', [ProductController::class, 'categories_list']);
+Route::get('/categories_list/{id}', [ProductController::class, 'categories_list']);
+Route::get('/all_product',[ProductController::class,'all_product']);
 Route::delete('/delete_product', [ProductController::class, 'delete_all_product'])->name('product.delete');
 
 

@@ -9,7 +9,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
    <!-- site metas -->
-   <title>@yield('index')</title>
+   <title>@yield('title_page')</title>
    <meta http-equiv="refresh" content="number">
    <meta name="keywords" content="">
    <meta name="description" content="">
@@ -33,7 +33,7 @@
    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
-   
+
    @yield('mycss')
 
 </head>
@@ -52,6 +52,16 @@
    body {
       height: 100%;
    }
+   iframe {
+       bottom: 13vh !important;
+   }
+   li div#list_category{
+       display: none;
+   }
+   li:hover div#list_category{
+       display: block;
+       position: absolute;
+   }
 </style>
 <!-- body -->
 
@@ -66,12 +76,12 @@
       <button class="navbar-toggler  text-dark" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
          <span class="navbar-toggler-icon"></span>
       </button>
-      <!--sreach-->
+      <!--search-->
       <div class="col-md-3">
          <div class="search">
             <form action="/search">
                <input class="form_sea" type="text" placeholder="Search" name="search">
-               <button type="submit" class="seach_icon"><i class="fa fa-search"></i></button>
+               <button type="submit" class="search_icon"><i class="fa fa-search" style="position: absolute;top: 30%;left: 88%;"></i></button>
             </form>
          </div>
       </div>
@@ -80,56 +90,41 @@
       <div class="collapse navbar-collapse mt-lg-0 mt-md-3 mt-sm-4" id="basicExampleNav">
          <!-- Links -->
          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-               <a class="nav-link home-link  waves-effect waves-light" href="/login">Login </a>
-            </li>
-            <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-               <a class="nav-link home-link  waves-effect waves-light" href="/register">Register </a>
-            </li>
-            <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-               <a class="nav-link home-link  waves-effect waves-light" href="/">Home </a>
-            </li>
-            <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-               <a class="nav-link about-link waves-effect waves-light" href="/about">about</a>
-            </li>
-            <li class="nav-item active  dropdown px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-               
-               <a class="nav-link dropdown-toggle categories-link waves-effect waves-light" href="/categories" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
-              
-               <div class="dropdown-menu dropdown-primary  mt-lg-3" style="background-color: #6c757d;" aria-labelledby="navbarDropdownMenuLink">
-               @foreach($category as $row)
-                  <a class="dropdown-item ceiling-fans-link waves-effect waves-light" href="/categories_list/{{$row->id}}">{{$row->name}}</a>
-                  
-                  @endforeach
-               </div>
-             
-            </li>
-            <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-               <a class="nav-link gallery-link waves-effect waves-light" href="/gallery">Gallery</a>
-            </li>
+             <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
+                 <a class="nav-link home-link  waves-effect waves-light" href="/">Home </a>
+             </li>
+             <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
+                 <a class="nav-link about-link waves-effect waves-light" href="/about">About</a>
+             </li>
+             <li class="nav-item active  dropdown px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
+                 <a class="nav-link dropdown-toggle categories-link waves-effect waves-light" href="/all_product"
+                    id="category" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">Categories</a>
+                 <div style="background-color: #6c757d;" id="list_category">
+                     @foreach($category as $row)
+                         <a class="dropdown-item ceiling-fans-link waves-effect waves-light"
+                            href="/categories_list/{{$row->id}}">{{$row->name}}</a>
+                     @endforeach
+                 </div>
+             </li>
             <li class="nav-item active  px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
                <a class="nav-link contact-link waves-effect waves-light" href="/contact">Contact Us</a>
             </li>
+             <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
+                 <a class="nav-link home-link  waves-effect waves-light" href="/login">Login </a>
+             </li>
+             <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
+                 <a class="nav-link home-link  waves-effect waves-light" href="/register">Register </a>
+             </li>
          </ul>
          <!-- Links -->
       </div>
       <!-- Collapsible content -->
    </nav>
-   <!-- <li class="nav-item">
-                                 <a class="nav-link" href="fashion.html">Fashion</a>
-                              </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="news.html">News</a>
-                              </li> -->
+
 
    <header class="img-fluid" style="    padding: 11% 0px;">
    </header>
-   <!-- end loader -->
-   <!-- header -->
-   <!-- <header>
-      <!-- header inner -->
-   <!-- </div> -->
-
    </div>
    <!-- </header> -->
    <!-- end header inner -->
@@ -298,15 +293,81 @@
    @yield('myscript')
    <script src="https://kit.fontawesome.com/1fa6a2ee32.js" crossorigin="anonymous"></script>
    <script>
-      window.addEventListener('scroll', () => {
-  const verticalScrollPx = window.scrollY || window.pageYOffset;
+       window.addEventListener('scroll', () => {
+           const verticalScrollPx = window.scrollY || window.pageYOffset;
 
-  if (verticalScrollPx <10) {
-    document.getElementById('scroll').style.backgroundColor = 'transparent';
-  }else if(verticalScrollPx<500){
-   document.getElementById('scroll').style.backgroundColor = 'dimgrey';
-  }
-});
+           if (verticalScrollPx < 10) {
+               document.getElementById('scroll_top').style.display = 'none';
+           } else if (verticalScrollPx < 500) {
+               document.getElementById('scroll_top').style.display = 'block';
+           }
+       });
+       $(window).scroll(function() {
+           if ($(window).scrollTop() > 50) {
+               $('.navbar').addClass('scrolled');
+           } else {
+               $('.navbar').removeClass('scrolled');
+           }
+       });
+       function scroll_to_top(){
+           window.scroll(0,0);
+       }
+   </script>
+   <div id="fb-root"></div>
+
+   <!-- Your Plugin chat code -->
+   <div id="fb-customer-chat" class="fb-customerchat">
+   </div>
+
+   <script>
+       var chatbox = document.getElementById('fb-customer-chat');
+       chatbox.setAttribute("page_id", "100635189759938");
+       chatbox.setAttribute("attribution", "biz_inbox");
+   </script>
+
+   <!-- Your SDK code -->
+   <script>
+       window.fbAsyncInit = function () {
+           FB.init({
+               xfbml: true,
+               version: 'v17.0'
+           });
+       };
+
+       (function (d, s, id) {
+           var js, fjs = d.getElementsByTagName(s)[0];
+           if (d.getElementById(id)) return;
+           js = d.createElement(s);
+           js.id = id;
+           js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+           fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+   </script>
+   <script>
+       function scroll_to_top() {
+           window.scroll(0, 0);
+       }
+       function show_category(){
+           document.getElementById('list_category').display='block';
+       }
+   </script>
+   <script>
+       $( function() {
+           $( "#slider-range" ).slider({
+               range: true,
+               min: 0,
+               max: 2000,
+               values: [ 75, 300 ],
+               step:10,
+               slide: function( event, ui ) {
+                   $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+                   $('#start_price').val(ui.values[0]);
+                   $('#end_price').val(ui.values[1]);
+               }
+           });
+           $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+               " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+       } );
    </script>
 </body>
 

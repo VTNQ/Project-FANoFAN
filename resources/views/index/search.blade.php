@@ -385,7 +385,11 @@
             <div class="col-12 col-md-4 mb-4">
                 <div class="card h-100">
                     <a href="#">
+<<<<<<< HEAD
                         <img src="/upload/{{$row->value}}" class="card-img-top" alt="...">
+=======
+                        <img src="/upload/{{$row->value}}" width="400" height="600" class="card-img-top" alt="...">
+>>>>>>> eb41cde3cb3f1866a5292e96bcb54ea4408a14df
                     </a>
                     <div class="card-body">
                         <ul class="list-unstyled d-flex justify-content-between">

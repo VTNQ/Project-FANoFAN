@@ -1,6 +1,6 @@
 <?php $__env->startSection('title_page'); ?>
 
-home page
+Product Page
 
 <?php $__env->stopSection(); ?>
 
@@ -177,9 +177,8 @@ a{
 							<h2>Category</h2>
 							<div class="brands-name">
 								<ul class="nav nav-pills nav-stacked" id="nav">
-                                    <li><a href=""></a></li>
                                      <?php $__currentLoopData = $count_category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $count): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-									    <li><a href="#"> <span class="pull-right">(<?php echo e($count->total); ?>)</span><?php echo e($count->name); ?></a></li>
+									    <li><a href="/categories_list/<?php echo e($count->id); ?>"> <span class="pull-right">(<?php echo e($count->total); ?>)</span><?php echo e($count->name); ?></a></li>
 								      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 								</ul>
 							</div>
@@ -213,9 +212,6 @@ a{
 								<div class="single-products">
                 <div class="col-12 col-md-4 mb-4">
                 <div class="card " id="card">
-                  <div class="container">
-
-                  </div>
                     <a href="/Product/<?php echo e($row->id_product); ?>">
                         <img src="/upload/<?php echo e($row->value); ?>" class="img-fluid" alt="..."  >
                     </a>
@@ -270,4 +266,4 @@ a{
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/index/categories_list.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.template3', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/index/categories_list.blade.php ENDPATH**/ ?>
