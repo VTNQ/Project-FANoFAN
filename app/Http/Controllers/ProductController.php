@@ -200,7 +200,7 @@ class ProductController extends Controller
         $data_session = session()->get('id');
         $category=DB::table('category')->orderBy('id','DESC')->select('*')->get();
         $count_category=DB::table('category')->join('product','category.id','=','product.id_category')->select('category.id','category.name', DB::raw('count(product.id_product) as total'))->groupBy('category.name','category.id')->get();
-        $product=DB::table('product')->join('photo','photo.id_product','=','product.id_product')->join('category','category.id','=','product.id_category')->select('*')->get();
+        $product=DB::table('product')->join('photo','photo.id_product','=','product.id_product')->select('*')->where('photo.status','=',1)->get();
         if (!$data_session){
             return view('index.all_product')->with('category',$category)->with('count_category',$count_category)->with('product',$product);
         }else{

@@ -100,7 +100,7 @@
                 <a class="nav-link about-link waves-effect waves-light" href="/about">About</a>
             </li>
             <li class="nav-item active  dropdown px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-                <a class="nav-link dropdown-toggle categories-link waves-effect waves-light" href="/categories_list/all"
+                <a class="nav-link dropdown-toggle categories-link waves-effect waves-light" href="/all_product"
                    id="category" data-toggle="dropdown" aria-haspopup="true"
                    aria-expanded="false">Categories</a>
                 <div style="background-color: #6c757d;" id="list_category">

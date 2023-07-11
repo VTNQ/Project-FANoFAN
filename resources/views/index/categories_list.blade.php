@@ -214,9 +214,6 @@ a{
 								<div class="single-products">
                 <div class="col-12 col-md-4 mb-4">
                 <div class="card " id="card">
-                  <div class="container">
-
-                  </div>
                     <a href="/Product/{{$row->id_product}}">
                         <img src="/upload/{{$row->value}}" class="img-fluid" alt="..."  >
                     </a>

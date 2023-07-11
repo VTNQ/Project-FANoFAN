@@ -1,12 +1,10 @@
-@extends('layouts.template3')
-
-@section('title_page')
+<?php $__env->startSection('title_page'); ?>
 
     Product Page
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('mycss')
+<?php $__env->startSection('mycss'); ?>
     <style>
         @media (min-width: 576px){
             .col-sm-9 {
@@ -43,9 +41,9 @@
         }
 
     </style>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('body_content')
+<?php $__env->startSection('body_content'); ?>
 
     <!DOCTYPE html>
     <html lang="en">
@@ -179,9 +177,9 @@
                         <h2>Category</h2>
                         <div class="brands-name">
                             <ul class="nav nav-pills nav-stacked" id="nav">
-                                @foreach($count_category as $count)
-                                    <li><a href="/categories_list/{{$count->id}}"> <span class="pull-right">({{$count->total}})</span>{{$count->name}}</a></li>
-                                @endforeach
+                                <?php $__currentLoopData = $count_category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $count): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <li><a href="/categories_list/<?php echo e($count->id); ?>"> <span class="pull-right">(<?php echo e($count->total); ?>)</span><?php echo e($count->name); ?></a></li>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </ul>
                         </div>
                     </div><!--/brands_products-->
@@ -205,22 +203,22 @@
                 </div>
             </div>
             <div class="col-sm-9 padding-right" style="flex-wrap: inherit">
-                @foreach($product as $row)
+                <?php $__currentLoopData = $product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="col-sm-4">
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="col-12 col-md-4 mb-4">
                                     <div class="card " id="card">
-                                        <a href="/Product/{{$row->id_product}}">
-                                            <img src="/upload/{{$row->value}}" class="img-fluid" alt="..."  >
+                                        <a href="/Product/<?php echo e($row->id_product); ?>">
+                                            <img src="/upload/<?php echo e($row->value); ?>" class="img-fluid" alt="..."  >
                                         </a>
                                         <div class="card-body">
                                             <ul class="list-unstyled d-flex justify-content-between">
-                                                <li class="text-muted text-right">${{$row->money}}</li>
+                                                <li class="text-muted text-right">$<?php echo e($row->money); ?></li>
                                             </ul>
-                                            <h1  id="h1">{{$row->name_product}}</h1>
+                                            <h1  id="h1"><?php echo e($row->name_product); ?></h1>
 
-                                            <a href="/Product/{{$row->id_product}}"><p class="text-muted">Details Product</p></a>
+                                            <a href="/Product/<?php echo e($row->id_product); ?>"><p class="text-muted">Details Product</p></a>
                                         </div>
 
                                     </div>
@@ -231,7 +229,7 @@
 
                         </div>
                     </div>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 <!--features_items-->
 
                 <div class="category-tab"><!--category-tab-->
@@ -255,9 +253,9 @@
     </body>
     </html>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('myscript')
+<?php $__env->startSection('myscript'); ?>
     <script>
         $( function() {
             $( "#slider-range" ).slider({
@@ -276,4 +274,6 @@
                 " - $" + $( "#slider-range" ).slider( "values", 1 ) );
         } );
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.template3', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/index/all_product.blade.php ENDPATH**/ ?>

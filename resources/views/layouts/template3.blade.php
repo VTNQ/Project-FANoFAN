@@ -9,7 +9,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
    <!-- site metas -->
-   <title>@yield('index')</title>
+   <title>@yield('title_page')</title>
    <meta http-equiv="refresh" content="number">
    <meta name="keywords" content="">
    <meta name="description" content="">
@@ -81,7 +81,7 @@
          <div class="search">
             <form action="/search">
                <input class="form_sea" type="text" placeholder="Search" name="search">
-               <button type="submit" class="search_icon"><i class="fa fa-search"></i></button>
+               <button type="submit" class="search_icon"><i class="fa fa-search" style="position: absolute;top: 30%;left: 88%;"></i></button>
             </form>
          </div>
       </div>
@@ -97,7 +97,7 @@
                  <a class="nav-link about-link waves-effect waves-light" href="/about">About</a>
              </li>
              <li class="nav-item active  dropdown px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-                 <a class="nav-link dropdown-toggle categories-link waves-effect waves-light" href="/categories_list/all"
+                 <a class="nav-link dropdown-toggle categories-link waves-effect waves-light" href="/all_product"
                     id="category" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">Categories</a>
                  <div style="background-color: #6c757d;" id="list_category">

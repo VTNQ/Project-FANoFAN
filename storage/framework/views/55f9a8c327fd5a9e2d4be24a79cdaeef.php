@@ -212,9 +212,6 @@ a{
 								<div class="single-products">
                 <div class="col-12 col-md-4 mb-4">
                 <div class="card " id="card">
-                  <div class="container">
-
-                  </div>
                     <a href="/Product/<?php echo e($row->id_product); ?>">
                         <img src="/upload/<?php echo e($row->value); ?>" class="img-fluid" alt="..."  >
                     </a>
@@ -269,4 +266,4 @@ a{
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/index/categories_list.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.template3', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/index/categories_list.blade.php ENDPATH**/ ?>
