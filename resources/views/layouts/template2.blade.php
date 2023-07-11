@@ -39,6 +39,7 @@
     <link rel="stylesheet" href="{{asset('/slider-show/css/owl.theme.default.min.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
     <link rel="stylesheet" href="{{asset('/slider-show/css/style.css')}}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     @yield('mycss')
 
 </head>
@@ -170,7 +171,7 @@
           <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
 	          <div class="col-md-12 ftco-animate">
 	          	<div class="text w-100 text-center">
-                  <h1 id="row_last" style="text-align: center; color:  #ffffff;">Choose Better Powerful HVLS Fan
+                  <h1 id="row_last" style="text-align: center; color:  #ffffff;">Choose Better Powerful Fan
             <span style="color: #444444;"></span>
             </h1>
 		            <h4>Best Model for Energy-efficiency & Ventilation</h4>
@@ -186,7 +187,7 @@
           <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
 	          <div class="col-md-12 ftco-animate">
 	          	<div class="text w-100 text-center">
-                  <h1 id="row_last" style="text-align: center; color:  #ffffff;">Choose Better Powerful HVLS Fan
+                  <h1 id="row_last" style="text-align: center; color:  #ffffff;">Choose Better Powerful Fan
             <span style="color: #444444;"></span>
             </h1>
 		            <h4>Best Model for Energy-efficiency & Ventilation</h4>

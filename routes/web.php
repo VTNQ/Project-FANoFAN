@@ -107,8 +107,7 @@ Route::put('reset-password', [UserEmailController::class, 'updatePassword'])->na
 Route::get('/feedback',[AdminController::class,'feedback']);
 Route::get('/filter_date',[AdminController::class,'filter_date']);
 Route::get('/change_pass',[AdminController::class,'Change_pass']);
-
-
+Route::post('/insert-rating',[IndexController::class,'insert_rating']);
 
 
 
