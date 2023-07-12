@@ -16,39 +16,49 @@
                             Change Password
                             </header>
                             <div class="panel-body">
-
-
                                 <div class="position-center">
+                                @if (session()->has('message'))
+            <div class="alert alert-success text-center" role="alert">{{ session('message') }}</div>
+        @elseif(session()->has('old'))
+            <div class="alert alert-danger" role="alert">{{ session('old') }}</div>
+        @elseif(session()->has('accept'))
+            <div class="alert alert-danger" role="alert">{{ session('accept') }}</div>
 
-                                    <form role="form" action="/save_photo" method="post" enctype="multipart/form-data">
+        @elseif(session()->has('same'))
+            <div class="alert alert-danger" role="alert">{{ session('same') }}</div>
+
+        @endif
+                                    <form role="form" action="/change_pass" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Name photo</label>
-                                            <input type="file" class="form-control" id="fileImg" accept="image/*"
-                                                   name="fileImg" placeholder="Enter name category">
-                                            <div class="preview">
-                                                <img
-                                                    src="https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg"
-                                                    alt="Preview" id="img" height="100" width="100">
-                                            </div>
+                                            <label for="exampleInputEmail1">Old Password</label>
+                                            <input type="password" class="form-control" id="fileImg"
+                                                   name="old_password" placeholder="Enter name category" value="{{ old('old_password') }}">
+                                        @error('old_password')
+                                        <div class="alert alert-danger">{{$message}}</div>
+                                        @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">New Password</label>
+                                            <input type="password" class="form-control" id="fileImg"
+                                                   name="New_password" placeholder="Enter name category" value="{{old('New_password')}}">
+                                         @error('New_password')
+                                         <div class="alert alert-danger">{{$message}}</div>
+                                         @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Conform Password</label>
+                                            <input type="password" class="form-control" id="fileImg"
+                                                   name="re_New_password" placeholder="Enter name category" value="{{old('re_New_password')}}">
+                                            @error('re_New_password')
+                                            <div class="alert alert-danger">{{$message}}</div>
+                                            @enderror
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Status</label>
-                                            <select name="status" class="form_control input-sm m-bot15" id="">
-                                                <option value="1">Main</option>
-                                                <option value="0">Extra</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Product</label>
-                                            <select name="product" class="form_control input-sm m-bot15" id="">
-                                                @foreach($list_product as $row)
-                                                    <option value="{{$row->id_product}}">{{$row->name_product}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <button type="submit" class="btn btn-info">Add Photo</button>
+
+
+
+                                        <button type="submit" class="btn btn-info">Update Password</button>
                                     </form>
                                 </div>
                             </div>

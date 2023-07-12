@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\rating;
-use Illuminate\Support\Facades\DB;
+use App\Models\feedback;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Mail;
 
 class IndexController extends Controller
@@ -17,6 +19,7 @@ class IndexController extends Controller
         if (!$data_session) {
             $data2 = DB::table('photo')->select('*')->join('product', 'photo.id_product', '=', 'product.id_product')->join('category', 'product.id_category', '=', 'category.id')->where('status',1)->get();
             $category=DB::table('category')->orderBy('id','DESC')->select('*')->get();
+
             $product=DB::table('product')->join('photo','product.id_product','=','photo.id_product')->select('*')->orderBy('product.id_product','DESC')->paginate(6);
             return view('index.index')->with('photo', $data2)->with('avatar', $data2)->with('category',$category)->with('product',$product);
         }elseif($data_session){
@@ -73,14 +76,5 @@ class IndexController extends Controller
         return redirect()->back();
     }
    }
-   public function insert_rating(Request $request){
-    $data=$request->all();
-    $rating=new rating();
-    $rating->id_product=$data['product_id'];
-    $rating->rating=$data['index'];
-    $feedback=Session()->get('feedback');
-    $rating->id_feedback=$feedback;
-    $rating->save();
-    echo 'done';
-   }
+
 }

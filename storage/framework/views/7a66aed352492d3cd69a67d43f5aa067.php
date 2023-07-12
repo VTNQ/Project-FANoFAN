@@ -28,7 +28,7 @@
                                     <form role="form" action="/save_category" method="post">
                                         <?php echo csrf_field(); ?>
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Name category</label>
+                                            <label for="exampleInputEmail1">Name Category</label>
                                             <input type="text" class="form-control" id="exampleInputEmail1"
                                                    name="name_category" placeholder="Enter name category">
                                             <br>
@@ -37,7 +37,7 @@ $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                            <div class="alert alert-danger">Please Enter name Category</div>
+                                            <div class="alert alert-danger">Please Enter Name Category</div>
                                             <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
@@ -45,7 +45,7 @@ unset($__errorArgs, $__bag); ?>
                                         </div>
 
 
-                                        <button type="submit" class="btn btn-info">Add category</button>
+                                        <button type="submit" class="btn btn-info">Add Category</button>
                                     </form>
                                 </div>
 
@@ -74,7 +74,7 @@ unset($__errorArgs, $__bag); ?>
                             <tr>
                                 <th><input type="checkbox" name="" id="select_all_ids"></th>
                                 <th>#</th>
-                                <th>Name_catelogy</th>
+                                <th>Name Categogy</th>
 
                                 <th style="width: 30px;"></th>
                             </tr>

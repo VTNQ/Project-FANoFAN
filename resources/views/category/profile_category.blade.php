@@ -29,17 +29,17 @@
                                     <form role="form" action="/save_category" method="post">
                                         @csrf
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Name category</label>
+                                            <label for="exampleInputEmail1">Name Category</label>
                                             <input type="text" class="form-control" id="exampleInputEmail1"
                                                    name="name_category" placeholder="Enter name category">
                                             <br>
                                             @error('name_category')
-                                            <div class="alert alert-danger">Please Enter name Category</div>
+                                            <div class="alert alert-danger">Please Enter Name Category</div>
                                             @enderror
                                         </div>
 
 
-                                        <button type="submit" class="btn btn-info">Add category</button>
+                                        <button type="submit" class="btn btn-info">Add Category</button>
                                     </form>
                                 </div>
 
@@ -68,7 +68,7 @@
                             <tr>
                                 <th><input type="checkbox" name="" id="select_all_ids"></th>
                                 <th>#</th>
-                                <th>Name_catelogy</th>
+                                <th>Name Categogy</th>
 
                                 <th style="width: 30px;"></th>
                             </tr>

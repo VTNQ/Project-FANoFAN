@@ -3,11 +3,6 @@
     Recycle Bin
 @endsection
 @section('body_content')
-    @extends('layouts.admin')
-    @section('title_page')
-        List Picture
-    @endsection
-    @section('body_content')
         <style>
             .btn-danger {
                 color: #fff;
@@ -27,7 +22,7 @@
                 <div class="table-agile-info">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Manager feedback
+                            Recycle Bin Product
                         </div>
                         <div class="row w3-res-tb">
                             <div class="col-sm-5 m-b-xs">
@@ -37,14 +32,7 @@
                             <div class="col-sm-4">
                             </div>
                             <div class="col-sm-3">
-                                <form action="">
-                                    <div class="input-group">
-                                        <input type="text" class="input-sm form-control" name="key" placeholder="Search">
-                                        <span class="input-group-btn">
-            <input class="btn btn-sm btn-default" type="submit">Go!</input>
-          </span>
-                                    </div>
-                                </form>
+
                             </div>
                         </div>
                         <?php
@@ -60,50 +48,27 @@
 
                             <div class="table-responsive">
                                 <div class="row py-2" style="    margin-right: 1vh;">
-                                    <div style="float: right;">
-
-                                    </div>
-                                    <div class="row">
-                                        <form  method="get" action="/filter_date">
-                                            @csrf
-                                            <div class="col-md-2">
-                                                <p>Since: <input type="text" id="datepicker" class="form-control" name="start_date"></p>
-                                                <input type="submit" id="btn-dashboard-filter" class="btn btn-primary btn-sm" value="filter">
-                                            </div>
-                                            <div class="col-md-2">
-                                                <p>To date: <input type="text" id="datepicker2" class="form control" name="End_date"></p>
-                                            </div>
-                                        </form>
-                                    </div>
                                 </div>
                                 <table class="table table-striped b-t b-light">
                                     <thead>
                                     <tr>
-
-                                        <th>#</th>
-                                        <th>Photo</th>
-                                        <th>User</th>
                                         <th>Product</th>
-                                        <th>Comment</th>
-                                        <td>Feedback date</td>
-                                        <th style="width: 30px;"></th>
-
-
+                                        <th>Category</th>
+                                        <th>Money</th>
+                                        <th></th>
+                                        <th></th>
                                     </tr>
                                     </thead>
-                                    @foreach($feedback as $key=>$row)
-
-
+                                    @foreach($recycle_product as $rp)
                                         <tr>
-                                            <td>{{++$key}}</td>
-                                            <td><img src="/upload/{{$row->value}}" width="100" height="100" alt=""></td>
-                                            <td>{{$row->username}}</td>
-                                            <td>{{$row->name_product}}</td>
-                                            <td>{{$row->comment}}</td>
-                                            <td>{{date('M d,Y h:i A',strtotime($row->date_to))}}</td>
+                                            <td></td>
+                                            <td><img src="/upload/{{$rp->value}}" width="100" height="100" alt=""></td>
+                                            <td>{{$rp->name_product}}</td>
+                                            <td>{{$rp->money}}</td>
+                                            <td>{{$rp->comment}}</td>
+                                            <td>{{$rp->name}}</td>
                                         </tr>
                                     @endforeach
-
                                 </table>
 
                             </div>

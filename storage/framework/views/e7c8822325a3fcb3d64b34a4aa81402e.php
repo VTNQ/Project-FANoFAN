@@ -317,6 +317,10 @@
 <script src="<?php echo e(asset('/js/custom.js ')); ?>"></script>
 <?php echo $__env->yieldContent('myscript'); ?>
 <script src="https://kit.fontawesome.com/1fa6a2ee32.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css">
 <script>
     window.addEventListener('scroll', () => {
         const verticalScrollPx = window.scrollY || window.pageYOffset;

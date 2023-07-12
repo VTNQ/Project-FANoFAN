@@ -65,7 +65,7 @@
                                                     </select>
 
                                                 </div>
-                                                <button type="submit" class="btn btn-primary ">filter</button>
+                                                <button type="submit" class="btn btn-primary ">FILTER</button>
                                             </div>
                                             <div class="col-md-4">
 
@@ -79,8 +79,8 @@
                                 <tr>
                                     <th><input type="checkbox" name="" id="select_all_ids"></th>
                                     <th>#</th>
-                                    <th>value</th>
-                                    <th>status</th>
+                                    <th>Value</th>
+                                    <th>Status</th>
                                     <th>Approval/Deny</th>
                                     <td>Product</td>
                                     <th style="width: 30px;"></th>
@@ -91,21 +91,22 @@
                                 <?php
                           $url = $_SERVER['REQUEST_URI'];
                           $string = substr($url, 17);
-                          $i = $string ? ($string -1)*5 + 1 : 1;
+                          $int=(int)$string;
+                          $i = $int ? ($int -1)*5 + 1 : 1;
                             ?>
                                 @foreach($photo  as $key=> $row )
-
+                                    @foreach(explode('|',$row->value) as $value)
                                     <tr id="photo_ids{{$row->id_photo}}">
                                         <td><input type="checkbox" name="ids" class="checkbox_ids"
                                                    value="{{$row->id_photo}}"></td>
                                                    <td>{{$i++}}</td>
-                                        <td><img src="/upload/{{$row->value}}" alt="" height="100" width="100">
+                                        <td><img src="{{$value}}" alt="" height="100" width="100">
                                         </td>
                                         <td><?php
                                                 if ($row->status == 1) {
-                                                    echo 'main';
+                                                    echo 'Main';
                                                 } else {
-                                                    echo 'extra';
+                                                    echo 'Extra';
                                                 }
                                                 ?></td>
                                         <td><span class="text-ellipsis">
@@ -132,8 +133,9 @@
                                                href="{{url('/delete_picture/'.$row->id_photo)}}"><i
                                                     class="fa fa-times text-danger text"></i></a>
                                         </td>
+                                        @endforeach
                                 @endforeach
-
+                         
 
                             </table>
                             {{$photo->links()}}

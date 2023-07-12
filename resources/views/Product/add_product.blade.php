@@ -62,13 +62,13 @@
                                                       style="resize: none;" rows="8"
                                                       placeholder="Enter Product Description"></textarea>
                                                       @error('description')
-                                            <div class="alert alert-danger">Please Enter description again</div>
+                                            <div class="alert alert-danger">Please Enter Description Again</div>
                                             @enderror
                                         </div>
 
 
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">category</label>
+                                            <label for="exampleInputEmail1">Category</label>
 
                                             <select name="category" class="form_control input-sm m-bot15" id="">
                                                 @foreach($list_category as $row)
@@ -87,9 +87,9 @@
                type="file"
                 name="Main"
                id="MultipleFile" >
-               @error('Main')  @error('file')
-               <div class="alert alert-danger">Please require 1 of 2</div>
-               @enderror
+               @error('Main')  
+               <div class="alert alert-danger">Please upload Image main</div>
+               
                @enderror
     </div>
     <div class="mb-3">

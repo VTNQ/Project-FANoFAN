@@ -383,7 +383,7 @@
             <div class="col-12 col-md-4 mb-4">
                 <div class="card h-100">
                     <a href="#">
-                        <img src="/upload/<?php echo e($row->value); ?>" width="400" height="600" class="" alt="...">
+                        <img src="/upload/<?php echo e($row->value); ?>" width="400" height="600" class="card-img-top" alt="...">
                     </a>
                     <div class="card-body">
                         <ul class="list-unstyled d-flex justify-content-between">

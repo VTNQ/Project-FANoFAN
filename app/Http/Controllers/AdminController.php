@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Carbon;
 use App\Jobs\SendEmail;
 use App\Models\Photo;
+use Illuminate\Support\Facades\Validator;
 use App\Models\product;
 use App\Models\UserModel;
 use Illuminate\Http\Request;
@@ -33,6 +34,7 @@ class AdminController extends Controller
         }
 
     }
+
 
     //xu ly page register
     public function register()
@@ -113,18 +115,45 @@ public function feedback(){
     $feedback=DB::table('feedback')->join('user','feedback.id_user','=','user.id')->join('product','feedback.id_product','=','product.id_product')->join('photo','photo.id_product','=','product.id_product')->where('photo.status','=',1)->get();
     return view('feedback.feedback')->with('list_photo',$list_photo)->with('feedback',$feedback);
 }
-public function filter_date(Request $request){
-      $data_last = session()->get('value_admin');
-$start_date=$request->start_date;
-$End_date=$request->End_date;
+    public function filter_date(Request $request){
+        $data_last = session()->get('value_admin');
+        $start_date= $request->start_date;
+        $End_date= $request->End_date;
 
-$list_photo = DB::table('user')->select('*')->where('user.avatar', $data_last)->first();
-$filter=DB::table('feedback')->join('user','feedback.id_user','=','user.id')->join('product','feedback.id_product','=','product.id_product')->join('photo','photo.id_product','=','product.id_product')->whereBetween('date_to',[$start_date,$End_date])->where('photo.status','=',1)->get();
-return view('feedback.filter_date')->with('filter',$filter)->with('list_photo',$list_photo);
-}
-public function change_password(){
+        $list_photo = DB::table('user')->select('*')->where('user.avatar', $data_last)->first();
+        $filter=DB::table('feedback')->join('user','feedback.id_user','=','user.id')->join('product','feedback.id_product','=','product.id_product')->join('photo','photo.id_product','=','product.id_product')->whereBetween('feedback.date_to',[$start_date,$End_date])->where('photo.status',  '=',1)->get();
+        return view('feedback.filter_date')->with('filter',$filter)->with('list_photo',$list_photo);
+    }
+public function Change_pass(){
     $data_last = session()->get('value_admin');
     $list_photo = DB::table('user')->select('*')->where('user.avatar', $data_last)->first();
-    return view('password.change_password')->with('list_photo',$list_photo);
+    return view('admin.change_password')->with('list_photo',$list_photo);
+}
+public function Change_password(Request $request){
+   $validator=Validator::make($request->all(),['old_password'=>'required','New_password'=>'required|min:8','re_New_password'=>'required']);
+   if ($validator->fails()) {
+    return redirect()->back()
+        ->withErrors($validator)
+        ->withInput();
+}
+    $data_session = session()->get('id_admin');
+        $old_password = md5($request->old_password);
+        $new_password = md5($request->New_password);
+        $re_new_password = md5($request->re_New_password);
+        $password = DB::table('user')->where('password', $old_password)->first();
+        if ($password and $new_password == $re_new_password) {
+            DB::update('update user set password=? where id=? ', [$new_password, $data_session]);
+            Session()->flash('message', 'Reset Password success');
+            return redirect('/change_pass');
+        } else if (!$password and $new_password == $re_new_password) {
+            Session()->flash('old', 'Old password incorrect');
+            return redirect('/change_pass');
+        } else if ($password and $re_new_password !== $new_password) {
+            Session()->flash('accept', 'New password does not match the re-enter Password ');
+            return redirect('/change_pass');
+        } else if (!$password and $new_password !== $re_new_password) {
+            Session()->flash('same', 'Old password and re-enter password is incorrect');
+            return redirect('/change_pass');
+        }
 }
 }

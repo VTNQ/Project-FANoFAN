@@ -64,7 +64,7 @@
                                                     </select>
 
                                                 </div>
-                                                <button type="submit" class="btn btn-primary ">filter</button>
+                                                <button type="submit" class="btn btn-primary ">FILTER</button>
                                             </div>
                                             <div class="col-md-4">
 
@@ -78,8 +78,8 @@
                                 <tr>
                                     <th><input type="checkbox" name="" id="select_all_ids"></th>
                                     <th>#</th>
-                                    <th>value</th>
-                                    <th>status</th>
+                                    <th>Value</th>
+                                    <th>Status</th>
                                     <th>Approval/Deny</th>
                                     <td>Product</td>
                                     <th style="width: 30px;"></th>
@@ -90,21 +90,22 @@
                                 <?php
                           $url = $_SERVER['REQUEST_URI'];
                           $string = substr($url, 17);
-                          $i = $string ? ($string -1)*5 + 1 : 1;
+                          $int=(int)$string;
+                          $i = $int ? ($int -1)*5 + 1 : 1;
                             ?>
                                 <?php $__currentLoopData = $photo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=> $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-
+                                    <?php $__currentLoopData = explode('|',$row->value); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr id="photo_ids<?php echo e($row->id_photo); ?>">
                                         <td><input type="checkbox" name="ids" class="checkbox_ids"
                                                    value="<?php echo e($row->id_photo); ?>"></td>
                                                    <td><?php echo e($i++); ?></td>
-                                        <td><img src="/upload/<?php echo e($row->value); ?>" alt="" height="100" width="100">
+                                        <td><img src="<?php echo e($value); ?>" alt="" height="100" width="100">
                                         </td>
                                         <td><?php
                                                 if ($row->status == 1) {
-                                                    echo 'main';
+                                                    echo 'Main';
                                                 } else {
-                                                    echo 'extra';
+                                                    echo 'Extra';
                                                 }
                                                 ?></td>
                                         <td><span class="text-ellipsis">
@@ -131,8 +132,9 @@
                                                href="<?php echo e(url('/delete_picture/'.$row->id_photo)); ?>"><i
                                                     class="fa fa-times text-danger text"></i></a>
                                         </td>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
+                         
 
                             </table>
                             <?php echo e($photo->links()); ?>

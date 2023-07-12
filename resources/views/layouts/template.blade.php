@@ -67,7 +67,7 @@
         background-color: #36454f;
     }
     h1#row_last {
-    line-height: 32vh;
+        line-height: 32vh;
     }
     li div#list_category{
         display: none;
@@ -147,54 +147,54 @@
 </nav>
 
 <div class="home-slider owl-carousel js-fullheight">
-      <div class="slider-item js-fullheight" style="background-image:url(slider-show/images/b3.jpg);">
-      	<div class="overlay"></div>
+    <div class="slider-item js-fullheight" style="background-image:url(slider-show/images/b3.jpg);">
+        <div class="overlay"></div>
         <div class="container">
-          <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
-	          <div class="col-md-12 ftco-animate">
-	          	<div class="text w-100 text-center">
-	          <h1 id="row_last" style="text-align: center; color:  #ffffff; font-size: 3rem;">Environmental Sustainability
-            <span style="color: #444444;"></span>
-            </h1>
-		            <h4>Starts from the Right Product Selection</h4>
-	            </div>
-	          </div>
-	        </div>
+            <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+                <div class="col-md-12 ftco-animate">
+                    <div class="text w-100 text-center">
+                        <h1 id="row_last" style="text-align: center; color:  #ffffff; font-size: 3rem;">Environmental Sustainability
+                            <span style="color: #444444;"></span>
+                        </h1>
+                        <h4>Starts from the Right Product Selection</h4>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <div class="slider-item js-fullheight" style="background-image:url(slider-show/images/a2.jpg);">
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
-	          <div class="col-md-12 ftco-animate">
-	          	<div class="text w-100 text-center">
-                  <h1 id="row_last" style="text-align: center; color:  #ffffff; font-size: 3rem;">Choose Better Powerful Fan
-            <span style="color: #444444;"></span>
-            </h1>
-		            <h4>Best Model for Energy-efficiency & Ventilation</h4>
-	            </div>
-	          </div>
-	        </div>
-        </div>
-      </div>
-
-      <div class="slider-item js-fullheight" style="background-image:url(slider-show/images/a1.jpg);" >
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
-	          <div class="col-md-12 ftco-animate">
-	          	<div class="text w-100 text-center">
-                  <h1 id="row_last" style="text-align: center; color:  #ffffff; font-size: 3rem;">Choose Better Powerful Fan
-            <span style="color: #444444;"></span>
-            </h1>
-		            <h4>Best Model for Energy-efficiency & Ventilation</h4>
-	            </div>
-	          </div>
-	        </div>
-        </div>
-      </div>
     </div>
+
+    <div class="slider-item js-fullheight" style="background-image:url(slider-show/images/a2.jpg);">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+                <div class="col-md-12 ftco-animate">
+                    <div class="text w-100 text-center">
+                        <h1 id="row_last" style="text-align: center; color:  #ffffff; font-size: 3rem;">Choose Better Powerful Fan
+                            <span style="color: #444444;"></span>
+                        </h1>
+                        <h4>Best Model for Energy-efficiency & Ventilation</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slider-item js-fullheight" style="background-image:url(slider-show/images/a1.jpg);" >
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+                <div class="col-md-12 ftco-animate">
+                    <div class="text w-100 text-center">
+                        <h1 id="row_last" style="text-align: center; color:  #ffffff; font-size: 3rem;">Choose Better Powerful Fan
+                            <span style="color: #444444;"></span>
+                        </h1>
+                        <h4>Best Model for Energy-efficiency & Ventilation</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="main-panel">
     <section>
         @yield('body_content')
@@ -367,8 +367,8 @@
 <script src="https://kit.fontawesome.com/1fa6a2ee32.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css">
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css">
 <script>
     window.addEventListener('scroll', () => {
         const verticalScrollPx = window.scrollY || window.pageYOffset;
@@ -429,28 +429,28 @@
     }
 </script>
 <script>
-  $( function() {
-    $( "#slider-range" ).slider({
-      range: true,
-      min: 0,
-      max: 2000,
-      values: [ 75, 300 ],
-      step:10,
-      slide: function( event, ui ) {
-        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-        $('#start_price').val(ui.values[0]);
-        $('#end_price').val(ui.values[1]);
-      }
-    });
-    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-  } );
-  </script>
+    $( function() {
+        $( "#slider-range" ).slider({
+            range: true,
+            min: 0,
+            max: 2000,
+            values: [ 75, 300 ],
+            step:10,
+            slide: function( event, ui ) {
+                $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+                $('#start_price').val(ui.values[0]);
+                $('#end_price').val(ui.values[1]);
+            }
+        });
+        $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+            " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+    } );
+</script>
 
 
 
-    <script src="{{asset('slider-show/js/owl.carousel.min.js')}}"></script>
-    <script src="{{asset('slider-show/js/main.js')}}"></script>
+<script src="{{asset('slider-show/js/owl.carousel.min.js')}}"></script>
+<script src="{{asset('slider-show/js/main.js')}}"></script>
 </body>
 
 </html>

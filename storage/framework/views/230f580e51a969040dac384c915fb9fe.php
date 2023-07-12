@@ -2,51 +2,56 @@
 <html lang="en">
 
 <head>
-   <!-- basic -->
-   <meta charset="utf-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <!-- mobile metas -->
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-   <!-- site metas -->
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <link rel="short icon" href="<?php echo e(asset('images/icon-title.ico')); ?>">
-   <title><?php echo $__env->yieldContent('title_page'); ?></title>
-   <meta http-equiv="refresh" content="number">
-   <meta name="keywords" content="">
-   <meta name="description" content="">
-   <meta name="author" content="">
+    <title><?php echo $__env->yieldContent('index'); ?></title>
+    <meta http-equiv="refresh" content="number">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-   <!-- bootstrap css -->
-   <link rel="stylesheet" href="<?php echo e(asset('/css/bootstrap.min.css ')); ?>">
-   <!-- style css -->
-   <link rel="stylesheet" href="<?php echo e(asset('/css/style.css ')); ?>">
-   <!-- Responsive-->
-   <link rel="stylesheet" href="<?php echo e(asset('/css/responsive.css ')); ?>">
-   <!-- fevicon -->
-   <link rel="icon" href="<?php echo e(asset('/images/fevicon.png ')); ?>" type="image/gif" />
-   <!-- Scrollbar Custom CSS -->
-   <link rel="stylesheet" href="<?php echo e(asset('/css/jquery.mCustomScrollbar.min.css ')); ?>">
-   <!-- Tweaks for older IEs-->
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-
-   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="<?php echo e(asset('/css/bootstrap.min.css ')); ?>">
+    <!-- style css -->
+    <link rel="stylesheet" href="<?php echo e(asset('/css/style.css ')); ?>">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="<?php echo e(asset('/css/responsive.css ')); ?>">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="<?php echo e(asset('/css/jquery.mCustomScrollbar.min.css ')); ?>">
+    <!-- Tweaks for older IEs-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+          media="screen">
 
 
-   <?php echo $__env->yieldContent('mycss'); ?>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
+    <link rel="stylesheet" href="<?php echo e(asset('/slider-show/css/owl.carousel.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('/slider-show/css/owl.theme.default.min.css')); ?>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
+    <link rel="stylesheet" href="<?php echo e(asset('/slider-show/css/style.css')); ?>">
+
+
+
+    <?php echo $__env->yieldContent('mycss'); ?>
 
 </head>
 <style>
-   .navbar.scrolling-navbar {
-      padding-top: 12px;
-      padding-bottom: 12px;
-      -webkit-transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
-      transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
-   }
+    .navbar.scrolling-navbar {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        -webkit-transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
+        transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
+    }
 
-   a {
+    a {
       color: #fff;
    }
 
@@ -55,6 +60,10 @@
    }
    iframe {
        bottom: 13vh !important;
+   }
+   .navbar:hover,
+   .navbar.scrolled{
+       background-color: #36454f;
    }
    li div#list_category{
        display: none;
@@ -67,6 +76,10 @@
         width: 18vw;
        height: 60vh;
    }
+   .navbar:hover,
+    .navbar.scrolled{
+        background-color: #36454f;
+    }
 </style>
 <!-- body -->
 
@@ -292,94 +305,103 @@
       <!-- Copyright -->
 
    </footer>
-   <!-- end footer -->
-   <!-- Javascript files-->
-   <script src="<?php echo e(asset('/js/jquery.min.js')); ?>"></script>
-   <script src="<?php echo e(asset('/js/popper.min.js ')); ?>"></script>
-   <script src="<?php echo e(asset('/js/bootstrap.bundle.min.js ')); ?>"></script>
-   <script src="<?php echo e(asset('/js/jquery-3.0.0.min.js ')); ?>"></script>
-   <!-- sidebar -->
-   <script src="<?php echo e(asset('/js/jquery.mCustomScrollbar.concat.min.js ')); ?>"></script>
-   <script src="<?php echo e(asset('/js/custom.js ')); ?>"></script>
-   <?php echo $__env->yieldContent('myscript'); ?>
-   <script src="https://kit.fontawesome.com/1fa6a2ee32.js" crossorigin="anonymous"></script>
-   <script>
-       window.addEventListener('scroll', () => {
-           const verticalScrollPx = window.scrollY || window.pageYOffset;
+<!-- end footer -->
+<!-- Javascript files-->
+<script src="<?php echo e(asset('/js/jquery.min.js')); ?>"></script>
+<script src="<?php echo e(asset('/js/popper.min.js ')); ?>"></script>
+<script src="<?php echo e(asset('/js/bootstrap.bundle.min.js ')); ?>"></script>
+<script src="<?php echo e(asset('/js/jquery-3.0.0.min.js ')); ?>"></script>
+<!-- sidebar -->
+<script src="<?php echo e(asset('/js/jquery.mCustomScrollbar.concat.min.js ')); ?>"></script>
+<script src="<?php echo e(asset('/js/custom.js ')); ?>"></script>
+<?php echo $__env->yieldContent('myscript'); ?>
+<script src="https://kit.fontawesome.com/1fa6a2ee32.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css">
+<script>
+    window.addEventListener('scroll', () => {
+        const verticalScrollPx = window.scrollY || window.pageYOffset;
 
-           if (verticalScrollPx < 10) {
-               document.getElementById('scroll_top').style.display = 'none';
-           } else if (verticalScrollPx < 500) {
-               document.getElementById('scroll_top').style.display = 'block';
-           }
-       });
-       $(window).scroll(function() {
-           if ($(window).scrollTop() > 50) {
-               $('.navbar').addClass('scrolled');
-           } else {
-               $('.navbar').removeClass('scrolled');
-           }
-       });
-       function scroll_to_top(){
-           window.scroll(0,0);
-       }
-   </script>
-   <div id="fb-root"></div>
+        if (verticalScrollPx < 10) {
+            document.getElementById('scroll_top').style.display = 'none';
+        } else if (verticalScrollPx < 500) {
+            document.getElementById('scroll_top').style.display = 'block';
+        }
+    });
+    $(window).scroll(function() {
+        if ($(window).scrollTop() > 50) {
+            $('.navbar').addClass('scrolled');
+        } else {
+            $('.navbar').removeClass('scrolled');
+        }
+    });
+    function scroll_to_top(){
+        window.scroll(0,0);
+    }
+</script>
+<div id="fb-root"></div>
 
-   <!-- Your Plugin chat code -->
-   <div id="fb-customer-chat" class="fb-customerchat">
-   </div>
+<!-- Your Plugin chat code -->
+<div id="fb-customer-chat" class="fb-customerchat">
+</div>
 
-   <script>
-       var chatbox = document.getElementById('fb-customer-chat');
-       chatbox.setAttribute("page_id", "100635189759938");
-       chatbox.setAttribute("attribution", "biz_inbox");
-   </script>
+<script>
+    var chatbox = document.getElementById('fb-customer-chat');
+    chatbox.setAttribute("page_id", "100635189759938");
+    chatbox.setAttribute("attribution", "biz_inbox");
+</script>
 
-   <!-- Your SDK code -->
-   <script>
-       window.fbAsyncInit = function () {
-           FB.init({
-               xfbml: true,
-               version: 'v17.0'
-           });
-       };
+<!-- Your SDK code -->
+<script>
+    window.fbAsyncInit = function () {
+        FB.init({
+            xfbml: true,
+            version: 'v17.0'
+        });
+    };
 
-       (function (d, s, id) {
-           var js, fjs = d.getElementsByTagName(s)[0];
-           if (d.getElementById(id)) return;
-           js = d.createElement(s);
-           js.id = id;
-           js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
-           fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
-   </script>
-   <script>
-       function scroll_to_top() {
-           window.scroll(0, 0);
-       }
-       function show_category(){
-           document.getElementById('list_category').display='block';
-       }
-   </script>
-   <script>
-       $( function() {
-           $( "#slider-range" ).slider({
-               range: true,
-               min: 0,
-               max: 2000,
-               values: [ 75, 300 ],
-               step:10,
-               slide: function( event, ui ) {
-                   $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-                   $('#start_price').val(ui.values[0]);
-                   $('#end_price').val(ui.values[1]);
-               }
-           });
-           $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-               " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-       } );
-   </script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+<script>
+    function scroll_to_top() {
+        window.scroll(0, 0);
+    }
+    function show_category(){
+        document.getElementById('list_category').display='block';
+    }
+</script>
+<script>
+  $( function() {
+    $( "#slider-range" ).slider({
+      range: true,
+      min: 0,
+      max: 2000,
+      values: [ 75, 300 ],
+      step:10,
+      slide: function( event, ui ) {
+        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+        $('#start_price').val(ui.values[0]);
+        $('#end_price').val(ui.values[1]);
+      }
+    });
+    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+  } );
+  </script>
+
+
+
+    <script src="<?php echo e(asset('slider-show/js/owl.carousel.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('slider-show/js/main.js')); ?>"></script>
 </body>
 
 </html>

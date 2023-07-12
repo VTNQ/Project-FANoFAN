@@ -29,7 +29,7 @@
                                     @endif
                                     <form role="form" action="/save_photo" method="post" enctype="multipart/form-data">
                                         @csrf
-                                        <div class="form-group">
+                                        <div class="form-gzroup">
                                             <label for="exampleInputEmail1">Name photo</label>
                                             <input type="file" class="form-control" id="fileImg" accept="image/*"
                                                    name="fileImg" placeholder="Enter name category">

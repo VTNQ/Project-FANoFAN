@@ -61,6 +61,9 @@
     body {
         height: 100%;
     }
+    h1#row_last {
+    line-height: 32vh;
+    }
     .navbar:hover,
     .navbar.scrolled{
         background-color: #36454f;
@@ -183,7 +186,7 @@
         </div>
       </div>
 
-      <div class="slider-item js-fullheight" style="background-image:url(slider-show/images/a1.jpg);">
+      <div class="slider-item js-fullheight" style="background-image:url(slider-show/images/a1.jpg);" >
       	<div class="overlay"></div>
         <div class="container">
           <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">

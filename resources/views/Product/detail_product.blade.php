@@ -59,20 +59,19 @@
                                 <div class="form-group">
                                     <strong>Main:</strong>
                                    
-                                        <img src="/upload/{{$Main->value}}" alt="" width="200px">
+                                        <img src="{{$Main->value}}" alt="" width="200px">
                                    
                                 </div>
-                                @if($Extra)
+                               
                                 <div class="form-group" id="Extra">
                                     <strong>Extra:</strong>
-                                @foreach($Extra as $row)
+                             
+                               @foreach($Extra as $row)
+                               @foreach(explode('|',$row->value) as $value)
+                               <img src="{{$value}}" alt="" width="200px">
+                               @endforeach
+                               @endforeach
                               
-                                   
-                                        <img src="/upload/{{$row->value}}" alt="" width="200px">
-                                   
-                                </div>
-                                @endforeach
-                                @endif
                             </div>
                         </div>
                         <div class="row">

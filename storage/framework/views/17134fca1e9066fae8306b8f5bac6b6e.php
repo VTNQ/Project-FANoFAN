@@ -1,5 +1,5 @@
 <?php $__env->startSection('title_page'); ?>
-    List Picture
+    List Feedback
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('body_content'); ?>
     <style>
@@ -21,7 +21,7 @@
             <div class="table-agile-info">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Manager feedback
+                        Manager Feedback
                     </div>
                     <div class="row w3-res-tb">
                         <div class="col-sm-5 m-b-xs">
@@ -35,6 +35,7 @@
                                 <div class="input-group">
                                     <input type="text" class="input-sm form-control" name="key" placeholder="Search">
                                     <span class="input-group-btn">
+
                                         <input class="btn btn-sm btn-default" type="submit"></input>
                                     </span>
                                 </div>
@@ -66,7 +67,7 @@
                                         <div class="col-md-2">
                                             <p>To date: <input type="text" id="datepicker2" class="form control" name="End_date"></p>
                                         </div>
-                                        <input type="submit" id="btn-dashboard-filter" class="btn btn-primary btn-sm" value="filter" style="margin-left:3vw;margin-top: 3vh ">
+                                        <input type="submit" id="btn-dashboard-filter" class="btn btn-primary btn-sm" value="FILTER" style="margin-left:3vw;margin-top: 3vh ">
                                     </form>
                                 </div>
                             </div>
@@ -88,14 +89,18 @@
                                 <?php $__currentLoopData = $feedback; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
 
+
+                               <?php $__currentLoopData = explode('|',$row->value); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
                                <tr>
                                 <td><?php echo e(++$key); ?></td>
-                                <td><img src="/upload/<?php echo e($row->value); ?>" width="100" height="100" alt=""></td>
+                                <td><img src="<?php echo e($value); ?>" width="100" height="100" alt=""></td>
                                 <td><?php echo e($row->username); ?></td>
                                 <td><?php echo e($row->name_product); ?></td>
                                 <td><?php echo e($row->comment); ?></td>
                                 <td><?php echo e(date('M d,Y h:i A',strtotime($row->date_to))); ?></td>
                                </tr>
+                               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                             </table>
@@ -194,7 +199,7 @@
     $( "#datepicker" ).datepicker({
         prevText:'Last month',
         nextText:'Next month',
-        dateFormat:'yy-mm-dd',
+        dateFormat:'mm-dd-yy',
         dayNamMin:['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
         duration:'slow'
     });
@@ -202,7 +207,7 @@
     $( "#datepicker2" ).datepicker({
         prevText:'Last month',
         nextText:'Next month',
-        dateFormat:'yy-mm-dd',
+        dateFormat:'mm-dd-yy',
         dayNamMin:['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
         duration:'slow'
     });

@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('title_page'); ?>
     List Picture
 <?php $__env->stopSection(); ?>
@@ -62,8 +61,8 @@
                                     <form  method="get" action="/filter_date">
                                         <?php echo csrf_field(); ?>
                                         <div class="col-md-2">
-                                            <p>Since: <input type="text" id="datepicker" class="form-control" name="start_date"></p>
-                                            <input type="submit" id="btn-dashboard-filter" class="btn btn-primary btn-sm" value="filter">
+                                            <p>Since: <input type="text" id="datepicker" class="form-control" name="start_date"></p><br>
+                                            <input type="submit" id="btn-dashboard-filter" class="btn btn-primary btn-sm" value="FILTER">
                                         </div>
                                         <div class="col-md-2">
                                             <p>To date: <input type="text" id="datepicker2" class="form control" name="End_date"></p>
@@ -88,17 +87,17 @@
                                 </thead>
                                 <?php $__currentLoopData = $filter; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
-                               
+                               <?php $__currentLoopData = explode('|',$row->value); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                <tr>
                                 <td><?php echo e(++$key); ?></td>
-                                <td><img src="/upload/<?php echo e($row->value); ?>" width="100" height="100" alt=""></td>
+                                <td><img src="<?php echo e($value); ?>" width="100" height="100" alt=""></td>
                                 <td><?php echo e($row->username); ?></td>
                                 <td><?php echo e($row->name_product); ?></td>
                                 <td><?php echo e($row->comment); ?></td>
                                 <td><?php echo e(date('M d,Y h:i A',strtotime($row->date_to))); ?></td>
                                </tr>
                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </table>
                         
                         </div>

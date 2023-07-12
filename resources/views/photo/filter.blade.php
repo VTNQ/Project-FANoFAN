@@ -65,7 +65,7 @@
                                                     </select>
 
                                                 </div>
-                                                <button type="submit" class="btn btn-primary ">filter</button>
+                                                <button type="submit" class="btn btn-primary ">FILTER</button>
                                             </div>
                                             <div class="col-md-4">
 
@@ -79,8 +79,8 @@
                                 <tr>
                                     <th><input type="checkbox" name="" id="select_all_ids"></th>
                                     <th>#</th>
-                                    <th>value</th>
-                                    <th>status</th>
+                                    <th>Value</th>
+                                    <th>Status</th>
                                     <th>Approval/Deny</th>
                                     <td>Product</td>
                                     <th style="width: 30px;"></th>
@@ -89,12 +89,12 @@
                                 </tr>
                                 </thead>
                                 @foreach($photo  as $key=> $row )
-
+                                    @foreach(explode('|',$row->value) as $value )
                                     <tr id="photo_ids{{$row->id_photo}}">
                                         <td><input type="checkbox" name="ids" class="checkbox_ids"
                                                    value="{{$row->id_photo}}"></td>
                                         <td>{{++$key}}</td>
-                                        <td><img src="/upload/{{$row->value}}" alt="" height="100" width="100">
+                                        <td><img src="$value" alt="" height="100" width="100">
                                         </td>
                                         <td><?php
                                                 if ($row->status == 1) {

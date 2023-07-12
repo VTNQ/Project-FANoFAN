@@ -308,15 +308,19 @@
 </footer>
 <!-- end footer -->
 <!-- Javascript files-->
-<script src="{{ asset('/js/jquery.min.js') }}"></script>
-<script src="{{ asset('/js/popper.min.js ') }}"></script>
-<script src="{{ asset('/js/bootstrap.bundle.min.js ') }}"></script>
-<script src="{{ asset('/js/jquery-3.0.0.min.js ') }}"></script>
+<script src="{{ asset('/js/jquery.min.js')}}"></script>
+<script src="{{ asset('/js/popper.min.js ')}}"></script>
+<script src="{{ asset('/js/bootstrap.bundle.min.js ')}}"></script>
+<script src="{{ asset('/js/jquery-3.0.0.min.js ')}}"></script>
 <!-- sidebar -->
-<script src="{{ asset('/js/jquery.mCustomScrollbar.concat.min.js ') }}"></script>
-<script src="{{ asset('/js/custom.js ') }}"></script>
+<script src="{{ asset('/js/jquery.mCustomScrollbar.concat.min.js ')}}"></script>
+<script src="{{ asset('/js/custom.js ')}}"></script>
 @yield('myscript')
 <script src="https://kit.fontawesome.com/1fa6a2ee32.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css">
 <script>
     window.addEventListener('scroll', () => {
         const verticalScrollPx = window.scrollY || window.pageYOffset;

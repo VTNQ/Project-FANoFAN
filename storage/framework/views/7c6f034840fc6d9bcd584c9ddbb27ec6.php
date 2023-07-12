@@ -7,6 +7,10 @@
 <?php $__env->startSection('mycss'); ?>
 
     <style>
+        .navbar:hover,
+        .navbar.scrolled{
+            background-color: #36454f;
+        }
         .main-panel {
             background-color: #1c2331;
             color: white;
@@ -102,6 +106,11 @@
             color: blue
         }
 
+        .list-inline {
+            padding-left: 0;
+            list-style: none;
+            display: contents;
+        }
         .cursor {
             cursor: pointer
         }
@@ -118,12 +127,14 @@
 
     <div class="row m-0">
         <div class="col-lg-4 left-side-product-box pb-3">
-            <img id="main-image" src="/upload/<?php echo e($product->value); ?>" class=" p-3">
+            <img id="main-image" src="<?php echo e($product->value); ?>" class=" p-3">
             <?php $__currentLoopData = $data3; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <span class="sub-img">
-						<img onclick="change_image(this)" src="/upload/<?php echo e($row->value); ?>" class=" p-2">
+                <?php $__currentLoopData = explode('|',$row->value); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <span class="sub-img">
+						<img onclick="change_image(this)" src="<?php echo e($value); ?>" class=" p-2">
 
 					</span>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
         <div class="col-lg-8">
@@ -133,10 +144,13 @@
 
                         <p class="m-0 p-0"><?php echo e($photo->name_product); ?></p>
                     </div>
+
                     <div class="col-lg-12">
                         <p class="m-0 p-0 price-pro">$<?php echo e($photo->money); ?></p>
                         <hr class="p-0 m-0">
                     </div>
+
+
                     <div class="col-lg-12 pt-2">
                         <h5>Product Detail</h5>
                         <span><?php echo e($photo->content); ?></span>
@@ -162,14 +176,16 @@
 
                         <?php $__currentLoopData = $Show_comment; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="d-flex flex-row user-info">
-                                <img class="rounded-circle" src ="/upload/user.png" width="40">
+                                <img class="rounded-circle" src ="/upload/user.png" width="100">
 
 
                                 <div class="d-flex flex-column justify-content-start ml-2">
                                     <span class="d-block font-weight-bold name"><?php echo e($row->username); ?></span>
                                     <span class="date text-black-50"><?php echo e(date('M d,Y h:i A',strtotime($row->date_to))); ?></span>
+
                                 </div>
                             </div>
+
                             <div class="mt-2">
                                 <p class="comment-text"><?php echo e($row->comment); ?></p>
                             </div>
@@ -181,6 +197,7 @@
                             <?php echo csrf_field(); ?>
                             <div class="d-flex flex-row align-items-start">
                                 <img class="rounded-circle" src="/upload/user.png" width="40">
+
                                 <textarea class="form-control ml-1 shadow-none textarea" name="Message"></textarea></div>
                             <div class="mt-2 text-right">
                                 <button class="btn btn-primary btn-sm shadow-none" type="submit">Post comment</button>
@@ -194,27 +211,27 @@
         </div>
     </div>
     <!-- feedback -->
-<script>
-    function change_image(image){
+    <script>
+        function change_image(image){
 
-        var container = document.getElementById("main-image");
+            var container = document.getElementById("main-image");
 
-        container.src = image.src;
-    }
-
-
-
-    document.addEventListener("DOMContentLoaded", function(event) {
+            container.src = image.src;
+        }
 
 
+
+        document.addEventListener("DOMContentLoaded", function(event) {
 
 
 
 
 
-    });
-</script>
-</script>
+
+
+        });
+    </script>
+
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('footer'); ?>
 
@@ -224,4 +241,4 @@
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.template2', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/user/Product.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.template4', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/user/Product.blade.php ENDPATH**/ ?>
