@@ -319,7 +319,7 @@ Product Page
 
               <div id="slider-range"></div>
               <br>
-              <input type="submit" name="filter_price" value="filter_price" class="btn btn-success">
+              <input type="submit" name="filter_price" value="filter price" class="btn btn-success">
               <input type="hidden" name="start_price" id="start_price">
               <input type="hidden" name="end_price" id="end_price">
             </form>

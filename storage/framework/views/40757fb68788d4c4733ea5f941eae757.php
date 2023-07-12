@@ -199,8 +199,7 @@ unset($__errorArgs, $__bag); ?>
                        <form action="/user/upload_photo" method="post" enctype="multipart/form-data">
                         <?php echo csrf_field(); ?>
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img src="/upload/<?php echo e($list_photo->avatar); ?>" alt="Admin"
-                                     class="rounded-circle" width="150" id="img">
+                                <img src="/upload/<?php echo e($list_photo->avatar); ?>" alt="Admin" class="rounded-circle" style="width: 8.5vw;height: 8.5vw" id="img">
 
                                 <div class="mt-3">
                                     <?php $__currentLoopData = $list_user; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -227,7 +226,7 @@ unset($__errorArgs, $__bag); ?>
                                             <input type="file" class="custom-file-input" id="fileImg"
                                                    aria-describedby="inputGroupFileAddon01" name="fileImg" style="cursor: pointer">
                                             <label class="custom-file-label" for="inputGroupFile01" style="cursor: pointer">Choose file</label>
-                                           
+
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>

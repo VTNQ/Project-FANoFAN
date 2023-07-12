@@ -196,7 +196,7 @@
     </div>
 </div>
 <div class="main-panel">
-    <section style="margin-left: 2%;">
+    <section>
         <?php echo $__env->yieldContent('body_content'); ?>
     </section>
 </div>
@@ -274,33 +274,6 @@
                 </p>
 
             </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
-            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 footer-products">
-
-                <!-- Links -->
-                <h6 class="text-uppercase ">Category</h6>
-                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
-                    style="width: 60px;background-color: #F8F9FA !important;height: 2px;opacity: 1 ;">
-                <p>
-                    <a href="/categories_ceiling">Ceiling Fans</a>
-                </p>
-                <p>
-                    <a href="/categories_table">Table Fans</a>
-                </p>
-                <p>
-                    <a href="/categories_standing">Standing Fans</a>
-                </p>
-                <p>
-                    <a href="/categories_standing">Exhaust Fans</a>
-                </p>
-
-
-            </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 footer-company">
 
                 <!-- Links -->

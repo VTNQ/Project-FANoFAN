@@ -59,20 +59,19 @@
                                 <div class="form-group">
                                     <strong>Main:</strong>
                                    
-                                        <img src="/upload/<?php echo e($Main->value); ?>" alt="" width="200px">
+                                        <img src="<?php echo e($Main->value); ?>" alt="" width="200px">
                                    
                                 </div>
-                                <?php if($Extra): ?>
+                               
                                 <div class="form-group" id="Extra">
                                     <strong>Extra:</strong>
-                                <?php $__currentLoopData = $Extra; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                             
+                               <?php $__currentLoopData = $Extra; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                               <?php $__currentLoopData = explode('|',$row->value); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                               <img src="<?php echo e($value); ?>" alt="" width="200px">
+                               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                               
-                                   
-                                        <img src="/upload/<?php echo e($row->value); ?>" alt="" width="200px">
-                                   
-                                </div>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                <?php endif; ?>
                             </div>
                         </div>
                         <div class="row">

@@ -10,6 +10,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserEmailController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FilterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,7 +53,7 @@ Route::get('/logout', [AdminController::class, 'logout1']);
 Route::get('/register', [AdminController::class, 'register']);
 Route::post('/add_register', [AdminController::class, 'addRegister']);
 
-
+Route::get('/category/filter',[FilterController::class,'filter'])->name('filter.all_product');
 //Photo
 Route::get('/add_photo', [PhotoController::class, 'add_photo']);
 Route::post('/save_photo', [PhotoController::class, 'save_photo']);

@@ -61,7 +61,7 @@
                             ?>
                             <?php $__currentLoopData = $list_product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr id="product_ids<?php echo e($row->id_product); ?>">
-                                    <td><input type="checkbox" name="ids" class="checkbox_ids"
+                                    <td><input type="checkbox" name="ids[]" class="checkbox_ids"
                                                value="<?php echo e($row->id_product); ?>"></td>
                                     <td><?php echo e($i++); ?></td>
                                     <td><?php echo e($row->name_product); ?></td>

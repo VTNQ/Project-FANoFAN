@@ -88,7 +88,7 @@ unset($__errorArgs, $__bag); ?>
                             <?php $__currentLoopData = $all_list_login; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=> $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                                 <tr id="category_ids<?php echo e($row->id); ?>">
-                                    <td><input type="checkbox" name="ids" class="checkbox_ids" value="<?php echo e($row->id); ?>"></td>
+                                    <td><input type="checkbox" name="ids[]" class="checkbox_ids" value="<?php echo e($row->id); ?>"></td>
                                     <td><?php echo e($i++); ?></td>
                                     <td><?php echo e($row->name); ?></td>
                                     <td>

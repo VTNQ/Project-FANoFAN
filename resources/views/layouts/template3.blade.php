@@ -397,11 +397,26 @@
       " - $" + $( "#slider-range" ).slider( "values", 1 ) );
   } );
   </script>
-
-
-
     <script src="{{asset('slider-show/js/owl.carousel.min.js')}}"></script>
     <script src="{{asset('slider-show/js/main.js')}}"></script>
+<script>
+    var url = "{{route('filter.all_product')}}";
+    $('.continentname').change(function() {
+        var id = $(this).find(':selected').val();
+        $.ajax({
+            type: 'GET',
+            url: url,
+            data: {
+                'id': id
+            },
+            success: function(data) {
+                $('body').html(data.htmlGroupTable);
+                // the next thing you want to do
+            }
+        });
+
+    });
+</script>
 </body>
 
 </html>

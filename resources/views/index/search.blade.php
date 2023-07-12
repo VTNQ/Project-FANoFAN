@@ -383,19 +383,12 @@
 
         <div class="row">
             <div class="col-12 col-md-4 mb-4">
-                <div class="card h-100">
-                    <a href="#">
+                <div class="card h-100" style="height: 52vh">
+                    <a href="#" style="height: 10%">
                         <img src="{{$row->value}}" width="400" height="600" class="card-img-top" alt="...">
                     </a>
                     <div class="card-body">
                         <ul class="list-unstyled d-flex justify-content-between">
-                            <li>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-muted fa fa-star"></i>
-                                <i class="text-muted fa fa-star"></i>
-                            </li>
                             <li class="text-muted text-right">${{$row->money}}</li>
                         </ul>
                         <h1>{{$row->name_product}}</h1>

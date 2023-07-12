@@ -140,7 +140,7 @@
                 @foreach ($data_feedback as $data)
                     <tr>
                             <td>
-                                <img src="/upload/{{$data->value}}" alt="" style="width: 6vw">
+                                <img src="{{$data->value}}" alt="" style="width: 6vw">
                             </td>
                         <td>
                             {{$data->name_product}}

@@ -140,7 +140,7 @@
                 <?php $__currentLoopData = $data_feedback; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
                             <td>
-                                <img src="/upload/<?php echo e($data->value); ?>" alt="" style="width: 6vw">
+                                <img src="<?php echo e($data->value); ?>" alt="" style="width: 6vw">
                             </td>
                         <td>
                             <?php echo e($data->name_product); ?>

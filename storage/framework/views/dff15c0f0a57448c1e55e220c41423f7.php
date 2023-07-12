@@ -189,7 +189,7 @@
       <div class="slider-item js-fullheight" style="background-image:url(slider-show/images/a1.jpg);" >
       	<div class="overlay"></div>
         <div class="container">
-          <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+          <div class="row no-gutters slider-text js-fullheight align-items-center justify-conten    t-center">
 	          <div class="col-md-12 ftco-animate">
 	          	<div class="text w-100 text-center">
                   <h1 id="row_last" style="text-align: center; color:  #ffffff; font-size: 3rem;">Choose Better Powerful Fan
