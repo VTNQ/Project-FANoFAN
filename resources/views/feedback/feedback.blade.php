@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title_page')
-    List Picture
+    List Feedback
 @endsection
 @section('body_content')
     <style>
@@ -22,7 +22,7 @@
             <div class="table-agile-info">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Manager feedback
+                        Manager Feedback
                     </div>
                     <div class="row w3-res-tb">
                         <div class="col-sm-5 m-b-xs">
@@ -36,7 +36,7 @@
                                 <div class="input-group">
                                     <input type="text" class="input-sm form-control" name="key" placeholder="Search">
                                     <span class="input-group-btn">
-            <input class="btn btn-sm btn-default" type="submit">Go!</input>
+            <input class="btn btn-sm btn-default" type="submit"></input>
           </span>
                                 </div>
                             </form>
@@ -62,8 +62,8 @@
                                     <form  method="get" action="/filter_date">
                                         @csrf
                                         <div class="col-md-2">
-                                            <p>Since: <input type="text" id="datepicker" class="form-control" name="start_date"></p>
-                                            <input type="submit" id="btn-dashboard-filter" class="btn btn-primary btn-sm" value="filter">
+                                            <p>Since: <input type="text" id="datepicker" class="form-control" name="start_date"></p><br>
+                                            <input type="submit" id="btn-dashboard-filter" class="btn btn-primary btn-sm" value="FILTER">
                                         </div>
                                         <div class="col-md-2">
                                             <p>To date: <input type="text" id="datepicker2" class="form control" name="End_date"></p>
@@ -88,15 +88,16 @@
                                 </thead>
                                 @foreach($feedback as $key=>$row)
 
-                               
+                               @foreach(explode('|',$row->value) as $value) 
                                <tr>
                                 <td>{{++$key}}</td>
-                                <td><img src="/upload/{{$row->value}}" width="100" height="100" alt=""></td>
+                                <td><img src="{{$value}}" width="100" height="100" alt=""></td>
                                 <td>{{$row->username}}</td>
                                 <td>{{$row->name_product}}</td>
                                 <td>{{$row->comment}}</td>
                                 <td>{{date('M d,Y h:i A',strtotime($row->date_to))}}</td>
                                </tr>
+                               @endforeach
                                @endforeach
 
                             </table>

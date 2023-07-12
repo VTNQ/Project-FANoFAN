@@ -267,4 +267,4 @@
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.template2', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/user/categories_list.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.template4', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/user/categories_list.blade.php ENDPATH**/ ?>

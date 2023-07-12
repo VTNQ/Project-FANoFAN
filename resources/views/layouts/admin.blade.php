@@ -167,7 +167,7 @@
                      
                     </li>
                     <li class="sub-menu">
-                        <a href="/feedback">
+                        <a href="/change_pass">
                             <i class="fa fa-th"></i>
                             <span>Change Password</span>
                         </a>

@@ -39,6 +39,7 @@
     <link rel="stylesheet" href="<?php echo e(asset('/slider-show/css/owl.theme.default.min.css')); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
     <link rel="stylesheet" href="<?php echo e(asset('/slider-show/css/style.css')); ?>">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>    
     <?php echo $__env->yieldContent('mycss'); ?>
 
 </head>
@@ -62,13 +63,9 @@
     .navbar.scrolled{
         background-color: #36454f;
     }
-    h1#row_last {
-    line-height: 32vh;
-}
-h1#row_cou {
-    font-size: 16vh;
-    line-height: 31vh;
-}
+    iframe {
+        bottom: 13vh !important;
+    }
 </style>
 <!-- body -->
 
@@ -199,9 +196,7 @@ h1#row_cou {
       </div>
     </div>
 <!-- header -->
-<!-- <header>
-  <!-- header inner -->
-<!-- </div> -->
+
 
 </div>
 <!-- </header> -->
@@ -292,7 +287,7 @@ h1#row_cou {
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 footer-products">
 
                 <!-- Links -->
-                <h6 class="text-uppercase ">Products</h6>
+                <h6 class="text-uppercase ">Category</h6>
                 <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
                     style="width: 60px;background-color: #F8F9FA !important;height: 2px;opacity: 1 ;">
                 <p>
@@ -325,7 +320,6 @@ h1#row_cou {
                 <p class="py-1 m-0">
                     <a href="/contact">Contact Us</a>
                 </p>
-
             </div>
             <!-- Grid column -->
 

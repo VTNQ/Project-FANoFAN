@@ -9,6 +9,10 @@
 @section('mycss')
 
     <style>
+         .navbar:hover,
+    .navbar.scrolled{
+        background-color: #36454f;
+    }
         .main-panel {
             background-color: #1c2331;
             color: white;
@@ -104,6 +108,11 @@
             color: blue
         }
 
+        .list-inline {
+    padding-left: 0;
+    list-style: none;
+    display: contents;
+}
         .cursor {
             cursor: pointer
         }
@@ -122,10 +131,12 @@
         <div class="col-lg-4 left-side-product-box pb-3">
             <img id="main-image" src="/upload/{{$product->value}}" class=" p-3">
             @foreach($data3 as $row)
+            @foreach(explode('|',$row->value) as $value)
                 <span class="sub-img">
-						<img onclick="change_image(this)" src="/upload/{{$row->value}}" class=" p-2">
+						<img onclick="change_image(this)" src="{{$value}}" class=" p-2">
 
 					</span>
+                    @endforeach
             @endforeach
         </div>
         <div class="col-lg-8">
@@ -135,8 +146,13 @@
 
                         <p class="m-0 p-0">{{$photo->name_product}}</p>
                     </div>
+                   
+                    <div class="col-lg-12">
+                        <p class="m-0 p-0 price-pro">${{ $photo->money}}</p>
+                        <hr class="p-0 m-0">
+                    </div>
                     <ul class="list-inline rating" title="Average Rating">
-                        @for($count=1;$count<=5;$count++)
+                    @for($count=1;$count<=5;$count++)
                         @php
                         if($count<=$rating){
                             $color='color:#ffcc00';
@@ -144,13 +160,10 @@
                             $color='color:#ccc';
                         }
                         @endphp
-                                <li title="star_rating" data-index="{{$count}}" id="{{$photo->id_product}}-{{$count}}" data-product_id="{{$photo->id_product}}" data-rating="{{$rating}}" style="cursor: pointer;{{$color}};font-size: 30px;display:inline" class="rating">&#9733</li>
+                                <li title="star_rating"  data-product_id="{{$photo->id_product}}" data-rating="{{$rating}}"  style="cursor: pointer;{{$color}};font-size: 30px;display:inline" class="rating">&#9733</li>
                                 @endfor
                             </ul>
-                    <div class="col-lg-12">
-                        <p class="m-0 p-0 price-pro">${{ $photo->money}}</p>
-                        <hr class="p-0 m-0">
-                    </div>
+                        
                     <div class="col-lg-12 pt-2">
                         <h5>Product Detail</h5>
                         <span>{{$photo->content}}</span>
@@ -176,12 +189,25 @@
 
                         @foreach($Show_comment as $row)
                             <div class="d-flex flex-row user-info">
-                                <img class="rounded-circle" src ="/upload/user.png" width="40">
+                                <img class="rounded-circle" src ="/upload/user.png" width="100">
 
 
                                 <div class="d-flex flex-column justify-content-start ml-2">
                                     <span class="d-block font-weight-bold name">{{$row->username}}</span>
                                     <span class="date text-black-50">{{date('M d,Y h:i A',strtotime($row->date_to))}}</span>
+                                    <ul class="list-inline rating" title="Average Rating" style="display: inline-block;">
+                    @for($count=1;$count<=5;$count++)
+                        @php
+                        if($count<=$rating_user){
+                            $color='color:#ffcc00';
+                        }else{
+                            $color='color:#ccc';
+                        }
+                        @endphp
+                                <li title="star_rating"  data-product_id="{{$photo->id_product}}" data-rating="{{$rating}}"  style="cursor: pointer;{{$color}};font-size: 30px;display:inline" class="rating">&#9733</li>
+                                @endfor
+                            </ul>
+                        
                                 </div>
                             </div>
                            
@@ -196,6 +222,18 @@
                             @csrf
                             <div class="d-flex flex-row align-items-start">
                                 <img class="rounded-circle" src="/upload/user.png" width="40">
+                                <ul class="list-inline rating" title="Average Rating">
+                        @for($count=1;$count<=5;$count++)
+                        @php
+                        if($count<=$rating){
+                            $color='color:#ffcc00';
+                        }else{
+                            $color='color:#ccc';
+                        }
+                        @endphp
+                                <li title="star_rating" data-index="{{$count}}" id="{{$photo->id_product}}-{{$count}}" data-product_id="{{$photo->id_product}}" data-rating="{{$rating}}"  style="cursor: pointer;{{$color}};font-size: 30px;display:inline" class="rating">&#9733</li>
+                                @endfor
+                            </ul>
                                 <textarea class="form-control ml-1 shadow-none textarea" name="Message"></textarea></div>
                             <div class="mt-2 text-right">
                                 <button class="btn btn-primary btn-sm shadow-none" type="submit">Post comment</button>
@@ -255,12 +293,18 @@
         var index=$(this).data('index');
         var product_id=$(this).data('product_id');
         var _token=$('input[name="_token"]').val();
-        $.ajax({
-            url:"{{url('insert-rating')}}",
-            method:'POST',
-            data:{index:index,product_id:product_id,_token:_token},
-            success:function(date)
-        })
+       $.ajax({
+        url:"{{url('insert-rating')}}",
+        method:'Post',
+        data:{index:index,product_id:product_id,_token:_token},
+        success:function(data){
+            if(data=='done'){
+                alert('you rating success');
+            }else{
+                alert('error rating');
+            }
+        }
+       })
     })
 </script>
 @endsection

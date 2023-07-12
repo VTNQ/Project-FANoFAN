@@ -39,6 +39,7 @@
     <link rel="stylesheet" href="{{asset('/slider-show/css/owl.theme.default.min.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
     <link rel="stylesheet" href="{{asset('/slider-show/css/style.css')}}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     @yield('mycss')
 
 </head>
@@ -58,6 +59,9 @@
     body {
         height: 100%;
     }
+    h1#row_last {
+    line-height: 32vh;
+    }
     .navbar:hover,
     .navbar.scrolled{
         background-color: #36454f;
@@ -71,6 +75,10 @@
     li:hover div#list_category{
         display: block;
         position: absolute;
+    }
+    #card{
+        width: 18vw;
+        height: 60vh;
     }
 </style>
 <!-- body -->
@@ -111,8 +119,8 @@
                 <a class="nav-link about-link waves-effect waves-light" href="/about">About</a>
             </li>
             <li class="nav-item active  dropdown px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-                <a class="nav-link dropdown-toggle categories-link waves-effect waves-light" href="/categories_list/all"
-                   id="category" data-toggle="dropdown" aria-haspopup="true"
+                <a class="nav-link categories-link waves-effect waves-light" href="/all_product"
+                   id="category" aria-haspopup="true"
                    aria-expanded="false">Categories</a>
                 <div style="background-color: #6c757d;" id="list_category">
                     @foreach($category as $row)
@@ -150,7 +158,7 @@
           <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
 	          <div class="col-md-12 ftco-animate">
 	          	<div class="text w-100 text-center">
-	          <h1 id="row_last" style="text-align: center; color:  #ffffff;">Environmental Sustainability
+	          <h1 id="row_last" style="text-align: center; color:  #ffffff; font-size: 3rem;">Environmental Sustainability
             <span style="color: #444444;"></span>
             </h1>
 		            <h4>Starts from the Right Product Selection</h4>
@@ -166,7 +174,7 @@
           <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
 	          <div class="col-md-12 ftco-animate">
 	          	<div class="text w-100 text-center">
-                  <h1 id="row_last" style="text-align: center; color:  #ffffff;">Choose Better Powerful HVLS Fan
+                  <h1 id="row_last" style="text-align: center; color:  #ffffff; font-size: 3rem;">Choose Better Powerful Fan
             <span style="color: #444444;"></span>
             </h1>
 		            <h4>Best Model for Energy-efficiency & Ventilation</h4>
@@ -176,13 +184,13 @@
         </div>
       </div>
 
-      <div class="slider-item js-fullheight" style="background-image:url(slider-show/images/a1.jpg);">
+      <div class="slider-item js-fullheight" style="background-image:url(slider-show/images/a1.jpg);" >
       	<div class="overlay"></div>
         <div class="container">
           <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
 	          <div class="col-md-12 ftco-animate">
 	          	<div class="text w-100 text-center">
-                  <h1 id="row_last" style="text-align: center; color:  #ffffff;">Choose Better Powerful HVLS Fan
+                  <h1 id="row_last" style="text-align: center; color:  #ffffff; font-size: 3rem;">Choose Better Powerful Fan
             <span style="color: #444444;"></span>
             </h1>
 		            <h4>Best Model for Energy-efficiency & Ventilation</h4>

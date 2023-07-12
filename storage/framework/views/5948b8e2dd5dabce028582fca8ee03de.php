@@ -76,6 +76,13 @@
         display: block;
         position: absolute;
     }
+<<<<<<< HEAD
+=======
+    #card{
+        width: 18vw;
+        height: 60vh;
+    }
+>>>>>>> 8ed21db89e5f27b0e1a38faf91d2b59fd23ab49e
 </style>
 <!-- body -->
 
@@ -115,7 +122,11 @@
             </li>
             <li class="nav-item active  dropdown px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
 
+<<<<<<< HEAD
                 <a class="nav-link categories-link waves-effect waves-light" href="/categories_list/all"
+=======
+                <a class="nav-link categories-link waves-effect waves-light" href="/all_product"
+>>>>>>> 8ed21db89e5f27b0e1a38faf91d2b59fd23ab49e
                    id="category" aria-haspopup="true" aria-expanded="false" >Categories</a>
 
                 <div  style="background-color: #6c757d;" id="list_category">

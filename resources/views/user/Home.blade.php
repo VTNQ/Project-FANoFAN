@@ -369,18 +369,15 @@
         <div class="row">
             <div class="col-12 col-md-4 mb-4">
                 <div class="card h-100">
-                    <a href="#">
-                        <img src="/upload/{{$row->value}}" width="600" height="600" class="img-fluid img-thumbnail" alt="...">
+                    <a href="/Product/{{$row->id_product}}">
+                        <img src="{{$row->value}}" width="600" height="600" class="img-fluid img-thumbnail" alt="...">
                     </a>
                     <div class="card-body">
                         <ul class="list-unstyled d-flex justify-content-between">
-                            <li>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-muted fa fa-star"></i>
-                                <i class="text-muted fa fa-star"></i>
-                            </li>
+                        <ul class="list-inline rating" title="Average Rating">
+                   
+                            </ul>
+                    
                             <li class="text-muted text-right">${{$row->money}}</li>
                         </ul>
                         <h1>{{$row->name_product}}</h1>

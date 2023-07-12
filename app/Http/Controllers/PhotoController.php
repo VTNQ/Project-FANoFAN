@@ -35,7 +35,8 @@ class PhotoController extends Controller
         $data['id_product'] = $request->product;
         $get_image = $request->file('fileImg');
         if ($get_image) {
-            $new_image = rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
+            $upload_path='/upload/';
+            $new_image = $upload_path.rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
             $get_image->move('upload', $new_image);
             $data['value'] = $new_image;
             DB::table('photo')->insert($data);
