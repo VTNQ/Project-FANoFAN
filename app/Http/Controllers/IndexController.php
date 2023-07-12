@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\feedback;
+<<<<<<< HEAD
 
+=======
+use App\Models\rating;
+>>>>>>> e518064976e019f5d035e9ab095a89469619e483
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
@@ -76,5 +80,4 @@ class IndexController extends Controller
         return redirect()->back();
     }
    }
-
 }

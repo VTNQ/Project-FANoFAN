@@ -159,7 +159,7 @@
                         <hr class="m-0 pt-2 mt-2">
                     </div>
 
-
+                
                 </div>
             </div>
         </div>
@@ -184,9 +184,6 @@
                                 <div class="d-flex flex-column justify-content-start ml-2">
                                     <span class="d-block font-weight-bold name">{{$row->username}}</span>
                                     <span class="date text-black-50">{{date('M d,Y h:i A',strtotime($row->date_to))}}</span>
-                                    <ul class="list-inline rating" title="Average Rating" style="display: inline-block;">
-
-
                                 </div>
                             </div>
 
@@ -237,61 +234,10 @@
 
             var container = document.getElementById("main-image");
 
-            container.src = image.src;
-        }
+        container.src = image.src;
+    }
+</script>
 
-
-
-        document.addEventListener("DOMContentLoaded", function(event) {
-
-
-
-
-
-
-
-        });
-    </script>
-    <script>
-        function remove_background (product_id) {
-            for(var count=1;count<=5;count++){
-                $('#'+product_id+'-'+count).css('color','#ccc');
-            }
-        }
-        $(document).on('mouseenter','.rating',function(){
-            var index=$(this).data('index');
-            var product_id=$(this).data('product_id');
-            remove_background(product_id);
-            for(var count=1;count<=index;count++){
-                $('#'+product_id+'-'+count).css('color','#ffcc00');
-            }
-        })
-        $(document).on('mouseleave','.rating',function(){
-            var index=$(this).data('index');
-            var product_id=$(this).data('product_id');
-            var rating=$(this).data('rating');
-            for(var count=1;count<=index;count++){
-                $('#'+product_id+'-'+count).css('color','#ccc');
-            }
-        })
-        $(document).on('click','.rating',function(){
-            var index=$(this).data('index');
-            var product_id=$(this).data('product_id');
-            var _token=$('input[name="_token"]').val();
-            $.ajax({
-                url:"{{url('insert-rating')}}",
-                method:'Post',
-                data:{index:index,product_id:product_id,_token:_token},
-                success:function(data){
-                    if(data=='done'){
-                        alert('you rating success');
-                    }else{
-                        alert('error rating');
-                    }
-                }
-            })
-        })
-    </script>
 @endsection
 @section('footer')
 

@@ -60,16 +60,7 @@
 
                                 </div>
                                 <div class="row">
-                                    <form  method="get" action="/filter_date">
-                                        @csrf
-                                        <div class="col-md-2">
-                                            <p>Since: <input type="text" id="datepicker" class="form-control" name="start_date"></p>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <p>To date: <input type="text" id="datepicker2" class="form control" name="End_date"></p>
-                                        </div>
-                                        <input type="submit" id="btn-dashboard-filter" class="btn btn-primary btn-sm" value="FILTER" style="margin-left:3vw;margin-top: 3vh ">
-                                    </form>
+                                 
                                 </div>
                             </div>
                             <table class="table table-striped b-t b-light">

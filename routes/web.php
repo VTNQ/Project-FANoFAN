@@ -34,7 +34,7 @@ Route::prefix('/user')->group(function () {
     Route::get('/history_feedback', [UserController::class, 'history_feedback']);
     Route::get('/my_account/edit_username', [UserController::class, 'EditUsername']);
     Route::get('/my_account/edit_email', [UserController::class, 'EditEmail']);
-    Route::get('/my_account/edit_password', [UserController::class, 'EditPhone']);
+    Route::get('/my_account/edit_phone', [UserController::class, 'EditPhone']);
     Route::get('/my_account/edit_password', [UserController::class, 'EditPassword']);
     Route::post('/upload_photo', [UserController::class, 'upload_photo']);
 });
@@ -102,7 +102,7 @@ Route::get('/forgot-password/{token}', [UserEmailController::class, 'forgotPassw
 Route::post('/forgot-password', [UserEmailController::class, 'resetPassword'])->name('forgot-password');
 Route::put('reset-password', [UserEmailController::class, 'updatePassword'])->name('reset-password');
 Route::get('/feedback',[AdminController::class,'feedback']);
-Route::get('/filter_date',[AdminController::class,'filter_date']);
+
 Route::get('/change_pass',[AdminController::class,'Change_pass']);
 Route::post('/change_pass',[AdminController::class,'Change_password']);
 Route::post('/insert-rating',[IndexController::class,'insert_rating']);

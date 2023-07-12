@@ -32,6 +32,7 @@ class UserController extends Controller
 
     public function EditUsername(request $request)
     {
+        $request->validate(['new_username'=>'required|unique:user,username']);
         $data_session = session('id');
         $new_username = $request->input('new_username');
         DB::update('update user set username =? where id=?', [$new_username, $data_session]);
@@ -41,6 +42,7 @@ class UserController extends Controller
 
     public function EditEmail(request $request)
     {
+        $request->validate(['new_email'=>'required|unique:user,email']);
         $data_session = session()->get('id');
         $new_email = $request->input('new_email');
         DB::update('update user set email =? where id=?', [$new_email, $data_session]);
@@ -50,6 +52,7 @@ class UserController extends Controller
 
     public function EditPhone(request $request)
     {
+        $request->validate(['new_phone'=>'required']);
         $data_session = session()->get('id');
         $new_phone = $request->input('new_phone');
         DB::update('update user set phone =? where id=?', [$new_phone, $data_session]);
@@ -59,6 +62,7 @@ class UserController extends Controller
 
     public function EditPassword(request $request)
     {
+        $request->validate(['old_password'=>'required','new_password'=>'required|min:8','re_new_password'=>'required|min:8']);
         $data_session = session()->get('id');
         $old_password = md5($request->old_password);
         $new_password = md5($request->new_password);
@@ -92,6 +96,7 @@ class UserController extends Controller
 
     }
     public function upload_photo(Request $request){
+        $request->validate(['fileImg'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048']);
         $data=array();
         $id_user=session()->get('id');
         $get_image=$request->file('fileImg');

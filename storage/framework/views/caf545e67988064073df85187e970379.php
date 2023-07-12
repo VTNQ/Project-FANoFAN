@@ -230,7 +230,8 @@
                         </div>
                     </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-               
+               <?php echo e($product->links()); ?>
+
                 <!--features_items-->
 
                 <div class="category-tab"><!--category-tab-->
