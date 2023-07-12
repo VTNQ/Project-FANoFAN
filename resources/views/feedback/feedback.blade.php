@@ -36,8 +36,8 @@
                                 <div class="input-group">
                                     <input type="text" class="input-sm form-control" name="key" placeholder="Search">
                                     <span class="input-group-btn">
-            <input class="btn btn-sm btn-default" type="submit">Go!</input>
-          </span>
+                                        <input class="btn btn-sm btn-default" type="submit"></input>
+                                    </span>
                                 </div>
                             </form>
                         </div>
@@ -56,25 +56,25 @@
                         <div class="table-responsive">
                             <div class="row py-2" style="    margin-right: 1vh;">
                                 <div style="float: right;">
-                                   
+
                                 </div>
                                 <div class="row">
                                     <form  method="get" action="/filter_date">
                                         @csrf
                                         <div class="col-md-2">
                                             <p>Since: <input type="text" id="datepicker" class="form-control" name="start_date"></p>
-                                            <input type="submit" id="btn-dashboard-filter" class="btn btn-primary btn-sm" value="filter">
                                         </div>
                                         <div class="col-md-2">
                                             <p>To date: <input type="text" id="datepicker2" class="form control" name="End_date"></p>
                                         </div>
+                                        <input type="submit" id="btn-dashboard-filter" class="btn btn-primary btn-sm" value="filter" style="margin-left:3vw;margin-top: 3vh ">
                                     </form>
                                 </div>
                             </div>
                             <table class="table table-striped b-t b-light">
                                 <thead>
                                 <tr>
-                                 
+
                                     <th>#</th>
                                     <th>Photo</th>
                                     <th>User</th>
@@ -88,7 +88,7 @@
                                 </thead>
                                 @foreach($feedback as $key=>$row)
 
-                               
+
                                <tr>
                                 <td>{{++$key}}</td>
                                 <td><img src="/upload/{{$row->value}}" width="100" height="100" alt=""></td>
@@ -100,7 +100,7 @@
                                @endforeach
 
                             </table>
-                        
+
                         </div>
                     </div>
                     <footer class="panel-footer">
@@ -110,7 +110,7 @@
             </div>
         </section>
         <!-- footer -->
-        <div class="footer" style="width: 100%;bottom: 0; text-align: center">
+        <div class="footer" style="width: 100%;position: absolute ;bottom: 0; text-align: center">
             <div class="wthree-copyright">
                 <p>© 2023. All rights reserved | Design by <a href="/about">Favorable Team</a></p>
             </div>
@@ -199,7 +199,7 @@
         dayNamMin:['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
         duration:'slow'
     });
-    
+
     $( "#datepicker2" ).datepicker({
         prevText:'Last month',
         nextText:'Next month',

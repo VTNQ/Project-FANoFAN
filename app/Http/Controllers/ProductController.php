@@ -33,8 +33,7 @@ class ProductController extends Controller
         if (session('username_admin') and session('id_admin')) {
             $data_last = session()->get('value_admin');
             $list_photo = DB::table('user')->select('*')->where('avatar', $data_last)->first();
-            $list_product = DB::table('product')->join('category', 'product.id_category', '=', 'category.id')->orderBy('id_product', 'DESC')->select('*')->paginate(5);
-
+            $list_product = DB::table('product')->join('category', 'product.id_category', '=', 'category.id')->where('product.deleted_at','=',null)->orderBy('id_product', 'DESC')->select('*')->paginate(5);
             if ($key = request()->key) {
                 $list_product = DB::table('product')->join('category', 'product.id_category', '=', 'category.id')->select('*')->where('product.name_product', 'like', '%' . $key . '%')->paginate(5);
 
@@ -90,7 +89,7 @@ class ProductController extends Controller
 
     public function delete_product($id)
     {
-        DB::update('update table product set deleted_at=? where id_product=?',[now(),$id]);
+        DB::table('product')->where('id_product','=',$id)->update(['deleted_at'=>now()]);
         return back();
     }
 
@@ -200,7 +199,7 @@ class ProductController extends Controller
         $data_session = session()->get('id');
         $category=DB::table('category')->orderBy('id','DESC')->select('*')->get();
         $count_category=DB::table('category')->join('product','category.id','=','product.id_category')->select('category.id','category.name', DB::raw('count(product.id_product) as total'))->groupBy('category.name','category.id')->get();
-        $product=DB::table('product')->join('photo','photo.id_product','=','product.id_product')->select('*')->where('photo.status','=',1)->get();
+        $product=DB::table('product')->join('photo','photo.id_product','=','product.id_product')->select('*')->where('photo.status','=',1)->paginate(9);
         if (!$data_session){
             return view('index.all_product')->with('category',$category)->with('count_category',$count_category)->with('product',$product);
         }else{

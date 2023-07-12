@@ -55,7 +55,9 @@
     a {
         color: #fff;
     }
-
+    h1#row_last {
+        line-height: 32vh;
+    }
     body {
         height: 100%;
     }
@@ -155,7 +157,7 @@
           <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
 	          <div class="col-md-12 ftco-animate">
 	          	<div class="text w-100 text-center">
-	          <h1 id="row_last" style="text-align: center; color:  #ffffff;">Environmental Sustainability
+	          <h1 id="row_last" style="text-align: center; color:  #ffffff; font-size: 3rem;">Environmental Sustainability
             <span style="color: #444444;"></span>
             </h1>
 		            <h4>Starts from the Right Product Selection</h4>
@@ -171,7 +173,7 @@
           <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
 	          <div class="col-md-12 ftco-animate">
 	          	<div class="text w-100 text-center">
-                  <h1 id="row_last" style="text-align: center; color:  #ffffff;">Choose Better Powerful Fan
+                  <h1 id="row_last" style="text-align: center; color:  #ffffff; font-size: 3rem;">Choose Better Powerful Fan
             <span style="color: #444444;"></span>
             </h1>
 		            <h4>Best Model for Energy-efficiency & Ventilation</h4>
@@ -187,7 +189,7 @@
           <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
 	          <div class="col-md-12 ftco-animate">
 	          	<div class="text w-100 text-center">
-                  <h1 id="row_last" style="text-align: center; color:  #ffffff;">Choose Better Powerful Fan
+                  <h1 id="row_last" style="text-align: center; color:  #ffffff; font-size: 3rem;">Choose Better Powerful Fan
             <span style="color: #444444;"></span>
             </h1>
 		            <h4>Best Model for Energy-efficiency & Ventilation</h4>

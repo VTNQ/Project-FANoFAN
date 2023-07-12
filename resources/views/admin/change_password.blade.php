@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title_page')
-    Add Picture
+    Change Password
 @endsection
 @section('body_content')
     <!--main content start-->
@@ -17,9 +17,9 @@
                             </header>
                             <div class="panel-body">
 
-                              
+
                                 <div class="position-center">
-                                    
+
                                     <form role="form" action="/save_photo" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">

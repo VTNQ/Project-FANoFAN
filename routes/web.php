@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\CeilingFanController;
+use App\Http\Controllers\RecycleBinController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\ProductController;
@@ -96,9 +96,6 @@ Route::delete('/delete_all', [CategoryController::class, 'delete_all'])->name('c
 //edit category
 Route::get('/edit/{id}', [CategoryController::class, 'edit']);
 Route::post('/update/{id}', [CategoryController::class, 'update']);
-
-
-
 //
 Route::get('/forgot-password', [UserEmailController::class, 'forgotPassword'])->name('forgot-password');
 Route::get('/forgot-password/{token}', [UserEmailController::class, 'forgotPasswordValidate']);
@@ -108,6 +105,8 @@ Route::get('/feedback',[AdminController::class,'feedback']);
 Route::get('/filter_date',[AdminController::class,'filter_date']);
 Route::get('/change_pass',[AdminController::class,'Change_pass']);
 Route::post('/insert-rating',[IndexController::class,'insert_rating']);
-
-
-
+//
+Route::get('/recycle_bin',function (){
+    return view('recycle_bin.recycle_bin');
+});
+Route::get('/recycle_bin/product',[RecycleBinController::class,'recycle_bin_product']);

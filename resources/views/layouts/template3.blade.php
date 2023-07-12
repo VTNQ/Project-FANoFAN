@@ -56,6 +56,10 @@
    iframe {
        bottom: 13vh !important;
    }
+   .navbar:hover,
+   .navbar.scrolled{
+       background-color: #36454f;
+   }
    li div#list_category{
        display: none;
    }

@@ -54,6 +54,10 @@
     body {
         height: 100%;
     }
+    .navbar:hover,
+    .navbar.scrolled{
+        background-color: #36454f;
+    }
     li div#list_category{
         display: none;
     }

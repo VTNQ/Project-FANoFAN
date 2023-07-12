@@ -106,11 +106,11 @@
                                                     echo $name;
                                                 }
                                                 ?></span>
-                      
+
                     </a>
                     <ul class="dropdown-menu extended logout">
-                        
-                     
+
+
                         <li><a href="/admin/logout"><i class="fa fa-key"></i> Log Out</a></li>
                     </ul>
                 </li>
@@ -164,14 +164,19 @@
                             <i class="fa fa-th"></i>
                             <span>Feedback</span>
                         </a>
-                     
+
                     </li>
                     <li class="sub-menu">
-                        <a href="/feedback">
+                        <a href="/change_pass">
                             <i class="fa fa-th"></i>
                             <span>Change Password</span>
                         </a>
-                     
+                    </li>
+                    <li class="sub-menu">
+                        <a href="/recycle_bin">
+                            <i class="fa fa-th"></i>
+                            <span>Recycle Bin</span>
+                        </a>
                     </li>
                 </ul>
             </div>
