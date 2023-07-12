@@ -196,7 +196,7 @@
     </div>
 </div>
 <div class="main-panel">
-    <section>
+    <section style="margin-left: 2%;">
         @yield('body_content')
     </section>
 </div>

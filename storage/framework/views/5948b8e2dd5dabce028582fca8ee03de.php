@@ -196,7 +196,7 @@
     </div>
 </div>
 <div class="main-panel">
-    <section>
+    <section style="margin-left: 2%;">
         <?php echo $__env->yieldContent('body_content'); ?>
     </section>
 </div>

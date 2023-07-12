@@ -149,11 +149,9 @@
                         <p class="m-0 p-0 price-pro">$<?php echo e($photo->money); ?></p>
                         <hr class="p-0 m-0">
                     </div>
-
-
                     <div class="col-lg-12 pt-2">
                         <h5>Product Detail</h5>
-                        <span><?php echo e($photo->content); ?></span>
+                        <span><?php echo $photo->content; ?></span>
                         <hr class="m-0 pt-2 mt-2">
                     </div>
 
@@ -161,8 +159,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
     </div>
     <!-- product -->
     <!-- feedback -->
@@ -182,7 +178,6 @@
                                 <div class="d-flex flex-column justify-content-start ml-2">
                                     <span class="d-block font-weight-bold name"><?php echo e($row->username); ?></span>
                                     <span class="date text-black-50"><?php echo e(date('M d,Y h:i A',strtotime($row->date_to))); ?></span>
-
                                 </div>
                             </div>
 
@@ -198,6 +193,11 @@
                             <div class="d-flex flex-row align-items-start">
                                 <img class="rounded-circle" src="/upload/user.png" width="40">
 
+<<<<<<< HEAD
+=======
+
+                            </ul>
+>>>>>>> e518064976e019f5d035e9ab095a89469619e483
                                 <textarea class="form-control ml-1 shadow-none textarea" name="Message"></textarea></div>
                             <div class="mt-2 text-right">
                                 <button class="btn btn-primary btn-sm shadow-none" type="submit">Post comment</button>

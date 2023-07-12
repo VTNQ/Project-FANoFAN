@@ -210,7 +210,7 @@
 <!-- end header inner -->
 <!-- end header -->
 <div class="main-panel">
-    <section>
+    <section style="margin-left: 2.5%;">
         @yield('body_content')
     </section>
 </div>

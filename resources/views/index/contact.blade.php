@@ -98,7 +98,7 @@
                         width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
-                <div class="col-md-6 col-xl-4">
+                <div class="col-md-6 col-xl-4" style="color: white;">
                     <div>
                     @if (session()->has('success'))
                     <div class="alert alert-success text-center" role="alert">{{ session('success') }}</div>
