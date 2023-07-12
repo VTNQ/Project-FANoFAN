@@ -6,6 +6,10 @@ Product Page
 
 <?php $__env->startSection('mycss'); ?>
 <style>
+   .navbar:hover,
+    .navbar.scrolled{
+        background-color: #36454f;
+    }
   @media (min-width: 576px) {
     .col-sm-9 {
       flex: 0 0 auto;
@@ -331,7 +335,7 @@ Product Page
               <div class="col-12 col-md-4 mb-4">
                 <div class="card " id="card">
                   <a href="/Product/<?php echo e($row->id_product); ?>">
-                    <img src="/upload/<?php echo e($row->value); ?>" class="img-fluid" alt="...">
+                    <img src="<?php echo e($row->value); ?>" class="img-fluid" alt="...">
                   </a>
                   <div class="card-body">
                     <ul class="list-unstyled d-flex justify-content-between">
@@ -356,12 +360,6 @@ Product Page
             <?php echo e($product->links()); ?>
 
         <!--features_items-->
-
-        <div class="category-tab"><!--category-tab-->
-          <div class="col-sm-12">
-
-          </div>
-
         </div><!--/category-tab-->
 
         <!--/recommended_items-->

@@ -61,7 +61,7 @@
                             @foreach($list_product as $key=> $row )
 
                                 <tr id="product_ids{{$row->id_product}}">
-                                    <td><input type="checkbox" name="ids" class="checkbox_ids"
+                                    <td><input type="checkbox" name="ids[]" class="checkbox_ids"
                                                value="{{$row->id_product}}"></td>
                                     <td>{{++$key}}</td>
 

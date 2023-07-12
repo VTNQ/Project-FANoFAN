@@ -82,7 +82,7 @@
                             @foreach($all_list_login as $key=> $row )
 
                                 <tr id="category_ids{{$row->id}}">
-                                    <td><input type="checkbox" name="ids" class="checkbox_ids" value="{{$row->id}}"></td>
+                                    <td><input type="checkbox" name="ids[]" class="checkbox_ids" value="{{$row->id}}"></td>
                                     <td>{{$i++}}</td>
                                     <td>{{$row->name}}</td>
                                     <td>

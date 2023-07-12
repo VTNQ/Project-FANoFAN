@@ -29,19 +29,14 @@ class CategoryController extends Controller
     public function delete_all(Request $request)
     {
         $ids = $request->ids;
-        $category = DB::table('category')->where('id', $ids)->delete();
+        DB::table('category')->where('id','=',$ids)->update(['deleted_at'=>now()]);
         return response()->json(["success" => "category have been deleted"]);
     }
-
     public function delete($id)
     {
-        $category = DB::table('category')->where('id', $id);
-        $category->delete();
+        DB::table('category')->where('id','=',$id)->update(['deleted_at'=>now()]);
         return redirect('/profile_category');
     }
-
-    //view edit
-
     public function edit($id)
     {
         if (!session('username_admin') and !session('id_admin')) {
@@ -57,19 +52,15 @@ class CategoryController extends Controller
     public function list_category()
     {
         if (session('username_admin') and session('id_admin')) {
-            $all_list_login = DB::table('category')->orderBy('id', 'DESC')->paginate(5);
+            $all_list_login = DB::table('category')->orderBy('id', 'DESC')->where('deleted_at','=',null)->paginate(5);
             $data_last = session()->get('value_admin');
             $list_photo = DB::table('user')->select('*')->where('avatar', $data_last)->first();
             if ($key = request()->key) {
-                $all_list_login = DB::table('category')->where('name', 'like', '%' . $key . '%')->paginate(5);
+                $all_list_login = DB::table('category')->where('name', 'like', '%' . $key . '%')->where('deleted_at','=',null)->paginate(5);
             }
             return view('category.profile_category')->with('all_list_login', $all_list_login)->with('list_photo', $list_photo);
-
-        } else if (Session('member') and session('id')) {
-            return redirect()->back();
-        } else {
+        } else{
             return redirect()->back();
         }
-
     }
 }

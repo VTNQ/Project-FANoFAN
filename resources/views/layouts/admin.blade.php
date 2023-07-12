@@ -173,17 +173,16 @@
                         </a>
                     </li>
                     <li class="sub-menu">
-                        <a href="/recycle_bin">
+                        <a href="javascript:">
                             <i class="fa fa-th"></i>
                             <span>Recycle Bin</span>
                         </a>
+                        <ul class="sub">
+                            <li><a href="/recycle_bin/product">Recycle Bin Product</a></li>
+                            <li><a href="/recycle_bin/photo">Recycle Bin Photo</a></li>
+                            <li><a href="/recycle_bin/category">Recycle Bin Category</a></li>
+                        </ul>
                     </li>
-                    <li class="sub-menu">
-                            <a href="/recycle_bin">
-                                <i class="fa fa-th"></i>
-                                <span>Recycle Bin</span>
-                            </a>
-                        </li>
                 </ul>
             </div>
             <!-- sidebar menu end-->

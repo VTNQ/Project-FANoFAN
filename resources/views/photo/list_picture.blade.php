@@ -97,7 +97,7 @@
                                 @foreach($photo  as $key=> $row )
                                     @foreach(explode('|',$row->value) as $value)
                                     <tr id="photo_ids{{$row->id_photo}}">
-                                        <td><input type="checkbox" name="ids" class="checkbox_ids"
+                                        <td><input type="checkbox" name="ids[]" class="checkbox_ids"
                                                    value="{{$row->id_photo}}"></td>
                                                    <td>{{$i++}}</td>
                                         <td><img src="{{$value}}" alt="" height="100" width="100">
@@ -135,7 +135,7 @@
                                         </td>
                                         @endforeach
                                 @endforeach
-                         
+
 
                             </table>
                             {{$photo->links()}}

@@ -60,7 +60,7 @@
 
                                 </div>
                                 <div class="row">
-                                 
+
                                 </div>
                             </div>
                             <table class="table table-striped b-t b-light">
@@ -106,7 +106,7 @@
             </div>
         </section>
         <!-- footer -->
-        <div class="footer" style="width: 100%;position: absolute ;bottom: 0; text-align: center">
+        <div class="footer" style="width: 100%;bottom: 0; text-align: center">
             <div class="wthree-copyright">
                 <p>© 2023. All rights reserved | Design by <a href="/about">Favorable Team</a></p>
             </div>

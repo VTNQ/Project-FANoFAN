@@ -37,7 +37,7 @@ $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                            <div class="alert alert-danger">Please Enter Name Category</div>
+                                            <div class="alert alert-danger"><?php echo e($message); ?></div>
                                             <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
@@ -74,7 +74,7 @@ unset($__errorArgs, $__bag); ?>
                             <tr>
                                 <th><input type="checkbox" name="" id="select_all_ids"></th>
                                 <th>#</th>
-                                <th>Name Categogy</th>
+                                <th>Name Category</th>
 
                                 <th style="width: 30px;"></th>
                             </tr>

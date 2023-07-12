@@ -188,10 +188,15 @@
                             </a>
                         </li>
                         <li class="sub-menu">
-                            <a href="/recycle_bin">
+                            <a href="javascript:">
                                 <i class="fa fa-th"></i>
                                 <span>Recycle Bin</span>
                             </a>
+                            <ul class="sub">
+                                <li><a href="/recycle_bin/product">Recycle Bin Product</a></li>
+                                <li><a href="/recycle_bin/photo">Recycle Bin Photo</a></li>
+                                <li><a href="/recycle_bin/category">Recycle Bin Category</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -223,13 +228,13 @@
                                 </tr>
 
                                 @foreach($new_product as $key=>$row)
-                                    <tr>
-                                        <td class="home4">{{++$key}}</td>
-                                        <td class="home4">{{$row->name_product}}</td>
-                                        <td class="home4">{{$row->name}}</td>
-                                        <td class="home4">{{$row->money}}$</td>
+                                <tr>
+                                    <td class="home4">{{++$key}}</td>
+                                    <td class="home4">{{$row->name_product}}</td>
+                                    <td class="home4">{{$row->name}}</td>
+                                    <td class="home4">{{$row->money}}$</td>
 
-                                    </tr>
+                                </tr>
                                 @endforeach
                             </table>
                         </div>
@@ -242,33 +247,35 @@
                     <div class="row" style="padding-left: 38%">
                         <table>
                             <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>NAME</th>
-                                <th>TOTAL</th>
-                            </tr>
+                                <tr>
+                                    <th>#</th>
+                                    <th>NAME</th>
+                                    <th>TOTAL</th>
+                                </tr>
                             </thead>
                             <tbody>
-                            @foreach($count as $key=> $row)
+                                @foreach($count as $key=> $row)
                                 <tr>
                                     <td>{{++$key}}</td>
                                     <td>{{$row->username}}</td>
                                     <td>{{$row->total}}</td>
                                 </tr>
-                            @endforeach
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
+
             </section>
             <!-- footer -->
-            <div class="footer" style="bottom: 0;position: absolute ; width: 100%; text-align: center">
+            <div class="footer" style="bottom: 0;width: 100%; text-align: center">
                 <div class="wthree-copyright">
                     <p>© 2023. All rights reserved | Design by <a href="/about">Favorable team</a></p>
                 </div>
             </div>
             <!-- / footer -->
         </section>
+
         <!--main content end-->
     </section>
     <script src="{{asset('admin/js/bootstrap.js')}}"></script>

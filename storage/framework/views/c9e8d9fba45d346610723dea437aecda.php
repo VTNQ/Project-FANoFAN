@@ -134,7 +134,7 @@
                                         </td>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                         
+
 
                             </table>
                             <?php echo e($photo->links()); ?>

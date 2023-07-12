@@ -107,7 +107,14 @@ Route::get('/change_pass',[AdminController::class,'Change_pass']);
 Route::post('/change_pass',[AdminController::class,'Change_password']);
 Route::post('/insert-rating',[IndexController::class,'insert_rating']);
 //
-Route::get('/recycle_bin',function (){
-    return view('recycle_bin.recycle_bin');
-});
 Route::get('/recycle_bin/product',[RecycleBinController::class,'recycle_bin_product']);
+Route::get('/recycle_bin/category',[RecycleBinController::class,'recycle_bin_category']);
+Route::get('/recycle_bin/photo',[RecycleBinController::class,'recycle_bin_photo']);
+
+Route::get('/recycle_bin/product/restore/{id_product}',[RecycleBinController::class,'restore_product']);
+Route::get('/recycle_bin/category/restore/{id_category}',[RecycleBinController::class,'restore_category']);
+Route::get('/recycle_bin/photo/restore/{id_photo}',[RecycleBinController::class,'restore_photo']);
+
+Route::get('/recycle_bin/product/delete/{id_product}',[RecycleBinController::class,'delete_product']);
+Route::get('/recycle_bin/category/delete/{id_category}',[RecycleBinController::class,'delete_category']);
+Route::get('/recycle_bin/photo/delete/{id_photo}',[RecycleBinController::class,'delete_photo']);

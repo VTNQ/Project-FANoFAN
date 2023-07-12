@@ -188,10 +188,15 @@
                             </a>
                         </li>
                         <li class="sub-menu">
-                            <a href="/recycle_bin">
+                            <a href="javascript:">
                                 <i class="fa fa-th"></i>
                                 <span>Recycle Bin</span>
                             </a>
+                            <ul class="sub">
+                                <li><a href="/recycle_bin/product">Recycle Bin Product</a></li>
+                                <li><a href="/recycle_bin/photo">Recycle Bin Photo</a></li>
+                                <li><a href="/recycle_bin/category">Recycle Bin Category</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -223,13 +228,13 @@
                                 </tr>
 
                                 <?php $__currentLoopData = $new_product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <tr>
-                                        <td class="home4"><?php echo e(++$key); ?></td>
-                                        <td class="home4"><?php echo e($row->name_product); ?></td>
-                                        <td class="home4"><?php echo e($row->name); ?></td>
-                                        <td class="home4"><?php echo e($row->money); ?>$</td>
+                                <tr>
+                                    <td class="home4"><?php echo e(++$key); ?></td>
+                                    <td class="home4"><?php echo e($row->name_product); ?></td>
+                                    <td class="home4"><?php echo e($row->name); ?></td>
+                                    <td class="home4"><?php echo e($row->money); ?>$</td>
 
-                                    </tr>
+                                </tr>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </table>
                         </div>
@@ -242,33 +247,35 @@
                     <div class="row" style="padding-left: 38%">
                         <table>
                             <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>NAME</th>
-                                <th>TOTAL</th>
-                            </tr>
+                                <tr>
+                                    <th>#</th>
+                                    <th>NAME</th>
+                                    <th>TOTAL</th>
+                                </tr>
                             </thead>
                             <tbody>
-                            <?php $__currentLoopData = $count; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=> $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <?php $__currentLoopData = $count; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=> $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
                                     <td><?php echo e(++$key); ?></td>
                                     <td><?php echo e($row->username); ?></td>
                                     <td><?php echo e($row->total); ?></td>
                                 </tr>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
                         </table>
                     </div>
                 </div>
+
             </section>
             <!-- footer -->
-            <div class="footer" style="bottom: 0;position: absolute ; width: 100%; text-align: center">
+            <div class="footer" style="bottom: 0;width: 100%; text-align: center">
                 <div class="wthree-copyright">
                     <p>© 2023. All rights reserved | Design by <a href="/about">Favorable team</a></p>
                 </div>
             </div>
             <!-- / footer -->
         </section>
+
         <!--main content end-->
     </section>
     <script src="<?php echo e(asset('admin/js/bootstrap.js')); ?>"></script>
@@ -460,5 +467,4 @@
     <!-- //calendar -->
 </body>
 
-</html>
-<?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/admin/admin.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/admin/admin.blade.php ENDPATH**/ ?>

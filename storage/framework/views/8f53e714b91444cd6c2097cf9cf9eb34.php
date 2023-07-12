@@ -1,5 +1,5 @@
 <?php $__env->startSection('title_page'); ?>
-    List Feedback
+    Recycle Bin Category
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('body_content'); ?>
     <style>
@@ -10,18 +10,18 @@
             margin-left: 3vh;
         }
         .col-md-2 {
-    margin-left: 5vh;
-}
+            margin-left: 5vh;
+        }
     </style>
-      <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css">
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css">
     <!--main content start-->
     <section id="main-content">
         <section class="wrapper">
             <div class="table-agile-info">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Manager Feedback
+                        Recycle Bin Category
                     </div>
                     <div class="row w3-res-tb">
                         <div class="col-sm-5 m-b-xs">
@@ -31,15 +31,7 @@
                         <div class="col-sm-4">
                         </div>
                         <div class="col-sm-3">
-                            <form action="">
-                                <div class="input-group">
-                                    <input type="text" class="input-sm form-control" name="key" placeholder="Search">
-                                    <span class="input-group-btn">
 
-                                        <input class="btn btn-sm btn-default" type="submit"></input>
-                                    </span>
-                                </div>
-                            </form>
                         </div>
                     </div>
                     <?php
@@ -55,45 +47,22 @@
 
                         <div class="table-responsive">
                             <div class="row py-2" style="    margin-right: 1vh;">
-                                <div style="float: right;">
-
-                                </div>
-                                <div class="row">
-
-                                </div>
                             </div>
                             <table class="table table-striped b-t b-light">
                                 <thead>
                                 <tr>
-
-                                    <th>#</th>
-                                    <th>Photo</th>
-                                    <th>User</th>
-                                    <th>Product</th>
-                                    <th>Comment</th>
-                                    <td>Feedback date</td>
-                                    <th style="width: 30px;"></th>
-
-
+                                    <th>Name Category</th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
                                 </thead>
-                                <?php $__currentLoopData = $feedback; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-
-
-
-                               <?php $__currentLoopData = explode('|',$row->value); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-
-                               <tr>
-                                <td><?php echo e(++$key); ?></td>
-                                <td><img src="<?php echo e($value); ?>" width="100" height="100" alt=""></td>
-                                <td><?php echo e($row->username); ?></td>
-                                <td><?php echo e($row->name_product); ?></td>
-                                <td><?php echo e($row->comment); ?></td>
-                                <td><?php echo e(date('M d,Y h:i A',strtotime($row->date_to))); ?></td>
-                               </tr>
-                               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
+                                <?php $__currentLoopData = $recycle_category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <tr>
+                                        <td><?php echo e($rc->name); ?></td>
+                                        <td><a href="/recycle_bin/category/restore/<?php echo e($rc->id_category); ?>"><i class="fa-solid fa-trash-can-arrow-up"></i></a></td>
+                                        <td><a href="/recycle_bin/product/delete/<?php echo e($rc->id); ?>"><i class="fa-solid fa-trash"></i></a></td>
+                                    </tr>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </table>
 
                         </div>
@@ -105,7 +74,7 @@
             </div>
         </section>
         <!-- footer -->
-        <div class="footer" style="width: 100%;bottom: 0; text-align: center">
+        <div class="footer" style="width: 100%;position: absolute ;bottom: 0; text-align: center">
             <div class="wthree-copyright">
                 <p>© 2023. All rights reserved | Design by <a href="/about">Favorable Team</a></p>
             </div>
@@ -186,24 +155,24 @@
         });
     </script>
     <script>
-         $( function() {
-    $( "#datepicker" ).datepicker({
-        prevText:'Last month',
-        nextText:'Next month',
-        dateFormat:'mm-dd-yy',
-        dayNamMin:['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
-        duration:'slow'
-    });
+        $( function() {
+            $( "#datepicker" ).datepicker({
+                prevText:'Last month',
+                nextText:'Next month',
+                dateFormat:'yy-mm-dd',
+                dayNamMin:['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                duration:'slow'
+            });
 
-    $( "#datepicker2" ).datepicker({
-        prevText:'Last month',
-        nextText:'Next month',
-        dateFormat:'mm-dd-yy',
-        dayNamMin:['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
-        duration:'slow'
-    });
-  } );
+            $( "#datepicker2" ).datepicker({
+                prevText:'Last month',
+                nextText:'Next month',
+                dateFormat:'yy-mm-dd',
+                dayNamMin:['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                duration:'slow'
+            });
+        } );
     </script>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/feedback/feedback.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/recycle_bin/recycle_bin_category.blade.php ENDPATH**/ ?>

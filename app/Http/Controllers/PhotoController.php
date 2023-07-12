@@ -49,15 +49,13 @@ class PhotoController extends Controller
     public function show_photo()
     {
         if(session('username_admin') and session('id_admin')){
-            $photo = DB::table('photo')->join('product', 'product.id_product', '=', 'photo.id_product')->select('*')->paginate(5);
+            $photo = DB::table('photo')->join('product', 'product.id_product', '=', 'photo.id_product')->where('photo.deleted_at','=',null)->select('*')->paginate(5);
             $data_last = session()->get('value_admin');
             if($key=request()->key){
-                $photo = DB::table('photo')->join('product', 'product.id_product', '=', 'photo.id_product')->select('*')->where('product.name_product','like','%'.$key.'%')->paginate(5);
+                $photo = DB::table('photo')->join('product', 'product.id_product', '=', 'photo.id_product')->where('photo.deleted_at','=',null)->select('*')->where('product.name_product','like','%'.$key.'%')->paginate(5);
             }
             $list_photo = DB::table('user')->select('*')->where('avatar', $data_last)->first();
             return view('photo.list_picture')->with('photo', $photo)->with('list_photo',$list_photo);
-        }else if(session('username') and session('id')){
-            return redirect()->back();
         }else{
             return redirect()->back();
         }
@@ -79,13 +77,12 @@ class PhotoController extends Controller
     //delete picture
     public function delete_picture($id_photo)
     {
-        $category = DB::table('photo')->where('id_photo', $id_photo);
-        $category->delete();
-        return redirect('/show_photo')->with('success', 'delete photo success');
+        DB::table('photo')->where('id_photo','=',$id_photo)->update(['deleted_at'=>now()]);
+        return back();
     }
     public function delete_all_photo(Request $request){
         $ids=$request->ids;
-        $photo=DB::table('photo')->where('id_photo',$ids)->delete();
+        DB::table('photo')->where('id_photo','=',$ids)->update(['deleted_at'=>now()]);
         return response()->json();
     }
     public function filter(Request $request){

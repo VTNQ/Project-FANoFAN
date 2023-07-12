@@ -119,7 +119,7 @@ public function feedback(){
         }
         return view('feedback.feedback')->with('list_photo',$list_photo)->with('feedback',$feedback);
     }else{
-        return redirect('login')->back();
+        return redirect('login');
     }
 
 }

@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title_page')
-    Recycle Bin
+    Recycle Bin Product
 @endsection
 @section('body_content')
         <style>
@@ -52,21 +52,22 @@
                                 <table class="table table-striped b-t b-light">
                                     <thead>
                                     <tr>
-                                        <th>Product</th>
-                                        <th>Category</th>
+                                        <th>Images</th>
+                                        <th> Name Product</th>
                                         <th>Money</th>
+                                        <th>Category</th>
                                         <th></th>
                                         <th></th>
                                     </tr>
                                     </thead>
                                     @foreach($recycle_product as $rp)
                                         <tr>
-                                            <td></td>
-                                            <td><img src="/upload/{{$rp->value}}" width="100" height="100" alt=""></td>
+                                            <td><img src="{{$rp->value}}" width="100" height="100" alt=""></td>
                                             <td>{{$rp->name_product}}</td>
                                             <td>{{$rp->money}}</td>
-                                            <td>{{$rp->comment}}</td>
                                             <td>{{$rp->name}}</td>
+                                            <td><a href="/recycle_bin/product/restore/{{$rp->id_product}}"><i class="fa-solid fa-trash-can-arrow-up"></i></a></td>
+                                            <td><a href="/recycle_bin/product/delete/{{$rp->id_product}}"><i class="fa-solid fa-trash"></i></a></td>
                                         </tr>
                                     @endforeach
                                 </table>
@@ -180,21 +181,3 @@
             } );
         </script>
     @endsection
-
-
-                                    <div class="position-center">
-
-                                    </div>
-                                </div>
-                            </section>
-        <!-- footer -->
-            <div class="footer" style="width: 100%; position: absolute;bottom: 0; text-align: center">
-                <div class="wthree-copyright">
-                    <p>© 2023. All rights reserved | Design by <a href="/about">Favorable Team</a></p>
-                </div>
-            </div>
-        <!-- / footer -->
-
-    <!--main content end-->
-    </section>
-@endsection

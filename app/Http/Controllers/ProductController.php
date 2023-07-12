@@ -158,12 +158,6 @@ class ProductController extends Controller
             $product = DB::table('product')->join('photo', 'product.id_product', '=', 'photo.id_product')->where('product.id_product',$id_product)->first();
             $category = DB::table('category')->orderBy('id', 'DESC')->select('*')->get();
             $feedback = DB::table('feedback')->select('*')->get();
-<<<<<<< HEAD
-
-
-=======
-            
->>>>>>> e518064976e019f5d035e9ab095a89469619e483
             $show_comment = DB::table('user')->join('feedback', 'user.id', '=', 'feedback.id_user')->join('product', 'feedback.id_product', '=', 'product.id_product')->select('*')->where('product.id_product', $id_product)->get();
              return view('user.Product')->with('product', $product)->with('category', $category)->with('Show_comment', $show_comment)->with('feedback', $feedback)->with('avatar', $avatar)->with('data3',$data3)->with('photo',$data2);
         }

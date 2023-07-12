@@ -79,7 +79,7 @@ $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                            <div class="alert alert-danger">Please Enter description again</div>
+                                            <div class="alert alert-danger">Please Enter Description Again</div>
                                             <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
@@ -88,7 +88,7 @@ unset($__errorArgs, $__bag); ?>
 
 
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">category</label>
+                                            <label for="exampleInputEmail1">Category</label>
 
                                             <select name="category" class="form_control input-sm m-bot15" id="">
                                                 <?php $__currentLoopData = $list_category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -111,16 +111,9 @@ unset($__errorArgs, $__bag); ?>
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>  <?php $__errorArgs = ['file'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-               <div class="alert alert-danger">Please require 1 of 2</div>
-               <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
+$message = $__bag->first($__errorArgs[0]); ?>  
+               <div class="alert alert-danger">Please upload Image main</div>
+               
                <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
@@ -134,6 +127,16 @@ unset($__errorArgs, $__bag); ?>
         <input class="form-control" 
                type="file" 
                id="file" name="file[]" multiple>
+               <?php $__errorArgs = ['file'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+               <div class="alert alert-danger"><?php echo e($message); ?></div>
+               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                
     </div>
                                 <button type="submit" class="btn btn-info">Add Product</button>
