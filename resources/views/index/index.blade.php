@@ -107,7 +107,7 @@
         <div class="row">
             <div class="col-12 col-md-4 mb-4">
                 <div class="card ">
-                    <a href="#">
+                    <a href="Product/{{$row->id_product}}">
                         <img src="{{$row->value}}" class="card-img-top" alt="..." >
                     </a>
                     <div class="card-body">

@@ -34,7 +34,7 @@
                                                    name="name_category" placeholder="Enter name category">
                                             <br>
                                             @error('name_category')
-                                            <div class="alert alert-danger">Please Enter Name Category</div>
+                                            <div class="alert alert-danger">{{$message}}</div>
                                             @enderror
                                         </div>
 
@@ -68,7 +68,7 @@
                             <tr>
                                 <th><input type="checkbox" name="" id="select_all_ids"></th>
                                 <th>#</th>
-                                <th>Name Categogy</th>
+                                <th>Name Category</th>
 
                                 <th style="width: 30px;"></th>
                             </tr>

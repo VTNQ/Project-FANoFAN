@@ -127,12 +127,14 @@
 
     <div class="row m-0">
         <div class="col-lg-4 left-side-product-box pb-3">
-            <img id="main-image" src="/upload/<?php echo e($product->value); ?>" class=" p-3">
+            <img id="main-image" src="<?php echo e($product->value); ?>" class=" p-3">
             <?php $__currentLoopData = $data3; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php $__currentLoopData = explode('|',$row->value); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <span class="sub-img">
-						<img onclick="change_image(this)" src="/upload/<?php echo e($row->value); ?>" class=" p-2">
+						<img onclick="change_image(this)" src="<?php echo e($value); ?>" class=" p-2">
 
 					</span>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
         <div class="col-lg-8">
@@ -147,18 +149,7 @@
                         <p class="m-0 p-0 price-pro">$<?php echo e($photo->money); ?></p>
                         <hr class="p-0 m-0">
                     </div>
-                    <ul class="list-inline rating" title="Average Rating">
-                    <?php for($count=1;$count<=5;$count++): ?>
-                        <?php
-                        if($count<=$rating){
-                            $color='color:#ffcc00';
-                        }else{
-                            $color='color:#ccc';
-                        }
-                        ?>
-                                <li title="star_rating"  data-product_id="<?php echo e($photo->id_product); ?>" data-rating="<?php echo e($rating); ?>"  style="cursor: pointer;<?php echo e($color); ?>;font-size: 30px;display:inline" class="rating">&#9733</li>
-                                <?php endfor; ?>
-                            </ul>
+                    
                         
                     <div class="col-lg-12 pt-2">
                         <h5>Product Detail</h5>
@@ -191,18 +182,7 @@
                                 <div class="d-flex flex-column justify-content-start ml-2">
                                     <span class="d-block font-weight-bold name"><?php echo e($row->username); ?></span>
                                     <span class="date text-black-50"><?php echo e(date('M d,Y h:i A',strtotime($row->date_to))); ?></span>
-                                    <ul class="list-inline rating" title="Average Rating" style="display: inline-block;">
-                    <?php for($count=1;$count<=5;$count++): ?>
-                        <?php
-                        if($count<=$rating_user){
-                            $color='color:#ffcc00';
-                        }else{
-                            $color='color:#ccc';
-                        }
-                        ?>
-                                <li title="star_rating"  data-product_id="<?php echo e($photo->id_product); ?>" data-rating="<?php echo e($rating); ?>"  style="cursor: pointer;<?php echo e($color); ?>;font-size: 30px;display:inline" class="rating">&#9733</li>
-                                <?php endfor; ?>
-                            </ul>
+                                  
                         
                                 </div>
                             </div>
@@ -218,17 +198,8 @@
                             <?php echo csrf_field(); ?>
                             <div class="d-flex flex-row align-items-start">
                                 <img class="rounded-circle" src="/upload/user.png" width="40">
-                                <ul class="list-inline rating" title="Average Rating">
-                        <?php for($count=1;$count<=5;$count++): ?>
-                        <?php
-                        if($count<=$rating){
-                            $color='color:#ffcc00';
-                        }else{
-                            $color='color:#ccc';
-                        }
-                        ?>
-                                <li title="star_rating" data-index="<?php echo e($count); ?>" id="<?php echo e($photo->id_product); ?>-<?php echo e($count); ?>" data-product_id="<?php echo e($photo->id_product); ?>" data-rating="<?php echo e($rating); ?>"  style="cursor: pointer;<?php echo e($color); ?>;font-size: 30px;display:inline" class="rating">&#9733</li>
-                                <?php endfor; ?>
+
+                    
                             </ul>
                                 <textarea class="form-control ml-1 shadow-none textarea" name="Message"></textarea></div>
                             <div class="mt-2 text-right">

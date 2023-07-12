@@ -232,7 +232,7 @@
                         </div>
                     </div>
                 @endforeach
-               
+               {{$product->links()}}
                 <!--features_items-->
 
                 <div class="category-tab"><!--category-tab-->

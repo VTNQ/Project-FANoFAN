@@ -55,7 +55,7 @@ class ProductController extends Controller
 
     public function add_product(Request $request)
     {
-        $request->validate(['nameProduct'=>'required','Price'=>'required|numeric|min:0','description'=>'required','Main'=>'required   ']);
+        $request->validate(['nameProduct'=>'required','Price'=>'required|numeric|min:0','description'=>'required','Main'=>'required   ','file'=>'max:3']);
         $product=new Product();
 
         $product=new Product();
@@ -148,11 +148,10 @@ class ProductController extends Controller
             $product = DB::table('product')->join('category', 'category.id', '=', 'product.id_category')->where('product.id_product', $id_product)->get();
             $category = DB::table('category')->orderBy('id', 'DESC')->select('*')->get();
             $feedback = DB::table('feedback')->select('*')->get();
-            $rating=DB::table('rating')->join('feedback','rating.id_rating','=','feedback.id_rating')->avg('rating.rating');
-            $rating=round($rating);
+          
             $data3=DB::table('product')->join('photo', 'product.id_product', '=', 'photo.id_product')->where('product.id_product',$id_product)->get();
             $show_comment = DB::table('user')->join('feedback', 'user.id', '=', 'feedback.id_user')->join('product', 'feedback.id_product', '=', 'product.id_product')->select('*')->where('product.id_product', $id_product)->get();
-            return view('index.Product')->with('photo', $photo)->with('product', $product)->with('category', $category)->with('Show_comment', $show_comment)->with('feedback', $feedback)->with('data3',$data3)->with('rating',$rating);
+            return view('index.Product')->with('photo', $photo)->with('product', $product)->with('category', $category)->with('Show_comment', $show_comment)->with('feedback', $feedback)->with('data3',$data3);
 
         } else {
             $data_session = session()->get('id');
@@ -162,11 +161,9 @@ class ProductController extends Controller
             $product = DB::table('product')->join('photo', 'product.id_product', '=', 'photo.id_product')->where('product.id_product',$id_product)->first();
             $category = DB::table('category')->orderBy('id', 'DESC')->select('*')->get();
             $feedback = DB::table('feedback')->select('*')->get();
-            $rating=DB::table('rating')->join('feedback','rating.id_rating','=','feedback.id_rating')->avg('rating.rating');
-            $rating=round($rating);
-            $rating_user=DB::table('rating')->join('feedback','rating.id_rating','=','feedback.id_rating')->join('product','product.id_product','=','feedback.id_product')->join('user','user.id','=','feedback.id_user')->where('feedback.id_product','=',$id_product)->where('feedback.id_user','=',$data_session)->avg('rating.rating');
+            
             $show_comment = DB::table('user')->join('feedback', 'user.id', '=', 'feedback.id_user')->join('product', 'feedback.id_product', '=', 'product.id_product')->select('*')->where('product.id_product', $id_product)->get();
-             return view('user.Product')->with('product', $product)->with('category', $category)->with('Show_comment', $show_comment)->with('feedback', $feedback)->with('avatar', $avatar)->with('data3',$data3)->with('photo',$data2)->with('rating',$rating)->with('rating_user',$rating_user);
+             return view('user.Product')->with('product', $product)->with('category', $category)->with('Show_comment', $show_comment)->with('feedback', $feedback)->with('avatar', $avatar)->with('data3',$data3)->with('photo',$data2);
         }
     }
     public function addFeedback(Request $request, $id_product)
@@ -209,7 +206,7 @@ class ProductController extends Controller
         $data_session = session()->get('id');
         $category=DB::table('category')->orderBy('id','DESC')->select('*')->get();
         $count_category=DB::table('category')->join('product','category.id','=','product.id_category')->select('category.id','category.name', DB::raw('count(product.id_product) as total'))->groupBy('category.name','category.id')->get();
-        $product=DB::table('product')->join('photo','photo.id_product','=','product.id_product')->select('*')->where('photo.status','=',1)->get();
+        $product=DB::table('product')->join('photo','photo.id_product','=','product.id_product')->select('*')->where('photo.status','=',1)->paginate(9);
         if(isset($_GET['start_price']) && $_GET['end_price']){
             $min_price=$_GET['start_price'];
             $max_price=$_GET['end_price'];

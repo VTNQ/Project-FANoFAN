@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="short icon" href="{{asset('images/icon-title.ico')}}">
+    <link rel="short icon" href="<?php echo e(asset('images/icon-title.ico')); ?>">
     <title>My Account</title>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -121,54 +121,103 @@
             </div>
         </nav>
         <!-- /Breadcrumb -->
-        @error('re_new_password')
-        <div class="alert alert-danger" role="alert">{{$message}}</div>
-        @enderror
-        @error('new_password')
-        <div class="alert alert-danger" role="alert">{{$message}}</div>
-        @enderror
-        @error('old_password')
-        <div class="alert alert-danger" role="alert">{{$message}}</div>
-        @enderror
-        @error('new_phone')
-        <div class="alert alert-danger" role="alert">{{$message}}</div>
-        @enderror
-        @error('new_email')
-        <div class="alert alert-danger" role="alert">{{$message}}</div>
-        @enderror
-        @error('new_username')
-        <div class="alert alert-danger" role="alert">{{$message}}</div>
-        @enderror
-        @if (session()->has('message'))
-            <div class="alert alert-success text-center" role="alert">{{ session('message') }}</div>
-        @elseif(session()->has('old'))
-            <div class="alert alert-danger" role="alert">{{ session('old') }}</div>
-        @elseif(session()->has('accept'))
-            <div class="alert alert-danger" role="alert">{{ session('accept') }}</div>
+        <?php $__errorArgs = ['re_new_password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+        <div class="alert alert-danger" role="alert"><?php echo e($message); ?></div>
+        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+        <?php $__errorArgs = ['new_password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+        <div class="alert alert-danger" role="alert"><?php echo e($message); ?></div>
+        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+        <?php $__errorArgs = ['old_password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+        <div class="alert alert-danger" role="alert"><?php echo e($message); ?></div>
+        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+        <?php $__errorArgs = ['new_phone'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+        <div class="alert alert-danger" role="alert"><?php echo e($message); ?></div>
+        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+        <?php $__errorArgs = ['new_email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+        <div class="alert alert-danger" role="alert"><?php echo e($message); ?></div>
+        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+        <?php $__errorArgs = ['new_username'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+        <div class="alert alert-danger" role="alert"><?php echo e($message); ?></div>
+        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+        <?php if(session()->has('message')): ?>
+            <div class="alert alert-success text-center" role="alert"><?php echo e(session('message')); ?></div>
+        <?php elseif(session()->has('old')): ?>
+            <div class="alert alert-danger" role="alert"><?php echo e(session('old')); ?></div>
+        <?php elseif(session()->has('accept')): ?>
+            <div class="alert alert-danger" role="alert"><?php echo e(session('accept')); ?></div>
 
-        @elseif(session()->has('same'))
-            <div class="alert alert-danger" role="alert">{{ session('same') }}</div>
+        <?php elseif(session()->has('same')): ?>
+            <div class="alert alert-danger" role="alert"><?php echo e(session('same')); ?></div>
 
-        @endif
+        <?php endif; ?>
         <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
                 <div class="card">
                     <div class="card-body">
                        <form action="/user/upload_photo" method="post" enctype="multipart/form-data">
-                        @csrf
+                        <?php echo csrf_field(); ?>
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img src="/upload/{{$list_photo->avatar}}" alt="Admin"
+                                <img src="/upload/<?php echo e($list_photo->avatar); ?>" alt="Admin"
                                      class="rounded-circle" width="150" id="img">
 
                                 <div class="mt-3">
-                                    @foreach($list_user as $user)
-                                        <h4>{{$user->username}}</h4>
-                                        <p class="text-secondary mb-1">{{$user->email}}</p>
-                                        <p class="text-muted font-size-sm">{{$user->phone}}</p>
-                                    @endforeach
-                                    @error('fileImg')
-                                            <span style="color: red;font-weight: bold;">{{$message}}</span>
-                                            @enderror
+                                    <?php $__currentLoopData = $list_user; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <h4><?php echo e($user->username); ?></h4>
+                                        <p class="text-secondary mb-1"><?php echo e($user->email); ?></p>
+                                        <p class="text-muted font-size-sm"><?php echo e($user->phone); ?></p>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <?php $__errorArgs = ['fileImg'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                            <span style="color: red;font-weight: bold;"><?php echo e($message); ?></span>
+                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
@@ -195,13 +244,14 @@
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Username</h6>
                             </div>
-                            @foreach($list_user as $user)
+                            <?php $__currentLoopData = $list_user; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <div class="col-sm-9 text-secondary">
-                                    {{$user->username}}
+                                    <?php echo e($user->username); ?>
+
                                     <a class="col-1" data-toggle="modal" data-target="#edit_username">
                                         <i class="fa-solid fa-pen-to-square" style="cursor: pointer"></i></a>
                                 </div>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                         </div>
                         <hr>
@@ -209,14 +259,15 @@
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Email</h6>
                             </div>
-                            @foreach ($list_user as $user)
+                            <?php $__currentLoopData = $list_user; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                                 <div class="col-sm-9 text-secondary">
-                                    {{$user->email}}
+                                    <?php echo e($user->email); ?>
+
                                     <a class="col-1" data-toggle="modal" data-target="#edit_email"><i
                                             class="fa-solid fa-pen-to-square" style="cursor: pointer"></i></a>
                                 </div>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                         </div>
                         <hr>
@@ -224,13 +275,14 @@
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Phone</h6>
                             </div>
-                            @foreach($list_user as $user)
+                            <?php $__currentLoopData = $list_user; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <div class="col-sm-9 text-secondary">
-                                    {{$user->phone}}
+                                    <?php echo e($user->phone); ?>
+
                                     <a class="col-1" data-toggle="modal" data-target="#edit_phone"><i
                                             class="fa-solid fa-pen-to-square" style="cursor: pointer"></i></a>
                                 </div>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                         </div>
                         <hr>
@@ -388,3 +440,4 @@
 </script>
 </body>
 </html>
+<?php /**PATH C:\Users\Phong\Documents\project-FANoFAN\resources\views/user/my_account.blade.php ENDPATH**/ ?>

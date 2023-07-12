@@ -173,6 +173,12 @@
                         </a>
                      
                     </li>
+                    <li class="sub-menu">
+                            <a href="/recycle_bin">
+                                <i class="fa fa-th"></i>
+                                <span>Recycle Bin</span>
+                            </a>
+                        </li>
                 </ul>
             </div>
             <!-- sidebar menu end-->

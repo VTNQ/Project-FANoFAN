@@ -100,6 +100,9 @@
         <input class="form-control" 
                type="file" 
                id="file" name="file[]" multiple>
+               @error('file')
+               <div class="alert alert-danger">{{$message}}</div>
+               @enderror
                
     </div>
                                 <button type="submit" class="btn btn-info">Add Product</button>

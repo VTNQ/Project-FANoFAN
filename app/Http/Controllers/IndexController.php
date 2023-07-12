@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\feedback;
 use App\Models\rating;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -75,15 +76,5 @@ class IndexController extends Controller
         return redirect()->back();
     }
    }
-   public function insert_rating(Request $request){
-    $data=$request->all();
-    $rating=new rating();
-   
-    $rating->rating=$data['index'];
-    
-    $rating->save();
-    $rating_start=DB::table('rating')->select('*')->orderBy('id_rating','DESC')->first();
-    Session::put('rating',$rating_start->rating);
-    echo 'done';
-   }
+  
 }

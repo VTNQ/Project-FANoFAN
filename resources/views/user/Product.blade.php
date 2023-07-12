@@ -129,7 +129,7 @@
 
     <div class="row m-0">
         <div class="col-lg-4 left-side-product-box pb-3">
-            <img id="main-image" src="/upload/{{$product->value}}" class=" p-3">
+            <img id="main-image" src="{{$product->value}}" class=" p-3">
             @foreach($data3 as $row)
             @foreach(explode('|',$row->value) as $value)
                 <span class="sub-img">
@@ -151,18 +151,7 @@
                         <p class="m-0 p-0 price-pro">${{ $photo->money}}</p>
                         <hr class="p-0 m-0">
                     </div>
-                    <ul class="list-inline rating" title="Average Rating">
-                    @for($count=1;$count<=5;$count++)
-                        @php
-                        if($count<=$rating){
-                            $color='color:#ffcc00';
-                        }else{
-                            $color='color:#ccc';
-                        }
-                        @endphp
-                                <li title="star_rating"  data-product_id="{{$photo->id_product}}" data-rating="{{$rating}}"  style="cursor: pointer;{{$color}};font-size: 30px;display:inline" class="rating">&#9733</li>
-                                @endfor
-                            </ul>
+                    
                         
                     <div class="col-lg-12 pt-2">
                         <h5>Product Detail</h5>
@@ -195,18 +184,7 @@
                                 <div class="d-flex flex-column justify-content-start ml-2">
                                     <span class="d-block font-weight-bold name">{{$row->username}}</span>
                                     <span class="date text-black-50">{{date('M d,Y h:i A',strtotime($row->date_to))}}</span>
-                                    <ul class="list-inline rating" title="Average Rating" style="display: inline-block;">
-                    @for($count=1;$count<=5;$count++)
-                        @php
-                        if($count<=$rating_user){
-                            $color='color:#ffcc00';
-                        }else{
-                            $color='color:#ccc';
-                        }
-                        @endphp
-                                <li title="star_rating"  data-product_id="{{$photo->id_product}}" data-rating="{{$rating}}"  style="cursor: pointer;{{$color}};font-size: 30px;display:inline" class="rating">&#9733</li>
-                                @endfor
-                            </ul>
+                                  
                         
                                 </div>
                             </div>
@@ -222,17 +200,8 @@
                             @csrf
                             <div class="d-flex flex-row align-items-start">
                                 <img class="rounded-circle" src="/upload/user.png" width="40">
-                                <ul class="list-inline rating" title="Average Rating">
-                        @for($count=1;$count<=5;$count++)
-                        @php
-                        if($count<=$rating){
-                            $color='color:#ffcc00';
-                        }else{
-                            $color='color:#ccc';
-                        }
-                        @endphp
-                                <li title="star_rating" data-index="{{$count}}" id="{{$photo->id_product}}-{{$count}}" data-product_id="{{$photo->id_product}}" data-rating="{{$rating}}"  style="cursor: pointer;{{$color}};font-size: 30px;display:inline" class="rating">&#9733</li>
-                                @endfor
+
+                    
                             </ul>
                                 <textarea class="form-control ml-1 shadow-none textarea" name="Message"></textarea></div>
                             <div class="mt-2 text-right">

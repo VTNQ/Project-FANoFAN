@@ -11,5 +11,5 @@ class RecycleBinController extends Controller
     public function delete_product(){
         DB::update('update table product set deleted_at=?',[now()]);
     }
-    public function 
+  
 }
