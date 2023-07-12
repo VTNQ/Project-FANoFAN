@@ -328,7 +328,7 @@ Product Page
       </div>
 
       <div class="col-sm-9 padding-right" style="flex-wrap: inherit">
-          <div class="row">
+          <div class="row" style="height: 1vh">
               <div class="item-box">
                   <div class="sub-category-item continentname">
                       <select aria-label="OrderBy" id=" products-orderby" name="products-orderby">
@@ -360,29 +360,14 @@ Product Page
                       <p class="text-muted">Details Product</p>
                     </a>
                   </div>
-
                 </div>
-
               </div>
-
             </div>
-
           </div>
         </div>
         @endforeach
             {{$product->links()}}
-        <!--features_items-->
-        </div><!--/category-tab-->
-
-        <!--/recommended_items-->
-
       </div>
-    </div>
-  </div>
-
-  <!-- End Featured Product -->
-  <!-- Start Footer -->
-
   <!-- End Footer -->
 
 </body>
