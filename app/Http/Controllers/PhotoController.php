@@ -49,7 +49,7 @@ class PhotoController extends Controller
     public function show_photo()
     {
         if(session('username_admin') and session('id_admin')){
-            $photo = DB::table('photo')->join('product', 'product.id_product', '=', 'photo.id_product')->where('photo.deleted_at','=',null)->select('*')->paginate(5);
+            $photo = DB::table('photo')->join('product', 'product.id_product', '=', 'photo.id_product')->where('photo.deleted_at','=',null)->select('*')->orderBy('photo.id_photo','Desc')->paginate(5);
             $data_last = session()->get('value_admin');
             if($key=request()->key){
                 $photo = DB::table('photo')->join('product', 'product.id_product', '=', 'photo.id_product')->where('photo.deleted_at','=',null)->select('*')->where('product.name_product','like','%'.$key.'%')->paginate(5);

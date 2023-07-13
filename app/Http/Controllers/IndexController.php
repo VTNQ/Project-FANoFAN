@@ -17,25 +17,25 @@ class IndexController extends Controller
         $data_session = session()->get('id');
         if (!$data_session) {
             $data2 = DB::table('photo')->select('*')->join('product', 'photo.id_product', '=', 'product.id_product')->join('category', 'product.id_category', '=', 'category.id')->where('status',1)->get();
-            $category=DB::table('category')->orderBy('id','DESC')->select('*')->get();
+            $category=DB::table('category')->orderBy('id','DESC')->where('category.deleted_at','=',null)->select('*')->get();
 
-            $product=DB::table('product')->join('photo','product.id_product','=','photo.id_product')->select('*')->orderBy('product.id_product','DESC')->paginate(6);
+            $product=DB::table('product')->join('photo','product.id_product','=','photo.id_product')->where('product.deleted_at','=',null)->where('photo.deleted_at','=',null)->select('*')->orderBy('product.id_product','DESC')->paginate(6);
             return view('index.index')->with('photo', $data2)->with('avatar', $data2)->with('category',$category)->with('product',$product);
         }elseif($data_session){
             $avatar = DB::table('user')->select('*')->where('id', $data_session)->first();
-            $category=DB::table('category')->orderBy('id','DESC')->select('*')->get();
-            $data2 = DB::table('photo')->select('*')->join('product', 'photo.id_product', '=', 'product.id_product')->where('photo.status','1')->join('category', 'product.id_category', '=', 'category.id')->paginate(5);
+            $category=DB::table('category')->orderBy('id','DESC')->where('category.deleted_at','=',null)->select('*')->get();
+            $data2 = DB::table('photo')->select('*')->join('product', 'photo.id_product', '=', 'product.id_product')->where('photo.status','1')->join('category', 'product.id_category', '=', 'category.id')->where('product.deleted_at','=',null)->where('photo.deleted_at','=',null)->paginate(5);
             return view('user.Home')->with('avatar',$avatar)->with('photo',$data2)->with('category',$category);
         }
     }
     public function about(){
         $data_session = session()->get('id');
         if(!$data_session){
-            $category=DB::table('category')->orderBy('id','DESC')->select('*')->get();
+            $category=DB::table('category')->orderBy('id','DESC')->where('category.deleted_at','=',null)->select('*')->get();
             return view('index.about')->with('category',$category);
         }elseif($data_session){
             $data_last = session()->get('value');
-            $category=DB::table('category')->orderBy('id','DESC')->select('*')->get();
+            $category=DB::table('category')->orderBy('id','DESC')->where('category.deleted_at','=',null)->select('*')->get();
             $avatar = DB::table('user')->where('user.avatar', $data_last)->first();
             return view('user.About')->with('avatar', $avatar)->with('category',$category);
         }
@@ -44,13 +44,13 @@ class IndexController extends Controller
         $data_session = session()->get('id');
 
         if(!$data_session){
-            $category=DB::table('category')->orderBy('id','DESC')->select('*')->get();
+            $category=DB::table('category')->orderBy('id','DESC')->where('category.deleted_at','=',null)->select('*')->get();
             return view('index.contact')->with('category',$category);
         }elseif($data_session){
             $data_last = session()->get('value');
             $name=session()->get('member');
             $email=session()->get('email');
-            $category=DB::table('category')->orderBy('id','DESC')->select('*')->get();
+            $category=DB::table('category')->orderBy('id','DESC')->where('category.deleted_at','=',null)->select('*')->get();
             $avatar = DB::table('user')->select('avatar')->where('id', $data_session)->first();
             return view('user.Contact')->with('avatar', $avatar)->with('category',$category)->with('email',$email)->with('name',$name);
         }
