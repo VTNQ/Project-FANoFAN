@@ -71,11 +71,13 @@ class AdminController extends Controller
         $Password = md5($request->password);
         $result = DB::table('user')->where('email', $Email)->where('password', $Password)->where('user_type', 'adm')->first();
         $result2 = DB::table('user')->where('email', $Email)->where('password', $Password)->where('user_type', 'usr')->first();
-        if ($result) {
+        if ($result     ) {
             Session::put('username_admin', $result->username);
             Session::put('id_admin', $result->id);
             Session::put('value_admin', $result->avatar);
             return redirect('/admin/dashboard');
+        }elseif($result and session('id')){
+            return redirect('/');
         } elseif ($result2) {
             Session::put('member', $result2->username);
             Session::put('id', $result2->id);
@@ -91,7 +93,12 @@ class AdminController extends Controller
 
     public function login()
     {
-        return view('login');
+        if(session('id')){
+            return  redirect()->back();
+        }else{
+            return view('login');
+        }
+
     }
 
     //xu ly logout xoa name va id

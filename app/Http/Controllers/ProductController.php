@@ -53,9 +53,9 @@ class ProductController extends Controller
 
     public function add_product(Request $request)
     {
-        $request->validate(['nameProduct'=>'required','Price'=>'required|numeric|min:0','description'=>'required','Main'=>'required   ','file'=>'max:3']);
+        $request->validate(['nameProduct'=>'required','Price'=>'required|numeric|min:0','description'=>'required','Main'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048','file'=>'required|max:3|image:jpg,png,jpeg,gif,svg|max:2048']);
         $product=new Product();
-
+        $files=$request->file('file');
         $product=new Product();
         $product->name_product=$request->nameProduct;
         $product->content=$request->description;
@@ -73,8 +73,9 @@ class ProductController extends Controller
 
         $main->move('upload',$new_image);
         DB::table('photo')->insert(['value'=>$new_image,'status'=>1,'id_product'=>$id]);
-       }else if($main==null) {
-        $files=$request->file('file');
+
+       }
+
         foreach($files as $file){
             $image_name=md5(rand(1000,10000));
             $ext=strtolower($file->getClientOriginalExtension());
@@ -84,10 +85,10 @@ class ProductController extends Controller
             $file->move('upload',$image_full_name);
 
             $image[]=$image_url;
-        }
-        Photo::insert(['value'=>implode('|',$image),'id_product'=>$id]);
-       }
 
+
+       }
+        Photo::insert(['value'=>implode('|',$image),'id_product'=>$id]);
        $list=DB::table('photo')->select('*')->orderBy('id_product','DESC')->first();
        $hast=Session::put('id',$list->id_product);
        return back()->with('hast',$hast);

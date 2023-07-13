@@ -60,7 +60,7 @@
                                 @foreach($recycle_category as $rc)
                                     <tr>
                                         <td>{{$rc->name}}</td>
-                                        <td><a href="/recycle_bin/category/restore/{{$rc->id_category}}"><i class="fa-solid fa-trash-can-arrow-up"></i></a></td>
+                                        <td><a href="/recycle_bin/category/restore/{{$rc->id}}"><i class="fa-solid fa-trash-can-arrow-up"></i></a></td>
                                         <td><a href="/recycle_bin/product/delete/{{$rc->id}}"><i class="fa-solid fa-trash"></i></a></td>
                                     </tr>
                                 @endforeach

@@ -296,7 +296,6 @@ Product Page
     <div class="row">
       <div class="col-sm-3">
         <div class="left-sidebar">
-
           <div class="brands_products"><!--brands_products-->
             <h2>Category</h2>
             <div class="brands-name">
@@ -307,7 +306,6 @@ Product Page
               </ul>
             </div>
           </div><!--/brands_products-->
-
           <div class="price-range"><!--price-range-->
             <h2>Price Range</h2>
             <form action="">
@@ -347,30 +345,15 @@ Product Page
                       <p class="text-muted">Details Product</p>
                     </a>
                   </div>
-
                 </div>
-
               </div>
-
             </div>
-
           </div>
         </div>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             <?php echo e($product->links()); ?>
 
-        <!--features_items-->
-        </div><!--/category-tab-->
-
-        <!--/recommended_items-->
-
       </div>
-    </div>
-  </div>
-
-  <!-- End Featured Product -->
-  <!-- Start Footer -->
-
   <!-- End Footer -->
 
 </body>

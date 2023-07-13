@@ -9,10 +9,6 @@
 @section('mycss')
 
     <style>
-        .navbar:hover,
-        .navbar.scrolled{
-            background-color: #36454f;
-        }
         .main-panel {
             background-color: #1c2331;
             color: white;
@@ -132,7 +128,7 @@
             <img id="main-image" src="{{$product->value}}" class=" p-3">
             @foreach($data3 as $row)
                 @foreach(explode('|',$row->value) as $value)
-                    <span class="sub-img">
+                <span class="sub-img">
 						<img onclick="change_image(this)" src="{{$value}}" class=" p-2">
 
 					</span>
@@ -151,9 +147,10 @@
                         <p class="m-0 p-0 price-pro">${{ $photo->money}}</p>
                         <hr class="p-0 m-0">
                     </div>
+
                     <div class="col-lg-12 pt-2">
                         <h5>Product Detail</h5>
-                        <span>{!!$photo->content!!}</span>
+                        <span>{!! $photo->content !!}</span>
                         <hr class="m-0 pt-2 mt-2">
                     </div>
 
@@ -161,6 +158,8 @@
                 </div>
             </div>
         </div>
+    </div>
+
     </div>
     <!-- product -->
     <!-- feedback -->
@@ -174,12 +173,13 @@
 
                         @foreach($Show_comment as $row)
                             <div class="d-flex flex-row user-info">
-                                <img class="rounded-circle" src ="/upload/user.png" width="100">
+                                <img class="rounded-circle" src ="/upload/user.png" width="40">
 
 
                                 <div class="d-flex flex-column justify-content-start ml-2">
                                     <span class="d-block font-weight-bold name">{{$row->username}}</span>
                                     <span class="date text-black-50">{{date('M d,Y h:i A',strtotime($row->date_to))}}</span>
+
                                 </div>
                             </div>
 
@@ -194,12 +194,6 @@
                             @csrf
                             <div class="d-flex flex-row align-items-start">
                                 <img class="rounded-circle" src="/upload/user.png" width="40">
-
-<<<<<<< HEAD
-=======
-
-                            </ul>
->>>>>>> e518064976e019f5d035e9ab095a89469619e483
                                 <textarea class="form-control ml-1 shadow-none textarea" name="Message"></textarea></div>
                             <div class="mt-2 text-right">
                                 <button class="btn btn-primary btn-sm shadow-none" type="submit">Post comment</button>

@@ -59,7 +59,7 @@
                                 <?php $__currentLoopData = $recycle_category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
                                         <td><?php echo e($rc->name); ?></td>
-                                        <td><a href="/recycle_bin/category/restore/<?php echo e($rc->id_category); ?>"><i class="fa-solid fa-trash-can-arrow-up"></i></a></td>
+                                        <td><a href="/recycle_bin/category/restore/<?php echo e($rc->id); ?>"><i class="fa-solid fa-trash-can-arrow-up"></i></a></td>
                                         <td><a href="/recycle_bin/product/delete/<?php echo e($rc->id); ?>"><i class="fa-solid fa-trash"></i></a></td>
                                     </tr>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

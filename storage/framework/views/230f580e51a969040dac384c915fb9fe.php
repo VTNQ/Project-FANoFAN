@@ -300,7 +300,7 @@
 
       <!-- Copyright -->
       <div class="footer-copyright text-center py-3">© <span id="currentyear">2023</span> Copyright:
-         <a href="/"> FANoFAN</a>
+         <a href="/about"> FANoFAN</a>
       </div>
       <!-- Copyright -->
 
@@ -399,24 +399,7 @@
   </script>
     <script src="<?php echo e(asset('slider-show/js/owl.carousel.min.js')); ?>"></script>
     <script src="<?php echo e(asset('slider-show/js/main.js')); ?>"></script>
-<script>
-    var url = "<?php echo e(route('filter.all_product')); ?>";
-    $('.continentname').change(function() {
-        var id = $(this).find(':selected').val();
-        $.ajax({
-            type: 'GET',
-            url: url,
-            data: {
-                'id': id
-            },
-            success: function(data) {
-                $('body').html(data.htmlGroupTable);
-                // the next thing you want to do
-            }
-        });
 
-    });
-</script>
 </body>
 
 </html>
