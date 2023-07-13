@@ -93,7 +93,7 @@ class PhotoController extends Controller
        if($roles==''){
         return redirect('show_photo');
        }else {
-        $photo=DB::table('photo')->join('product','photo.id_product','=','product.id_product')->select('*')->where('photo.status',$roles)->get();
+        $photo=DB::table('photo')->join('product','photo.id_product','=','product.id_product')->select('*')->orderBy('photo.id_photo','DESC')->where('photo.status',$roles)->get();
         return view('photo.filter')->with('photo',$photo)->with('list_photo',$list_photo);
        }
 

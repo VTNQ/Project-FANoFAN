@@ -8,10 +8,6 @@ Product Page
 
 @section('mycss')
 <style>
-   .navbar:hover,
-    .navbar.scrolled{
-        background-color: #36454f;
-    }
   @media (min-width: 576px) {
     .col-sm-9 {
       flex: 0 0 auto;
@@ -321,14 +317,14 @@ Product Page
 
               <div id="slider-range"></div>
               <br>
-              <input type="submit" name="filter_price" value="filter_price" class="btn btn-success">
+              <input type="submit" name="filter_price" value="FILTER PRICE" class="btn btn-success">
               <input type="hidden" name="start_price" id="start_price">
               <input type="hidden" name="end_price" id="end_price">
             </form>
           </div><!--/price-range-->
         </div>
       </div>
-    </div>
+
       <div class="col-sm-9 padding-right" style="flex-wrap: inherit">
       @foreach($row as $row)
 <div class="col-sm-4">
@@ -348,7 +344,7 @@ Product Page
 </ul>
 <h1  id="h1">{{$row->name_product}}</h1>
 
-<a href="/Product/{{$row->id_product}}"><p class="text-muted">Details Product</p></a>
+<a href="/Product/{{$row->id_product}}"><p class="text-muted">Product Details</p></a>
 </div>
 
 </div>
@@ -375,6 +371,7 @@ Product Page
 
       </div>
     </div>
+  </div>
 
   <!-- End Featured Product -->
   <!-- Start Footer -->

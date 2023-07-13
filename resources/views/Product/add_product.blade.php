@@ -13,9 +13,7 @@
     margin-top: 4vh;
 }
     </style>
- <link href=
-"https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
-          rel="stylesheet">
+
     <section id="main-content">
         <section class="wrapper">
             <div class="form-w3layouts">
@@ -28,14 +26,16 @@
                                 Add List Product
                             </header>
                             <div class="panel-body">
+                           
+                             
+                                <div class="position-center">
                                 @if(Session::has('success'))
                                     <script>
                                         toastr.success("{{session('success')}}")
                                     </script>
 
                                 @endif
-                             
-                                <div class="position-center">
+
                                     <form role="form" action="/add_Product" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
@@ -99,10 +99,11 @@
         </label>
         <input class="form-control" 
                type="file" 
-               id="file" name="file[]" multiple>
-               @error('file')
-               <div class="alert alert-danger">{{$message}}</div>
-               @enderror
+               id="file" name="file[]" multiple="multiple" value="{{ old('file.*') }}">
+            @error('file*')  
+            <div class="alert alert-danger">Upload Extra error</div>
+             @enderror
+             
                
     </div>
                                 <button type="submit" class="btn btn-info">Add Product</button>

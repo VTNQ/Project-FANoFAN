@@ -53,7 +53,14 @@ class ProductController extends Controller
 
     public function add_product(Request $request)
     {
-        $request->validate(['nameProduct'=>'required','Price'=>'required|numeric|min:0','description'=>'required','Main'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048','file'=>'required|max:3|image:jpg,png,jpeg,gif,svg|max:2048']);
+        $validator=Validator::make($request->all(),['nameProduct'=>'required|unique:product,name_product','Price'=>'required|numeric|min:0','description'=>'required','Main'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048','file'=>'required','file*.'=>'image|mimes:jpg,png,jpeg,gif,svg|max:3']);
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+   
+        
         $product=new Product();
         $files=$request->file('file');
         $product=new Product();
@@ -63,8 +70,8 @@ class ProductController extends Controller
         $product->id_category=$request->category;
        $product->save();
         $list=DB::table('product')->select('*')->orderBy('id_product','DESC')->first();
-        Session::put('id',$list->id_product);
-        $id=Session::get('id');
+        Session::put('id_product',$list->id_product);
+        $id=Session::get('id_product');
        $image=array();
        $main=$request->file('Main');
        if($main ){
@@ -73,8 +80,8 @@ class ProductController extends Controller
 
         $main->move('upload',$new_image);
         DB::table('photo')->insert(['value'=>$new_image,'status'=>1,'id_product'=>$id]);
-
-       }
+      
+       }        
 
         foreach($files as $file){
             $image_name=md5(rand(1000,10000));
@@ -88,10 +95,11 @@ class ProductController extends Controller
 
 
        }
-        Photo::insert(['value'=>implode('|',$image),'id_product'=>$id]);
+        Photo::insert(['value'=>implode('|',$image),'id_product'=>$id,'status'=>0]);
        $list=DB::table('photo')->select('*')->orderBy('id_product','DESC')->first();
-       $hast=Session::put('id',$list->id_product);
-       return back()->with('hast',$hast);
+       $hast=Session::put('id_product1',$list->id_product);
+      
+       return redirect()->back()->with('hast',$hast)->with('success', 'add Product success');
     }
 
     public function delete_product($id)

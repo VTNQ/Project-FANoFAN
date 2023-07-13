@@ -1,14 +1,18 @@
-    <?php $__env->startSection('title_page'); ?>
+<?php $__env->startSection('title_page'); ?>
     Add Product
-    <?php $__env->stopSection(); ?>
-        <?php $__env->startSection('body_content'); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('body_content'); ?>
     <!--main content start-->
     <style>
         button.btn.btn-info {
-    margin-left: 28vh;
+            margin-left: 28vh;
+        }
+        button.btn.btn-info {
+    margin-left: 0vh;
+    margin-top: 4vh;
 }
     </style>
-    
+
     <section id="main-content">
         <section class="wrapper">
             <div class="form-w3layouts">
@@ -21,21 +25,22 @@
                                 Add List Product
                             </header>
                             <div class="panel-body">
+                           
+                             
+                                <div class="position-center">
                                 <?php if(Session::has('success')): ?>
                                     <script>
                                         toastr.success("<?php echo e(session('success')); ?>")
                                     </script>
 
                                 <?php endif; ?>
-                                <?php if(count($errors)>0): ?>
-                                    <div class="alert alert-danger"><?php echo e($errors->first()); ?></div>
-                                <?php endif; ?>
-                                <div class="position-center">
-                                    <form role="form" action="/add_Product" method="post" enctype="multipart/form-data"  >
+
+                                    <form role="form" action="/add_Product" method="post" enctype="multipart/form-data">
                                         <?php echo csrf_field(); ?>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Name Product</label>
-                                            <input type="text" class="form-control" id="exampleInputEmail1" name="nameProduct" placeholder="Enter name Product">
+                                            <input type="text" class="form-control" id="exampleInputEmail1"
+                                                   name="nameProduct" placeholder="Enter name Product">
                                             <?php $__errorArgs = ['nameProduct'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -49,28 +54,41 @@ unset($__errorArgs, $__bag); ?>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Price</label>
-                                            <input type="number" class="form-control" id="exampleInputEmail1" name="Price" placeholder="Enter name Product">
-                                            <?php $__errorArgs = ['Price'];
+                                            <input type="number" class="form-control" id="exampleInputEmail1"
+                                                   name="Price" placeholder="Enter name Product">
+                                                   <?php $__errorArgs = ['Price'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                            <div class="alert alert-danger">Please Enter Price Product</div>
+                                                   <div class="alert alert-danger">Please Enter Money again</div>
+                                                   <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                           
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Product Description</label>
+                                            <textarea name="description" id="ckeditor" class="ckeditor"
+                                                      style="resize: none;" rows="8"
+                                                      placeholder="Enter Product Description"></textarea>
+                                                      <?php $__errorArgs = ['description'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                            <div class="alert alert-danger">Please Enter Description Again</div>
                                             <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                                         </div>
-                                    
-                                        <div class="form-group">
-                                    <label for="exampleInputEmail1">Product Description</label>
-                                    <textarea name="description" id="ckeditor" class="ckeditor" style="resize: none;"  rows="8" placeholder="Enter Product Description" ></textarea>
-                                   
-                                </div>
 
 
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">category</label>
+                                            <label for="exampleInputEmail1">Category</label>
 
                                             <select name="category" class="form_control input-sm m-bot15" id="">
                                                 <?php $__currentLoopData = $list_category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -80,13 +98,49 @@ unset($__errorArgs, $__bag); ?>
 
 
                                         </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1" >Picture
-                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"  data-whatever="@mdo">Add photo</button>
-                                        </div>
-                                        </label>
-                                </div>
-                                    <button type="submit" class="btn btn-info">Add Product</button>
+                                        <div class="mb-3">
+        <label for="MultipleFile" 
+               class="form-label">
+               Main
+        </label>
+        <input class="form-control" 
+               type="file"
+                name="Main"
+               id="MultipleFile" >
+               <?php $__errorArgs = ['Main'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>  
+               <div class="alert alert-danger">Please upload Image main</div>
+               
+               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+    </div>
+    <div class="mb-3">
+        <label for="MultipleFile" 
+               class="form-label">
+               Extra
+        </label>
+        <input class="form-control" 
+               type="file" 
+               id="file" name="file[]" multiple="multiple" value="<?php echo e(old('file.*')); ?>">
+            <?php $__errorArgs = ['file*'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>  
+            <div class="alert alert-danger">Upload Extra error</div>
+             <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+             
+               
+    </div>
+                                <button type="submit" class="btn btn-info">Add Product</button>
                                 </form>
                             </div>
 
@@ -94,27 +148,7 @@ unset($__errorArgs, $__bag); ?>
         </section>
 
         </div>
-        <section class="panel">
-            </form>
-            </div>
-            <!-- page end-->
-            </div>
-        </section>
-        <!-- footer -->
-        <div class="footer">
-            <div class="wthree-copyright">
-                <p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
-            </div>
-        </div>
-        <!-- / footer -->
-    </section>
-
-    <!--main content end-->
-</section>
-
-
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -146,9 +180,10 @@ unset($__errorArgs, $__bag); ?>
                             </select>
 
                         </div>
+                        
                         <div class="form-group">
                             <label for="exampleInputEmail1">Product</label>
-                            <select name="product" class="form_control input-sm m-bot15" id="">
+                            <select name="product" class="form_control input-sm m-bot15" id="" style="width: 36vh;">
                                 <?php $__currentLoopData = $list_product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <option value="<?php echo e($row->id_product); ?>"><?php echo e($row->name_product); ?></option>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -175,13 +210,33 @@ unset($__errorArgs, $__bag); ?>
 
    
 </div>
+        <section class="panel">
+            </form>
+            </div>
+            <!-- page end-->
+            </div>
+        </section>
+        <!-- footer -->
+        <div class="footer" style="width: 100%; bottom: 0; text-align: center">
+            <div class="wthree-copyright">
+                <p>© 2023. All rights reserved | Design by <a href="/about">Favorable Team</a></p>
+            </div>
+        </div>
+        <!-- / footer -->
+    </section>
 
-<script>
-            CKEDITOR.replace( 'ckeditor' );
-        </script>
+    <!--main content end-->
+    </section>
 
-       
-        <?php $__env->stopSection(); ?>
+
+
+    </div>
+
+    <script>
+        CKEDITOR.replace('ckeditor');
+    </script>
+
+<?php $__env->stopSection(); ?>
 
 
 <?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Phong\project-FANoFAN\resources\views/Product/add_product.blade.php ENDPATH**/ ?>

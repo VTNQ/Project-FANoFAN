@@ -14,8 +14,8 @@ class IndexController extends Controller
     //
     public function index()
     {
-        $data_session = session()->get('id');
-        if (!$data_session) {
+        $data_session = session('id');
+        if (!($data_session)) {
             $data2 = DB::table('photo')->select('*')->join('product', 'photo.id_product', '=', 'product.id_product')->join('category', 'product.id_category', '=', 'category.id')->where('status',1)->where('product.deleted_at','=',null)->where('photo.deleted_at','=',null)->paginate(6);
             $category=DB::table('category')->orderBy('id','DESC')->where('category.deleted_at','=',null)->select('*')->get();
             return view('index.index')->with('photo', $data2)->with('avatar', $data2)->with('category',$category);
@@ -41,10 +41,10 @@ class IndexController extends Controller
     public function contact(){
         $data_session = session()->get('id');
 
-        if(!$data_session){
+        if(Session('id',null)){
             $category=DB::table('category')->orderBy('id','DESC')->where('category.deleted_at','=',null)->select('*')->get();
             return view('index.contact')->with('category',$category);
-        }elseif($data_session){
+        }elseif(Session('id')){
             $data_last = session()->get('value');
             $name=session()->get('member');
             $email=session()->get('email');

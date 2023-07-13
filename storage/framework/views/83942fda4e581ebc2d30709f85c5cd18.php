@@ -28,7 +28,7 @@
                                     <form role="form" action="/save_category" method="post">
                                         <?php echo csrf_field(); ?>
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Name category</label>
+                                            <label for="exampleInputEmail1">Name Category</label>
                                             <input type="text" class="form-control" id="exampleInputEmail1"
                                                    name="name_category" placeholder="Enter name category">
                                             <br>
@@ -37,7 +37,7 @@ $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                            <div class="alert alert-danger">Please Enter name Category</div>
+                                            <div class="alert alert-danger"><?php echo e($message); ?></div>
                                             <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
@@ -45,7 +45,7 @@ unset($__errorArgs, $__bag); ?>
                                         </div>
 
 
-                                        <button type="submit" class="btn btn-info">Add category</button>
+                                        <button type="submit" class="btn btn-info">Add Category</button>
                                     </form>
                                 </div>
 
@@ -74,17 +74,22 @@ unset($__errorArgs, $__bag); ?>
                             <tr>
                                 <th><input type="checkbox" name="" id="select_all_ids"></th>
                                 <th>#</th>
-                                <th>Name_catelogy</th>
+                                <th>Name Category</th>
 
                                 <th style="width: 30px;"></th>
                             </tr>
                             </thead>
+                            <?php
+                                $url = $_SERVER['REQUEST_URI'];
+                                $string = substr($url, 23);
+                                $item=(int)$string;
+                                $i = $item ? ($item -1)*5 + 1 : 1;
+                            ?>
                             <?php $__currentLoopData = $all_list_login; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=> $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                                 <tr id="category_ids<?php echo e($row->id); ?>">
-                                    <td><input type="checkbox" name="ids" class="checkbox_ids" value="<?php echo e($row->id); ?>">
-                                    </td>
-                                    <td><?php echo e(++$key); ?></td>
+                                    <td><input type="checkbox" name="ids[]" class="checkbox_ids" value="<?php echo e($row->id); ?>"></td>
+                                    <td><?php echo e($i++); ?></td>
                                     <td><?php echo e($row->name); ?></td>
                                     <td>
                                         <a href="<?php echo e(url('/edit/'.$row->id)); ?>" class="active" ui-toggle-class=""><i
@@ -104,7 +109,7 @@ unset($__errorArgs, $__bag); ?>
             </div>
         </section>
         <!-- footer -->
-        <div class="footer" style="width: 100%; position: absolute; bottom: 0; text-align: center">
+        <div class="footer" style="width: 100%;bottom: 0; text-align: center">
             <div class="wthree-copyright">
                 <p>© 2023. All rights reserved | Design by <a href="/about">Favorable Team</a></p>
             </div>
@@ -131,8 +136,6 @@ unset($__errorArgs, $__bag); ?>
             </div>
         </div>
     </div>
-
-    <div class="alert" role="alert" id="result"></div>
     <script>
         $(function (e) {
             $("#select_all_ids").click(function () {

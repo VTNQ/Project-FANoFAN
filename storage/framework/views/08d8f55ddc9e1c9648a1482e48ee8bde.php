@@ -5,10 +5,8 @@
     <!-- basic -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- mobile metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-    <!-- site metas -->
     <link rel="short icon" href="<?php echo e(asset('images/icon-title.ico')); ?>">
     <title><?php echo $__env->yieldContent('index'); ?></title>
     <meta http-equiv="refresh" content="number">
@@ -31,8 +29,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
           media="screen">
 
+
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
+    <link rel="stylesheet" href="<?php echo e(asset('/slider-show/css/owl.carousel.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('/slider-show/css/owl.theme.default.min.css')); ?>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
+    <link rel="stylesheet" href="<?php echo e(asset('/slider-show/css/style.css')); ?>">
+
+
 
     <?php echo $__env->yieldContent('mycss'); ?>
 
@@ -54,7 +60,25 @@
     }
 
     iframe {
-        bottom: 18vh !important;
+        bottom: 13vh !important;
+    }
+    .navbar:hover,
+    .navbar.scrolled{
+        background-color: #36454f;
+    }
+    h1#row_last {
+        line-height: 32vh;
+    }
+    li div#list_category{
+        display: none;
+    }
+    li:hover div#list_category{
+        display: block;
+        position: absolute;
+    }
+    #card{
+        width: 18vw;
+        height: 60vh;
     }
 </style>
 <!-- body -->
@@ -63,7 +87,7 @@
 <!-- loader  -->
 <nav class="navbar navbar-expand-lg navbar-dark scrolling-navbar fixed-top " id="navbar">
     <!-- Navbar brand -->
-    <a class="navbar-brand p-0" href="/about"><!--FANo<span>FAN</span>-->
+    <a class="navbar-brand p-0" href="/"><!--FANo<span>FAN</span>-->
         <img
             src="https://d33wubrfki0l68.cloudfront.net/6e39a404f566cec2f989e430771b9895c40253d3/660b4/static/img/logo__icons_svg/logo.png"
             class="img-fluid" alt="">
@@ -91,15 +115,14 @@
                 <a class="nav-link home-link  waves-effect waves-light" href="/">Home </a>
             </li>
             <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-                <a class="nav-link about-link waves-effect waves-light" href="/about">about</a>
+                <a class="nav-link about-link waves-effect waves-light" href="/about">About</a>
             </li>
             <li class="nav-item active  dropdown px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
 
-                <a class="nav-link dropdown-toggle categories-link waves-effect waves-light" href="/categories"
-                   id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+                <a class="nav-link categories-link waves-effect waves-light" href="/all_product"
+                   id="category" aria-haspopup="true" aria-expanded="false" >Categories</a>
 
-                <div class="dropdown-menu dropdown-primary  mt-lg-3" style="background-color: #6c757d;"
-                     aria-labelledby="navbarDropdownMenuLink">
+                <div  style="background-color: #6c757d;" id="list_category">
                     <?php $__currentLoopData = $category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <a class="dropdown-item ceiling-fans-link waves-effect waves-light"
                            href="/categories_list/<?php echo e($row->id); ?>"><?php echo e($row->name); ?></a>
@@ -107,9 +130,6 @@
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
 
-            </li>
-            <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-                <a class="nav-link gallery-link waves-effect waves-light" href="/gallery">Gallery</a>
             </li>
             <li class="nav-item active  px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
                 <a class="nav-link contact-link waves-effect waves-light" href="/contact">Contact Us</a>
@@ -125,27 +145,58 @@
     </div>
     <!-- Collapsible content -->
 </nav>
-<!-- <li class="nav-item">
-                              <a class="nav-link" href="fashion.html">Fashion</a>
-                           </li>
-                           <li class="nav-item">
-                              <a class="nav-link" href="news.html">News</a>
-                           </li> -->
 
-<header class="img-fluid" style="    padding: 11% 0px;">
-</header>
-<!-- end loader -->
-<!-- header -->
-<!-- <header>
-   <!-- header inner -->
-<!-- </div> -->
+<div class="home-slider owl-carousel js-fullheight">
+    <div class="slider-item js-fullheight" style="background-image:url(slider-show/images/b3.jpg);">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+                <div class="col-md-12 ftco-animate">
+                    <div class="text w-100 text-center">
+                        <h1 id="row_last" style="text-align: center; color:  #ffffff; font-size: 3rem;">Environmental Sustainability
+                            <span style="color: #444444;"></span>
+                        </h1>
+                        <h4>Starts from the Right Product Selection</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="slider-item js-fullheight" style="background-image:url(slider-show/images/a2.jpg);">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+                <div class="col-md-12 ftco-animate">
+                    <div class="text w-100 text-center">
+                        <h1 id="row_last" style="text-align: center; color:  #ffffff; font-size: 3rem;">Choose Better Powerful Fan
+                            <span style="color: #444444;"></span>
+                        </h1>
+                        <h4>Best Model for Energy-efficiency & Ventilation</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slider-item js-fullheight" style="background-image:url(slider-show/images/a1.jpg);" >
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+                <div class="col-md-12 ftco-animate">
+                    <div class="text w-100 text-center">
+                        <h1 id="row_last" style="text-align: center; color:  #ffffff; font-size: 3rem;">Choose Better Powerful Fan
+                            <span style="color: #444444;"></span>
+                        </h1>
+                        <h4>Best Model for Energy-efficiency & Ventilation</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<!-- </header> -->
-<!-- end header inner -->
-<!-- end header -->
 <div class="main-panel">
-    <section>
+    <section style="margin-left: 2.5%">
         <?php echo $__env->yieldContent('body_content'); ?>
     </section>
 </div>
@@ -223,33 +274,6 @@
                 </p>
 
             </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
-            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 footer-products">
-
-                <!-- Links -->
-                <h6 class="text-uppercase ">Products</h6>
-                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
-                    style="width: 60px;background-color: #F8F9FA !important;height: 2px;opacity: 1 ;">
-                <p>
-                    <a href="/categories_ceiling">Ceiling Fans</a>
-                </p>
-                <p>
-                    <a href="/categories_table">Table Fans</a>
-                </p>
-                <p>
-                    <a href="/categories_standing">Standing Fans</a>
-                </p>
-                <p>
-                    <a href="/categories_standing">Exhaust Fans</a>
-                </p>
-
-
-            </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 footer-company">
 
                 <!-- Links -->
@@ -258,10 +282,6 @@
                     style="width: 60px;background-color: #F8F9FA !important;height: 2px;opacity: 1 ; color: #fff  !important;">
                 <p class="py-1 m-0">
                     <a href="/about">About Us</a>
-                </p>
-
-                <p class="py-1 m-0">
-                    <a href="/gallery">Gallery</a>
                 </p>
                 <p class="py-1 m-0">
                     <a href="/contact">Contact Us</a>
@@ -301,11 +321,11 @@
 
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">© <span id="currentyear">2023</span> Copyright:
-        <a href="/"> FANoFAN</a>
+        <a href="/about"> FANoFAN</a>
     </div>
     <!-- Copyright -->
     <img src="<?php echo e(asset('images/back-to-top-button.png')); ?>" alt="" onclick="scroll_to_top()" id="scroll_top"
-         style="position: fixed; bottom: 3vh; right: 1vw; width: 3rem">
+         style="position: fixed; bottom: 3vh; right: 1vw; width: 3rem; display: none">
 </footer>
 <!-- end footer -->
 <!-- Javascript files-->
@@ -318,21 +338,32 @@
 <script src="<?php echo e(asset('/js/custom.js ')); ?>"></script>
 <?php echo $__env->yieldContent('myscript'); ?>
 <script src="https://kit.fontawesome.com/1fa6a2ee32.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css">
 <script>
     window.addEventListener('scroll', () => {
         const verticalScrollPx = window.scrollY || window.pageYOffset;
 
         if (verticalScrollPx < 10) {
-            document.getElementById('navbar').style.backgroundColor = 'transparent';
             document.getElementById('scroll_top').style.display = 'none';
         } else if (verticalScrollPx < 500) {
-            document.getElementById('navbar').style.backgroundColor = 'dimgrey';
             document.getElementById('scroll_top').style.display = 'block';
         }
     });
+    $(window).scroll(function() {
+        if ($(window).scrollTop() > 50) {
+            $('.navbar').addClass('scrolled');
+        } else {
+            $('.navbar').removeClass('scrolled');
+        }
+    });
+    function scroll_to_top(){
+        window.scroll(0,0);
+    }
 </script>
-<!-- Messenger Plugin chat Code -->
-<div id="fb-root" style="bottom: 23vh;"></div>
+<div id="fb-root"></div>
 
 <!-- Your Plugin chat code -->
 <div id="fb-customer-chat" class="fb-customerchat">
@@ -366,7 +397,33 @@
     function scroll_to_top() {
         window.scroll(0, 0);
     }
+    function show_category(){
+        document.getElementById('list_category').display='block';
+    }
 </script>
+<script>
+    $( function() {
+        $( "#slider-range" ).slider({
+            range: true,
+            min: 0,
+            max: 2000,
+            values: [ 75, 300 ],
+            step:10,
+            slide: function( event, ui ) {
+                $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+                $('#start_price').val(ui.values[0]);
+                $('#end_price').val(ui.values[1]);
+            }
+        });
+        $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+            " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+    } );
+</script>
+
+
+
+<script src="<?php echo e(asset('slider-show/js/owl.carousel.min.js')); ?>"></script>
+<script src="<?php echo e(asset('slider-show/js/main.js')); ?>"></script>
 </body>
 
 </html>

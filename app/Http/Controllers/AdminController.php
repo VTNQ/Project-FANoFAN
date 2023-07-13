@@ -106,6 +106,8 @@ class AdminController extends Controller
     {
         Session::put('username_admin', null);
         Session::put('id_admin', null);
+        Session::put('id_product',null);
+        Session::put('id_product1',null);
         return redirect('/');
     }
 

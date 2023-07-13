@@ -114,7 +114,7 @@ About Page
                 </div>
             </div>
             <div class="col-md-6 col-lg-3 col-sm-8 mx-auto item">
-                <div class="box"><img class="rounded-circle" src="https://d33wubrfki0l68.cloudfront.net/7be40dc2ec383a1d1e2210e497cdeeeee3c34257/93e0a/static/img/executive-team/person-2.jpg">
+                <div class="box"><img class="rounded-circle" src="https://zpsocial-f56-org.zadn.vn/109c39b4e7bd06e35fac.jpg">
                     <h4 class="name">Tran N.T.Phong</h4>
                     <p class="title">Member</p>
                     <div class="social"><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></div>
@@ -122,7 +122,7 @@ About Page
             </div>
             <div class="col-md-6 col-lg-3 col-sm-8 mx-auto item">
                 <div class="box"><img class="rounded-circle" src="https://zpsocial-f49-org.zadn.vn/a8ef798bdd2832766b39.jpg">
-                    <h4 class="name">Vo Tan Nam Quoc</h4>
+                    <h4 class="name">Vo T.N Quoc</h4>
                     <p class="title">Member</p>
                     <div class="social"><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></div>
                 </div>
