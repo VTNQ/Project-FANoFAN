@@ -196,7 +196,7 @@
     </div>
 </div>
 <div class="main-panel">
-    <section>
+    <section style="margin-left: 2.5%">
         @yield('body_content')
     </section>
 </div>
@@ -321,7 +321,7 @@
 
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">© <span id="currentyear">2023</span> Copyright:
-        <a href="/"> FANoFAN</a>
+        <a href="/about"> FANoFAN</a>
     </div>
     <!-- Copyright -->
     <img src="{{asset('images/back-to-top-button.png')}}" alt="" onclick="scroll_to_top()" id="scroll_top"

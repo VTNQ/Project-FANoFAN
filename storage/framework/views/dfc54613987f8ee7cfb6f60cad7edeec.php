@@ -13,7 +13,7 @@
                     <div class="col-lg-12">
                         <section class="panel">
                             <header class="panel-heading">
-                                Add List category
+                                Edit List category
                             </header>
                             <div class="panel-body">
 

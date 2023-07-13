@@ -202,20 +202,6 @@
                             <input type="hidden" name="end_price" id="end_price">
                         </form>
                     </div><!--/price-range-->
-                    <div class="row">
-                        <div class="item-box">
-                            <div class="sub-category-item continentname">
-                                <label>OrderBy: </label>
-                                <select aria-label="OrderBy" id=" products-orderby" name="products-orderby">
-                                    <option selected="" value="20">view</option>
-                                    <option value="1">max -> min</option>
-                                    <option value="2">min -> max</option>
-                                    <option value="4">A -> Z</option>
-                                    <option value="3">Z -> A</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="col-sm-9 padding-right" style="flex-wrap: inherit">

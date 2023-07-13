@@ -50,7 +50,7 @@
                                 <tr>
                                     <td style="padding:0 0 36px 0;color:#153643;">
                                         <p style="font-weight:bold;margin:0 0 20px 0;font-family:Arial,sans-serif;">
-                                            Hello {{ $user ? $user['name'] : '' }},</h1>
+                                            Hello <?php echo e($user ? $user['name'] : ''); ?>,</h1>
                                         <p
                                             style="margin:0 0 12px 0;font-size:14px;line-height:24px;font-family:Arial,sans-serif;">
                                             We've received a request to reset the password.
@@ -61,7 +61,7 @@
                                         </p>
 
                                         <p style="text-align: center;">
-                                            <a href="{{'http://topserver.edu:8484/forgot-password/'.$user['token']}}" class="btn">Reset your password</a>
+                                            <a href="<?php echo e('http://topserver.edu:8484/forgot-password/'.$user['token']); ?>" class="btn">Reset your password</a>
                                         </p>
 
 
@@ -81,3 +81,4 @@
     </table>
 </body>
 </html>
+<?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/reset/reset-password.blade.php ENDPATH**/ ?>

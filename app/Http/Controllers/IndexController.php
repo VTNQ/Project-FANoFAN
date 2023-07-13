@@ -16,11 +16,9 @@ class IndexController extends Controller
     {
         $data_session = session()->get('id');
         if (!$data_session) {
-            $data2 = DB::table('photo')->select('*')->join('product', 'photo.id_product', '=', 'product.id_product')->join('category', 'product.id_category', '=', 'category.id')->where('status',1)->get();
+            $data2 = DB::table('photo')->select('*')->join('product', 'photo.id_product', '=', 'product.id_product')->join('category', 'product.id_category', '=', 'category.id')->where('status',1)->where('product.deleted_at','=',null)->where('photo.deleted_at','=',null)->paginate(6);
             $category=DB::table('category')->orderBy('id','DESC')->where('category.deleted_at','=',null)->select('*')->get();
-
-            $product=DB::table('product')->join('photo','product.id_product','=','photo.id_product')->where('product.deleted_at','=',null)->where('photo.deleted_at','=',null)->select('*')->orderBy('product.id_product','DESC')->paginate(6);
-            return view('index.index')->with('photo', $data2)->with('avatar', $data2)->with('category',$category)->with('product',$product);
+            return view('index.index')->with('photo', $data2)->with('avatar', $data2)->with('category',$category);
         }elseif($data_session){
             $avatar = DB::table('user')->select('*')->where('id', $data_session)->first();
             $category=DB::table('category')->orderBy('id','DESC')->where('category.deleted_at','=',null)->select('*')->get();

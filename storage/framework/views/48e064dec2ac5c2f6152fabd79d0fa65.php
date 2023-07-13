@@ -3,6 +3,14 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('body_content'); ?>
     <!--main content start-->
+    <style>
+        .btn-info {
+            color: #fff;
+            background-color: #5bc0de;
+            border-color: #46b8da;
+            margin-left: 31vh;
+        }
+    </style>
     <section id="main-content">
         <section class="wrapper">
             <div class="form-w3layouts">
@@ -12,7 +20,7 @@
                     <div class="col-lg-12">
                         <section class="panel">
                             <header class="panel-heading">
-                                Add List category
+                                Edit Product
                             </header>
 
                             <div class="panel-body">
@@ -59,12 +67,12 @@
                                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                 </select>
                                             </div>
-                                    
+
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </div>
 
 
-                                <button type="submit" class="btn btn-info">Add catelogies</button>
+                                <button type="submit" class="btn btn-info">Edit Product</button>
     </form>
                             </div>
                         </section>

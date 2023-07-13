@@ -22,7 +22,7 @@
 
 @section('body_content')
 
-    @foreach($product as $row)
+
         <!DOCTYPE html>
         <html lang="en">
 
@@ -382,38 +382,35 @@
         <!-- Start Top Nav -->
 
         <div class="row">
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card h-100">
-                    <a href="#">
-                        <img src="/upload/{{$row->value}}" class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <ul class="list-unstyled d-flex justify-content-between">
-                            <li>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-muted fa fa-star"></i>
-                                <i class="text-muted fa fa-star"></i>
-                            </li>
-                            <li class="text-muted text-right">${{$row->money}}</li>
-                        </ul>
-                        <h1>{{$row->name_product}}</h1>
-                        <p class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt in culpa qui officia deserunt.
-                        </p>
-                        <a href="/CeilingFan/{{$row->id_product}}">
-                            <p class="text-muted">Details Product</p>
-                        </a>
+            <div class="d-flex align-items-stretch">
+                @foreach($product as $row)
+                    <div class="col-4 col-md-4 mb-4">
+                        <div class="card h-100" style="height: 52vh">
+                            <div class="flex-column" style="width: 400px; height:300px">
+                                <a href="#" style="height: 10%">
+                                    <img src="{{$row->value}}" class="card-img-top" alt="...">
+                                </a>
+                            </div>
+                            <div class="card-body flex-column">
+                                <ul class="list-unstyled d-flex justify-content-between">
+                                    <li class="text-muted text-right">${{$row->money}}</li>
+                                </ul>
+                                <h1>{{$row->name_product}}</h1>
+                                <p class="card-text">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt in culpa qui officia deserunt.
+                                </p>
+                                <a href="/CeilingFan/{{$row->id_product}}">
+                                    <p class="text-muted">Details Product</p>
+                                </a>
+                            </div>
+
+                        </div>
+
                     </div>
 
-                </div>
-
+                @endforeach
             </div>
-
-
         </div>
-        @endforeach
 
         <!-- End Featured Product -->
         <!-- Start Footer -->

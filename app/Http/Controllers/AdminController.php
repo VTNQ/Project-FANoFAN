@@ -115,7 +115,7 @@ public function feedback(){
         $list_photo = DB::table('user')->select('*')->where('user.avatar', $data_last)->first();
         $feedback=DB::table('feedback')->join('user','feedback.id_user','=','user.id')->join('product','feedback.id_product','=','product.id_product')->join('photo','photo.id_product','=','product.id_product')->where('photo.status','=',1)->get();
         if ($key = request()->key){
-            $feedback=DB::table('feedback')->join('user','feedback.id_user','=','user.id')->join('product','feedback.id_product','=','product.id_product')->join('photo','photo.id_product','=','product.id_product')->where('photo.status','=',1)->where('user.username','like','%'.$key.'%')->get();
+            $feedback=DB::table('feedback')->join('user','feedback.id_user','=','user.id')->join('product','feedback.id_product','=','product.id_product')->join('photo','photo.id_product','=','product.id_product')->where('photo.status','=',1)->where('user.username','like','%'.$key.'%')->orwhere('product.name_product','like','%'.$key.'%')->where('photo.status','=',1)->get();
         }
         return view('feedback.feedback')->with('list_photo',$list_photo)->with('feedback',$feedback);
     }else{

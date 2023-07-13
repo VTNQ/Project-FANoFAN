@@ -53,7 +53,6 @@ Route::get('/logout', [AdminController::class, 'logout1']);
 Route::get('/register', [AdminController::class, 'register']);
 Route::post('/add_register', [AdminController::class, 'addRegister']);
 
-Route::get('/category/filter',[FilterController::class,'filter'])->name('filter.all_product');
 //Photo
 Route::get('/add_photo', [PhotoController::class, 'add_photo']);
 Route::post('/save_photo', [PhotoController::class, 'save_photo']);

@@ -330,22 +330,7 @@ Product Page
       </div>
     </div>
       <div class="col-sm-9 padding-right" style="flex-wrap: inherit">
-          <div class="row">
-              <div class="item-box">
-                  <div class="sub-category-item continentname">
-                      <select aria-label="OrderBy" id=" products-orderby" name="products-orderby">
-                          <option selected="" value="20">view</option>
-                          <option value="1">max -> min</option>
-                          <option value="2">min -> max</option>
-                          <option value="4">A -> Z</option>
-                          <option value="3">Z -> A</option>
-                      </select>
-                  </div>
-              </div>
-          </div>
       @foreach($row as $row)
-
-
 <div class="col-sm-4">
     <div class="product-image-wrapper">
         <div class="single-products">

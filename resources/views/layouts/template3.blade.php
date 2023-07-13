@@ -300,7 +300,7 @@
 
       <!-- Copyright -->
       <div class="footer-copyright text-center py-3">© <span id="currentyear">2023</span> Copyright:
-         <a href="/"> FANoFAN</a>
+         <a href="/about"> FANoFAN</a>
       </div>
       <!-- Copyright -->
 

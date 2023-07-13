@@ -96,7 +96,7 @@
                                 <?php $__currentLoopData = $photo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=> $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <?php $__currentLoopData = explode('|',$row->value); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr id="photo_ids<?php echo e($row->id_photo); ?>">
-                                        <td><input type="checkbox" name="ids" class="checkbox_ids"
+                                        <td><input type="checkbox" name="ids[]" class="checkbox_ids"
                                                    value="<?php echo e($row->id_photo); ?>"></td>
                                                    <td><?php echo e($i++); ?></td>
                                         <td><img src="<?php echo e($value); ?>" alt="" height="100" width="100">

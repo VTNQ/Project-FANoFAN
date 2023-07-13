@@ -125,7 +125,6 @@
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
-                            <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
                             <li><a href="/admin/logout"><i class="fa fa-key"></i> Log Out</a></li>
                         </ul>
                     </li>
@@ -467,4 +466,5 @@
     <!-- //calendar -->
 </body>
 
-</html><?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/admin/admin.blade.php ENDPATH**/ ?>
+</html>
+<?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/admin/admin.blade.php ENDPATH**/ ?>
