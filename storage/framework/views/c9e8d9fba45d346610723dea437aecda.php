@@ -21,7 +21,9 @@
                     <div class="row w3-res-tb">
                         <div class="col-sm-5 m-b-xs">
 
-
+                            <?php if(session()->has('error')): ?>
+                                <div class="alert alert-success text-center" role="alert"><?php echo e(session('error')); ?></div>
+                            <?php endif; ?>
                         </div>
                         <div class="col-sm-4">
                         </div>
@@ -42,7 +44,7 @@
                     <div class="panel-body">
                         <?php if(Session::has('success')): ?>
                             <script>
-                                toastr.success("<?php echo e(session('success')); ?>")
+                                toastr.error("<?php echo e(session('success')); ?>")
                             </script>
 
                         <?php endif; ?>

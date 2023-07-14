@@ -26,11 +26,17 @@
                                     <?php if(count($errors)>0): ?>
                                         <div class="alert alert-danger"><?php echo e($errors->first()); ?></div>
                                     <?php endif; ?>
+                                        <?php if(Session::has('error')): ?>
+                                            <script>
+                                                toastr.error("<?php echo e(session('error')); ?>")
+                                            </script>
+
+                                        <?php endif; ?>
                                     <form role="form" action="/save_photo" method="post" enctype="multipart/form-data">
                                         <?php echo csrf_field(); ?>
                                         <div class="form-gzroup">
                                             <label for="exampleInputEmail1">Name photo</label>
-                                            <input type="file" class="form-control" id="fileImg" accept="image/*"
+                                            <input type="file" class="form-control" id="fileImg"
                                                    name="fileImg" placeholder="Enter name category">
                                             <div class="preview">
                                                 <img

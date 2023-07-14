@@ -30,22 +30,41 @@ class PhotoController extends Controller
     public function save_photo(Request $request)
     {
         $data = array();
-        $request->validate(['fileImg' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048']);
-        $data['status'] = $request->status;
-        $data['id_product'] = $request->product;
-        $get_image = $request->file('fileImg');
-        if ($get_image) {
-            $upload_path='/upload/';
-            $new_image = $upload_path.rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
-            $get_image->move('upload', $new_image);
-            $data['value'] = $new_image;
-            DB::table('photo')->insert($data);
-            return redirect('add_photo')->with('success', 'add Photo success');
+        $exits = DB::table('product')->join('photo', 'product.id_product', '=', 'photo.id_product')->where('product.id_product', $request->id_product)->whereNotExists(function ($query) {
+            $query->select('status')->from('table2')->where('status', '=', 1);
+        });
+
+
+
+
+
+
+            $request->validate(['fileImg' => 'required|image|max:2048']);
+           $data['status'] = $request->status;
+           if($request->status==='1' ){
+               return redirect('/add_photo')->with('error','Add photo failed');
+
+           }else if($request->status==='0' ){
+               echo 'last';
+               $data['id_product'] = $request->product;
+               $get_image = $request->file('fileImg');
+               if ($get_image) {
+                  $upload_path = '/upload/';
+                   $new_image = $upload_path . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
+                   $get_image->move('upload', $new_image);
+                   $data['value'] = $new_image;
+                   DB::table('photo')->insert($data);
+                   return redirect('add_photo')->with('success', 'add Photo success');
+               }
+               $data['value'] = '';
+               DB::table('photo')->insert($data);
+               return redirect('add_photo')->with('success', 'add Photo success');
+
+           }
+
         }
-        $data['value'] = '';
-        DB::table('photo')->insert($data);
-        return redirect('add_photo')->with('success', 'add Photo success');
-    }
+
+
     public function show_photo()
     {
         if(session('username_admin') and session('id_admin')){
@@ -64,7 +83,11 @@ class PhotoController extends Controller
 
     public function unlike($id_photo)
     {
-        DB::update('update photo set status=? where id_photo=?', [0, $id_photo]);
+        $id_product=DB::table('photo')->where('id_photo','=',$id_photo)->select('*')->first();
+        $list_item=DB::table('photo')->where('id_product','=',$id_product->id_product)->where('status','=',1)->select('id_photo')->first();
+
+        DB::update('update photo set status=? where id_photo=? and id_product=? and status=?', [0, $id_photo,$list_item->id_photo,1]);
+        Session::flash('success','Change status failed');
         return redirect()->back();
     }
     public function like($id_photo)

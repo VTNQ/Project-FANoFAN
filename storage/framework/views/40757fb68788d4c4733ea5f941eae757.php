@@ -16,6 +16,12 @@
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+            integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+          integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
 
 </head>
@@ -46,7 +52,10 @@
         border: 0 solid rgba(0, 0, 0, .125);
         border-radius: .25rem;
     }
+.alert-danger{
+    text-align: center;
 
+}
     .card-body {
         flex: 1 1 auto;
         min-height: 1px;
@@ -121,37 +130,15 @@
             </div>
         </nav>
         <!-- /Breadcrumb -->
-        <?php $__errorArgs = ['re_new_password'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-        <div class="alert alert-danger" role="alert"><?php echo e($message); ?></div>
-        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-        <?php $__errorArgs = ['new_password'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-        <div class="alert alert-danger" role="alert"><?php echo e($message); ?></div>
-        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-        <?php $__errorArgs = ['old_password'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-        <div class="alert alert-danger" role="alert"><?php echo e($message); ?></div>
-        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-        <?php $__errorArgs = ['new_phone'];
+        <?php if(count($errors) > 0): ?>
+            <ul id="login-validation-errors" style="    color: red;
+    font-weight: bold;margin-left: 50vh" class="validation-errors">
+                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <li class="validation-error-item"><?php echo e($error); ?></li>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </ul>
+        <?php endif; ?>
+                <?php $__errorArgs = ['new_phone'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -181,15 +168,19 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+
         <?php if(session()->has('message')): ?>
-            <div class="alert alert-success text-center" role="alert"><?php echo e(session('message')); ?></div>
+            <span style="color: #0bff7e;text-align: center;font-weight: bold;margin-left: 68vh"><?php echo e(session('message')); ?></span>
+            <?php elseif(session()->has('success')): ?>
+            <span style="color: #0bff7e;font-weight:bold;text-align: center;margin-left: 68vh"><?php echo e(session('success')); ?></span>
         <?php elseif(session()->has('old')): ?>
-            <div class="alert alert-danger" role="alert"><?php echo e(session('old')); ?></div>
+            <span style="color: red;text-align: center;font-weight: bold;margin-left: 68vh"><?php echo e(session('old')); ?></span>
+
         <?php elseif(session()->has('accept')): ?>
-            <div class="alert alert-danger" role="alert"><?php echo e(session('accept')); ?></div>
+            <span style="color: red;text-align: center;font-weight: bold;margin-left: 68vh"><?php echo e(session('accept')); ?></span>
 
         <?php elseif(session()->has('same')): ?>
-            <div class="alert alert-danger" role="alert"><?php echo e(session('same')); ?></div>
+            <span  style="color: red;text-align: center;font-weight: bold;margin-left: 68vh"><?php echo e(session('same')); ?></span>
 
         <?php endif; ?>
         <div class="row gutters-sm">
@@ -240,9 +231,11 @@ unset($__errorArgs, $__bag); ?>
                 <div class="card mb-3">
                     <div class="card-body" style="margin: 10%">
                         <div class="row">
+
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Username</h6>
                             </div>
+
                             <?php $__currentLoopData = $list_user; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <div class="col-sm-9 text-secondary">
                                     <?php echo e($user->username); ?>

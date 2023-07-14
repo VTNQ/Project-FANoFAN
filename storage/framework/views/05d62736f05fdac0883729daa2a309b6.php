@@ -12,9 +12,7 @@
     margin-top: 4vh;
 }
     </style>
- <link href=
-"https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
-          rel="stylesheet">
+
     <section id="main-content">
         <section class="wrapper">
             <div class="form-w3layouts">
@@ -27,14 +25,16 @@
                                 Add List Product
                             </header>
                             <div class="panel-body">
+                           
+                             
+                                <div class="position-center">
                                 <?php if(Session::has('success')): ?>
                                     <script>
                                         toastr.success("<?php echo e(session('success')); ?>")
                                     </script>
 
                                 <?php endif; ?>
-                             
-                                <div class="position-center">
+
                                     <form role="form" action="/add_Product" method="post" enctype="multipart/form-data">
                                         <?php echo csrf_field(); ?>
                                         <div class="form-group">
@@ -126,17 +126,18 @@ unset($__errorArgs, $__bag); ?>
         </label>
         <input class="form-control" 
                type="file" 
-               id="file" name="file[]" multiple>
-               <?php $__errorArgs = ['file'];
+               id="file" name="file[]" multiple="multiple" value="<?php echo e(old('file.*')); ?>">
+            <?php $__errorArgs = ['file*'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-               <div class="alert alert-danger"><?php echo e($message); ?></div>
-               <?php unset($message);
+$message = $__bag->first($__errorArgs[0]); ?>  
+            <div class="alert alert-danger">Upload Extra error</div>
+             <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+             
                
     </div>
                                 <button type="submit" class="btn btn-info">Add Product</button>

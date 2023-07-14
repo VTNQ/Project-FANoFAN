@@ -59,8 +59,8 @@ class ProductController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
-   
-        
+
+
         $product=new Product();
         $files=$request->file('file');
         $product=new Product();
@@ -80,8 +80,8 @@ class ProductController extends Controller
 
         $main->move('upload',$new_image);
         DB::table('photo')->insert(['value'=>$new_image,'status'=>1,'id_product'=>$id]);
-      
-       }        
+
+       }
 
         foreach($files as $file){
             $image_name=md5(rand(1000,10000));
@@ -98,7 +98,7 @@ class ProductController extends Controller
         Photo::insert(['value'=>implode('|',$image),'id_product'=>$id,'status'=>0]);
        $list=DB::table('photo')->select('*')->orderBy('id_product','DESC')->first();
        $hast=Session::put('id_product1',$list->id_product);
-      
+
        return redirect()->back()->with('hast',$hast)->with('success', 'add Product success');
     }
 
@@ -191,9 +191,9 @@ class ProductController extends Controller
     }
     public function categories_list($id){
         $data_session = session()->get('id');
-        $row=DB::table('category')->join('product','category.id','=','product.id_category')->join('photo','photo.id_product','=','product.id_product')->where('category.id',$id)->where('photo.status','=',1)->where('category.deleted_at','=',null)->where('product.deleted_at','=',null)->where('photo.deleted_at','=',null)->distinct()->get();
+        $row=DB::table('product')->join('photo','photo.id_product','=','product.id_product')->where('photo.status','=',1)->where('product.id_category',$id)->where('product.deleted_at','=',null)->where('photo.deleted_at','=',null)->get();
         $category=DB::table('category')->orderBy('id','DESC')->where('category.deleted_at','=',null)->select('*')->get();
-        $count_category=DB::table('category')->join('product','category.id','=','product.id_category')->where('category.deleted_at','=',null)->select('category.id','category.name', DB::raw('count(product.id_product) as total'))->groupBy('category.name','category.id')->get();
+        $count_category=DB::table('category')->join('product','category.id','=','product.id_category')->join('photo','photo.id_product','=','product.id_product')->where('photo.status','=',1)->where('category.deleted_at','=',null)->where('product.deleted_at','=',null)->where('photo.deleted_at','=',null)->select('category.id','category.name', DB::raw('count(product.id_product) as total'))->groupBy('category.name','category.id')->get();
         if(isset($_GET['start_price']) && $_GET['end_price']){
             $min_price=$_GET['start_price'];
             $max_price=$_GET['end_price'];
@@ -210,8 +210,8 @@ class ProductController extends Controller
     public function all_product(){
         $data_session = session()->get('id');
         $category=DB::table('category')->orderBy('id','DESC')->where('category.deleted_at','=',null)->select('*')->get();
-        $count_category=DB::table('category')->join('product','category.id','=','product.id_category')->where('category.deleted_at','=',null)->where('product.deleted_at','=',null)->select('category.id','category.name', DB::raw('count(product.id_product) as total'))->groupBy('category.name','category.id')->get();
-        $product=DB::table('product')->join('photo','photo.id_product','=','product.id_product')->select('*')->where('photo.status','=',1)->where('product.deleted_at','=',null)->where('photo.deleted_at','=',null)->paginate(9);
+        $count_category=DB::table('category')->join('product','category.id','=','product.id_category')->join('photo','photo.id_product','=','product.id_product')->where('photo.status','=',1)->where('category.deleted_at','=',null)->where('product.deleted_at','=',null)->where('photo.deleted_at','=',null)->select('category.id','category.name', DB::raw('count(product.id_product) as total'))->groupBy('category.name','category.id')->get();
+        $product=DB::table('product')->where('category','category.id','product.id_category')->join('photo','photo.id_product','=','product.id_product')->select('*')->where('photo.status','=',1)->where('product.deleted_at','=',null)->where('photo.deleted_at','=',null)->where('category.deleted_at','=',null)->paginate(9);
         if(isset($_GET['start_price']) && $_GET['end_price']){
             $min_price=$_GET['start_price'];
             $max_price=$_GET['end_price'];

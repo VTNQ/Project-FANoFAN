@@ -75,6 +75,7 @@ class AdminController extends Controller
             Session::put('username_admin', $result->username);
             Session::put('id_admin', $result->id);
             Session::put('value_admin', $result->avatar);
+            Session::put('email_admin', $result->email);
             return redirect('/admin/dashboard');
         }elseif($result and session('id')){
             return redirect('/');
@@ -83,7 +84,6 @@ class AdminController extends Controller
             Session::put('id', $result2->id);
             Session::put('email', $result2->email);
             Session::put('value', $result2->avatar);
-            Session::put('password', $result2->password);
             return redirect('/');
         } else {
             Session::put('message', 'Email or Password is wrong.Please Enter Again');

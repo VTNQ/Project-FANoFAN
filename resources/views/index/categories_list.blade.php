@@ -288,8 +288,6 @@ Product Page
 <body>
   <!-- Start Top Nav -->
 
-
-
   <div class="container">
     <div class="row">
       <div class="col-sm-3">
@@ -356,7 +354,7 @@ Product Page
     </div>
 </div>
 @endforeach
-    
+
 
         <!--features_items-->
 

@@ -16,6 +16,12 @@
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+            integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+          integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
 
 </head>
@@ -124,16 +130,15 @@
             </div>
         </nav>
         <!-- /Breadcrumb -->
-        @error('re_new_password')
-        <div class="alert alert-danger" role="alert">{{$message}}</div>
-        @enderror
-        @error('new_password')
-        <div class="alert alert-danger" role="alert">{{$message}}</div>
-        @enderror
-        @error('old_password')
-        <div class="alert alert-danger" role="alert">{{$message}}</div>
-        @enderror
-        @error('new_phone')
+        @if (count($errors) > 0)
+            <ul id="login-validation-errors" style="    color: red;
+    font-weight: bold;margin-left: 50vh" class="validation-errors">
+                @foreach ($errors->all() as $error)
+                    <li class="validation-error-item">{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
+                @error('new_phone')
         <div class="alert alert-danger" role="alert">{{$message}}</div>
         @enderror
         @error('new_email')
@@ -142,15 +147,19 @@
         @error('new_username')
         <div class="alert alert-danger" role="alert">{{$message}}</div>
         @enderror
+
         @if (session()->has('message'))
-            <div class="alert alert-success text-center" role="alert">{{ session('message') }}</div>
+            <span style="color: #0bff7e;text-align: center;font-weight: bold;margin-left: 68vh">{{ session('message') }}</span>
+            @elseif(session()->has('success'))
+            <span style="color: #0bff7e;font-weight:bold;text-align: center;margin-left: 68vh">{{session('success')}}</span>
         @elseif(session()->has('old'))
-            <div class="alert alert-danger" role="alert">{{ session('old') }}</div>
+            <span style="color: red;text-align: center;font-weight: bold;margin-left: 68vh">{{ session('old') }}</span>
+
         @elseif(session()->has('accept'))
-            <div class="alert alert-danger" role="alert">{{ session('accept') }}</div>
+            <span style="color: red;text-align: center;font-weight: bold;margin-left: 68vh">{{ session('accept') }}</span>
 
         @elseif(session()->has('same'))
-            <div class="alert alert-danger" role="alert">{{ session('same') }}</div>
+            <span  style="color: red;text-align: center;font-weight: bold;margin-left: 68vh">{{ session('same') }}</span>
 
         @endif
         <div class="row gutters-sm">
@@ -194,9 +203,11 @@
                 <div class="card mb-3">
                     <div class="card-body" style="margin: 10%">
                         <div class="row">
+
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Username</h6>
                             </div>
+
                             @foreach($list_user as $user)
                                 <div class="col-sm-9 text-secondary">
                                     {{$user->username}}

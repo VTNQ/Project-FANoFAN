@@ -22,7 +22,9 @@
                     <div class="row w3-res-tb">
                         <div class="col-sm-5 m-b-xs">
 
-
+                            @if (session()->has('error'))
+                                <div class="alert alert-success text-center" role="alert">{{ session('error') }}</div>
+                            @endif
                         </div>
                         <div class="col-sm-4">
                         </div>
@@ -43,7 +45,7 @@
                     <div class="panel-body">
                         @if(Session::has('success'))
                             <script>
-                                toastr.success("{{session('success')}}")
+                                toastr.error("{{session('success')}}")
                             </script>
 
                         @endif

@@ -27,11 +27,17 @@
                                     @if(count($errors)>0)
                                         <div class="alert alert-danger">{{$errors->first()}}</div>
                                     @endif
+                                        @if(Session::has('error'))
+                                            <script>
+                                                toastr.error("{{session('error')}}")
+                                            </script>
+
+                                        @endif
                                     <form role="form" action="/save_photo" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-gzroup">
                                             <label for="exampleInputEmail1">Name photo</label>
-                                            <input type="file" class="form-control" id="fileImg" accept="image/*"
+                                            <input type="file" class="form-control" id="fileImg"
                                                    name="fileImg" placeholder="Enter name category">
                                             <div class="preview">
                                                 <img
