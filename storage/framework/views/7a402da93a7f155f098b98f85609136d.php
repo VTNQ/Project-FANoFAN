@@ -354,7 +354,7 @@ Product Page
     </div>
 </div>
 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
+    
 
         <!--features_items-->
 

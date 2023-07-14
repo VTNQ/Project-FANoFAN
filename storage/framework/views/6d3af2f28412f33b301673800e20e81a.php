@@ -1,12 +1,10 @@
-@extends('layouts.template')
-
-@section('title_page')
+<?php $__env->startSection('title_page'); ?>
 
     Home Page
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('mycss')
+<?php $__env->startSection('mycss'); ?>
     <style>
         .main-panel {
             background-color: #1c2331;
@@ -19,11 +17,11 @@
         }
 
     </style>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('body_content')
+<?php $__env->startSection('body_content'); ?>
 
-    @foreach($product as $row)
+    <?php $__currentLoopData = $product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <!DOCTYPE html>
         <html lang="en">
         <head>
@@ -107,17 +105,17 @@
         <div class="row">
             <div class="col-12 col-md-4 mb-4">
                 <div class="card ">
-                    <a href="Product/{{$row->id_product}}">
-                        <img src="{{$row->value}}" class="card-img-top" alt="..." >
+                    <a href="Product/<?php echo e($row->id_product); ?>">
+                        <img src="<?php echo e($row->value); ?>" class="card-img-top" alt="..." >
                     </a>
                     <div class="card-body">
                         <ul class="list-unstyled d-flex justify-content-between">
 
-                            <li class="text-muted text-right">${{$row->money}}</li>
+                            <li class="text-muted text-right">$<?php echo e($row->money); ?></li>
                         </ul>
-                        <h1>{{$row->name_product}}</h1>
+                        <h1><?php echo e($row->name_product); ?></h1>
 
-                        <a href="Product/{{$row->id_product}}"><p class="text-muted">Product Details</p></a>
+                        <a href="Product/<?php echo e($row->id_product); ?>"><p class="text-muted">Product Details</p></a>
                     </div>
 
                 </div>
@@ -126,7 +124,7 @@
 
 
         </div>
-        @endforeach
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
         <!-- End Featured Product -->
         <!-- Start Footer -->
@@ -135,8 +133,10 @@
         </body>
         </html>
 
-        @endsection
+        <?php $__env->stopSection(); ?>
 
-        @section('myscript')
+        <?php $__env->startSection('myscript'); ?>
 
-        @endsection
+        <?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Phong\project-FANoFAN\resources\views/index/search.blade.php ENDPATH**/ ?>

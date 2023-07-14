@@ -46,7 +46,10 @@
         border: 0 solid rgba(0, 0, 0, .125);
         border-radius: .25rem;
     }
+.alert-danger{
+    text-align: center;
 
+}
     .card-body {
         flex: 1 1 auto;
         min-height: 1px;

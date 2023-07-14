@@ -191,7 +191,7 @@ class ProductController extends Controller
     }
     public function categories_list($id){
         $data_session = session()->get('id');
-        $row=DB::table('category')->join('product','category.id','=','product.id_category')->join('photo','photo.id_product','=','product.id_product')->where('category.id',$id)->where('photo.status','=',1)->where('category.deleted_at','=',null)->where('product.deleted_at','=',null)->where('photo.deleted_at','=',null)->get();
+        $row=DB::table('category')->join('product','category.id','=','product.id_category')->join('photo','photo.id_product','=','product.id_product')->where('category.id',$id)->where('photo.status','=',1)->where('category.deleted_at','=',null)->where('product.deleted_at','=',null)->where('photo.deleted_at','=',null)->distinct()->get();
         $category=DB::table('category')->orderBy('id','DESC')->where('category.deleted_at','=',null)->select('*')->get();
         $count_category=DB::table('category')->join('product','category.id','=','product.id_category')->where('category.deleted_at','=',null)->select('category.id','category.name', DB::raw('count(product.id_product) as total'))->groupBy('category.name','category.id')->get();
         if(isset($_GET['start_price']) && $_GET['end_price']){
