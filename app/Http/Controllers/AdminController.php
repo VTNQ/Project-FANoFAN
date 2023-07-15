@@ -143,19 +143,15 @@ public function Change_pass(){
 
 }
 public function Change_password(Request $request){
-   $validator=Validator::make($request->all(),['old_password'=>'required','New_password'=>'required|min:8','re_New_password'=>'required']);
-   if ($validator->fails()) {
-    return redirect()->back()
-        ->withErrors($validator)
-        ->withInput();
-}
+  
+
     $data_session = session()->get('id_admin');
         $old_password = md5($request->old_password);
         $new_password = md5($request->New_password);
         $re_new_password = md5($request->re_New_password);
-        $password = DB::table('user')->where('password', $old_password)->first();
+        $password = DB::table('user')->where('password', $old_password)->where('user_type','adm')->first();
         if ($password and $new_password == $re_new_password) {
-            DB::update('update user set password=? where id=? ', [$new_password, $data_session]);
+            DB::update('update user set password=? where id=?   ', [$new_password, $data_session]);
             Session()->flash('message', 'Reset Password success');
             return redirect('/change_pass');
         } else if (!$password and $new_password == $re_new_password) {

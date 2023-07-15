@@ -103,7 +103,7 @@
     <!--search-->
     <div class="col-md-3">
         <div class="search">
-            <form action="http://127.0.0.1:8000/search">
+            <form action="/search">
                 <input class="form_sea" type="text" placeholder="Search" name="search">
                 <button type="submit" class="seach_icon"><i class="fa fa-search"></i></button>
             </form>

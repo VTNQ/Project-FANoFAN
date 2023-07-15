@@ -41,10 +41,10 @@ class IndexController extends Controller
     public function contact(){
         $data_session = session()->get('id');
 
-        if(Session('id',null)){
+        if(!$data_session){
             $category=DB::table('category')->orderBy('id','DESC')->where('category.deleted_at','=',null)->select('*')->get();
             return view('index.contact')->with('category',$category);
-        }elseif(Session('id')){
+        }elseif($data_session){
             $data_last = session()->get('value');
             $name=session()->get('member');
             $email=session()->get('email');

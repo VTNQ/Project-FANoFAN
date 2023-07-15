@@ -108,7 +108,7 @@
                 <div class="row">
                     <div class="col-4">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item" style="line-height: 4vh;><a href="/">Home</a></li>
+                            <li class="breadcrumb-item" style="line-height: 4vh;"><a href="/">Home</a></li>
                             <li class="breadcrumb-item active dropdown" aria-current="page" >
                                 <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" id="button">My Information</button>
                                 <ul class="dropdown-menu">

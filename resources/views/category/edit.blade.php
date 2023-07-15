@@ -26,6 +26,9 @@
                                             <input type="text" class="form-control" value="{{$category[0]->name}}"
                                                    id="exampleInputEmail1" name="name_category"
                                                    placeholder="Enter name category">
+                                                   @error('name_category')
+                                                   <div class="alert alert-danger">{{$message}}</div>
+                                                   @enderror
                                         </div>
 
 

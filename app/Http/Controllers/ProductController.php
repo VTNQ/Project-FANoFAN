@@ -119,6 +119,7 @@ class ProductController extends Controller
 
     public function update_product(Request $request, $id_product)
     {
+        $request->validate(['nameProduct'=>'required|unique:product,name_product','Price'=>'required|numeric|min:0','description'=>'required']);
         $data = array();
 
         $data['name_product'] = $request->nameProduct;
@@ -211,7 +212,7 @@ class ProductController extends Controller
         $data_session = session()->get('id');
         $category=DB::table('category')->orderBy('id','DESC')->where('category.deleted_at','=',null)->select('*')->get();
         $count_category=DB::table('category')->join('product','category.id','=','product.id_category')->join('photo','photo.id_product','=','product.id_product')->where('photo.status','=',1)->where('category.deleted_at','=',null)->where('product.deleted_at','=',null)->where('photo.deleted_at','=',null)->select('category.id','category.name', DB::raw('count(product.id_product) as total'))->groupBy('category.name','category.id')->get();
-        $product=DB::table('product')->where('category','category.id','product.id_category')->join('photo','photo.id_product','=','product.id_product')->select('*')->where('photo.status','=',1)->where('product.deleted_at','=',null)->where('photo.deleted_at','=',null)->where('category.deleted_at','=',null)->paginate(9);
+        $product=DB::table('product')->join('category','category.id','=','product.id_category')->join('photo','photo.id_product','=','product.id_product')->select('*')->where('photo.status','=',1)->where('product.deleted_at','=',null)->where('photo.deleted_at','=',null)->where('category.deleted_at','=',null)->paginate(9);
         if(isset($_GET['start_price']) && $_GET['end_price']){
             $min_price=$_GET['start_price'];
             $max_price=$_GET['end_price'];

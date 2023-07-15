@@ -37,12 +37,32 @@
                                                 <input type="text" class="form-control" value="<?php echo e($row->name_product); ?>"
                                                        id="exampleInputEmail1" name="nameProduct"
                                                        placeholder="Enter name Product">
+                                                       <?php $__errorArgs = ['nameProduct'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                       <div class="alert alert-danger"><?php echo e($message); ?></div>
+                                                       <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Price</label>
                                                 <input type="number" class="form-control" id="exampleInputEmail1"
                                                        value="<?php echo e($row->money); ?>" name="Price"
                                                        placeholder="Enter name Product">
+                                                       <?php $__errorArgs = ['Price'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                       <div class="alert alert-danger"><?php echo e($message); ?></div>
+                                                       <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Product Description</label>
@@ -51,6 +71,16 @@
                                                       placeholder="Enter Product Description"><?php echo e($row->content); ?>
 
                                                 </textarea>
+                                                <?php $__errorArgs = ['description'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <div class="alert alert-danger"><?php echo e($message); ?></div>
+                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                             </div>
 
                                             <div class="form-group">
