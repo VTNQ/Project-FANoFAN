@@ -74,6 +74,7 @@ Route::get('/list_product', [ProductController::class, 'show_list_product']);
 //delete product
 Route::get('/delete_product/{id}', [ProductController::class, 'delete_product']);
 Route::delete('/delete_all', [ProductController::class, 'delete_all'])->name('category.delete');
+Route::put('category/delete-all', 'CategoryController@deleteAll');
 //edit product
 Route::get('/edit_product/{id_product}', [ProductController::class, 'edit_product']);
 //update product

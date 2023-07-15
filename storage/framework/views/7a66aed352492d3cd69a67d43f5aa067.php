@@ -156,6 +156,9 @@ unset($__errorArgs, $__bag); ?>
                     // Close the modal and show a success message
                     $("#mi-modal").modal('hide');
                     alert(response);
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
         });
