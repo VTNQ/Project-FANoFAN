@@ -231,11 +231,9 @@ unset($__errorArgs, $__bag); ?>
                 <div class="card mb-3">
                     <div class="card-body" style="margin: 10%">
                         <div class="row">
-
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Username</h6>
                             </div>
-
                             <?php $__currentLoopData = $list_user; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <div class="col-sm-9 text-secondary">
                                     <?php echo e($user->username); ?>
@@ -275,7 +273,6 @@ unset($__errorArgs, $__bag); ?>
                                             class="fa-solid fa-pen-to-square" style="cursor: pointer"></i></a>
                                 </div>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
                         </div>
                         <hr>
                         <div class="row">
@@ -287,12 +284,8 @@ unset($__errorArgs, $__bag); ?>
                                         class="fa-solid fa-pen-to-square" style="cursor: pointer"></i></a>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
-
-
             </div>
         </div>
 
@@ -346,7 +339,6 @@ unset($__errorArgs, $__bag); ?>
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>
@@ -374,7 +366,6 @@ unset($__errorArgs, $__bag); ?>
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>
@@ -407,7 +398,6 @@ unset($__errorArgs, $__bag); ?>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>

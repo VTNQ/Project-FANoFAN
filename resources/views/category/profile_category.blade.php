@@ -81,21 +81,21 @@
                             ?>
                             @foreach($all_list_login as $key=> $row )
 
-                                <tr id="category_ids{{$row->id}}">
+                                <tr id="{{$row->id}}">
                                     <td><input type="checkbox" name="ids[]" class="checkbox_ids" value="{{$row->id}}"></td>
                                     <td>{{$i++}}</td>
                                     <td>{{$row->name}}</td>
                                     <td>
                                         <a href="{{url('/edit/'.$row->id)}}" class="active" ui-toggle-class=""><i
-                                                class="fas fa-edit"> </a></i><a href="{{url('/delete/'.$row->id)}}"
+                                                class="fas fa-edit"></i></a><a href="{{url('/delete/'.$row->id)}}"
                                                                                 onclick="return confirm('Are you want to delete category?')">
                                             <i class="fa fa-times text-danger text"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
                         </table>
+                    </section>
                 </div>
-
                 {{$all_list_login->links()}}
 
                 <!-- page end-->
@@ -111,7 +111,6 @@
     </section>
 
     <!--main content end-->
-    </section>
     <form action="/save_category"></form>
     <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true"
          id="mi-modal">
@@ -130,29 +129,27 @@
         </div>
     </div>
     <script>
-        $(function (e) {
-            $("#select_all_ids").click(function () {
-                $('.checkbox_ids').prop('checked', $(this).prop('checked'));
+        $('#deleteAllSelectedRecord').on('click',function () {
+            var ids = [];
+
+            $('.checkbox_ids').on('click', function() {
+                if ($(this).prop('checked')) {
+                    ids.push($(this).val());
+                } else {
+                    ids.splice(ids.indexOf($(this).val()), 1);
+                }
             });
-            $('#deleteAllSelectedRecord').click(function (e) {
-                e.preventDefault();
-                var all_ids = [];
-                $('input:checkbox[name=ids]:checked').each(function () {
-                    all_ids.push($(this).val());
-                })
-                $.ajax({
-                    url: "{{route('category.delete')}}",
-                    type: 'DELETE',
-                    data: {
-                        ids: all_ids,
-                        _token: '{{csrf_token()}}'
-                    },
-                    success: function (response) {
-                        $.each(all_ids, function (key, val) {
-                            $('#category_ids' + val).remove();
-                        })
-                    }
-                });
+            $.ajax({
+                url: "{{route('category.delete_all')}}",
+                type: 'PUT',
+                data: {
+                    ids: ids,
+                },
+                success: function(response) {
+                    // Close the modal and show a success message
+                    $("#mi-modal").modal('hide');
+                    alert(response);
+                }
             });
         });
     </script>

@@ -53,8 +53,8 @@
                                     <th>Images</th>
                                     <th>Name Product</th>
                                     <th>Status</th>
-                                    <th></th>
-                                    <th></th>
+                                    <th>Restore</th>
+                                    <th>Delete</th>
                                 </tr>
                                 </thead>
                                 @foreach($recycle_photo as $rp)
@@ -73,23 +73,21 @@
                                     </tr>
                                 @endforeach
                             </table>
-
                         </div>
                     </div>
-                    <footer class="panel-footer">
-
-                    </footer>
                 </div>
             </div>
+            {{$recycle_photo->links()}}
         </section>
         <!-- footer -->
-        <div class="footer" style="width: 100%;position: absolute ;bottom: 0; text-align: center">
+        <div class="footer" style="width: 100%;position: absolute;bottom: 0; text-align: center">
             <div class="wthree-copyright">
                 <p>© 2023. All rights reserved | Design by <a href="/about">Favorable Team</a></p>
             </div>
         </div>
         <!-- / footer -->
     </section>
+
     <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true"
          id="mi-modal">
         <div class="modal-dialog modal-sm">

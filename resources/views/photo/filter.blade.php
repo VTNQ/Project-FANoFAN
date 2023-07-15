@@ -125,7 +125,7 @@ List Picture
                                     <a onclick="return confirm('Do you want delete this photo?')" href="{{url('/delete_picture/'.$row->id_photo)}}"><i class="fa fa-times text-danger text"></i></a>
                                 </td>
                                 @endforeach
-                            @endforeach
+                                @endforeach
                         </table>
 
                     </div>
@@ -143,21 +143,21 @@ List Picture
         </div>
     </div>
     <!-- / footer -->
-<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="mi-modal">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Are you Delete</h4>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" id="deleteAllSelectedRecord">Yes</button>
-                <button type="button" class="btn btn-primary" id="modal-btn-no">No</button>
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="mi-modal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Are you Delete</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="deleteAllSelectedRecord">Yes</button>
+                    <button type="button" class="btn btn-primary" id="modal-btn-no">No</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!--main content end-->
+    <!--main content end-->
 </section>
 <script>
     $(function(e) {

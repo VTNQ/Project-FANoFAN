@@ -40,7 +40,6 @@
 @endsection
 
 @section('body_content')
-    <!-- ADGRESSES-SECTION========================================ADGRESSES-SECTION==================================ADGRESSES-SECTION -->
     <div class="addresses-section" style="padding-top: 5%;">
         <div class="container px-5">
             <div class="row  gx-4">
@@ -50,7 +49,7 @@
                                                     aria-hidden="true"
                                                     style="visibility: visible;font-size: 25px;color: aliceblue;"></i>
                         </div>
-                        <p class="text-center pt-3"><b>Address: </b> 250 Rt 59, Airmont NY 10901
+                        <p class="text-center pt-3"><b>Address: </b> 35/6 D5 Street, Ward 25, Binh Thanh, Ho Chi Minh City 72308, Vietnam
                         </p>
                     </div>
                 </div>
@@ -84,19 +83,11 @@
             </div>
         </div>
     </div>
-    <!-- ADGRESSES-SECTION========================================ADGRESSES-SECTION==================================ADGRESSES-SECTION -->
-
-
-
-    <!-- FEEDBACK-FORM==============================================FEEDBACK-FORM======================================FEEDBACK-FORM -->
     <section class="position-relative py-4 py-xl-5">
         <div class="container position-relative">
             <div class="row">
                 <div class="col">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3787796.574527317!2d80.33203124999994!3d22.010541108802162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a28dd6ed7ed9f07%3A0x5f58cf9e48d46178!2sAptech%20Learning%20Raipur!5e0!3m2!1svi!2s!4v1687920671411!5m2!1svi!2s"
-                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.060360274028!2d106.71160187469764!3d10.80668908934392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529ed00409f09%3A0x11f7708a5c77d777!2zQXB0ZWNoIENvbXB1dGVyIEVkdWNhdGlvbiAtIEjhu4cgVGjhu5FuZyDEkMOgbyB04bqhbyBM4bqtcCBUcsOsbmggVmnDqm4gUXXhu5FjIHThur8gQXB0ZWNo!5e0!3m2!1svi!2s!4v1689411035378!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <div class="col-md-6 col-xl-4">
                     <div>

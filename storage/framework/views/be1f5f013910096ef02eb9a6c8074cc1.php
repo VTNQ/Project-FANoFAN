@@ -55,8 +55,8 @@
                                         <th> Name Product</th>
                                         <th>Money</th>
                                         <th>Category</th>
-                                        <th></th>
-                                        <th></th>
+                                        <th>Restore</th>
+                                        <th>Delete</th>
                                     </tr>
                                     </thead>
                                     <?php $__currentLoopData = $recycle_product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -73,11 +73,10 @@
 
                             </div>
                         </div>
-                        <footer class="panel-footer">
-
-                        </footer>
                     </div>
                 </div>
+                <?php echo e($recycle_product->links()); ?>
+
             </section>
             <!-- footer -->
             <div class="footer" style="width: 100%;position: absolute ;bottom: 0; text-align: center">

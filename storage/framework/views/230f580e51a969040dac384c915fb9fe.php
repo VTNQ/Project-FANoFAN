@@ -77,7 +77,7 @@
         position: absolute;
     }
     #card{
-        width: 18vw;
+        width: 17vw;
         height: 60vh;
     }
 </style>
@@ -251,7 +251,7 @@
                 <hr class="deep-purple  accent-2 mb-4 mt-0 d-inline-block mx-auto"
                     style="width: 60px;background-color: #F8F9FA !important;height: 2px;opacity: 1 ;">
                 <p style="color: white !important; ">
-                    <i class="fas fa-home mr-3" aria-hidden="true"></i> 250 Rt 59, Airmont NY 10901
+                    <i class="fas fa-home mr-3" aria-hidden="true"></i> 35/6 D5 Street, Ward 25, Binh Thanh, Ho Chi Minh City 72308, Vietnam
                 </p>
                 <p style="color: white !important; ">
                     <i class="fas fa-envelope mr-3" aria-hidden="true"></i> info@fanofan.com

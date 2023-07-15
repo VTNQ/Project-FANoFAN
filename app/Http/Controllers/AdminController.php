@@ -122,9 +122,9 @@ public function feedback(){
     if (session('username_admin', null) and session('id_admin', null)){
         $data_last = session()->get('value_admin');
         $list_photo = DB::table('user')->select('*')->where('user.avatar', $data_last)->first();
-        $feedback=DB::table('feedback')->join('user','feedback.id_user','=','user.id')->join('product','feedback.id_product','=','product.id_product')->join('photo','photo.id_product','=','product.id_product')->where('photo.status','=',1)->get();
+        $feedback=DB::table('feedback')->join('user','feedback.id_user','=','user.id')->join('product','feedback.id_product','=','product.id_product')->join('photo','photo.id_product','=','product.id_product')->where('photo.status','=',1)->orderBy('feedback.date_to','DESC')->paginate(5);
         if ($key = request()->key){
-            $feedback=DB::table('feedback')->join('user','feedback.id_user','=','user.id')->join('product','feedback.id_product','=','product.id_product')->join('photo','photo.id_product','=','product.id_product')->where('photo.status','=',1)->where('user.username','like','%'.$key.'%')->orwhere('product.name_product','like','%'.$key.'%')->where('photo.status','=',1)->get();
+            $feedback=DB::table('feedback')->join('user','feedback.id_user','=','user.id')->join('product','feedback.id_product','=','product.id_product')->join('photo','photo.id_product','=','product.id_product')->where('photo.status','=',1)->where('user.username','like','%'.$key.'%')->orwhere('product.name_product','like','%'.$key.'%')->where('photo.status','=',1)->orderBy('feedback.date_to','DESC')->paginate(5);
         }
         return view('feedback.feedback')->with('list_photo',$list_photo)->with('feedback',$feedback);
     }else{
@@ -143,7 +143,7 @@ public function Change_pass(){
 
 }
 public function Change_password(Request $request){
-  
+
 
     $data_session = session()->get('id_admin');
         $old_password = md5($request->old_password);

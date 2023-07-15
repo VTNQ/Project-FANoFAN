@@ -32,9 +32,8 @@ class IndexController extends Controller
             $category=DB::table('category')->orderBy('id','DESC')->where('category.deleted_at','=',null)->select('*')->get();
             return view('index.about')->with('category',$category);
         }elseif($data_session){
-            $data_last = session()->get('value');
             $category=DB::table('category')->orderBy('id','DESC')->where('category.deleted_at','=',null)->select('*')->get();
-            $avatar = DB::table('user')->where('user.avatar', $data_last)->first();
+            $avatar = DB::table('user')->where('user.id',$data_session )->first();
             return view('user.About')->with('avatar', $avatar)->with('category',$category);
         }
     }

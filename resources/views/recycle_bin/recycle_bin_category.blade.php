@@ -53,26 +53,23 @@
                                 <thead>
                                 <tr>
                                     <th>Name Category</th>
-                                    <th></th>
-                                    <th></th>
+                                    <th>Restore</th>
+                                    <th>Delete</th>
                                 </tr>
                                 </thead>
                                 @foreach($recycle_category as $rc)
                                     <tr>
                                         <td>{{$rc->name}}</td>
                                         <td><a href="/recycle_bin/category/restore/{{$rc->id}}"><i class="fa-solid fa-trash-can-arrow-up"></i></a></td>
-                                        <td><a href="/recycle_bin/product/delete/{{$rc->id}}"><i class="fa-solid fa-trash"></i></a></td>
+                                        <td><a href="/recycle_bin/category/delete/{{$rc->id}}"><i class="fa-solid fa-trash"></i></a></td>
                                     </tr>
                                 @endforeach
                             </table>
-
                         </div>
                     </div>
-                    <footer class="panel-footer">
-
-                    </footer>
                 </div>
             </div>
+            {{$recycle_category->links()}}
         </section>
         <!-- footer -->
         <div class="footer" style="width: 100%;position: absolute ;bottom: 0; text-align: center">

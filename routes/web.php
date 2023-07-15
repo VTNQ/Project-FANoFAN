@@ -26,7 +26,7 @@ Route::prefix('/')->group(function () {
     Route::get('/', [IndexController::class, 'index']);
     Route::get('/about', [IndexController::class, 'about']);
     Route::get('/contact', [IndexController::class, 'contact']);
-    Route::get('/search', [SearchController::class, 'search']);
+    Route::get('/search', [SearchController::class, 'Search']);
     Route::post('/contact_post', [IndexController::class, 'postContact']);
 });
 Route::prefix('/user')->group(function () {
@@ -73,6 +73,7 @@ Route::post('/add_Product', [ProductController::class, 'add_product']);
 Route::get('/list_product', [ProductController::class, 'show_list_product']);
 //delete product
 Route::get('/delete_product/{id}', [ProductController::class, 'delete_product']);
+Route::delete('/delete_all', [ProductController::class, 'delete_all'])->name('category.delete');
 //edit product
 Route::get('/edit_product/{id_product}', [ProductController::class, 'edit_product']);
 //update product
@@ -92,7 +93,7 @@ Route::post('/save_category', [CategoryController::class, 'save_category']);
 Route::get('/profile_category', [CategoryController::class, 'list_category']);
 //delete category
 Route::get('/delete/{id}', [CategoryController::class, 'delete']);
-Route::delete('/delete_all', [CategoryController::class, 'delete_all'])->name('category.delete');
+Route::put('/delete_all', [CategoryController::class, 'delete_all'])->name('category.delete_all');
 //edit category
 Route::get('/edit/{id}', [CategoryController::class, 'edit']);
 Route::post('/update/{id}', [CategoryController::class, 'update']);
@@ -105,7 +106,6 @@ Route::get('/feedback',[AdminController::class,'feedback']);
 
 Route::get('/change_pass',[AdminController::class,'Change_pass']);
 Route::post('/change_pass',[AdminController::class,'Change_password']);
-Route::post('/insert-rating',[IndexController::class,'insert_rating']);
 //
 Route::get('/recycle_bin/product',[RecycleBinController::class,'recycle_bin_product']);
 Route::get('/recycle_bin/category',[RecycleBinController::class,'recycle_bin_category']);
@@ -116,5 +116,5 @@ Route::get('/recycle_bin/category/restore/{id_category}',[RecycleBinController::
 Route::get('/recycle_bin/photo/restore/{id_photo}',[RecycleBinController::class,'restore_photo']);
 
 Route::get('/recycle_bin/product/delete/{id_product}',[RecycleBinController::class,'delete_product']);
-Route::get('/recycle_bin/category/delete/{id_category}',[RecycleBinController::class,'delete_category']);
+Route::get('/recycle_bin/category/delete/{id}',[RecycleBinController::class,'delete_category']);
 Route::get('/recycle_bin/photo/delete/{id_photo}',[RecycleBinController::class,'delete_photo']);
