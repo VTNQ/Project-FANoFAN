@@ -52,220 +52,193 @@
     }
 
     a {
-      color: #fff;
-   }
+        color: #fff;
+    }
 
-   body {
-      height: 100%;
-   }
-   iframe {
-       bottom: 13vh !important;
-   }
-   .navbar:hover,
-   .navbar.scrolled{
-       background-color: #36454f;
-   }
-   li div#list_category{
-       display: none;
-   }
-   li:hover div#list_category{
-       display: block;
-       position: absolute;
-   }
-   #card{
-        width: 18vw;
-       height: 60vh;
-   }
-   .navbar:hover,
+    body {
+        height: 100%;
+    }
+
+    iframe {
+        bottom: 13vh !important;
+    }
+    .navbar:hover,
     .navbar.scrolled{
         background-color: #36454f;
+    }
+    h1#row_last {
+        line-height: 32vh;
+    }
+    li div#list_category{
+        display: none;
+    }
+    li:hover div#list_category{
+        display: block;
+        position: absolute;
+    }
+    #card{
+        width: 18vw;
+        height: 60vh;
     }
 </style>
 <!-- body -->
 
 <body class="main-layout">
-   <!-- loader  -->
-   <nav class="navbar navbar-expand-lg navbar-dark scrolling-navbar fixed-top " id="navbar">
-       <!-- Navbar brand -->
-       <a class="navbar-brand p-0" href="/"><!--FANo<span>FAN</span>-->
-           <img
-               src="https://d33wubrfki0l68.cloudfront.net/6e39a404f566cec2f989e430771b9895c40253d3/660b4/static/img/logo__icons_svg/logo.png"
-               class="img-fluid" alt="">
-       </a>
-       <!-- Collapse button -->
-       <button class="navbar-toggler  text-dark" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-               aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-           <span class="navbar-toggler-icon"></span>
-       </button>
-       <!--sreach-->
-       <div class="col-md-3">
-           <div class="search">
-               <form action="/search">
-                   <input class="form_sea" type="text" placeholder="Search" name="search">
-                   <button type="submit" class="seach_icon"><i class="fa fa-search"></i></button>
-               </form>
-           </div>
-       </div>
+<!-- loader  -->
+<nav class="navbar navbar-expand-lg navbar-dark scrolling-navbar fixed-top " id="navbar">
+    <!-- Navbar brand -->
+    <a class="navbar-brand p-0" href="/"><!--FANo<span>FAN</span>-->
+        <img
+            src="https://d33wubrfki0l68.cloudfront.net/6e39a404f566cec2f989e430771b9895c40253d3/660b4/static/img/logo__icons_svg/logo.png"
+            class="img-fluid" alt="">
+    </a>
+    <!-- Collapse button -->
+    <button class="navbar-toggler  text-dark" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+            aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <!--sreach-->
+    <div class="col-md-3">
+        <div class="search">
+            <form action="/search">
+                <input class="form_sea" type="text" placeholder="Search" name="search">
+                <button type="submit" class="seach_icon"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </div>
 
-       <!-- Collapsible content -->
-       <div class="collapse navbar-collapse mt-lg-0 mt-md-3 mt-sm-4" id="basicExampleNav">
-           <!-- Links -->
-           <ul class="navbar-nav ml-auto">
-               <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-                   <a class="nav-link home-link  waves-effect waves-light" href="/">Home </a>
-               </li>
-               <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-                   <a class="nav-link about-link waves-effect waves-light" href="/about">About</a>
-               </li>
-               <li class="nav-item active  dropdown px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse mt-lg-0 mt-md-3 mt-sm-4" id="basicExampleNav">
+        <!-- Links -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
+                <a class="nav-link home-link  waves-effect waves-light" href="/">Home </a>
+            </li>
+            <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
+                <a class="nav-link about-link waves-effect waves-light" href="/about">About</a>
+            </li>
+            <li class="nav-item active  dropdown px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
 
-                   <a class="nav-link categories-link waves-effect waves-light" href="/all_product"
-                      id="category" aria-haspopup="true" aria-expanded="false" >Categories</a>
+                <a class="nav-link categories-link waves-effect waves-light" href="/all_product"
+                   id="category" aria-haspopup="true" aria-expanded="false" >Categories</a>
 
-                   <div  style="background-color: #6c757d;" id="list_category">
-                       @foreach($category as $row)
-                           <a class="dropdown-item ceiling-fans-link waves-effect waves-light"
-                              href="/categories_list/{{$row->id}}">{{$row->name}}</a>
+                <div  style="background-color: #6c757d;" id="list_category">
+                    @foreach($category as $row)
+                        <a class="dropdown-item ceiling-fans-link waves-effect waves-light"
+                           href="/categories_list/{{$row->id}}">{{$row->name}}</a>
 
-                       @endforeach
-                   </div>
+                    @endforeach
+                </div>
 
-               </li>
-               <li class="nav-item active  px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-                   <a class="nav-link contact-link waves-effect waves-light" href="/contact">Contact Us</a>
-               </li>
-               <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-                   <a class="nav-link home-link  waves-effect waves-light" href="/login">Login </a>
-               </li>
-               <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
-                   <a class="nav-link home-link  waves-effect waves-light" href="/register">Register </a>
-               </li>
-           </ul>
-           <!-- Links -->
-       </div>
-       <!-- Collapsible content -->
-   </nav>
-
-
-   <header class="img-fluid" style="    padding: 11% 0px;">
+            </li>
+            <li class="nav-item active  px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
+                <a class="nav-link contact-link waves-effect waves-light" href="/contact">Contact Us</a>
+            </li>
+            <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
+                <a class="nav-link home-link  waves-effect waves-light" href="/login">Login </a>
+            </li>
+            <li class="nav-item active px-lg-2 py-lg-0 py-md-1 py-sm-1 text-center  mx-auto">
+                <a class="nav-link home-link  waves-effect waves-light" href="/register">Register </a>
+            </li>
+        </ul>
+        <!-- Links -->
+    </div>
+    <!-- Collapsible content -->
+</nav>
+<header class="img-fluid" style="    padding: 11% 0px;">
    </header>
-   </div>
-   <!-- </header> -->
-   <!-- end header inner -->
-   <!-- end header -->
-   <div class="main-panel">
-      <section>
-         @yield('body_content')
-      </section>
-   </div>
 
-   <!--  footer -->
-   <footer class="page-footer font-small unique-color-dark ">
+<div class="main-panel">
+    <section style="margin-left: 2.5%">
+        @yield('body_content')
+    </section>
+</div>
 
-      <div style="background-color: #6c757d;color: white !important;">
-         <div class="container">
+<!--  footer -->
+<footer class="page-footer font-small unique-color-dark ">
+
+    <div style="background-color: #6c757d;color: white !important;">
+        <div class="container">
 
             <!-- Grid row-->
             <div class="row py-4 d-flex align-items-center">
 
-               <!-- Grid column -->
-               <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-                  <h6 class="mb-0 get-connected">Get connected with us on social networks!</h6>
-               </div>
-               <!-- Grid column -->
+                <!-- Grid column -->
+                <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+                    <h6 class="mb-0 get-connected">Get connected with us on social networks!</h6>
+                </div>
+                <!-- Grid column -->
 
-               <!-- Grid column -->
-               <div class="col-md-6 col-lg-7 text-center text-md-right">
+                <!-- Grid column -->
+                <div class="col-md-6 col-lg-7 text-center text-md-right">
 
-                  <!-- Facebook -->
-                  <a class="social-icons fb-ic" style="visibility: visible;" href="https://www.facebook.com/">
-                     <i class="fab fa-facebook-f white-text mr-4 " style="font-size: 20px !important;" aria-hidden="true"> </i>
-                  </a>
-                  <!-- Twitter -->
-                  <a class="social-icons tw-ic" style="visibility: visible;" href="https://twitter.com/">
-                     <i class="fab fa-twitter white-text mr-4 " style="font-size: 20px !important;" aria-hidden="true"> </i>
-                  </a>
-                  <!-- Google +-->
-                  <a class="social-icons gplus-ic" style="visibility: visible;" href="https://google.com/">
-                     <i class="fab fa-google-plus-g white-text mr-4 " style="font-size: 20px !important;" aria-hidden="true"> </i>
-                  </a>
-                  <!--Linkedin -->
-                  <a class="social-icons li-ic" style="visibility: visible;" href="https://www.linkedin.com/">
-                     <i class="fab fa-linkedin-in white-text mr-4 " style="font-size: 20px !important;" aria-hidden="true"> </i>
-                  </a>
-                  <!--Instagram-->
-                  <a class="social-icons ins-ic" style="visibility: visible;" href="https://www.instagram.com/">
-                     <i class="fab fa-instagram white-text " style="font-size: 20px !important;" aria-hidden="true"> </i>
-                  </a>
+                    <!-- Facebook -->
+                    <a class="social-icons fb-ic" style="visibility: visible;" href="https://www.facebook.com/">
+                        <i class="fab fa-facebook-f white-text mr-4 " style="font-size: 20px !important;"
+                           aria-hidden="true"> </i>
+                    </a>
+                    <!-- Twitter -->
+                    <a class="social-icons tw-ic" style="visibility: visible;" href="https://twitter.com/">
+                        <i class="fab fa-twitter white-text mr-4 " style="font-size: 20px !important;"
+                           aria-hidden="true"> </i>
+                    </a>
+                    <!-- Google +-->
+                    <a class="social-icons gplus-ic" style="visibility: visible;" href="https://google.com/">
+                        <i class="fab fa-google-plus-g white-text mr-4 " style="font-size: 20px !important;"
+                           aria-hidden="true"> </i>
+                    </a>
+                    <!--Linkedin -->
+                    <a class="social-icons li-ic" style="visibility: visible;" href="https://www.linkedin.com/">
+                        <i class="fab fa-linkedin-in white-text mr-4 " style="font-size: 20px !important;"
+                           aria-hidden="true"> </i>
+                    </a>
+                    <!--Instagram-->
+                    <a class="social-icons ins-ic" style="visibility: visible;" href="https://www.instagram.com/">
+                        <i class="fab fa-instagram white-text " style="font-size: 20px !important;"
+                           aria-hidden="true"> </i>
+                    </a>
 
-               </div>
-               <!-- Grid column -->
+                </div>
+                <!-- Grid column -->
 
             </div>
             <!-- Grid row-->
 
-         </div>
-      </div>
+        </div>
+    </div>
 
-      <!-- Footer Links -->
-      <div class="container text-center text-md-left mt-5">
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left mt-5">
 
-         <!-- Grid row -->
-         <div class="row mt-3" id="row">
+        <!-- Grid row -->
+        <div class="row mt-3" id="row">
 
             <!-- Grid column -->
             <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
 
-               <!-- Content -->
-               <h4 class="text-capitalize text-lg-start text-md-start text-sm-center ">FANoFAN</h4>
-               <hr class=" mb-4 mt-0 footer-ruler" style="width: 60px;background-color: #F8F9FA !important;height: 2px;opacity: 1 ;">
-               <p class="text-start text-light footer-content">
-                  Whether you have an industrial complex or a small shop, our experts are here to make your life easier, more comfortable,
-                  and less expensive.
-               </p>
+                <!-- Content -->
+                <h4 class="text-capitalize text-lg-start text-md-start text-sm-center ">FANoFAN</h4>
+                <hr class=" mb-4 mt-0 footer-ruler"
+                    style="width: 60px;background-color: #F8F9FA !important;height: 2px;opacity: 1 ;">
+                <p class="text-start text-light footer-content">
+                    Whether you have an industrial complex or a small shop, our experts are here to make your life
+                    easier, more comfortable,
+                    and less expensive.
+                </p>
 
             </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
-            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 footer-products">
-
-               <!-- Links -->
-               <h6 class="text-uppercase ">Products</h6>
-               <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;background-color: #F8F9FA !important;height: 2px;opacity: 1 ;">
-               <p>
-                  <a href="/categories_ceiling">Ceiling Fans</a>
-               </p>
-               <p>
-                  <a href="/categories_table">Table Fans</a>
-               </p>
-               <p>
-                  <a href="/categories_standing">Standing Fans</a>
-               </p>
-               <p>
-                  <a href="/categories_standing">Exhaust Fans</a>
-               </p>
-
-
-            </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 footer-company">
 
-               <!-- Links -->
-               <h6 class="text-uppercase ">Company</h6>
-               <hr class="deep-purple  accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;background-color: #F8F9FA !important;height: 2px;opacity: 1 ; color: #fff  !important;">
-               <p class="py-1 m-0">
-                  <a href="/about">About Us</a>
-               </p>
-
-               <p class="py-1 m-0">
-                  <a href="/gallery">Gallery</a>
-               </p>
-               <p class="py-1 m-0">
-                  <a href="/contact">Contact Us</a>
-               </p>
+                <!-- Links -->
+                <h6 class="text-uppercase ">Company</h6>
+                <hr class="deep-purple  accent-2 mb-4 mt-0 d-inline-block mx-auto"
+                    style="width: 60px;background-color: #F8F9FA !important;height: 2px;opacity: 1 ; color: #fff  !important;">
+                <p class="py-1 m-0">
+                    <a href="/about">About Us</a>
+                </p>
+                <p class="py-1 m-0">
+                    <a href="/contact">Contact Us</a>
+                </p>
 
             </div>
             <!-- Grid column -->
@@ -273,38 +246,40 @@
             <!-- Grid column -->
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 footer-contact">
 
-               <!-- Links -->
-               <h6 class="text-uppercase ">Contact</h6>
-               <hr class="deep-purple  accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;background-color: #F8F9FA !important;height: 2px;opacity: 1 ;">
-               <p style="color: white !important; ">
-                  <i class="fas fa-home mr-3" aria-hidden="true"></i> 250 Rt 59, Airmont NY 10901
-               </p>
-               <p style="color: white !important; ">
-                  <i class="fas fa-envelope mr-3" aria-hidden="true"></i> info@fanofan.com
-               </p>
-               <p style="color: white !important; ">
-                  <i class="fas fa-phone mr-3" aria-hidden="true"></i> + 01 234 567 88
-               </p>
-               <p style="color: white !important; ">
-                  <i class="fas fa-print mr-3" aria-hidden="true"></i> + 01 234 567 89
-               </p>
+                <!-- Links -->
+                <h6 class="text-uppercase ">Contact</h6>
+                <hr class="deep-purple  accent-2 mb-4 mt-0 d-inline-block mx-auto"
+                    style="width: 60px;background-color: #F8F9FA !important;height: 2px;opacity: 1 ;">
+                <p style="color: white !important; ">
+                    <i class="fas fa-home mr-3" aria-hidden="true"></i> 250 Rt 59, Airmont NY 10901
+                </p>
+                <p style="color: white !important; ">
+                    <i class="fas fa-envelope mr-3" aria-hidden="true"></i> info@fanofan.com
+                </p>
+                <p style="color: white !important; ">
+                    <i class="fas fa-phone mr-3" aria-hidden="true"></i> + 01 234 567 88
+                </p>
+                <p style="color: white !important; ">
+                    <i class="fas fa-print mr-3" aria-hidden="true"></i> + 01 234 567 89
+                </p>
 
             </div>
             <!-- Grid column -->
 
-         </div>
-         <!-- Grid row -->
+        </div>
+        <!-- Grid row -->
 
-      </div>
-      <!-- Footer Links -->
+    </div>
+    <!-- Footer Links -->
 
-      <!-- Copyright -->
-      <div class="footer-copyright text-center py-3">© <span id="currentyear">2023</span> Copyright:
-         <a href="/about"> FANoFAN</a>
-      </div>
-      <!-- Copyright -->
-
-   </footer>
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© <span id="currentyear">2023</span> Copyright:
+        <a href="/about"> FANoFAN</a>
+    </div>
+    <!-- Copyright -->
+    <img src="{{asset('images/back-to-top-button.png')}}" alt="" onclick="scroll_to_top()" id="scroll_top"
+         style="position: fixed; bottom: 3vh; right: 1vw; width: 3rem; display: none">
+</footer>
 <!-- end footer -->
 <!-- Javascript files-->
 <script src="{{ asset('/js/jquery.min.js')}}"></script>
@@ -380,26 +355,28 @@
     }
 </script>
 <script>
-  $( function() {
-    $( "#slider-range" ).slider({
-      range: true,
-      min: 0,
-      max: 2000,
-      values: [ 75, 300 ],
-      step:10,
-      slide: function( event, ui ) {
-        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-        $('#start_price').val(ui.values[0]);
-        $('#end_price').val(ui.values[1]);
-      }
-    });
-    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-  } );
-  </script>
-    <script src="{{asset('slider-show/js/owl.carousel.min.js')}}"></script>
-    <script src="{{asset('slider-show/js/main.js')}}"></script>
+    $( function() {
+        $( "#slider-range" ).slider({
+            range: true,
+            min: 0,
+            max: 2000,
+            values: [ 75, 300 ],
+            step:10,
+            slide: function( event, ui ) {
+                $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+                $('#start_price').val(ui.values[0]);
+                $('#end_price').val(ui.values[1]);
+            }
+        });
+        $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+            " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+    } );
+</script>
 
+
+
+<script src="{{asset('slider-show/js/owl.carousel.min.js')}}"></script>
+<script src="{{asset('slider-show/js/main.js')}}"></script>
 </body>
 
 </html>

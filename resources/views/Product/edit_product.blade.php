@@ -38,12 +38,18 @@
                                                 <input type="text" class="form-control" value="{{$row->name_product}}"
                                                        id="exampleInputEmail1" name="nameProduct"
                                                        placeholder="Enter name Product">
+                                                       @error('nameProduct')
+                                                       <div class="alert alert-danger">{{$message}}</div>
+                                                       @enderror
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Price</label>
                                                 <input type="number" class="form-control" id="exampleInputEmail1"
                                                        value="{{$row->money}}" name="Price"
                                                        placeholder="Enter name Product">
+                                                       @error('Price')
+                                                       <div class="alert alert-danger">{{$message}}</div>
+                                                       @enderror
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Product Description</label>
@@ -51,6 +57,9 @@
                                                       style="resize: none;" rows="8"
                                                       placeholder="Enter Product Description">{{$row->content}}
                                                 </textarea>
+                                                @error('description')
+                                                <div class="alert alert-danger">{{$message}}</div>
+                                                @enderror
                                             </div>
 
                                             <div class="form-group">

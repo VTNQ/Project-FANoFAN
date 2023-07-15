@@ -61,7 +61,7 @@
                                         </p>
 
                                         <p style="text-align: center;">
-                                            <a href="<?php echo e('http://topserver.edu:8484/forgot-password/'.$user['token']); ?>" class="btn">Reset your password</a>
+                                            <a href="<?php echo e('http://topserver.edu/forgot-password/'.$user['token']); ?>" class="btn">Reset your password</a>
                                         </p>
 
 

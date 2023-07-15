@@ -90,7 +90,7 @@
     <!--search-->
     <div class="col-md-3">
         <div class="search">
-            <form action="http://127.0.0.1:8000/search">
+            <form action="/search">
                 <input class="form_sea" type="text" placeholder="Search" name="search">
                 <button type="submit" class="seach_icon"><i class="fa fa-search"></i></button>
             </form>
@@ -301,10 +301,11 @@
 
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">© <span id="currentyear">2023</span> Copyright:
-        <a href="/about"> FANoFAN</a>
+        <a href="/"> FANoFAN</a>
     </div>
     <!-- Copyright -->
-
+    <img src="<?php echo e(asset('images/back-to-top-button.png')); ?>" alt="" onclick="scroll_to_top()" id="scroll_top"
+         style="position: fixed; bottom: 3vh; right: 1vw; width: 3rem; display: none">
 </footer>
 <!-- end footer -->
 <!-- Javascript files-->
