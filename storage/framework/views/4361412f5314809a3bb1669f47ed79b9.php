@@ -72,14 +72,12 @@
                                     </tr>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </table>
-
                         </div>
                     </div>
-                    <footer class="panel-footer">
-
-                    </footer>
                 </div>
             </div>
+            <?php echo e($recycle_photo->links()); ?>
+
         </section>
         <!-- footer -->
         <div class="footer" style="width: 100%;position: absolute;bottom: 0; text-align: center">

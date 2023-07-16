@@ -87,7 +87,7 @@ unset($__errorArgs, $__bag); ?>
                             ?>
                             <?php $__currentLoopData = $all_list_login; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=> $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
-                                <tr id="category_ids<?php echo e($row->id); ?>">
+                                <tr id="<?php echo e($row->id); ?>">
                                     <td><input type="checkbox" name="ids[]" class="checkbox_ids" value="<?php echo e($row->id); ?>"></td>
                                     <td><?php echo e($i++); ?></td>
                                     <td><?php echo e($row->name); ?></td>
@@ -100,8 +100,8 @@ unset($__errorArgs, $__bag); ?>
                                 </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </table>
+                    </section>
                 </div>
-
                 <?php echo e($all_list_login->links()); ?>
 
 
@@ -118,7 +118,6 @@ unset($__errorArgs, $__bag); ?>
     </section>
 
     <!--main content end-->
-    </section>
     <form action="/save_category"></form>
     <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true"
          id="mi-modal">
@@ -137,29 +136,30 @@ unset($__errorArgs, $__bag); ?>
         </div>
     </div>
     <script>
-        $(function (e) {
-            $("#select_all_ids").click(function () {
-                $('.checkbox_ids').prop('checked', $(this).prop('checked'));
+        $('#deleteAllSelectedRecord').on('click',function () {
+            var ids = [];
+
+            $('.checkbox_ids').on('click', function() {
+                if ($(this).prop('checked')) {
+                    ids.push($(this).val());
+                } else {
+                    ids.splice(ids.indexOf($(this).val()), 1);
+                }
             });
-            $('#deleteAllSelectedRecord').click(function (e) {
-                e.preventDefault();
-                var all_ids = [];
-                $('input:checkbox[name=ids]:checked').each(function () {
-                    all_ids.push($(this).val());
-                })
-                $.ajax({
-                    url: "<?php echo e(route('category.delete')); ?>",
-                    type: 'DELETE',
-                    data: {
-                        ids: all_ids,
-                        _token: '<?php echo e(csrf_token()); ?>'
-                    },
-                    success: function (response) {
-                        $.each(all_ids, function (key, val) {
-                            $('#category_ids' + val).remove();
-                        })
-                    }
-                });
+            $.ajax({
+                url: "<?php echo e(route('category.delete_all')); ?>",
+                type: 'PUT',
+                data: {
+                    ids: ids,
+                },
+                success: function(response) {
+                    // Close the modal and show a success message
+                    $("#mi-modal").modal('hide');
+                    alert(response);
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
             });
         });
     </script>

@@ -74,6 +74,10 @@ Route::get('/list_product', [ProductController::class, 'show_list_product']);
 //delete product
 Route::get('/delete_product/{id}', [ProductController::class, 'delete_product']);
 Route::delete('/delete_all', [ProductController::class, 'delete_all'])->name('category.delete');
+<<<<<<< HEAD
+=======
+Route::put('category/delete-all', 'CategoryController@deleteAll');
+>>>>>>> d9a9cbe50188c4b68fdef5be586a7baa130b5524
 //edit product
 Route::get('/edit_product/{id_product}', [ProductController::class, 'edit_product']);
 //update product
@@ -93,7 +97,7 @@ Route::post('/save_category', [CategoryController::class, 'save_category']);
 Route::get('/profile_category', [CategoryController::class, 'list_category']);
 //delete category
 Route::get('/delete/{id}', [CategoryController::class, 'delete']);
-Route::delete('/delete_all', [CategoryController::class, 'delete_all'])->name('category.delete');
+Route::put('/delete_all', [CategoryController::class, 'delete_all'])->name('category.delete_all');
 //edit category
 Route::get('/edit/{id}', [CategoryController::class, 'edit']);
 Route::post('/update/{id}', [CategoryController::class, 'update']);

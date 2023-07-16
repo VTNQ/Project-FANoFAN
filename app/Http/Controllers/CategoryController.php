@@ -29,9 +29,9 @@ class CategoryController extends Controller
 
     public function delete_all(Request $request)
     {
-        $ids = $request->ids;
+        $ids = $request->input('ids');
         DB::table('category')->where('id','=',$ids)->update(['deleted_at'=>now()]);
-        return response()->json(["success" => "category have been deleted"]);
+        return redirect('/profile_category');
     }
     public function delete($id)
     {
