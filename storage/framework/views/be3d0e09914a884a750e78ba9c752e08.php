@@ -60,18 +60,14 @@ About Page
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('body_content'); ?>
-
-<!-- PAGE-INTRO==================================================PAGE-INTRO=====================================PAGE-INTRO-->
 <div class="container px-lg-5  about-page-intro" style="padding-top: 4%">
     <div class="row gx-lg-5 gx-md-4">
-
         <div class="col-lg-5 col-md-6 col-sm-10 mx-auto">
             <div class=" about-intro-img">
                 <div class="years" style="visibility: visible;">
                 </div>
             </div>
         </div>
-
         <div class="col-lg-7 col-md-6 col-sm-10 mx-auto mt-sm-5 mt-lg-0 mt-md-0 text">
             <div class="padding p-lg-4 p-md-2 p-sm-3  rounded" ">
                 <h3 class=" mb-3 text-uppercase text-center" style="color:aliceblue">The fan that keeps you running... </h3>
@@ -80,7 +76,6 @@ About Page
                     FANoFAN started by creating safer, more productive work environments in industrial facilities. But we didn’t stop there.
                     Go to work, hit the gym, or enjoy a night on the town and chances are you’ll see a product of FANoFAN [overhead] keeping the peace smoothly and silently.
                 </p>
-
                 <p class="text-justify">
                     From factories to homes and everywhere in between, FANoFAN delivers comfort, style, and energy savings that make life and work more enjoyable
                 </p>
@@ -94,14 +89,9 @@ About Page
                 </div>
             </div>
         </div>
-
-
     </div>
-</div>
-<!-- PAGE-INTRO==================================================PAGE-INTRO=====================================PAGE-INTRO-->
-<!-- EXECUTIVE-TEAM=============================================EXECUTIVE-TEAM===================================EXECUTIVE-TEAM  -->
-<div class="team-boxed">
-    <div class="container">
+<div class="team-boxed container-fluid">
+    <div class="container-fluid">
         <div class="intro">
             <h2 class="text-center team-header" style="visibility: visible;color:aliceblue;"> Our Executive Team </h2>
         </div>
@@ -122,7 +112,7 @@ About Page
             </div>
             <div class="col-md-6 col-lg-3 col-sm-8 mx-auto item">
                 <div class="box"><img class="rounded-circle" src="https://zpsocial-f49-org.zadn.vn/a8ef798bdd2832766b39.jpg">
-                    <h4 class="name">Vo T.N Quoc</h4>
+                    <h4 class="name">Vo T.Nam Quoc</h4>
                     <p class="title">Member</p>
                     <div class="social"><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></div>
                 </div>
@@ -137,7 +127,6 @@ About Page
         </div>
     </div>
 </div>
-<!-- EXECUTIVE-TEAM=============================================EXECUTIVE-TEAM===================================EXECUTIVE-TEAM  -->
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('myscript'); ?>

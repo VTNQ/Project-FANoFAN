@@ -203,11 +203,9 @@
                 <div class="card mb-3">
                     <div class="card-body" style="margin: 10%">
                         <div class="row">
-
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Username</h6>
                             </div>
-
                             @foreach($list_user as $user)
                                 <div class="col-sm-9 text-secondary">
                                     {{$user->username}}
@@ -244,7 +242,6 @@
                                             class="fa-solid fa-pen-to-square" style="cursor: pointer"></i></a>
                                 </div>
                             @endforeach
-
                         </div>
                         <hr>
                         <div class="row">
@@ -256,12 +253,8 @@
                                         class="fa-solid fa-pen-to-square" style="cursor: pointer"></i></a>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
-
-
             </div>
         </div>
 
@@ -315,7 +308,6 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>
@@ -343,7 +335,6 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>
@@ -376,7 +367,6 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>

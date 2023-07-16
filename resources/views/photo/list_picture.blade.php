@@ -1,233 +1,197 @@
 @extends('layouts.admin')
 @section('title_page')
-    List Picture
+List Picture
 @endsection
 @section('body_content')
-    <style>
-        .btn-danger {
-            color: #fff;
-            background-color: #d9534f;
-            border-color: #d43f3a;
-            margin-left: 3vh;
-        }
-    </style>
-    <!--main content start-->
-    <section id="main-content">
-        <section class="wrapper">
-            <div class="table-agile-info">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Manager photo
-                    </div>
-                    <div class="row w3-res-tb">
-                        <div class="col-sm-5 m-b-xs">
+<style>
+    .btn-danger {
+        color: #fff;
+        background-color: #d9534f;
+        border-color: #d43f3a;
+        margin-left: 3vh;
+    }
+</style>
+<!--main content start-->
+<section id="main-content">
+    <section class="wrapper">
+        <div class="table-agile-info">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Manager photo
+                </div>
+                <div class="row w3-res-tb">
+                    <div class="col-sm-5 m-b-xs">
 
-                            @if (session()->has('error'))
-                                <div class="alert alert-success text-center" role="alert">{{ session('error') }}</div>
-                            @endif
-                        </div>
-                        <div class="col-sm-4">
-                        </div>
-                        <div class="col-sm-3">
-                            <form action="">
-                                <div class="input-group">
-                                    <input type="text" class="input-sm form-control" name="key" placeholder="Search">
-                                    <span class="input-group-btn">
-            <input class="btn btn-sm btn-default" type="submit">Go!</input>
-          </span>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <?php
-
-                    ?>
-                    <div class="panel-body">
-                        @if(Session::has('success'))
-                            <script>
-                                toastr.error("{{session('success')}}")
-                            </script>
-
+                        @if (session()->has('error'))
+                        <div class="alert alert-success text-center" role="alert">{{ session('error') }}</div>
                         @endif
+                    </div>
+                    <div class="col-sm-4">
+                    </div>
+                    <div class="col-sm-3">
+                        <form action="">
+                            <div class="input-group">
+                                <input type="text" class="input-sm form-control" name="key" placeholder="Search">
+                                <span class="input-group-btn">
+                                    <input class="btn btn-sm btn-default" type="submit">Go!</input>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <?php
 
-                        <div class="table-responsive">
-                            <div class="row py-2" style="    margin-right: 1vh;">
-                                <div style="float: right;">
-                                    <button href="" class="btn btn-danger" id="btn-confirm">Delete Multiple</button>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <form action="{{url('filter')}}">
-                                            <div class="row" style="margin-left: 4px;">
-                                                <div class="col-md-8">
-                                                    <select name="roles" id="" class="form-control">
-                                                        <option value="">Default</option>
-                                                        <option value="1">Main</option>
-                                                        <option value="0">Extra</option>
-                                                    </select>
+                ?>
+                <div class="panel-body">
+                    @if(Session::has('success'))
+                    <script>
+                        toastr.error("{{session('success')}}")
+                    </script>
 
-                                                </div>
-                                                <button type="submit" class="btn btn-primary ">FILTER</button>
+                    @endif
+
+                    <div class="table-responsive">
+                        <div class="row py-2" style="    margin-right: 1vh;">
+                            <div style="float: right;">
+                                <button href="" class="btn btn-danger" id="btn-confirm">Delete Multiple</button>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <form action="{{url('filter')}}">
+                                        <div class="row" style="margin-left: 4px;">
+                                            <div class="col-md-8">
+                                                <select name="roles" id="" class="form-control">
+                                                    <option value="">Default</option>
+                                                    <option value="1">Main</option>
+                                                    <option value="0">Extra</option>
+                                                </select>
+
                                             </div>
-                                            <div class="col-md-4">
+                                            <button type="submit" class="btn btn-primary ">FILTER</button>
+                                        </div>
+                                        <div class="col-md-4">
 
-                                            </div>
-                                        </form>
-                                    </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
-                            <table class="table table-striped b-t b-light">
-                                <thead>
+                        </div>
+                        <table class="table table-striped b-t b-light">
+                            <thead>
                                 <tr>
-                                    <th><input type="checkbox" name="" id="select_all_ids"></th>
                                     <th>#</th>
                                     <th>Value</th>
                                     <th>Status</th>
                                     <th>Approval/Deny</th>
                                     <td>Product</td>
                                     <th style="width: 30px;"></th>
-
-
                                 </tr>
-                                </thead>
-                                <?php
-                          $url = $_SERVER['REQUEST_URI'];
-                          $string = substr($url, 17);
-                          $int=(int)$string;
-                          $i = $int ? ($int -1)*5 + 1 : 1;
+                            </thead>
+                            <?php
+                            $url = $_SERVER['REQUEST_URI'];
+                            $string = substr($url, 17);
+                            $int = (int)$string;
+                            $i = $int ? ($int - 1) * 5 + 1 : 1;
                             ?>
-                                @foreach($photo  as $key=> $row )
-                                    @foreach(explode('|',$row->value) as $value)
-                                    <tr id="photo_ids{{$row->id_photo}}">
-                                        <td><input type="checkbox" name="ids[]" class="checkbox_ids"
-                                                   value="{{$row->id_photo}}"></td>
-                                                   <td>{{$i++}}</td>
-                                        <td><img src="{{$value}}" alt="" height="100" width="100">
-                                        </td>
-                                        <td><?php
-                                                if ($row->status == 1) {
-                                                    echo 'Main';
-                                                } else {
-                                                    echo 'Extra';
-                                                }
-                                                ?></td>
-                                        <td><span class="text-ellipsis">
-        <?php
-                                                if ($row->status == 1){
-                                                    ?>
-             <a href="{{ url('/unlike/'.$row->id_photo) }}"><span class="fa-solid fa-toggle-on"></span></a>
-             <?php
-                                                }else{
-                                                    ?>
+                            @foreach($photo as $key=> $row )
+                            @foreach(explode('|',$row->value) as $value)
+                            <tr>
+                                <td>{{$i++}}</td>
+                                <td><img src="{{$value}}" alt="" height="100" width="100">
+                                </td>
+                                <td><?php
+                                    if ($row->status == 1) {
+                                        echo 'Main';
+                                    } else {
+                                        echo 'Extra';
+                                    }
+                                    ?></td>
+                                <td><span class="text-ellipsis">
+                                        <?php
+                                        if ($row->status == 1) {
+                                        ?>
+                                            <a href="{{ url('/unlike/'.$row->id_photo) }}"><span class="fa-solid fa-toggle-on"></span></a>
+                                        <?php
+                                        } else {
+                                        ?>
 
-            <a href="{{ url('/like/'.$row->id_photo) }}"><span class="fa-solid fa-toggle-off"></span></a>
-            <?php
-                                                }
-                                                    ?>
+                                            <a href="{{ url('/like/'.$row->id_photo) }}"><span class="fa-solid fa-toggle-off"></span></a>
+                                        <?php
+                                        }
+                                        ?>
 
-       </span>
+                                    </span>
 
 
-                                        </td>
-                                        <td>{{$row->name_product}}</td>
-                                        <td>
-                                            <a onclick="return confirm('Do you want delete this photo?')"
-                                               href="{{url('/delete_picture/'.$row->id_photo)}}"><i
-                                                    class="fa fa-times text-danger text"></i></a>
-                                        </td>
-                                        @endforeach
+                                </td>
+                                <td>{{$row->name_product}}</td>
+                                <td>
+                                    <a onclick="return confirm('Do you want delete this photo?')" href="{{url('/delete_picture/'.$row->id_photo)}}"><i class="fa fa-times text-danger text"></i></a>
+                                </td>
+                                @endforeach
                                 @endforeach
 
 
-                            </table>
-                            {{$photo->links()}}
-                        </div>
+                        </table>
+                        {{$photo->links()}}
                     </div>
-                    <footer class="panel-footer">
-
-                    </footer>
                 </div>
-            </div>
-        </section>
-        <!-- footer -->
-        <div class="footer" style="width: 100%;bottom: 0; text-align: center">
-            <div class="wthree-copyright">
-                <p>© 2023. All rights reserved | Design by <a href="/about">Favorable Team</a></p>
+                <footer class="panel-footer">
+
+                </footer>
             </div>
         </div>
-        <!-- / footer -->
     </section>
-    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true"
-         id="mi-modal">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Are you Delete</h4>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" id="deleteAllSelectedRecord">Yes</button>
-                    <button type="button" class="btn btn-primary" id="modal-btn-no">No</button>
-                </div>
+    <!-- footer -->
+    <div class="footer" style="width: 100%;bottom: 0; text-align: center">
+        <div class="wthree-copyright">
+            <p>© 2023. All rights reserved | Design by <a href="/about">Favorable Team</a></p>
+        </div>
+    </div>
+    <!-- / footer -->
+</section>
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="mi-modal">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Are you Delete</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="deleteAllSelectedRecord">Yes</button>
+                <button type="button" class="btn btn-primary" id="modal-btn-no">No</button>
             </div>
         </div>
     </div>
-    <!--main content end-->
-    </section>
-    <script>
-        $(function (e) {
-            $("#select_all_ids").click(function () {
-                $('.checkbox_ids').prop('checked', $(this).prop('checked'));
-            });
-            $('#deleteAllSelectedRecord').click(function (e) {
-                e.preventDefault();
-                var all_ids = [];
-                $('input:checkbox[name=ids]:checked').each(function () {
-                    all_ids.push($(this).val());
-                })
-                $.ajax({
-                    url: "{{route('photo.delete')}}",
-                    type: 'DELETE',
-                    data: {
-                        ids: all_ids,
-                        _token: '{{csrf_token()}}'
-                    },
-                    success: function (response) {
-                        $.each(all_ids, function (key, val) {
-                            $('#photo_ids' + val).remove();
-                        })
-                    }
-                });
-            });
+</div>
+<!--main content end-->
+</section>
+<script>
+    var modalConfirm = function(callback) {
+
+        $("#btn-confirm").on("click", function() {
+            $("#mi-modal").modal('show');
         });
-    </script>
-    <script>
-        var modalConfirm = function (callback) {
 
-            $("#btn-confirm").on("click", function () {
-                $("#mi-modal").modal('show');
-            });
-
-            $("#modal-btn-si").on("click", function () {
-                callback(true);
-                $("#mi-modal").modal('hide');
-            });
-
-            $("#modal-btn-no").on("click", function () {
-                callback(false);
-                $("#mi-modal").modal('hide');
-            });
-        };
-
-        modalConfirm(function (confirm) {
-            if (confirm) {
-                //Acciones si el usuario confirma
-                $("#result").html("CONFIRMADO");
-            } else {
-                //Acciones si el usuario no confirma
-                $("#result").html("NO CONFIRMADO");
-            }
+        $("#modal-btn-si").on("click", function() {
+            callback(true);
+            $("#mi-modal").modal('hide');
         });
-    </script>
+
+        $("#modal-btn-no").on("click", function() {
+            callback(false);
+            $("#mi-modal").modal('hide');
+        });
+    };
+
+    modalConfirm(function(confirm) {
+        if (confirm) {
+            //Acciones si el usuario confirma
+            $("#result").html("CONFIRMADO");
+        } else {
+            //Acciones si el usuario no confirma
+            $("#result").html("NO CONFIRMADO");
+        }
+    });
+</script>
 @endsection

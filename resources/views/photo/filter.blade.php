@@ -77,21 +77,17 @@ List Picture
                         <table class="table table-striped b-t b-light">
                             <thead>
                                 <tr>
-                                    <th><input type="checkbox" name="" id="select_all_ids"></th>
                                     <th>#</th>
                                     <th>Value</th>
                                     <th>Status</th>
                                     <th>Approval/Deny</th>
                                     <td>Product</td>
                                     <th style="width: 30px;"></th>
-
-
                                 </tr>
                             </thead>
                             @foreach($photo as $key=> $row )
                             @foreach(explode('|',$row->value) as $value )
-                            <tr id="photo_ids{{$row->id_photo}}">
-                                <td><input type="checkbox" name="ids[]" class="checkbox_ids" value="{{$row->id_photo}}"></td>
+                            <tr>
                                 <td>{{++$key}}</td>
                                 <td><img src="{{$value}}" alt="" height="100" width="100">
                                 </td>
@@ -125,7 +121,7 @@ List Picture
                                     <a onclick="return confirm('Do you want delete this photo?')" href="{{url('/delete_picture/'.$row->id_photo)}}"><i class="fa fa-times text-danger text"></i></a>
                                 </td>
                                 @endforeach
-                            @endforeach
+                                @endforeach
                         </table>
 
                     </div>
@@ -143,49 +139,22 @@ List Picture
         </div>
     </div>
     <!-- / footer -->
-<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="mi-modal">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Are you Delete</h4>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" id="deleteAllSelectedRecord">Yes</button>
-                <button type="button" class="btn btn-primary" id="modal-btn-no">No</button>
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="mi-modal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Are you Delete</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="deleteAllSelectedRecord">Yes</button>
+                    <button type="button" class="btn btn-primary" id="modal-btn-no">No</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!--main content end-->
+    <!--main content end-->
 </section>
-<script>
-    $(function(e) {
-        $("#select_all_ids").click(function() {
-            $('.checkbox_ids').prop('checked', $(this).prop('checked'));
-        });
-        $('#deleteAllSelectedRecord').click(function(e) {
-            e.preventDefault();
-            var all_ids = [];
-            $('input:checkbox[name=ids]:checked').each(function() {
-                all_ids.push($(this).val());
-            })
-            $.ajax({
-                url: "{{route('photo.delete')}}",
-                type: 'DELETE',
-                data: {
-                    ids: all_ids,
-                    _token: '{{csrf_token()}}'
-                },
-                success: function(response) {
-                    $.each(all_ids, function(key, val) {
-                        $('#photo_ids' + val).remove();
-                    })
-                }
-            });
-        });
-    });
-</script>
 <script>
     var modalConfirm = function(callback) {
 

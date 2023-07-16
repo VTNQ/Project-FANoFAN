@@ -8,10 +8,11 @@ Product Page
 
 @section('mycss')
 <style>
-   .navbar:hover,
-    .navbar.scrolled{
-        background-color: #36454f;
-    }
+  .navbar:hover,
+  .navbar.scrolled {
+    background-color: #36454f;
+  }
+
   @media (min-width: 576px) {
     .col-sm-9 {
       flex: 0 0 auto;
@@ -353,10 +354,13 @@ Product Page
           </div>
         </div>
         @endforeach
-            {{$product->links()}}
+        <div class="container-fluid">
+          {{$product->links()}}
+        </div>
       </div>
-  <!-- End Footer -->
-
+      <!-- End Footer -->
+    </div>
+  </div>
 </body>
 
 </html>

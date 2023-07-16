@@ -51,7 +51,6 @@ Product Page
 <html lang="en">
 
 <head>
-  <title>Ecommerce Template</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -322,37 +321,42 @@ Product Page
       </div>
 
       <div class="col-sm-9 padding-right" style="flex-wrap: inherit">
-      <?php $__currentLoopData = $row; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-<div class="col-sm-4">
-    <div class="product-image-wrapper">
-        <div class="single-products">
-<div class="col-12 col-md-4 mb-4">
-<div class="card " id="card">
-<div class="container">
+        <?php $__currentLoopData = $row; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <div class="col-sm-4">
+          <div class="product-image-wrapper">
+            <div class="single-products">
+              <div class="col-12 col-md-4 mb-4">
+                <div class="card " id="card">
+                  <div class="container">
 
-</div>
-<a href="/Product/<?php echo e($row->id_product); ?>">
-<img src="<?php echo e($row->value); ?>" class="img-fluid" alt="..."  >
-</a>
-<div class="card-body">
-<ul class="list-unstyled d-flex justify-content-between">
-    <li class="text-muted text-right">$<?php echo e($row->money); ?></li>
-</ul>
-<h1  id="h1"><?php echo e($row->name_product); ?></h1>
+                  </div>
+                  <a href="/Product/<?php echo e($item->id_product); ?>">
+                    <img src="<?php echo e($item->value); ?>" class="img-fluid" alt="...">
+                  </a>
+                  <div class="card-body">
+                    <ul class="list-unstyled d-flex justify-content-between">
+                      <li class="text-muted text-right">$<?php echo e($item->money); ?></li>
+                    </ul>
+                    <h1 id="h1"><?php echo e($item->name_product); ?></h1>
 
-<a href="/Product/<?php echo e($row->id_product); ?>"><p class="text-muted">Product Details</p></a>
-</div>
+                    <a href="/Product/<?php echo e($item->id_product); ?>">
+                      <p class="text-muted">Product Details</p>
+                    </a>
+                  </div>
 
-</div>
+                </div>
 
-</div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        <div class="container-fluid">
+          <?php echo e($row->links()); ?>
 
         </div>
-
-    </div>
-</div>
-<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
 
         <!--features_items-->
 

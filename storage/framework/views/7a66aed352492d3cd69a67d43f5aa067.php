@@ -93,7 +93,7 @@ unset($__errorArgs, $__bag); ?>
                                     <td><?php echo e($row->name); ?></td>
                                     <td>
                                         <a href="<?php echo e(url('/edit/'.$row->id)); ?>" class="active" ui-toggle-class=""><i
-                                                class="fas fa-edit"> </a></i><a href="<?php echo e(url('/delete/'.$row->id)); ?>"
+                                                class="fas fa-edit"></i></a><a href="<?php echo e(url('/delete/'.$row->id)); ?>"
                                                                                 onclick="return confirm('Are you want to delete category?')">
                                             <i class="fa fa-times text-danger text"></i></a>
                                     </td>

@@ -47,7 +47,6 @@
                         <table class="table table-striped b-t b-light">
                             <thead>
                             <tr>
-                                <th><input type="checkbox" name="" id="select_all_ids"></th>
                                 <th>#</th>
                                 <th>name</th>
                                 <th>category</th>
@@ -60,9 +59,7 @@
                             </thead>
                             @foreach($list_product as $key=> $row )
 
-                                <tr id="product_ids{{$row->id_product}}">
-                                    <td><input type="checkbox" name="ids[]" class="checkbox_ids"
-                                               value="{{$row->id_product}}"></td>
+                                <tr>
                                     <td>{{++$key}}</td>
 
 
@@ -119,34 +116,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        $(function (e) {
-            $("#select_all_ids").click(function () {
-                $('.checkbox_ids').prop('checked', $(this).prop('checked'));
-            });
-            $('#deleteAllSelectedRecord').click(function (e) {
-                e.preventDefault();
-                var all_ids = [];
-                $('input:checkbox[name=ids]:checked').each(function () {
-                    all_ids.push($(this).val());
-                })
-                $.ajax({
-                    url: "{{route('product.delete')}}",
-                    type: 'DELETE',
-                    data: {
-                        ids: all_ids,
-                        _token: '{{csrf_token()}}'
-                    },
-                    success: function (response) {
-                        $.each(all_ids, function (key, val) {
-                            $('#product_ids' + val).remove();
-                        })
-                    }
-                });
-            });
-        });
-    </script>
     <script>
         var modalConfirm = function (callback) {
 

@@ -56,8 +56,8 @@
                                         <th> Name Product</th>
                                         <th>Money</th>
                                         <th>Category</th>
-                                        <th></th>
-                                        <th></th>
+                                        <th>Restore</th>
+                                        <th>Delete</th>
                                     </tr>
                                     </thead>
                                     @foreach($recycle_product as $rp)
@@ -74,11 +74,9 @@
 
                             </div>
                         </div>
-                        <footer class="panel-footer">
-
-                        </footer>
                     </div>
                 </div>
+                {{$recycle_product->links()}}
             </section>
             <!-- footer -->
             <div class="footer" style="width: 100%;position: absolute ;bottom: 0; text-align: center">

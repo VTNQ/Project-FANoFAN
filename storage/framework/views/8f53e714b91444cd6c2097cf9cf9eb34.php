@@ -52,26 +52,24 @@
                                 <thead>
                                 <tr>
                                     <th>Name Category</th>
-                                    <th></th>
-                                    <th></th>
+                                    <th>Restore</th>
+                                    <th>Delete</th>
                                 </tr>
                                 </thead>
                                 <?php $__currentLoopData = $recycle_category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
                                         <td><?php echo e($rc->name); ?></td>
                                         <td><a href="/recycle_bin/category/restore/<?php echo e($rc->id); ?>"><i class="fa-solid fa-trash-can-arrow-up"></i></a></td>
-                                        <td><a href="/recycle_bin/product/delete/<?php echo e($rc->id); ?>"><i class="fa-solid fa-trash"></i></a></td>
+                                        <td><a href="/recycle_bin/category/delete/<?php echo e($rc->id); ?>"><i class="fa-solid fa-trash"></i></a></td>
                                     </tr>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </table>
-
                         </div>
                     </div>
-                    <footer class="panel-footer">
-
-                    </footer>
                 </div>
             </div>
+            <?php echo e($recycle_category->links()); ?>
+
         </section>
         <!-- footer -->
         <div class="footer" style="width: 100%;position: absolute ;bottom: 0; text-align: center">

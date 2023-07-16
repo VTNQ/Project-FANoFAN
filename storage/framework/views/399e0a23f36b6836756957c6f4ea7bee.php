@@ -6,10 +6,11 @@ Product Page
 
 <?php $__env->startSection('mycss'); ?>
 <style>
-   .navbar:hover,
-    .navbar.scrolled{
-        background-color: #36454f;
-    }
+  .navbar:hover,
+  .navbar.scrolled {
+    background-color: #36454f;
+  }
+
   @media (min-width: 576px) {
     .col-sm-9 {
       flex: 0 0 auto;
@@ -351,11 +352,14 @@ Product Page
           </div>
         </div>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            <?php echo e($product->links()); ?>
+        <div class="container-fluid">
+          <?php echo e($product->links()); ?>
 
+        </div>
       </div>
-  <!-- End Footer -->
-
+      <!-- End Footer -->
+    </div>
+  </div>
 </body>
 
 </html>
@@ -365,5 +369,4 @@ Product Page
 <?php $__env->startSection('myscript'); ?>
 
 <?php $__env->stopSection(); ?>
-
 <?php echo $__env->make('layouts.template4', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\project-FANoFAN\resources\views/user/all_product.blade.php ENDPATH**/ ?>

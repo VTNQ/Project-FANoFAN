@@ -128,30 +128,29 @@
         @endif
         <div class="row gutters-sm">
             <h3>History Feedback</h3>
-            <table class="table" style="border-radius: 13px; text-align: center; ">
+            <table class="table" style="border-radius: 13px; text-align: center;">
                 <tr>
-                <th scope="col">Image</th>
-                    <th scope="col">Product</th>
-                    <th scope="col">User</th>
-                    <th scope="col">Feedback</th>
-                    <th scope="col">Day Feedback</th>
-
+                <th scope="col" style="border: 1px solid #000000">Image</th>
+                    <th scope="col" style="border: 1px solid #000000">Product</th>
+                    <th scope="col" style="border: 1px solid #000000">User</th>
+                    <th scope="col" style="border: 1px solid #000000">Feedback</th>
+                    <th scope="col" style="border: 1px solid #000000">Day Feedback</th>
                 </tr>
                 @foreach ($data_feedback as $data)
                     <tr>
-                            <td>
+                            <td style="border: 1px solid #000000">
                                 <img src="{{$data->value}}" alt="" style="width: 6vw">
                             </td>
-                        <td>
+                        <td style="border: 1px solid #000000">
                             {{$data->name_product}}
                         </td>
-                        <td>
+                        <td style="border: 1px solid #000000">
                             {{$data->username}}
                         </td>
-                        <td>
+                        <td style="border: 1px solid #000000">
                             {{$data->comment}}
                         </td>
-                        <td>
+                        <td style="border: 1px solid #000000">
                         {{date('M d,Y h:i A',strtotime($data->date_to))}}
                         </td>
                     </tr>
